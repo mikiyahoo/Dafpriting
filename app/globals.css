@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+/* ============================================
+   FONT FACES
+   ============================================ */
+
+/* Kostic Serif – for big titles (headings) */
+@font-face {
+  font-family: 'Kostic Serif';
+  src: url('/fonts/Kostic\ Serif\ W00\ Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat – for body text, buttons, captions */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   COLOR PALETTE (CSS Custom Properties)
+   ============================================ */
+
+:root {
+  /* PRIMARY COLORS (Brand) */
+  --color-primary-navy: #182849;
+  --color-primary-brown: #bf8f3a;
+
+  /* SECONDARY COLORS (Brand) */
+  --color-secondary-white: #f4f4f4;
+  --color-secondary-light-brown: #f1d689;
+
+  /* SUPPORTING COLORS (Brand) */
+  --color-supporting-light-blue: #2f497c;
+  --color-supporting-dark-brown: #592d0f;
+  --color-neutral-black: #252422;
+
+  /* ADDITIONAL COLORS (Extended System) */
+  --color-overlay-light: #eef2f7;
+  --color-accent-gold: #e6b422;
+  --color-muted-navy: #1e3460;
+  --color-warm-grey: #a69c8f;
+  --color-soft-sand: #faf7f2;
+
+  /* SEMANTIC ALIASES (Convenience) */
+  --color-bg: var(--color-secondary-white);
+  --color-text: var(--color-neutral-black);
+  --color-primary: var(--color-primary-navy);
+  --color-primary-accent: var(--color-primary-brown);
+  --color-border-light: var(--color-muted-navy);
+  --color-border-warm: var(--color-secondary-light-brown);
+  --color-meta: var(--color-warm-grey);
+}
+
+/* ============================================
+   TYPOGRAPHY DEFAULTS
+   ============================================ */
+
+body {
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+h1, h2, h3, .display-title, .hero-title {
+  font-family: 'Kostic Serif', 'Times New Roman', Georgia, serif;
+  font-weight: 700;
+}
+
+/* Optional: assign specific heading levels to Kostic Serif */
+h1, h2, h3 {
+  font-family: 'Kostic Serif', 'Times New Roman', Georgia, serif;
+  font-weight: 700;
+}
+
+/* All other text (paragraphs, buttons, lists, etc.) uses Montserrat */
+p, button, li, span, a, input, textarea, blockquote, cite, small, .meta, .caption {
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ============================================
+   TAILWIND THEME EXTENSION
+   ============================================ */
+
+@theme {
+  /* Primary Colors */
+  --color-primary-navy: #182849;
+  --color-primary-brown: #bf8f3a;
+
+  /* Secondary Colors */
+  --color-secondary-white: #f4f4f4;
+  --color-secondary-light-brown: #f1d689;
+
+  /* Supporting Colors */
+  --color-supporting-light-blue: #2f497c;
+  --color-supporting-dark-brown: #592d0f;
+  --color-neutral-black: #252422;
+
+  /* Additional Colors */
+  --color-overlay-light: #eef2f7;
+  --color-accent-gold: #e6b422;
+  --color-muted-navy: #1e3460;
+  --color-warm-grey: #a69c8f;
+  --color-soft-sand: #faf7f2;
+  --color-radiance-accent: #bf8f3a;
+
+  /* Legacy Color Aliases (for backward compatibility) */
+  --color-radiance-white: #f4f4f4;
+  --color-radiance-navy: #182849;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+@layer utilities {
+  .text-primary-navy { color: var(--color-primary-navy); }
+  .text-primary-brown { color: var(--color-primary-brown); }
+  .text-secondary-white { color: var(--color-secondary-white); }
+  .text-secondary-light-brown { color: var(--color-secondary-light-brown); }
+  .text-supporting-light-blue { color: var(--color-supporting-light-blue); }
+  .text-supporting-dark-brown { color: var(--color-supporting-dark-brown); }
+  .text-neutral-black { color: var(--color-neutral-black); }
+  .text-overlay-light { color: var(--color-overlay-light); }
+  .text-accent-gold { color: var(--color-accent-gold); }
+  .text-muted-navy { color: var(--color-muted-navy); }
+  .text-warm-grey { color: var(--color-warm-grey); }
+  .text-soft-sand { color: var(--color-soft-sand); }
+
+  .bg-primary-navy { background-color: var(--color-primary-navy); }
+  .bg-primary-brown { background-color: var(--color-primary-brown); }
+  .bg-secondary-white { background-color: var(--color-secondary-white); }
+  .bg-secondary-light-brown { background-color: var(--color-secondary-light-brown); }
+  .bg-supporting-light-blue { background-color: var(--color-supporting-light-blue); }
+  .bg-supporting-dark-brown { background-color: var(--color-supporting-dark-brown); }
+  .bg-neutral-black { background-color: var(--color-neutral-black); }
+  .bg-overlay-light { background-color: var(--color-overlay-light); }
+  .bg-accent-gold { background-color: var(--color-accent-gold); }
+  .bg-muted-navy { background-color: var(--color-muted-navy); }
+  .bg-warm-grey { background-color: var(--color-warm-grey); }
+  .bg-soft-sand { background-color: var(--color-soft-sand); }
+
+  .border-primary-navy { border-color: var(--color-primary-navy); }
+  .border-primary-brown { border-color: var(--color-primary-brown); }
+  .border-secondary-light-brown { border-color: var(--color-secondary-light-brown); }
+  .border-muted-navy { border-color: var(--color-muted-navy); }
+
+  .font-serif { font-family: var(--font-serif); }
+  .font-sans { font-family: var(--font-sans); }
+}
