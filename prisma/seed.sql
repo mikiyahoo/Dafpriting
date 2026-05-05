@@ -135,11 +135,10 @@ CREATE INDEX IF NOT EXISTS idx_gallery_category ON "GalleryImage"(category);
 -- ============================================================
 
 -- Admin User (password: Admin@2026 – bcrypt hashed)
--- Generated hash for "Admin@2026"
 INSERT INTO "User" (email, password, name, role)
 VALUES (
   'admin@radiance.com',
-  '$2b$10$8K1p/a0dL1LXMIgoEDFrwOfMQkfAjkMBcGmR6G3qFqG5qG5qG5qG',
+  '$2b$10$els2/dTNzxiOCMh0Fh7kWu9iHBwV4s21HKnuJQNPSQCheCae3JHie',
   'Radiance Admin',
   'admin'
 )
