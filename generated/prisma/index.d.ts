@@ -38,6 +38,31 @@ export type GalleryImage = $Result.DefaultSelection<Prisma.$GalleryImagePayload>
  * 
  */
 export type Package = $Result.DefaultSelection<Prisma.$PackagePayload>
+/**
+ * Model WeddingInvitation
+ * 
+ */
+export type WeddingInvitation = $Result.DefaultSelection<Prisma.$WeddingInvitationPayload>
+/**
+ * Model RSVP
+ * 
+ */
+export type RSVP = $Result.DefaultSelection<Prisma.$RSVPPayload>
+/**
+ * Model GiftRegistry
+ * 
+ */
+export type GiftRegistry = $Result.DefaultSelection<Prisma.$GiftRegistryPayload>
+/**
+ * Model GiftReservation
+ * 
+ */
+export type GiftReservation = $Result.DefaultSelection<Prisma.$GiftReservationPayload>
+/**
+ * Model DesignAsset
+ * 
+ */
+export type DesignAsset = $Result.DefaultSelection<Prisma.$DesignAssetPayload>
 
 /**
  * Enums
@@ -98,6 +123,61 @@ export const GalleryCategory: {
 
 export type GalleryCategory = (typeof GalleryCategory)[keyof typeof GalleryCategory]
 
+
+export const InvitationTheme: {
+  FLORAL_LUXURY: 'FLORAL_LUXURY',
+  MODERN_MINIMAL: 'MODERN_MINIMAL',
+  ROYAL_GOLD: 'ROYAL_GOLD',
+  TRADITIONAL_ETHIOPIAN: 'TRADITIONAL_ETHIOPIAN',
+  ELEGANT_BLACK: 'ELEGANT_BLACK',
+  GARDEN_WEDDING: 'GARDEN_WEDDING',
+  LUXURY_WHITE: 'LUXURY_WHITE',
+  CLASSIC_SERIF: 'CLASSIC_SERIF'
+};
+
+export type InvitationTheme = (typeof InvitationTheme)[keyof typeof InvitationTheme]
+
+
+export const InvitationStatus: {
+  DRAFT: 'DRAFT',
+  REVIEW: 'REVIEW',
+  APPROVED: 'APPROVED',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
+};
+
+export type InvitationStatus = (typeof InvitationStatus)[keyof typeof InvitationStatus]
+
+
+export const RSVPStatus: {
+  ATTENDING: 'ATTENDING',
+  NOT_ATTENDING: 'NOT_ATTENDING',
+  MAYBE: 'MAYBE',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED'
+};
+
+export type RSVPStatus = (typeof RSVPStatus)[keyof typeof RSVPStatus]
+
+
+export const GiftPriority: {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+};
+
+export type GiftPriority = (typeof GiftPriority)[keyof typeof GiftPriority]
+
+
+export const AssetCategory: {
+  FLORAL: 'FLORAL',
+  FRAME: 'FRAME',
+  ORNAMENT: 'ORNAMENT',
+  TEXTURE: 'TEXTURE'
+};
+
+export type AssetCategory = (typeof AssetCategory)[keyof typeof AssetCategory]
+
 }
 
 export type EventType = $Enums.EventType
@@ -119,6 +199,26 @@ export const MessageSender: typeof $Enums.MessageSender
 export type GalleryCategory = $Enums.GalleryCategory
 
 export const GalleryCategory: typeof $Enums.GalleryCategory
+
+export type InvitationTheme = $Enums.InvitationTheme
+
+export const InvitationTheme: typeof $Enums.InvitationTheme
+
+export type InvitationStatus = $Enums.InvitationStatus
+
+export const InvitationStatus: typeof $Enums.InvitationStatus
+
+export type RSVPStatus = $Enums.RSVPStatus
+
+export const RSVPStatus: typeof $Enums.RSVPStatus
+
+export type GiftPriority = $Enums.GiftPriority
+
+export const GiftPriority: typeof $Enums.GiftPriority
+
+export type AssetCategory = $Enums.AssetCategory
+
+export const AssetCategory: typeof $Enums.AssetCategory
 
 /**
  * ##  Prisma Client ʲˢ
@@ -292,6 +392,56 @@ export class PrismaClient<
     * ```
     */
   get package(): Prisma.PackageDelegate<ExtArgs>;
+
+  /**
+   * `prisma.weddingInvitation`: Exposes CRUD operations for the **WeddingInvitation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WeddingInvitations
+    * const weddingInvitations = await prisma.weddingInvitation.findMany()
+    * ```
+    */
+  get weddingInvitation(): Prisma.WeddingInvitationDelegate<ExtArgs>;
+
+  /**
+   * `prisma.rSVP`: Exposes CRUD operations for the **RSVP** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RSVPS
+    * const rSVPS = await prisma.rSVP.findMany()
+    * ```
+    */
+  get rSVP(): Prisma.RSVPDelegate<ExtArgs>;
+
+  /**
+   * `prisma.giftRegistry`: Exposes CRUD operations for the **GiftRegistry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GiftRegistries
+    * const giftRegistries = await prisma.giftRegistry.findMany()
+    * ```
+    */
+  get giftRegistry(): Prisma.GiftRegistryDelegate<ExtArgs>;
+
+  /**
+   * `prisma.giftReservation`: Exposes CRUD operations for the **GiftReservation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GiftReservations
+    * const giftReservations = await prisma.giftReservation.findMany()
+    * ```
+    */
+  get giftReservation(): Prisma.GiftReservationDelegate<ExtArgs>;
+
+  /**
+   * `prisma.designAsset`: Exposes CRUD operations for the **DesignAsset** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DesignAssets
+    * const designAssets = await prisma.designAsset.findMany()
+    * ```
+    */
+  get designAsset(): Prisma.DesignAssetDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -737,7 +887,12 @@ export namespace Prisma {
     Booking: 'Booking',
     Message: 'Message',
     GalleryImage: 'GalleryImage',
-    Package: 'Package'
+    Package: 'Package',
+    WeddingInvitation: 'WeddingInvitation',
+    RSVP: 'RSVP',
+    GiftRegistry: 'GiftRegistry',
+    GiftReservation: 'GiftReservation',
+    DesignAsset: 'DesignAsset'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -753,7 +908,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "booking" | "message" | "galleryImage" | "package"
+      modelProps: "user" | "booking" | "message" | "galleryImage" | "package" | "weddingInvitation" | "rSVP" | "giftRegistry" | "giftReservation" | "designAsset"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1107,6 +1262,356 @@ export namespace Prisma {
           }
         }
       }
+      WeddingInvitation: {
+        payload: Prisma.$WeddingInvitationPayload<ExtArgs>
+        fields: Prisma.WeddingInvitationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WeddingInvitationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WeddingInvitationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload>
+          }
+          findFirst: {
+            args: Prisma.WeddingInvitationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WeddingInvitationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload>
+          }
+          findMany: {
+            args: Prisma.WeddingInvitationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload>[]
+          }
+          create: {
+            args: Prisma.WeddingInvitationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload>
+          }
+          createMany: {
+            args: Prisma.WeddingInvitationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WeddingInvitationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload>[]
+          }
+          delete: {
+            args: Prisma.WeddingInvitationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload>
+          }
+          update: {
+            args: Prisma.WeddingInvitationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload>
+          }
+          deleteMany: {
+            args: Prisma.WeddingInvitationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WeddingInvitationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WeddingInvitationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WeddingInvitationPayload>
+          }
+          aggregate: {
+            args: Prisma.WeddingInvitationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWeddingInvitation>
+          }
+          groupBy: {
+            args: Prisma.WeddingInvitationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WeddingInvitationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WeddingInvitationCountArgs<ExtArgs>
+            result: $Utils.Optional<WeddingInvitationCountAggregateOutputType> | number
+          }
+        }
+      }
+      RSVP: {
+        payload: Prisma.$RSVPPayload<ExtArgs>
+        fields: Prisma.RSVPFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RSVPFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RSVPFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload>
+          }
+          findFirst: {
+            args: Prisma.RSVPFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RSVPFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload>
+          }
+          findMany: {
+            args: Prisma.RSVPFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload>[]
+          }
+          create: {
+            args: Prisma.RSVPCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload>
+          }
+          createMany: {
+            args: Prisma.RSVPCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.RSVPCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload>[]
+          }
+          delete: {
+            args: Prisma.RSVPDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload>
+          }
+          update: {
+            args: Prisma.RSVPUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload>
+          }
+          deleteMany: {
+            args: Prisma.RSVPDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RSVPUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RSVPUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RSVPPayload>
+          }
+          aggregate: {
+            args: Prisma.RSVPAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRSVP>
+          }
+          groupBy: {
+            args: Prisma.RSVPGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RSVPGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RSVPCountArgs<ExtArgs>
+            result: $Utils.Optional<RSVPCountAggregateOutputType> | number
+          }
+        }
+      }
+      GiftRegistry: {
+        payload: Prisma.$GiftRegistryPayload<ExtArgs>
+        fields: Prisma.GiftRegistryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GiftRegistryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GiftRegistryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload>
+          }
+          findFirst: {
+            args: Prisma.GiftRegistryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GiftRegistryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload>
+          }
+          findMany: {
+            args: Prisma.GiftRegistryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload>[]
+          }
+          create: {
+            args: Prisma.GiftRegistryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload>
+          }
+          createMany: {
+            args: Prisma.GiftRegistryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GiftRegistryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload>[]
+          }
+          delete: {
+            args: Prisma.GiftRegistryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload>
+          }
+          update: {
+            args: Prisma.GiftRegistryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload>
+          }
+          deleteMany: {
+            args: Prisma.GiftRegistryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GiftRegistryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.GiftRegistryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftRegistryPayload>
+          }
+          aggregate: {
+            args: Prisma.GiftRegistryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGiftRegistry>
+          }
+          groupBy: {
+            args: Prisma.GiftRegistryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GiftRegistryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GiftRegistryCountArgs<ExtArgs>
+            result: $Utils.Optional<GiftRegistryCountAggregateOutputType> | number
+          }
+        }
+      }
+      GiftReservation: {
+        payload: Prisma.$GiftReservationPayload<ExtArgs>
+        fields: Prisma.GiftReservationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GiftReservationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GiftReservationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload>
+          }
+          findFirst: {
+            args: Prisma.GiftReservationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GiftReservationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload>
+          }
+          findMany: {
+            args: Prisma.GiftReservationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload>[]
+          }
+          create: {
+            args: Prisma.GiftReservationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload>
+          }
+          createMany: {
+            args: Prisma.GiftReservationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GiftReservationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload>[]
+          }
+          delete: {
+            args: Prisma.GiftReservationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload>
+          }
+          update: {
+            args: Prisma.GiftReservationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload>
+          }
+          deleteMany: {
+            args: Prisma.GiftReservationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GiftReservationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.GiftReservationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiftReservationPayload>
+          }
+          aggregate: {
+            args: Prisma.GiftReservationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGiftReservation>
+          }
+          groupBy: {
+            args: Prisma.GiftReservationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GiftReservationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GiftReservationCountArgs<ExtArgs>
+            result: $Utils.Optional<GiftReservationCountAggregateOutputType> | number
+          }
+        }
+      }
+      DesignAsset: {
+        payload: Prisma.$DesignAssetPayload<ExtArgs>
+        fields: Prisma.DesignAssetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DesignAssetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DesignAssetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload>
+          }
+          findFirst: {
+            args: Prisma.DesignAssetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DesignAssetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload>
+          }
+          findMany: {
+            args: Prisma.DesignAssetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload>[]
+          }
+          create: {
+            args: Prisma.DesignAssetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload>
+          }
+          createMany: {
+            args: Prisma.DesignAssetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DesignAssetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload>[]
+          }
+          delete: {
+            args: Prisma.DesignAssetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload>
+          }
+          update: {
+            args: Prisma.DesignAssetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload>
+          }
+          deleteMany: {
+            args: Prisma.DesignAssetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DesignAssetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.DesignAssetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DesignAssetPayload>
+          }
+          aggregate: {
+            args: Prisma.DesignAssetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDesignAsset>
+          }
+          groupBy: {
+            args: Prisma.DesignAssetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DesignAssetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DesignAssetCountArgs<ExtArgs>
+            result: $Utils.Optional<DesignAssetCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1269,10 +1774,12 @@ export namespace Prisma {
 
   export type BookingCountOutputType = {
     messages: number
+    invitations: number
   }
 
   export type BookingCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     messages?: boolean | BookingCountOutputTypeCountMessagesArgs
+    invitations?: boolean | BookingCountOutputTypeCountInvitationsArgs
   }
 
   // Custom InputTypes
@@ -1291,6 +1798,93 @@ export namespace Prisma {
    */
   export type BookingCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MessageWhereInput
+  }
+
+  /**
+   * BookingCountOutputType without action
+   */
+  export type BookingCountOutputTypeCountInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeddingInvitationWhereInput
+  }
+
+
+  /**
+   * Count Type WeddingInvitationCountOutputType
+   */
+
+  export type WeddingInvitationCountOutputType = {
+    gifts: number
+    reservations: number
+    rsvps: number
+  }
+
+  export type WeddingInvitationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gifts?: boolean | WeddingInvitationCountOutputTypeCountGiftsArgs
+    reservations?: boolean | WeddingInvitationCountOutputTypeCountReservationsArgs
+    rsvps?: boolean | WeddingInvitationCountOutputTypeCountRsvpsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WeddingInvitationCountOutputType without action
+   */
+  export type WeddingInvitationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitationCountOutputType
+     */
+    select?: WeddingInvitationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WeddingInvitationCountOutputType without action
+   */
+  export type WeddingInvitationCountOutputTypeCountGiftsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiftRegistryWhereInput
+  }
+
+  /**
+   * WeddingInvitationCountOutputType without action
+   */
+  export type WeddingInvitationCountOutputTypeCountReservationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiftReservationWhereInput
+  }
+
+  /**
+   * WeddingInvitationCountOutputType without action
+   */
+  export type WeddingInvitationCountOutputTypeCountRsvpsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RSVPWhereInput
+  }
+
+
+  /**
+   * Count Type GiftRegistryCountOutputType
+   */
+
+  export type GiftRegistryCountOutputType = {
+    reservations: number
+  }
+
+  export type GiftRegistryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    reservations?: boolean | GiftRegistryCountOutputTypeCountReservationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GiftRegistryCountOutputType without action
+   */
+  export type GiftRegistryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistryCountOutputType
+     */
+    select?: GiftRegistryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GiftRegistryCountOutputType without action
+   */
+  export type GiftRegistryCountOutputTypeCountReservationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiftReservationWhereInput
   }
 
 
@@ -2523,6 +3117,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     messages?: boolean | Booking$messagesArgs<ExtArgs>
+    invitations?: boolean | Booking$invitationsArgs<ExtArgs>
     _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["booking"]>
 
@@ -2576,6 +3171,7 @@ export namespace Prisma {
 
   export type BookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     messages?: boolean | Booking$messagesArgs<ExtArgs>
+    invitations?: boolean | Booking$invitationsArgs<ExtArgs>
     _count?: boolean | BookingCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BookingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2584,6 +3180,7 @@ export namespace Prisma {
     name: "Booking"
     objects: {
       messages: Prisma.$MessagePayload<ExtArgs>[]
+      invitations: Prisma.$WeddingInvitationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2972,6 +3569,7 @@ export namespace Prisma {
   export interface Prisma__BookingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     messages<T extends Booking$messagesArgs<ExtArgs> = {}>(args?: Subset<T, Booking$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany"> | Null>
+    invitations<T extends Booking$invitationsArgs<ExtArgs> = {}>(args?: Subset<T, Booking$invitationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3353,6 +3951,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
+  }
+
+  /**
+   * Booking.invitations
+   */
+  export type Booking$invitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    where?: WeddingInvitationWhereInput
+    orderBy?: WeddingInvitationOrderByWithRelationInput | WeddingInvitationOrderByWithRelationInput[]
+    cursor?: WeddingInvitationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WeddingInvitationScalarFieldEnum | WeddingInvitationScalarFieldEnum[]
   }
 
   /**
@@ -6260,6 +6878,5232 @@ export namespace Prisma {
 
 
   /**
+   * Model WeddingInvitation
+   */
+
+  export type AggregateWeddingInvitation = {
+    _count: WeddingInvitationCountAggregateOutputType | null
+    _min: WeddingInvitationMinAggregateOutputType | null
+    _max: WeddingInvitationMaxAggregateOutputType | null
+  }
+
+  export type WeddingInvitationMinAggregateOutputType = {
+    id: string | null
+    bookingId: string | null
+    brideName: string | null
+    groomName: string | null
+    slug: string | null
+    weddingDate: Date | null
+    weddingTime: string | null
+    venueName: string | null
+    venueAddress: string | null
+    dressCode: string | null
+    mapUrl: string | null
+    welcomeMessage: string | null
+    story: string | null
+    heroImageUrl: string | null
+    coverImage: string | null
+    templateKey: string | null
+    theme: $Enums.InvitationTheme | null
+    themeColor: string | null
+    primaryColor: string | null
+    secondaryColor: string | null
+    customMessage: string | null
+    floralTopLeft: string | null
+    floralTopRight: string | null
+    floralBottomLeft: string | null
+    floralBottomRight: string | null
+    status: $Enums.InvitationStatus | null
+    allowRSVP: boolean | null
+    allowGiftRegistry: boolean | null
+    publishedAt: Date | null
+    isPublished: boolean | null
+    pdfUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WeddingInvitationMaxAggregateOutputType = {
+    id: string | null
+    bookingId: string | null
+    brideName: string | null
+    groomName: string | null
+    slug: string | null
+    weddingDate: Date | null
+    weddingTime: string | null
+    venueName: string | null
+    venueAddress: string | null
+    dressCode: string | null
+    mapUrl: string | null
+    welcomeMessage: string | null
+    story: string | null
+    heroImageUrl: string | null
+    coverImage: string | null
+    templateKey: string | null
+    theme: $Enums.InvitationTheme | null
+    themeColor: string | null
+    primaryColor: string | null
+    secondaryColor: string | null
+    customMessage: string | null
+    floralTopLeft: string | null
+    floralTopRight: string | null
+    floralBottomLeft: string | null
+    floralBottomRight: string | null
+    status: $Enums.InvitationStatus | null
+    allowRSVP: boolean | null
+    allowGiftRegistry: boolean | null
+    publishedAt: Date | null
+    isPublished: boolean | null
+    pdfUrl: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type WeddingInvitationCountAggregateOutputType = {
+    id: number
+    bookingId: number
+    brideName: number
+    groomName: number
+    slug: number
+    weddingDate: number
+    weddingTime: number
+    venueName: number
+    venueAddress: number
+    dressCode: number
+    mapUrl: number
+    welcomeMessage: number
+    story: number
+    heroImageUrl: number
+    coverImage: number
+    galleryImages: number
+    templateKey: number
+    theme: number
+    themeColor: number
+    primaryColor: number
+    secondaryColor: number
+    customMessage: number
+    floralTopLeft: number
+    floralTopRight: number
+    floralBottomLeft: number
+    floralBottomRight: number
+    status: number
+    allowRSVP: number
+    allowGiftRegistry: number
+    publishedAt: number
+    isPublished: number
+    pdfUrl: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type WeddingInvitationMinAggregateInputType = {
+    id?: true
+    bookingId?: true
+    brideName?: true
+    groomName?: true
+    slug?: true
+    weddingDate?: true
+    weddingTime?: true
+    venueName?: true
+    venueAddress?: true
+    dressCode?: true
+    mapUrl?: true
+    welcomeMessage?: true
+    story?: true
+    heroImageUrl?: true
+    coverImage?: true
+    templateKey?: true
+    theme?: true
+    themeColor?: true
+    primaryColor?: true
+    secondaryColor?: true
+    customMessage?: true
+    floralTopLeft?: true
+    floralTopRight?: true
+    floralBottomLeft?: true
+    floralBottomRight?: true
+    status?: true
+    allowRSVP?: true
+    allowGiftRegistry?: true
+    publishedAt?: true
+    isPublished?: true
+    pdfUrl?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WeddingInvitationMaxAggregateInputType = {
+    id?: true
+    bookingId?: true
+    brideName?: true
+    groomName?: true
+    slug?: true
+    weddingDate?: true
+    weddingTime?: true
+    venueName?: true
+    venueAddress?: true
+    dressCode?: true
+    mapUrl?: true
+    welcomeMessage?: true
+    story?: true
+    heroImageUrl?: true
+    coverImage?: true
+    templateKey?: true
+    theme?: true
+    themeColor?: true
+    primaryColor?: true
+    secondaryColor?: true
+    customMessage?: true
+    floralTopLeft?: true
+    floralTopRight?: true
+    floralBottomLeft?: true
+    floralBottomRight?: true
+    status?: true
+    allowRSVP?: true
+    allowGiftRegistry?: true
+    publishedAt?: true
+    isPublished?: true
+    pdfUrl?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type WeddingInvitationCountAggregateInputType = {
+    id?: true
+    bookingId?: true
+    brideName?: true
+    groomName?: true
+    slug?: true
+    weddingDate?: true
+    weddingTime?: true
+    venueName?: true
+    venueAddress?: true
+    dressCode?: true
+    mapUrl?: true
+    welcomeMessage?: true
+    story?: true
+    heroImageUrl?: true
+    coverImage?: true
+    galleryImages?: true
+    templateKey?: true
+    theme?: true
+    themeColor?: true
+    primaryColor?: true
+    secondaryColor?: true
+    customMessage?: true
+    floralTopLeft?: true
+    floralTopRight?: true
+    floralBottomLeft?: true
+    floralBottomRight?: true
+    status?: true
+    allowRSVP?: true
+    allowGiftRegistry?: true
+    publishedAt?: true
+    isPublished?: true
+    pdfUrl?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type WeddingInvitationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WeddingInvitation to aggregate.
+     */
+    where?: WeddingInvitationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeddingInvitations to fetch.
+     */
+    orderBy?: WeddingInvitationOrderByWithRelationInput | WeddingInvitationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WeddingInvitationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeddingInvitations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeddingInvitations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WeddingInvitations
+    **/
+    _count?: true | WeddingInvitationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WeddingInvitationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WeddingInvitationMaxAggregateInputType
+  }
+
+  export type GetWeddingInvitationAggregateType<T extends WeddingInvitationAggregateArgs> = {
+        [P in keyof T & keyof AggregateWeddingInvitation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWeddingInvitation[P]>
+      : GetScalarType<T[P], AggregateWeddingInvitation[P]>
+  }
+
+
+
+
+  export type WeddingInvitationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WeddingInvitationWhereInput
+    orderBy?: WeddingInvitationOrderByWithAggregationInput | WeddingInvitationOrderByWithAggregationInput[]
+    by: WeddingInvitationScalarFieldEnum[] | WeddingInvitationScalarFieldEnum
+    having?: WeddingInvitationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WeddingInvitationCountAggregateInputType | true
+    _min?: WeddingInvitationMinAggregateInputType
+    _max?: WeddingInvitationMaxAggregateInputType
+  }
+
+  export type WeddingInvitationGroupByOutputType = {
+    id: string
+    bookingId: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode: string | null
+    mapUrl: string | null
+    welcomeMessage: string | null
+    story: string | null
+    heroImageUrl: string | null
+    coverImage: string | null
+    galleryImages: string[]
+    templateKey: string
+    theme: $Enums.InvitationTheme
+    themeColor: string | null
+    primaryColor: string | null
+    secondaryColor: string | null
+    customMessage: string | null
+    floralTopLeft: string | null
+    floralTopRight: string | null
+    floralBottomLeft: string | null
+    floralBottomRight: string | null
+    status: $Enums.InvitationStatus
+    allowRSVP: boolean
+    allowGiftRegistry: boolean
+    publishedAt: Date | null
+    isPublished: boolean
+    pdfUrl: string | null
+    createdAt: Date
+    updatedAt: Date
+    _count: WeddingInvitationCountAggregateOutputType | null
+    _min: WeddingInvitationMinAggregateOutputType | null
+    _max: WeddingInvitationMaxAggregateOutputType | null
+  }
+
+  type GetWeddingInvitationGroupByPayload<T extends WeddingInvitationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WeddingInvitationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WeddingInvitationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WeddingInvitationGroupByOutputType[P]>
+            : GetScalarType<T[P], WeddingInvitationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WeddingInvitationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    brideName?: boolean
+    groomName?: boolean
+    slug?: boolean
+    weddingDate?: boolean
+    weddingTime?: boolean
+    venueName?: boolean
+    venueAddress?: boolean
+    dressCode?: boolean
+    mapUrl?: boolean
+    welcomeMessage?: boolean
+    story?: boolean
+    heroImageUrl?: boolean
+    coverImage?: boolean
+    galleryImages?: boolean
+    templateKey?: boolean
+    theme?: boolean
+    themeColor?: boolean
+    primaryColor?: boolean
+    secondaryColor?: boolean
+    customMessage?: boolean
+    floralTopLeft?: boolean
+    floralTopRight?: boolean
+    floralBottomLeft?: boolean
+    floralBottomRight?: boolean
+    status?: boolean
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: boolean
+    isPublished?: boolean
+    pdfUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    gifts?: boolean | WeddingInvitation$giftsArgs<ExtArgs>
+    reservations?: boolean | WeddingInvitation$reservationsArgs<ExtArgs>
+    rsvps?: boolean | WeddingInvitation$rsvpsArgs<ExtArgs>
+    _count?: boolean | WeddingInvitationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["weddingInvitation"]>
+
+  export type WeddingInvitationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bookingId?: boolean
+    brideName?: boolean
+    groomName?: boolean
+    slug?: boolean
+    weddingDate?: boolean
+    weddingTime?: boolean
+    venueName?: boolean
+    venueAddress?: boolean
+    dressCode?: boolean
+    mapUrl?: boolean
+    welcomeMessage?: boolean
+    story?: boolean
+    heroImageUrl?: boolean
+    coverImage?: boolean
+    galleryImages?: boolean
+    templateKey?: boolean
+    theme?: boolean
+    themeColor?: boolean
+    primaryColor?: boolean
+    secondaryColor?: boolean
+    customMessage?: boolean
+    floralTopLeft?: boolean
+    floralTopRight?: boolean
+    floralBottomLeft?: boolean
+    floralBottomRight?: boolean
+    status?: boolean
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: boolean
+    isPublished?: boolean
+    pdfUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["weddingInvitation"]>
+
+  export type WeddingInvitationSelectScalar = {
+    id?: boolean
+    bookingId?: boolean
+    brideName?: boolean
+    groomName?: boolean
+    slug?: boolean
+    weddingDate?: boolean
+    weddingTime?: boolean
+    venueName?: boolean
+    venueAddress?: boolean
+    dressCode?: boolean
+    mapUrl?: boolean
+    welcomeMessage?: boolean
+    story?: boolean
+    heroImageUrl?: boolean
+    coverImage?: boolean
+    galleryImages?: boolean
+    templateKey?: boolean
+    theme?: boolean
+    themeColor?: boolean
+    primaryColor?: boolean
+    secondaryColor?: boolean
+    customMessage?: boolean
+    floralTopLeft?: boolean
+    floralTopRight?: boolean
+    floralBottomLeft?: boolean
+    floralBottomRight?: boolean
+    status?: boolean
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: boolean
+    isPublished?: boolean
+    pdfUrl?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type WeddingInvitationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+    gifts?: boolean | WeddingInvitation$giftsArgs<ExtArgs>
+    reservations?: boolean | WeddingInvitation$reservationsArgs<ExtArgs>
+    rsvps?: boolean | WeddingInvitation$rsvpsArgs<ExtArgs>
+    _count?: boolean | WeddingInvitationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WeddingInvitationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    booking?: boolean | BookingDefaultArgs<ExtArgs>
+  }
+
+  export type $WeddingInvitationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WeddingInvitation"
+    objects: {
+      booking: Prisma.$BookingPayload<ExtArgs>
+      gifts: Prisma.$GiftRegistryPayload<ExtArgs>[]
+      reservations: Prisma.$GiftReservationPayload<ExtArgs>[]
+      rsvps: Prisma.$RSVPPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      bookingId: string
+      brideName: string
+      groomName: string
+      slug: string
+      weddingDate: Date
+      weddingTime: string
+      venueName: string
+      venueAddress: string
+      dressCode: string | null
+      mapUrl: string | null
+      welcomeMessage: string | null
+      story: string | null
+      heroImageUrl: string | null
+      coverImage: string | null
+      galleryImages: string[]
+      templateKey: string
+      theme: $Enums.InvitationTheme
+      themeColor: string | null
+      primaryColor: string | null
+      secondaryColor: string | null
+      customMessage: string | null
+      floralTopLeft: string | null
+      floralTopRight: string | null
+      floralBottomLeft: string | null
+      floralBottomRight: string | null
+      status: $Enums.InvitationStatus
+      allowRSVP: boolean
+      allowGiftRegistry: boolean
+      publishedAt: Date | null
+      isPublished: boolean
+      pdfUrl: string | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["weddingInvitation"]>
+    composites: {}
+  }
+
+  type WeddingInvitationGetPayload<S extends boolean | null | undefined | WeddingInvitationDefaultArgs> = $Result.GetResult<Prisma.$WeddingInvitationPayload, S>
+
+  type WeddingInvitationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WeddingInvitationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WeddingInvitationCountAggregateInputType | true
+    }
+
+  export interface WeddingInvitationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WeddingInvitation'], meta: { name: 'WeddingInvitation' } }
+    /**
+     * Find zero or one WeddingInvitation that matches the filter.
+     * @param {WeddingInvitationFindUniqueArgs} args - Arguments to find a WeddingInvitation
+     * @example
+     * // Get one WeddingInvitation
+     * const weddingInvitation = await prisma.weddingInvitation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WeddingInvitationFindUniqueArgs>(args: SelectSubset<T, WeddingInvitationFindUniqueArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WeddingInvitation that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WeddingInvitationFindUniqueOrThrowArgs} args - Arguments to find a WeddingInvitation
+     * @example
+     * // Get one WeddingInvitation
+     * const weddingInvitation = await prisma.weddingInvitation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WeddingInvitationFindUniqueOrThrowArgs>(args: SelectSubset<T, WeddingInvitationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WeddingInvitation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeddingInvitationFindFirstArgs} args - Arguments to find a WeddingInvitation
+     * @example
+     * // Get one WeddingInvitation
+     * const weddingInvitation = await prisma.weddingInvitation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WeddingInvitationFindFirstArgs>(args?: SelectSubset<T, WeddingInvitationFindFirstArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WeddingInvitation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeddingInvitationFindFirstOrThrowArgs} args - Arguments to find a WeddingInvitation
+     * @example
+     * // Get one WeddingInvitation
+     * const weddingInvitation = await prisma.weddingInvitation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WeddingInvitationFindFirstOrThrowArgs>(args?: SelectSubset<T, WeddingInvitationFindFirstOrThrowArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WeddingInvitations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeddingInvitationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WeddingInvitations
+     * const weddingInvitations = await prisma.weddingInvitation.findMany()
+     * 
+     * // Get first 10 WeddingInvitations
+     * const weddingInvitations = await prisma.weddingInvitation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const weddingInvitationWithIdOnly = await prisma.weddingInvitation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WeddingInvitationFindManyArgs>(args?: SelectSubset<T, WeddingInvitationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WeddingInvitation.
+     * @param {WeddingInvitationCreateArgs} args - Arguments to create a WeddingInvitation.
+     * @example
+     * // Create one WeddingInvitation
+     * const WeddingInvitation = await prisma.weddingInvitation.create({
+     *   data: {
+     *     // ... data to create a WeddingInvitation
+     *   }
+     * })
+     * 
+     */
+    create<T extends WeddingInvitationCreateArgs>(args: SelectSubset<T, WeddingInvitationCreateArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WeddingInvitations.
+     * @param {WeddingInvitationCreateManyArgs} args - Arguments to create many WeddingInvitations.
+     * @example
+     * // Create many WeddingInvitations
+     * const weddingInvitation = await prisma.weddingInvitation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WeddingInvitationCreateManyArgs>(args?: SelectSubset<T, WeddingInvitationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WeddingInvitations and returns the data saved in the database.
+     * @param {WeddingInvitationCreateManyAndReturnArgs} args - Arguments to create many WeddingInvitations.
+     * @example
+     * // Create many WeddingInvitations
+     * const weddingInvitation = await prisma.weddingInvitation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WeddingInvitations and only return the `id`
+     * const weddingInvitationWithIdOnly = await prisma.weddingInvitation.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WeddingInvitationCreateManyAndReturnArgs>(args?: SelectSubset<T, WeddingInvitationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WeddingInvitation.
+     * @param {WeddingInvitationDeleteArgs} args - Arguments to delete one WeddingInvitation.
+     * @example
+     * // Delete one WeddingInvitation
+     * const WeddingInvitation = await prisma.weddingInvitation.delete({
+     *   where: {
+     *     // ... filter to delete one WeddingInvitation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WeddingInvitationDeleteArgs>(args: SelectSubset<T, WeddingInvitationDeleteArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WeddingInvitation.
+     * @param {WeddingInvitationUpdateArgs} args - Arguments to update one WeddingInvitation.
+     * @example
+     * // Update one WeddingInvitation
+     * const weddingInvitation = await prisma.weddingInvitation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WeddingInvitationUpdateArgs>(args: SelectSubset<T, WeddingInvitationUpdateArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WeddingInvitations.
+     * @param {WeddingInvitationDeleteManyArgs} args - Arguments to filter WeddingInvitations to delete.
+     * @example
+     * // Delete a few WeddingInvitations
+     * const { count } = await prisma.weddingInvitation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WeddingInvitationDeleteManyArgs>(args?: SelectSubset<T, WeddingInvitationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WeddingInvitations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeddingInvitationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WeddingInvitations
+     * const weddingInvitation = await prisma.weddingInvitation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WeddingInvitationUpdateManyArgs>(args: SelectSubset<T, WeddingInvitationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WeddingInvitation.
+     * @param {WeddingInvitationUpsertArgs} args - Arguments to update or create a WeddingInvitation.
+     * @example
+     * // Update or create a WeddingInvitation
+     * const weddingInvitation = await prisma.weddingInvitation.upsert({
+     *   create: {
+     *     // ... data to create a WeddingInvitation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WeddingInvitation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WeddingInvitationUpsertArgs>(args: SelectSubset<T, WeddingInvitationUpsertArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WeddingInvitations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeddingInvitationCountArgs} args - Arguments to filter WeddingInvitations to count.
+     * @example
+     * // Count the number of WeddingInvitations
+     * const count = await prisma.weddingInvitation.count({
+     *   where: {
+     *     // ... the filter for the WeddingInvitations we want to count
+     *   }
+     * })
+    **/
+    count<T extends WeddingInvitationCountArgs>(
+      args?: Subset<T, WeddingInvitationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WeddingInvitationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WeddingInvitation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeddingInvitationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WeddingInvitationAggregateArgs>(args: Subset<T, WeddingInvitationAggregateArgs>): Prisma.PrismaPromise<GetWeddingInvitationAggregateType<T>>
+
+    /**
+     * Group by WeddingInvitation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeddingInvitationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WeddingInvitationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WeddingInvitationGroupByArgs['orderBy'] }
+        : { orderBy?: WeddingInvitationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WeddingInvitationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeddingInvitationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WeddingInvitation model
+   */
+  readonly fields: WeddingInvitationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WeddingInvitation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WeddingInvitationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    booking<T extends BookingDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BookingDefaultArgs<ExtArgs>>): Prisma__BookingClient<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    gifts<T extends WeddingInvitation$giftsArgs<ExtArgs> = {}>(args?: Subset<T, WeddingInvitation$giftsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "findMany"> | Null>
+    reservations<T extends WeddingInvitation$reservationsArgs<ExtArgs> = {}>(args?: Subset<T, WeddingInvitation$reservationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "findMany"> | Null>
+    rsvps<T extends WeddingInvitation$rsvpsArgs<ExtArgs> = {}>(args?: Subset<T, WeddingInvitation$rsvpsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WeddingInvitation model
+   */ 
+  interface WeddingInvitationFieldRefs {
+    readonly id: FieldRef<"WeddingInvitation", 'String'>
+    readonly bookingId: FieldRef<"WeddingInvitation", 'String'>
+    readonly brideName: FieldRef<"WeddingInvitation", 'String'>
+    readonly groomName: FieldRef<"WeddingInvitation", 'String'>
+    readonly slug: FieldRef<"WeddingInvitation", 'String'>
+    readonly weddingDate: FieldRef<"WeddingInvitation", 'DateTime'>
+    readonly weddingTime: FieldRef<"WeddingInvitation", 'String'>
+    readonly venueName: FieldRef<"WeddingInvitation", 'String'>
+    readonly venueAddress: FieldRef<"WeddingInvitation", 'String'>
+    readonly dressCode: FieldRef<"WeddingInvitation", 'String'>
+    readonly mapUrl: FieldRef<"WeddingInvitation", 'String'>
+    readonly welcomeMessage: FieldRef<"WeddingInvitation", 'String'>
+    readonly story: FieldRef<"WeddingInvitation", 'String'>
+    readonly heroImageUrl: FieldRef<"WeddingInvitation", 'String'>
+    readonly coverImage: FieldRef<"WeddingInvitation", 'String'>
+    readonly galleryImages: FieldRef<"WeddingInvitation", 'String[]'>
+    readonly templateKey: FieldRef<"WeddingInvitation", 'String'>
+    readonly theme: FieldRef<"WeddingInvitation", 'InvitationTheme'>
+    readonly themeColor: FieldRef<"WeddingInvitation", 'String'>
+    readonly primaryColor: FieldRef<"WeddingInvitation", 'String'>
+    readonly secondaryColor: FieldRef<"WeddingInvitation", 'String'>
+    readonly customMessage: FieldRef<"WeddingInvitation", 'String'>
+    readonly floralTopLeft: FieldRef<"WeddingInvitation", 'String'>
+    readonly floralTopRight: FieldRef<"WeddingInvitation", 'String'>
+    readonly floralBottomLeft: FieldRef<"WeddingInvitation", 'String'>
+    readonly floralBottomRight: FieldRef<"WeddingInvitation", 'String'>
+    readonly status: FieldRef<"WeddingInvitation", 'InvitationStatus'>
+    readonly allowRSVP: FieldRef<"WeddingInvitation", 'Boolean'>
+    readonly allowGiftRegistry: FieldRef<"WeddingInvitation", 'Boolean'>
+    readonly publishedAt: FieldRef<"WeddingInvitation", 'DateTime'>
+    readonly isPublished: FieldRef<"WeddingInvitation", 'Boolean'>
+    readonly pdfUrl: FieldRef<"WeddingInvitation", 'String'>
+    readonly createdAt: FieldRef<"WeddingInvitation", 'DateTime'>
+    readonly updatedAt: FieldRef<"WeddingInvitation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WeddingInvitation findUnique
+   */
+  export type WeddingInvitationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which WeddingInvitation to fetch.
+     */
+    where: WeddingInvitationWhereUniqueInput
+  }
+
+  /**
+   * WeddingInvitation findUniqueOrThrow
+   */
+  export type WeddingInvitationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which WeddingInvitation to fetch.
+     */
+    where: WeddingInvitationWhereUniqueInput
+  }
+
+  /**
+   * WeddingInvitation findFirst
+   */
+  export type WeddingInvitationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which WeddingInvitation to fetch.
+     */
+    where?: WeddingInvitationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeddingInvitations to fetch.
+     */
+    orderBy?: WeddingInvitationOrderByWithRelationInput | WeddingInvitationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WeddingInvitations.
+     */
+    cursor?: WeddingInvitationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeddingInvitations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeddingInvitations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeddingInvitations.
+     */
+    distinct?: WeddingInvitationScalarFieldEnum | WeddingInvitationScalarFieldEnum[]
+  }
+
+  /**
+   * WeddingInvitation findFirstOrThrow
+   */
+  export type WeddingInvitationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which WeddingInvitation to fetch.
+     */
+    where?: WeddingInvitationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeddingInvitations to fetch.
+     */
+    orderBy?: WeddingInvitationOrderByWithRelationInput | WeddingInvitationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WeddingInvitations.
+     */
+    cursor?: WeddingInvitationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeddingInvitations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeddingInvitations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WeddingInvitations.
+     */
+    distinct?: WeddingInvitationScalarFieldEnum | WeddingInvitationScalarFieldEnum[]
+  }
+
+  /**
+   * WeddingInvitation findMany
+   */
+  export type WeddingInvitationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * Filter, which WeddingInvitations to fetch.
+     */
+    where?: WeddingInvitationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WeddingInvitations to fetch.
+     */
+    orderBy?: WeddingInvitationOrderByWithRelationInput | WeddingInvitationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WeddingInvitations.
+     */
+    cursor?: WeddingInvitationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WeddingInvitations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WeddingInvitations.
+     */
+    skip?: number
+    distinct?: WeddingInvitationScalarFieldEnum | WeddingInvitationScalarFieldEnum[]
+  }
+
+  /**
+   * WeddingInvitation create
+   */
+  export type WeddingInvitationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WeddingInvitation.
+     */
+    data: XOR<WeddingInvitationCreateInput, WeddingInvitationUncheckedCreateInput>
+  }
+
+  /**
+   * WeddingInvitation createMany
+   */
+  export type WeddingInvitationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WeddingInvitations.
+     */
+    data: WeddingInvitationCreateManyInput | WeddingInvitationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WeddingInvitation createManyAndReturn
+   */
+  export type WeddingInvitationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WeddingInvitations.
+     */
+    data: WeddingInvitationCreateManyInput | WeddingInvitationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WeddingInvitation update
+   */
+  export type WeddingInvitationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WeddingInvitation.
+     */
+    data: XOR<WeddingInvitationUpdateInput, WeddingInvitationUncheckedUpdateInput>
+    /**
+     * Choose, which WeddingInvitation to update.
+     */
+    where: WeddingInvitationWhereUniqueInput
+  }
+
+  /**
+   * WeddingInvitation updateMany
+   */
+  export type WeddingInvitationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WeddingInvitations.
+     */
+    data: XOR<WeddingInvitationUpdateManyMutationInput, WeddingInvitationUncheckedUpdateManyInput>
+    /**
+     * Filter which WeddingInvitations to update
+     */
+    where?: WeddingInvitationWhereInput
+  }
+
+  /**
+   * WeddingInvitation upsert
+   */
+  export type WeddingInvitationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WeddingInvitation to update in case it exists.
+     */
+    where: WeddingInvitationWhereUniqueInput
+    /**
+     * In case the WeddingInvitation found by the `where` argument doesn't exist, create a new WeddingInvitation with this data.
+     */
+    create: XOR<WeddingInvitationCreateInput, WeddingInvitationUncheckedCreateInput>
+    /**
+     * In case the WeddingInvitation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WeddingInvitationUpdateInput, WeddingInvitationUncheckedUpdateInput>
+  }
+
+  /**
+   * WeddingInvitation delete
+   */
+  export type WeddingInvitationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+    /**
+     * Filter which WeddingInvitation to delete.
+     */
+    where: WeddingInvitationWhereUniqueInput
+  }
+
+  /**
+   * WeddingInvitation deleteMany
+   */
+  export type WeddingInvitationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WeddingInvitations to delete
+     */
+    where?: WeddingInvitationWhereInput
+  }
+
+  /**
+   * WeddingInvitation.gifts
+   */
+  export type WeddingInvitation$giftsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    where?: GiftRegistryWhereInput
+    orderBy?: GiftRegistryOrderByWithRelationInput | GiftRegistryOrderByWithRelationInput[]
+    cursor?: GiftRegistryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GiftRegistryScalarFieldEnum | GiftRegistryScalarFieldEnum[]
+  }
+
+  /**
+   * WeddingInvitation.reservations
+   */
+  export type WeddingInvitation$reservationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    where?: GiftReservationWhereInput
+    orderBy?: GiftReservationOrderByWithRelationInput | GiftReservationOrderByWithRelationInput[]
+    cursor?: GiftReservationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GiftReservationScalarFieldEnum | GiftReservationScalarFieldEnum[]
+  }
+
+  /**
+   * WeddingInvitation.rsvps
+   */
+  export type WeddingInvitation$rsvpsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    where?: RSVPWhereInput
+    orderBy?: RSVPOrderByWithRelationInput | RSVPOrderByWithRelationInput[]
+    cursor?: RSVPWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RSVPScalarFieldEnum | RSVPScalarFieldEnum[]
+  }
+
+  /**
+   * WeddingInvitation without action
+   */
+  export type WeddingInvitationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WeddingInvitation
+     */
+    select?: WeddingInvitationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WeddingInvitationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RSVP
+   */
+
+  export type AggregateRSVP = {
+    _count: RSVPCountAggregateOutputType | null
+    _min: RSVPMinAggregateOutputType | null
+    _max: RSVPMaxAggregateOutputType | null
+  }
+
+  export type RSVPMinAggregateOutputType = {
+    id: string | null
+    invitationId: string | null
+    guestName: string | null
+    guestPhone: string | null
+    attendance: $Enums.RSVPStatus | null
+    message: string | null
+    createdAt: Date | null
+  }
+
+  export type RSVPMaxAggregateOutputType = {
+    id: string | null
+    invitationId: string | null
+    guestName: string | null
+    guestPhone: string | null
+    attendance: $Enums.RSVPStatus | null
+    message: string | null
+    createdAt: Date | null
+  }
+
+  export type RSVPCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    guestName: number
+    guestPhone: number
+    attendance: number
+    message: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type RSVPMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    guestName?: true
+    guestPhone?: true
+    attendance?: true
+    message?: true
+    createdAt?: true
+  }
+
+  export type RSVPMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    guestName?: true
+    guestPhone?: true
+    attendance?: true
+    message?: true
+    createdAt?: true
+  }
+
+  export type RSVPCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    guestName?: true
+    guestPhone?: true
+    attendance?: true
+    message?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type RSVPAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RSVP to aggregate.
+     */
+    where?: RSVPWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RSVPS to fetch.
+     */
+    orderBy?: RSVPOrderByWithRelationInput | RSVPOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RSVPWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RSVPS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RSVPS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RSVPS
+    **/
+    _count?: true | RSVPCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RSVPMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RSVPMaxAggregateInputType
+  }
+
+  export type GetRSVPAggregateType<T extends RSVPAggregateArgs> = {
+        [P in keyof T & keyof AggregateRSVP]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRSVP[P]>
+      : GetScalarType<T[P], AggregateRSVP[P]>
+  }
+
+
+
+
+  export type RSVPGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RSVPWhereInput
+    orderBy?: RSVPOrderByWithAggregationInput | RSVPOrderByWithAggregationInput[]
+    by: RSVPScalarFieldEnum[] | RSVPScalarFieldEnum
+    having?: RSVPScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RSVPCountAggregateInputType | true
+    _min?: RSVPMinAggregateInputType
+    _max?: RSVPMaxAggregateInputType
+  }
+
+  export type RSVPGroupByOutputType = {
+    id: string
+    invitationId: string
+    guestName: string
+    guestPhone: string | null
+    attendance: $Enums.RSVPStatus
+    message: string | null
+    createdAt: Date
+    _count: RSVPCountAggregateOutputType | null
+    _min: RSVPMinAggregateOutputType | null
+    _max: RSVPMaxAggregateOutputType | null
+  }
+
+  type GetRSVPGroupByPayload<T extends RSVPGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RSVPGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RSVPGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RSVPGroupByOutputType[P]>
+            : GetScalarType<T[P], RSVPGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RSVPSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    guestName?: boolean
+    guestPhone?: boolean
+    attendance?: boolean
+    message?: boolean
+    createdAt?: boolean
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rSVP"]>
+
+  export type RSVPSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    guestName?: boolean
+    guestPhone?: boolean
+    attendance?: boolean
+    message?: boolean
+    createdAt?: boolean
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["rSVP"]>
+
+  export type RSVPSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    guestName?: boolean
+    guestPhone?: boolean
+    attendance?: boolean
+    message?: boolean
+    createdAt?: boolean
+  }
+
+  export type RSVPInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+  }
+  export type RSVPIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+  }
+
+  export type $RSVPPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RSVP"
+    objects: {
+      invitation: Prisma.$WeddingInvitationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      invitationId: string
+      guestName: string
+      guestPhone: string | null
+      attendance: $Enums.RSVPStatus
+      message: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["rSVP"]>
+    composites: {}
+  }
+
+  type RSVPGetPayload<S extends boolean | null | undefined | RSVPDefaultArgs> = $Result.GetResult<Prisma.$RSVPPayload, S>
+
+  type RSVPCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<RSVPFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: RSVPCountAggregateInputType | true
+    }
+
+  export interface RSVPDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RSVP'], meta: { name: 'RSVP' } }
+    /**
+     * Find zero or one RSVP that matches the filter.
+     * @param {RSVPFindUniqueArgs} args - Arguments to find a RSVP
+     * @example
+     * // Get one RSVP
+     * const rSVP = await prisma.rSVP.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RSVPFindUniqueArgs>(args: SelectSubset<T, RSVPFindUniqueArgs<ExtArgs>>): Prisma__RSVPClient<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one RSVP that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {RSVPFindUniqueOrThrowArgs} args - Arguments to find a RSVP
+     * @example
+     * // Get one RSVP
+     * const rSVP = await prisma.rSVP.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RSVPFindUniqueOrThrowArgs>(args: SelectSubset<T, RSVPFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RSVPClient<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first RSVP that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RSVPFindFirstArgs} args - Arguments to find a RSVP
+     * @example
+     * // Get one RSVP
+     * const rSVP = await prisma.rSVP.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RSVPFindFirstArgs>(args?: SelectSubset<T, RSVPFindFirstArgs<ExtArgs>>): Prisma__RSVPClient<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first RSVP that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RSVPFindFirstOrThrowArgs} args - Arguments to find a RSVP
+     * @example
+     * // Get one RSVP
+     * const rSVP = await prisma.rSVP.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RSVPFindFirstOrThrowArgs>(args?: SelectSubset<T, RSVPFindFirstOrThrowArgs<ExtArgs>>): Prisma__RSVPClient<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more RSVPS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RSVPFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RSVPS
+     * const rSVPS = await prisma.rSVP.findMany()
+     * 
+     * // Get first 10 RSVPS
+     * const rSVPS = await prisma.rSVP.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const rSVPWithIdOnly = await prisma.rSVP.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RSVPFindManyArgs>(args?: SelectSubset<T, RSVPFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a RSVP.
+     * @param {RSVPCreateArgs} args - Arguments to create a RSVP.
+     * @example
+     * // Create one RSVP
+     * const RSVP = await prisma.rSVP.create({
+     *   data: {
+     *     // ... data to create a RSVP
+     *   }
+     * })
+     * 
+     */
+    create<T extends RSVPCreateArgs>(args: SelectSubset<T, RSVPCreateArgs<ExtArgs>>): Prisma__RSVPClient<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many RSVPS.
+     * @param {RSVPCreateManyArgs} args - Arguments to create many RSVPS.
+     * @example
+     * // Create many RSVPS
+     * const rSVP = await prisma.rSVP.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RSVPCreateManyArgs>(args?: SelectSubset<T, RSVPCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many RSVPS and returns the data saved in the database.
+     * @param {RSVPCreateManyAndReturnArgs} args - Arguments to create many RSVPS.
+     * @example
+     * // Create many RSVPS
+     * const rSVP = await prisma.rSVP.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many RSVPS and only return the `id`
+     * const rSVPWithIdOnly = await prisma.rSVP.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends RSVPCreateManyAndReturnArgs>(args?: SelectSubset<T, RSVPCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a RSVP.
+     * @param {RSVPDeleteArgs} args - Arguments to delete one RSVP.
+     * @example
+     * // Delete one RSVP
+     * const RSVP = await prisma.rSVP.delete({
+     *   where: {
+     *     // ... filter to delete one RSVP
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RSVPDeleteArgs>(args: SelectSubset<T, RSVPDeleteArgs<ExtArgs>>): Prisma__RSVPClient<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one RSVP.
+     * @param {RSVPUpdateArgs} args - Arguments to update one RSVP.
+     * @example
+     * // Update one RSVP
+     * const rSVP = await prisma.rSVP.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RSVPUpdateArgs>(args: SelectSubset<T, RSVPUpdateArgs<ExtArgs>>): Prisma__RSVPClient<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more RSVPS.
+     * @param {RSVPDeleteManyArgs} args - Arguments to filter RSVPS to delete.
+     * @example
+     * // Delete a few RSVPS
+     * const { count } = await prisma.rSVP.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RSVPDeleteManyArgs>(args?: SelectSubset<T, RSVPDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RSVPS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RSVPUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RSVPS
+     * const rSVP = await prisma.rSVP.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RSVPUpdateManyArgs>(args: SelectSubset<T, RSVPUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RSVP.
+     * @param {RSVPUpsertArgs} args - Arguments to update or create a RSVP.
+     * @example
+     * // Update or create a RSVP
+     * const rSVP = await prisma.rSVP.upsert({
+     *   create: {
+     *     // ... data to create a RSVP
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RSVP we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RSVPUpsertArgs>(args: SelectSubset<T, RSVPUpsertArgs<ExtArgs>>): Prisma__RSVPClient<$Result.GetResult<Prisma.$RSVPPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of RSVPS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RSVPCountArgs} args - Arguments to filter RSVPS to count.
+     * @example
+     * // Count the number of RSVPS
+     * const count = await prisma.rSVP.count({
+     *   where: {
+     *     // ... the filter for the RSVPS we want to count
+     *   }
+     * })
+    **/
+    count<T extends RSVPCountArgs>(
+      args?: Subset<T, RSVPCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RSVPCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RSVP.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RSVPAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RSVPAggregateArgs>(args: Subset<T, RSVPAggregateArgs>): Prisma.PrismaPromise<GetRSVPAggregateType<T>>
+
+    /**
+     * Group by RSVP.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RSVPGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RSVPGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RSVPGroupByArgs['orderBy'] }
+        : { orderBy?: RSVPGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RSVPGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRSVPGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RSVP model
+   */
+  readonly fields: RSVPFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RSVP.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RSVPClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    invitation<T extends WeddingInvitationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WeddingInvitationDefaultArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RSVP model
+   */ 
+  interface RSVPFieldRefs {
+    readonly id: FieldRef<"RSVP", 'String'>
+    readonly invitationId: FieldRef<"RSVP", 'String'>
+    readonly guestName: FieldRef<"RSVP", 'String'>
+    readonly guestPhone: FieldRef<"RSVP", 'String'>
+    readonly attendance: FieldRef<"RSVP", 'RSVPStatus'>
+    readonly message: FieldRef<"RSVP", 'String'>
+    readonly createdAt: FieldRef<"RSVP", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RSVP findUnique
+   */
+  export type RSVPFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * Filter, which RSVP to fetch.
+     */
+    where: RSVPWhereUniqueInput
+  }
+
+  /**
+   * RSVP findUniqueOrThrow
+   */
+  export type RSVPFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * Filter, which RSVP to fetch.
+     */
+    where: RSVPWhereUniqueInput
+  }
+
+  /**
+   * RSVP findFirst
+   */
+  export type RSVPFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * Filter, which RSVP to fetch.
+     */
+    where?: RSVPWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RSVPS to fetch.
+     */
+    orderBy?: RSVPOrderByWithRelationInput | RSVPOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RSVPS.
+     */
+    cursor?: RSVPWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RSVPS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RSVPS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RSVPS.
+     */
+    distinct?: RSVPScalarFieldEnum | RSVPScalarFieldEnum[]
+  }
+
+  /**
+   * RSVP findFirstOrThrow
+   */
+  export type RSVPFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * Filter, which RSVP to fetch.
+     */
+    where?: RSVPWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RSVPS to fetch.
+     */
+    orderBy?: RSVPOrderByWithRelationInput | RSVPOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RSVPS.
+     */
+    cursor?: RSVPWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RSVPS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RSVPS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RSVPS.
+     */
+    distinct?: RSVPScalarFieldEnum | RSVPScalarFieldEnum[]
+  }
+
+  /**
+   * RSVP findMany
+   */
+  export type RSVPFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * Filter, which RSVPS to fetch.
+     */
+    where?: RSVPWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RSVPS to fetch.
+     */
+    orderBy?: RSVPOrderByWithRelationInput | RSVPOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RSVPS.
+     */
+    cursor?: RSVPWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RSVPS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RSVPS.
+     */
+    skip?: number
+    distinct?: RSVPScalarFieldEnum | RSVPScalarFieldEnum[]
+  }
+
+  /**
+   * RSVP create
+   */
+  export type RSVPCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RSVP.
+     */
+    data: XOR<RSVPCreateInput, RSVPUncheckedCreateInput>
+  }
+
+  /**
+   * RSVP createMany
+   */
+  export type RSVPCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RSVPS.
+     */
+    data: RSVPCreateManyInput | RSVPCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RSVP createManyAndReturn
+   */
+  export type RSVPCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many RSVPS.
+     */
+    data: RSVPCreateManyInput | RSVPCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * RSVP update
+   */
+  export type RSVPUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RSVP.
+     */
+    data: XOR<RSVPUpdateInput, RSVPUncheckedUpdateInput>
+    /**
+     * Choose, which RSVP to update.
+     */
+    where: RSVPWhereUniqueInput
+  }
+
+  /**
+   * RSVP updateMany
+   */
+  export type RSVPUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RSVPS.
+     */
+    data: XOR<RSVPUpdateManyMutationInput, RSVPUncheckedUpdateManyInput>
+    /**
+     * Filter which RSVPS to update
+     */
+    where?: RSVPWhereInput
+  }
+
+  /**
+   * RSVP upsert
+   */
+  export type RSVPUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RSVP to update in case it exists.
+     */
+    where: RSVPWhereUniqueInput
+    /**
+     * In case the RSVP found by the `where` argument doesn't exist, create a new RSVP with this data.
+     */
+    create: XOR<RSVPCreateInput, RSVPUncheckedCreateInput>
+    /**
+     * In case the RSVP was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RSVPUpdateInput, RSVPUncheckedUpdateInput>
+  }
+
+  /**
+   * RSVP delete
+   */
+  export type RSVPDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+    /**
+     * Filter which RSVP to delete.
+     */
+    where: RSVPWhereUniqueInput
+  }
+
+  /**
+   * RSVP deleteMany
+   */
+  export type RSVPDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RSVPS to delete
+     */
+    where?: RSVPWhereInput
+  }
+
+  /**
+   * RSVP without action
+   */
+  export type RSVPDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RSVP
+     */
+    select?: RSVPSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RSVPInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GiftRegistry
+   */
+
+  export type AggregateGiftRegistry = {
+    _count: GiftRegistryCountAggregateOutputType | null
+    _avg: GiftRegistryAvgAggregateOutputType | null
+    _sum: GiftRegistrySumAggregateOutputType | null
+    _min: GiftRegistryMinAggregateOutputType | null
+    _max: GiftRegistryMaxAggregateOutputType | null
+  }
+
+  export type GiftRegistryAvgAggregateOutputType = {
+    priority: number | null
+  }
+
+  export type GiftRegistrySumAggregateOutputType = {
+    priority: number | null
+  }
+
+  export type GiftRegistryMinAggregateOutputType = {
+    id: string | null
+    invitationId: string | null
+    giftName: string | null
+    title: string | null
+    description: string | null
+    imageUrl: string | null
+    priority: number | null
+    priorityLabel: $Enums.GiftPriority | null
+    allowDuplicates: boolean | null
+    isReserved: boolean | null
+    reservedBy: string | null
+    reservedMessage: string | null
+    createdAt: Date | null
+  }
+
+  export type GiftRegistryMaxAggregateOutputType = {
+    id: string | null
+    invitationId: string | null
+    giftName: string | null
+    title: string | null
+    description: string | null
+    imageUrl: string | null
+    priority: number | null
+    priorityLabel: $Enums.GiftPriority | null
+    allowDuplicates: boolean | null
+    isReserved: boolean | null
+    reservedBy: string | null
+    reservedMessage: string | null
+    createdAt: Date | null
+  }
+
+  export type GiftRegistryCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    giftName: number
+    title: number
+    description: number
+    imageUrl: number
+    priority: number
+    priorityLabel: number
+    allowDuplicates: number
+    isReserved: number
+    reservedBy: number
+    reservedMessage: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type GiftRegistryAvgAggregateInputType = {
+    priority?: true
+  }
+
+  export type GiftRegistrySumAggregateInputType = {
+    priority?: true
+  }
+
+  export type GiftRegistryMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    giftName?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    priority?: true
+    priorityLabel?: true
+    allowDuplicates?: true
+    isReserved?: true
+    reservedBy?: true
+    reservedMessage?: true
+    createdAt?: true
+  }
+
+  export type GiftRegistryMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    giftName?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    priority?: true
+    priorityLabel?: true
+    allowDuplicates?: true
+    isReserved?: true
+    reservedBy?: true
+    reservedMessage?: true
+    createdAt?: true
+  }
+
+  export type GiftRegistryCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    giftName?: true
+    title?: true
+    description?: true
+    imageUrl?: true
+    priority?: true
+    priorityLabel?: true
+    allowDuplicates?: true
+    isReserved?: true
+    reservedBy?: true
+    reservedMessage?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type GiftRegistryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiftRegistry to aggregate.
+     */
+    where?: GiftRegistryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiftRegistries to fetch.
+     */
+    orderBy?: GiftRegistryOrderByWithRelationInput | GiftRegistryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GiftRegistryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiftRegistries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiftRegistries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GiftRegistries
+    **/
+    _count?: true | GiftRegistryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GiftRegistryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GiftRegistrySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GiftRegistryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GiftRegistryMaxAggregateInputType
+  }
+
+  export type GetGiftRegistryAggregateType<T extends GiftRegistryAggregateArgs> = {
+        [P in keyof T & keyof AggregateGiftRegistry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGiftRegistry[P]>
+      : GetScalarType<T[P], AggregateGiftRegistry[P]>
+  }
+
+
+
+
+  export type GiftRegistryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiftRegistryWhereInput
+    orderBy?: GiftRegistryOrderByWithAggregationInput | GiftRegistryOrderByWithAggregationInput[]
+    by: GiftRegistryScalarFieldEnum[] | GiftRegistryScalarFieldEnum
+    having?: GiftRegistryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GiftRegistryCountAggregateInputType | true
+    _avg?: GiftRegistryAvgAggregateInputType
+    _sum?: GiftRegistrySumAggregateInputType
+    _min?: GiftRegistryMinAggregateInputType
+    _max?: GiftRegistryMaxAggregateInputType
+  }
+
+  export type GiftRegistryGroupByOutputType = {
+    id: string
+    invitationId: string
+    giftName: string
+    title: string | null
+    description: string | null
+    imageUrl: string | null
+    priority: number
+    priorityLabel: $Enums.GiftPriority
+    allowDuplicates: boolean
+    isReserved: boolean
+    reservedBy: string | null
+    reservedMessage: string | null
+    createdAt: Date
+    _count: GiftRegistryCountAggregateOutputType | null
+    _avg: GiftRegistryAvgAggregateOutputType | null
+    _sum: GiftRegistrySumAggregateOutputType | null
+    _min: GiftRegistryMinAggregateOutputType | null
+    _max: GiftRegistryMaxAggregateOutputType | null
+  }
+
+  type GetGiftRegistryGroupByPayload<T extends GiftRegistryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GiftRegistryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GiftRegistryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GiftRegistryGroupByOutputType[P]>
+            : GetScalarType<T[P], GiftRegistryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GiftRegistrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    giftName?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    priority?: boolean
+    priorityLabel?: boolean
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: boolean
+    reservedMessage?: boolean
+    createdAt?: boolean
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+    reservations?: boolean | GiftRegistry$reservationsArgs<ExtArgs>
+    _count?: boolean | GiftRegistryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["giftRegistry"]>
+
+  export type GiftRegistrySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    giftName?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    priority?: boolean
+    priorityLabel?: boolean
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: boolean
+    reservedMessage?: boolean
+    createdAt?: boolean
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["giftRegistry"]>
+
+  export type GiftRegistrySelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    giftName?: boolean
+    title?: boolean
+    description?: boolean
+    imageUrl?: boolean
+    priority?: boolean
+    priorityLabel?: boolean
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: boolean
+    reservedMessage?: boolean
+    createdAt?: boolean
+  }
+
+  export type GiftRegistryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+    reservations?: boolean | GiftRegistry$reservationsArgs<ExtArgs>
+    _count?: boolean | GiftRegistryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type GiftRegistryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+  }
+
+  export type $GiftRegistryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GiftRegistry"
+    objects: {
+      invitation: Prisma.$WeddingInvitationPayload<ExtArgs>
+      reservations: Prisma.$GiftReservationPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      invitationId: string
+      giftName: string
+      title: string | null
+      description: string | null
+      imageUrl: string | null
+      priority: number
+      priorityLabel: $Enums.GiftPriority
+      allowDuplicates: boolean
+      isReserved: boolean
+      reservedBy: string | null
+      reservedMessage: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["giftRegistry"]>
+    composites: {}
+  }
+
+  type GiftRegistryGetPayload<S extends boolean | null | undefined | GiftRegistryDefaultArgs> = $Result.GetResult<Prisma.$GiftRegistryPayload, S>
+
+  type GiftRegistryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<GiftRegistryFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: GiftRegistryCountAggregateInputType | true
+    }
+
+  export interface GiftRegistryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GiftRegistry'], meta: { name: 'GiftRegistry' } }
+    /**
+     * Find zero or one GiftRegistry that matches the filter.
+     * @param {GiftRegistryFindUniqueArgs} args - Arguments to find a GiftRegistry
+     * @example
+     * // Get one GiftRegistry
+     * const giftRegistry = await prisma.giftRegistry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GiftRegistryFindUniqueArgs>(args: SelectSubset<T, GiftRegistryFindUniqueArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one GiftRegistry that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {GiftRegistryFindUniqueOrThrowArgs} args - Arguments to find a GiftRegistry
+     * @example
+     * // Get one GiftRegistry
+     * const giftRegistry = await prisma.giftRegistry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GiftRegistryFindUniqueOrThrowArgs>(args: SelectSubset<T, GiftRegistryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first GiftRegistry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftRegistryFindFirstArgs} args - Arguments to find a GiftRegistry
+     * @example
+     * // Get one GiftRegistry
+     * const giftRegistry = await prisma.giftRegistry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GiftRegistryFindFirstArgs>(args?: SelectSubset<T, GiftRegistryFindFirstArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first GiftRegistry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftRegistryFindFirstOrThrowArgs} args - Arguments to find a GiftRegistry
+     * @example
+     * // Get one GiftRegistry
+     * const giftRegistry = await prisma.giftRegistry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GiftRegistryFindFirstOrThrowArgs>(args?: SelectSubset<T, GiftRegistryFindFirstOrThrowArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more GiftRegistries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftRegistryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GiftRegistries
+     * const giftRegistries = await prisma.giftRegistry.findMany()
+     * 
+     * // Get first 10 GiftRegistries
+     * const giftRegistries = await prisma.giftRegistry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const giftRegistryWithIdOnly = await prisma.giftRegistry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GiftRegistryFindManyArgs>(args?: SelectSubset<T, GiftRegistryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a GiftRegistry.
+     * @param {GiftRegistryCreateArgs} args - Arguments to create a GiftRegistry.
+     * @example
+     * // Create one GiftRegistry
+     * const GiftRegistry = await prisma.giftRegistry.create({
+     *   data: {
+     *     // ... data to create a GiftRegistry
+     *   }
+     * })
+     * 
+     */
+    create<T extends GiftRegistryCreateArgs>(args: SelectSubset<T, GiftRegistryCreateArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many GiftRegistries.
+     * @param {GiftRegistryCreateManyArgs} args - Arguments to create many GiftRegistries.
+     * @example
+     * // Create many GiftRegistries
+     * const giftRegistry = await prisma.giftRegistry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GiftRegistryCreateManyArgs>(args?: SelectSubset<T, GiftRegistryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GiftRegistries and returns the data saved in the database.
+     * @param {GiftRegistryCreateManyAndReturnArgs} args - Arguments to create many GiftRegistries.
+     * @example
+     * // Create many GiftRegistries
+     * const giftRegistry = await prisma.giftRegistry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GiftRegistries and only return the `id`
+     * const giftRegistryWithIdOnly = await prisma.giftRegistry.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GiftRegistryCreateManyAndReturnArgs>(args?: SelectSubset<T, GiftRegistryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a GiftRegistry.
+     * @param {GiftRegistryDeleteArgs} args - Arguments to delete one GiftRegistry.
+     * @example
+     * // Delete one GiftRegistry
+     * const GiftRegistry = await prisma.giftRegistry.delete({
+     *   where: {
+     *     // ... filter to delete one GiftRegistry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GiftRegistryDeleteArgs>(args: SelectSubset<T, GiftRegistryDeleteArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one GiftRegistry.
+     * @param {GiftRegistryUpdateArgs} args - Arguments to update one GiftRegistry.
+     * @example
+     * // Update one GiftRegistry
+     * const giftRegistry = await prisma.giftRegistry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GiftRegistryUpdateArgs>(args: SelectSubset<T, GiftRegistryUpdateArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more GiftRegistries.
+     * @param {GiftRegistryDeleteManyArgs} args - Arguments to filter GiftRegistries to delete.
+     * @example
+     * // Delete a few GiftRegistries
+     * const { count } = await prisma.giftRegistry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GiftRegistryDeleteManyArgs>(args?: SelectSubset<T, GiftRegistryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GiftRegistries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftRegistryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GiftRegistries
+     * const giftRegistry = await prisma.giftRegistry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GiftRegistryUpdateManyArgs>(args: SelectSubset<T, GiftRegistryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one GiftRegistry.
+     * @param {GiftRegistryUpsertArgs} args - Arguments to update or create a GiftRegistry.
+     * @example
+     * // Update or create a GiftRegistry
+     * const giftRegistry = await prisma.giftRegistry.upsert({
+     *   create: {
+     *     // ... data to create a GiftRegistry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GiftRegistry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GiftRegistryUpsertArgs>(args: SelectSubset<T, GiftRegistryUpsertArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of GiftRegistries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftRegistryCountArgs} args - Arguments to filter GiftRegistries to count.
+     * @example
+     * // Count the number of GiftRegistries
+     * const count = await prisma.giftRegistry.count({
+     *   where: {
+     *     // ... the filter for the GiftRegistries we want to count
+     *   }
+     * })
+    **/
+    count<T extends GiftRegistryCountArgs>(
+      args?: Subset<T, GiftRegistryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GiftRegistryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GiftRegistry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftRegistryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GiftRegistryAggregateArgs>(args: Subset<T, GiftRegistryAggregateArgs>): Prisma.PrismaPromise<GetGiftRegistryAggregateType<T>>
+
+    /**
+     * Group by GiftRegistry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftRegistryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GiftRegistryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GiftRegistryGroupByArgs['orderBy'] }
+        : { orderBy?: GiftRegistryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GiftRegistryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGiftRegistryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GiftRegistry model
+   */
+  readonly fields: GiftRegistryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GiftRegistry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GiftRegistryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    invitation<T extends WeddingInvitationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WeddingInvitationDefaultArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    reservations<T extends GiftRegistry$reservationsArgs<ExtArgs> = {}>(args?: Subset<T, GiftRegistry$reservationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GiftRegistry model
+   */ 
+  interface GiftRegistryFieldRefs {
+    readonly id: FieldRef<"GiftRegistry", 'String'>
+    readonly invitationId: FieldRef<"GiftRegistry", 'String'>
+    readonly giftName: FieldRef<"GiftRegistry", 'String'>
+    readonly title: FieldRef<"GiftRegistry", 'String'>
+    readonly description: FieldRef<"GiftRegistry", 'String'>
+    readonly imageUrl: FieldRef<"GiftRegistry", 'String'>
+    readonly priority: FieldRef<"GiftRegistry", 'Int'>
+    readonly priorityLabel: FieldRef<"GiftRegistry", 'GiftPriority'>
+    readonly allowDuplicates: FieldRef<"GiftRegistry", 'Boolean'>
+    readonly isReserved: FieldRef<"GiftRegistry", 'Boolean'>
+    readonly reservedBy: FieldRef<"GiftRegistry", 'String'>
+    readonly reservedMessage: FieldRef<"GiftRegistry", 'String'>
+    readonly createdAt: FieldRef<"GiftRegistry", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GiftRegistry findUnique
+   */
+  export type GiftRegistryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftRegistry to fetch.
+     */
+    where: GiftRegistryWhereUniqueInput
+  }
+
+  /**
+   * GiftRegistry findUniqueOrThrow
+   */
+  export type GiftRegistryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftRegistry to fetch.
+     */
+    where: GiftRegistryWhereUniqueInput
+  }
+
+  /**
+   * GiftRegistry findFirst
+   */
+  export type GiftRegistryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftRegistry to fetch.
+     */
+    where?: GiftRegistryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiftRegistries to fetch.
+     */
+    orderBy?: GiftRegistryOrderByWithRelationInput | GiftRegistryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiftRegistries.
+     */
+    cursor?: GiftRegistryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiftRegistries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiftRegistries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiftRegistries.
+     */
+    distinct?: GiftRegistryScalarFieldEnum | GiftRegistryScalarFieldEnum[]
+  }
+
+  /**
+   * GiftRegistry findFirstOrThrow
+   */
+  export type GiftRegistryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftRegistry to fetch.
+     */
+    where?: GiftRegistryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiftRegistries to fetch.
+     */
+    orderBy?: GiftRegistryOrderByWithRelationInput | GiftRegistryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiftRegistries.
+     */
+    cursor?: GiftRegistryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiftRegistries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiftRegistries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiftRegistries.
+     */
+    distinct?: GiftRegistryScalarFieldEnum | GiftRegistryScalarFieldEnum[]
+  }
+
+  /**
+   * GiftRegistry findMany
+   */
+  export type GiftRegistryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftRegistries to fetch.
+     */
+    where?: GiftRegistryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiftRegistries to fetch.
+     */
+    orderBy?: GiftRegistryOrderByWithRelationInput | GiftRegistryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GiftRegistries.
+     */
+    cursor?: GiftRegistryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiftRegistries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiftRegistries.
+     */
+    skip?: number
+    distinct?: GiftRegistryScalarFieldEnum | GiftRegistryScalarFieldEnum[]
+  }
+
+  /**
+   * GiftRegistry create
+   */
+  export type GiftRegistryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GiftRegistry.
+     */
+    data: XOR<GiftRegistryCreateInput, GiftRegistryUncheckedCreateInput>
+  }
+
+  /**
+   * GiftRegistry createMany
+   */
+  export type GiftRegistryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GiftRegistries.
+     */
+    data: GiftRegistryCreateManyInput | GiftRegistryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GiftRegistry createManyAndReturn
+   */
+  export type GiftRegistryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many GiftRegistries.
+     */
+    data: GiftRegistryCreateManyInput | GiftRegistryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GiftRegistry update
+   */
+  export type GiftRegistryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GiftRegistry.
+     */
+    data: XOR<GiftRegistryUpdateInput, GiftRegistryUncheckedUpdateInput>
+    /**
+     * Choose, which GiftRegistry to update.
+     */
+    where: GiftRegistryWhereUniqueInput
+  }
+
+  /**
+   * GiftRegistry updateMany
+   */
+  export type GiftRegistryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GiftRegistries.
+     */
+    data: XOR<GiftRegistryUpdateManyMutationInput, GiftRegistryUncheckedUpdateManyInput>
+    /**
+     * Filter which GiftRegistries to update
+     */
+    where?: GiftRegistryWhereInput
+  }
+
+  /**
+   * GiftRegistry upsert
+   */
+  export type GiftRegistryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GiftRegistry to update in case it exists.
+     */
+    where: GiftRegistryWhereUniqueInput
+    /**
+     * In case the GiftRegistry found by the `where` argument doesn't exist, create a new GiftRegistry with this data.
+     */
+    create: XOR<GiftRegistryCreateInput, GiftRegistryUncheckedCreateInput>
+    /**
+     * In case the GiftRegistry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GiftRegistryUpdateInput, GiftRegistryUncheckedUpdateInput>
+  }
+
+  /**
+   * GiftRegistry delete
+   */
+  export type GiftRegistryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+    /**
+     * Filter which GiftRegistry to delete.
+     */
+    where: GiftRegistryWhereUniqueInput
+  }
+
+  /**
+   * GiftRegistry deleteMany
+   */
+  export type GiftRegistryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiftRegistries to delete
+     */
+    where?: GiftRegistryWhereInput
+  }
+
+  /**
+   * GiftRegistry.reservations
+   */
+  export type GiftRegistry$reservationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    where?: GiftReservationWhereInput
+    orderBy?: GiftReservationOrderByWithRelationInput | GiftReservationOrderByWithRelationInput[]
+    cursor?: GiftReservationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GiftReservationScalarFieldEnum | GiftReservationScalarFieldEnum[]
+  }
+
+  /**
+   * GiftRegistry without action
+   */
+  export type GiftRegistryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftRegistry
+     */
+    select?: GiftRegistrySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftRegistryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GiftReservation
+   */
+
+  export type AggregateGiftReservation = {
+    _count: GiftReservationCountAggregateOutputType | null
+    _min: GiftReservationMinAggregateOutputType | null
+    _max: GiftReservationMaxAggregateOutputType | null
+  }
+
+  export type GiftReservationMinAggregateOutputType = {
+    id: string | null
+    invitationId: string | null
+    giftId: string | null
+    reservedBy: string | null
+    reservedMessage: string | null
+    createdAt: Date | null
+  }
+
+  export type GiftReservationMaxAggregateOutputType = {
+    id: string | null
+    invitationId: string | null
+    giftId: string | null
+    reservedBy: string | null
+    reservedMessage: string | null
+    createdAt: Date | null
+  }
+
+  export type GiftReservationCountAggregateOutputType = {
+    id: number
+    invitationId: number
+    giftId: number
+    reservedBy: number
+    reservedMessage: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type GiftReservationMinAggregateInputType = {
+    id?: true
+    invitationId?: true
+    giftId?: true
+    reservedBy?: true
+    reservedMessage?: true
+    createdAt?: true
+  }
+
+  export type GiftReservationMaxAggregateInputType = {
+    id?: true
+    invitationId?: true
+    giftId?: true
+    reservedBy?: true
+    reservedMessage?: true
+    createdAt?: true
+  }
+
+  export type GiftReservationCountAggregateInputType = {
+    id?: true
+    invitationId?: true
+    giftId?: true
+    reservedBy?: true
+    reservedMessage?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type GiftReservationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiftReservation to aggregate.
+     */
+    where?: GiftReservationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiftReservations to fetch.
+     */
+    orderBy?: GiftReservationOrderByWithRelationInput | GiftReservationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GiftReservationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiftReservations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiftReservations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GiftReservations
+    **/
+    _count?: true | GiftReservationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GiftReservationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GiftReservationMaxAggregateInputType
+  }
+
+  export type GetGiftReservationAggregateType<T extends GiftReservationAggregateArgs> = {
+        [P in keyof T & keyof AggregateGiftReservation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGiftReservation[P]>
+      : GetScalarType<T[P], AggregateGiftReservation[P]>
+  }
+
+
+
+
+  export type GiftReservationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiftReservationWhereInput
+    orderBy?: GiftReservationOrderByWithAggregationInput | GiftReservationOrderByWithAggregationInput[]
+    by: GiftReservationScalarFieldEnum[] | GiftReservationScalarFieldEnum
+    having?: GiftReservationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GiftReservationCountAggregateInputType | true
+    _min?: GiftReservationMinAggregateInputType
+    _max?: GiftReservationMaxAggregateInputType
+  }
+
+  export type GiftReservationGroupByOutputType = {
+    id: string
+    invitationId: string
+    giftId: string
+    reservedBy: string
+    reservedMessage: string | null
+    createdAt: Date
+    _count: GiftReservationCountAggregateOutputType | null
+    _min: GiftReservationMinAggregateOutputType | null
+    _max: GiftReservationMaxAggregateOutputType | null
+  }
+
+  type GetGiftReservationGroupByPayload<T extends GiftReservationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GiftReservationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GiftReservationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GiftReservationGroupByOutputType[P]>
+            : GetScalarType<T[P], GiftReservationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GiftReservationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    giftId?: boolean
+    reservedBy?: boolean
+    reservedMessage?: boolean
+    createdAt?: boolean
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+    gift?: boolean | GiftRegistryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["giftReservation"]>
+
+  export type GiftReservationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    invitationId?: boolean
+    giftId?: boolean
+    reservedBy?: boolean
+    reservedMessage?: boolean
+    createdAt?: boolean
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+    gift?: boolean | GiftRegistryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["giftReservation"]>
+
+  export type GiftReservationSelectScalar = {
+    id?: boolean
+    invitationId?: boolean
+    giftId?: boolean
+    reservedBy?: boolean
+    reservedMessage?: boolean
+    createdAt?: boolean
+  }
+
+  export type GiftReservationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+    gift?: boolean | GiftRegistryDefaultArgs<ExtArgs>
+  }
+  export type GiftReservationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invitation?: boolean | WeddingInvitationDefaultArgs<ExtArgs>
+    gift?: boolean | GiftRegistryDefaultArgs<ExtArgs>
+  }
+
+  export type $GiftReservationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GiftReservation"
+    objects: {
+      invitation: Prisma.$WeddingInvitationPayload<ExtArgs>
+      gift: Prisma.$GiftRegistryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      invitationId: string
+      giftId: string
+      reservedBy: string
+      reservedMessage: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["giftReservation"]>
+    composites: {}
+  }
+
+  type GiftReservationGetPayload<S extends boolean | null | undefined | GiftReservationDefaultArgs> = $Result.GetResult<Prisma.$GiftReservationPayload, S>
+
+  type GiftReservationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<GiftReservationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: GiftReservationCountAggregateInputType | true
+    }
+
+  export interface GiftReservationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GiftReservation'], meta: { name: 'GiftReservation' } }
+    /**
+     * Find zero or one GiftReservation that matches the filter.
+     * @param {GiftReservationFindUniqueArgs} args - Arguments to find a GiftReservation
+     * @example
+     * // Get one GiftReservation
+     * const giftReservation = await prisma.giftReservation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GiftReservationFindUniqueArgs>(args: SelectSubset<T, GiftReservationFindUniqueArgs<ExtArgs>>): Prisma__GiftReservationClient<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one GiftReservation that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {GiftReservationFindUniqueOrThrowArgs} args - Arguments to find a GiftReservation
+     * @example
+     * // Get one GiftReservation
+     * const giftReservation = await prisma.giftReservation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GiftReservationFindUniqueOrThrowArgs>(args: SelectSubset<T, GiftReservationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GiftReservationClient<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first GiftReservation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftReservationFindFirstArgs} args - Arguments to find a GiftReservation
+     * @example
+     * // Get one GiftReservation
+     * const giftReservation = await prisma.giftReservation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GiftReservationFindFirstArgs>(args?: SelectSubset<T, GiftReservationFindFirstArgs<ExtArgs>>): Prisma__GiftReservationClient<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first GiftReservation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftReservationFindFirstOrThrowArgs} args - Arguments to find a GiftReservation
+     * @example
+     * // Get one GiftReservation
+     * const giftReservation = await prisma.giftReservation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GiftReservationFindFirstOrThrowArgs>(args?: SelectSubset<T, GiftReservationFindFirstOrThrowArgs<ExtArgs>>): Prisma__GiftReservationClient<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more GiftReservations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftReservationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GiftReservations
+     * const giftReservations = await prisma.giftReservation.findMany()
+     * 
+     * // Get first 10 GiftReservations
+     * const giftReservations = await prisma.giftReservation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const giftReservationWithIdOnly = await prisma.giftReservation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GiftReservationFindManyArgs>(args?: SelectSubset<T, GiftReservationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a GiftReservation.
+     * @param {GiftReservationCreateArgs} args - Arguments to create a GiftReservation.
+     * @example
+     * // Create one GiftReservation
+     * const GiftReservation = await prisma.giftReservation.create({
+     *   data: {
+     *     // ... data to create a GiftReservation
+     *   }
+     * })
+     * 
+     */
+    create<T extends GiftReservationCreateArgs>(args: SelectSubset<T, GiftReservationCreateArgs<ExtArgs>>): Prisma__GiftReservationClient<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many GiftReservations.
+     * @param {GiftReservationCreateManyArgs} args - Arguments to create many GiftReservations.
+     * @example
+     * // Create many GiftReservations
+     * const giftReservation = await prisma.giftReservation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GiftReservationCreateManyArgs>(args?: SelectSubset<T, GiftReservationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GiftReservations and returns the data saved in the database.
+     * @param {GiftReservationCreateManyAndReturnArgs} args - Arguments to create many GiftReservations.
+     * @example
+     * // Create many GiftReservations
+     * const giftReservation = await prisma.giftReservation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GiftReservations and only return the `id`
+     * const giftReservationWithIdOnly = await prisma.giftReservation.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GiftReservationCreateManyAndReturnArgs>(args?: SelectSubset<T, GiftReservationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a GiftReservation.
+     * @param {GiftReservationDeleteArgs} args - Arguments to delete one GiftReservation.
+     * @example
+     * // Delete one GiftReservation
+     * const GiftReservation = await prisma.giftReservation.delete({
+     *   where: {
+     *     // ... filter to delete one GiftReservation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GiftReservationDeleteArgs>(args: SelectSubset<T, GiftReservationDeleteArgs<ExtArgs>>): Prisma__GiftReservationClient<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one GiftReservation.
+     * @param {GiftReservationUpdateArgs} args - Arguments to update one GiftReservation.
+     * @example
+     * // Update one GiftReservation
+     * const giftReservation = await prisma.giftReservation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GiftReservationUpdateArgs>(args: SelectSubset<T, GiftReservationUpdateArgs<ExtArgs>>): Prisma__GiftReservationClient<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more GiftReservations.
+     * @param {GiftReservationDeleteManyArgs} args - Arguments to filter GiftReservations to delete.
+     * @example
+     * // Delete a few GiftReservations
+     * const { count } = await prisma.giftReservation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GiftReservationDeleteManyArgs>(args?: SelectSubset<T, GiftReservationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GiftReservations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftReservationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GiftReservations
+     * const giftReservation = await prisma.giftReservation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GiftReservationUpdateManyArgs>(args: SelectSubset<T, GiftReservationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one GiftReservation.
+     * @param {GiftReservationUpsertArgs} args - Arguments to update or create a GiftReservation.
+     * @example
+     * // Update or create a GiftReservation
+     * const giftReservation = await prisma.giftReservation.upsert({
+     *   create: {
+     *     // ... data to create a GiftReservation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GiftReservation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GiftReservationUpsertArgs>(args: SelectSubset<T, GiftReservationUpsertArgs<ExtArgs>>): Prisma__GiftReservationClient<$Result.GetResult<Prisma.$GiftReservationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of GiftReservations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftReservationCountArgs} args - Arguments to filter GiftReservations to count.
+     * @example
+     * // Count the number of GiftReservations
+     * const count = await prisma.giftReservation.count({
+     *   where: {
+     *     // ... the filter for the GiftReservations we want to count
+     *   }
+     * })
+    **/
+    count<T extends GiftReservationCountArgs>(
+      args?: Subset<T, GiftReservationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GiftReservationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GiftReservation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftReservationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GiftReservationAggregateArgs>(args: Subset<T, GiftReservationAggregateArgs>): Prisma.PrismaPromise<GetGiftReservationAggregateType<T>>
+
+    /**
+     * Group by GiftReservation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiftReservationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GiftReservationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GiftReservationGroupByArgs['orderBy'] }
+        : { orderBy?: GiftReservationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GiftReservationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGiftReservationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GiftReservation model
+   */
+  readonly fields: GiftReservationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GiftReservation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GiftReservationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    invitation<T extends WeddingInvitationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WeddingInvitationDefaultArgs<ExtArgs>>): Prisma__WeddingInvitationClient<$Result.GetResult<Prisma.$WeddingInvitationPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    gift<T extends GiftRegistryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GiftRegistryDefaultArgs<ExtArgs>>): Prisma__GiftRegistryClient<$Result.GetResult<Prisma.$GiftRegistryPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GiftReservation model
+   */ 
+  interface GiftReservationFieldRefs {
+    readonly id: FieldRef<"GiftReservation", 'String'>
+    readonly invitationId: FieldRef<"GiftReservation", 'String'>
+    readonly giftId: FieldRef<"GiftReservation", 'String'>
+    readonly reservedBy: FieldRef<"GiftReservation", 'String'>
+    readonly reservedMessage: FieldRef<"GiftReservation", 'String'>
+    readonly createdAt: FieldRef<"GiftReservation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GiftReservation findUnique
+   */
+  export type GiftReservationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftReservation to fetch.
+     */
+    where: GiftReservationWhereUniqueInput
+  }
+
+  /**
+   * GiftReservation findUniqueOrThrow
+   */
+  export type GiftReservationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftReservation to fetch.
+     */
+    where: GiftReservationWhereUniqueInput
+  }
+
+  /**
+   * GiftReservation findFirst
+   */
+  export type GiftReservationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftReservation to fetch.
+     */
+    where?: GiftReservationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiftReservations to fetch.
+     */
+    orderBy?: GiftReservationOrderByWithRelationInput | GiftReservationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiftReservations.
+     */
+    cursor?: GiftReservationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiftReservations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiftReservations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiftReservations.
+     */
+    distinct?: GiftReservationScalarFieldEnum | GiftReservationScalarFieldEnum[]
+  }
+
+  /**
+   * GiftReservation findFirstOrThrow
+   */
+  export type GiftReservationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftReservation to fetch.
+     */
+    where?: GiftReservationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiftReservations to fetch.
+     */
+    orderBy?: GiftReservationOrderByWithRelationInput | GiftReservationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiftReservations.
+     */
+    cursor?: GiftReservationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiftReservations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiftReservations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiftReservations.
+     */
+    distinct?: GiftReservationScalarFieldEnum | GiftReservationScalarFieldEnum[]
+  }
+
+  /**
+   * GiftReservation findMany
+   */
+  export type GiftReservationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * Filter, which GiftReservations to fetch.
+     */
+    where?: GiftReservationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiftReservations to fetch.
+     */
+    orderBy?: GiftReservationOrderByWithRelationInput | GiftReservationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GiftReservations.
+     */
+    cursor?: GiftReservationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiftReservations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiftReservations.
+     */
+    skip?: number
+    distinct?: GiftReservationScalarFieldEnum | GiftReservationScalarFieldEnum[]
+  }
+
+  /**
+   * GiftReservation create
+   */
+  export type GiftReservationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GiftReservation.
+     */
+    data: XOR<GiftReservationCreateInput, GiftReservationUncheckedCreateInput>
+  }
+
+  /**
+   * GiftReservation createMany
+   */
+  export type GiftReservationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GiftReservations.
+     */
+    data: GiftReservationCreateManyInput | GiftReservationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * GiftReservation createManyAndReturn
+   */
+  export type GiftReservationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many GiftReservations.
+     */
+    data: GiftReservationCreateManyInput | GiftReservationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GiftReservation update
+   */
+  export type GiftReservationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GiftReservation.
+     */
+    data: XOR<GiftReservationUpdateInput, GiftReservationUncheckedUpdateInput>
+    /**
+     * Choose, which GiftReservation to update.
+     */
+    where: GiftReservationWhereUniqueInput
+  }
+
+  /**
+   * GiftReservation updateMany
+   */
+  export type GiftReservationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GiftReservations.
+     */
+    data: XOR<GiftReservationUpdateManyMutationInput, GiftReservationUncheckedUpdateManyInput>
+    /**
+     * Filter which GiftReservations to update
+     */
+    where?: GiftReservationWhereInput
+  }
+
+  /**
+   * GiftReservation upsert
+   */
+  export type GiftReservationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GiftReservation to update in case it exists.
+     */
+    where: GiftReservationWhereUniqueInput
+    /**
+     * In case the GiftReservation found by the `where` argument doesn't exist, create a new GiftReservation with this data.
+     */
+    create: XOR<GiftReservationCreateInput, GiftReservationUncheckedCreateInput>
+    /**
+     * In case the GiftReservation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GiftReservationUpdateInput, GiftReservationUncheckedUpdateInput>
+  }
+
+  /**
+   * GiftReservation delete
+   */
+  export type GiftReservationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+    /**
+     * Filter which GiftReservation to delete.
+     */
+    where: GiftReservationWhereUniqueInput
+  }
+
+  /**
+   * GiftReservation deleteMany
+   */
+  export type GiftReservationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiftReservations to delete
+     */
+    where?: GiftReservationWhereInput
+  }
+
+  /**
+   * GiftReservation without action
+   */
+  export type GiftReservationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiftReservation
+     */
+    select?: GiftReservationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GiftReservationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DesignAsset
+   */
+
+  export type AggregateDesignAsset = {
+    _count: DesignAssetCountAggregateOutputType | null
+    _min: DesignAssetMinAggregateOutputType | null
+    _max: DesignAssetMaxAggregateOutputType | null
+  }
+
+  export type DesignAssetMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    imageUrl: string | null
+    category: $Enums.AssetCategory | null
+    createdAt: Date | null
+  }
+
+  export type DesignAssetMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    imageUrl: string | null
+    category: $Enums.AssetCategory | null
+    createdAt: Date | null
+  }
+
+  export type DesignAssetCountAggregateOutputType = {
+    id: number
+    name: number
+    imageUrl: number
+    category: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type DesignAssetMinAggregateInputType = {
+    id?: true
+    name?: true
+    imageUrl?: true
+    category?: true
+    createdAt?: true
+  }
+
+  export type DesignAssetMaxAggregateInputType = {
+    id?: true
+    name?: true
+    imageUrl?: true
+    category?: true
+    createdAt?: true
+  }
+
+  export type DesignAssetCountAggregateInputType = {
+    id?: true
+    name?: true
+    imageUrl?: true
+    category?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type DesignAssetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DesignAsset to aggregate.
+     */
+    where?: DesignAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DesignAssets to fetch.
+     */
+    orderBy?: DesignAssetOrderByWithRelationInput | DesignAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DesignAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DesignAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DesignAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DesignAssets
+    **/
+    _count?: true | DesignAssetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DesignAssetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DesignAssetMaxAggregateInputType
+  }
+
+  export type GetDesignAssetAggregateType<T extends DesignAssetAggregateArgs> = {
+        [P in keyof T & keyof AggregateDesignAsset]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDesignAsset[P]>
+      : GetScalarType<T[P], AggregateDesignAsset[P]>
+  }
+
+
+
+
+  export type DesignAssetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DesignAssetWhereInput
+    orderBy?: DesignAssetOrderByWithAggregationInput | DesignAssetOrderByWithAggregationInput[]
+    by: DesignAssetScalarFieldEnum[] | DesignAssetScalarFieldEnum
+    having?: DesignAssetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DesignAssetCountAggregateInputType | true
+    _min?: DesignAssetMinAggregateInputType
+    _max?: DesignAssetMaxAggregateInputType
+  }
+
+  export type DesignAssetGroupByOutputType = {
+    id: string
+    name: string
+    imageUrl: string
+    category: $Enums.AssetCategory
+    createdAt: Date
+    _count: DesignAssetCountAggregateOutputType | null
+    _min: DesignAssetMinAggregateOutputType | null
+    _max: DesignAssetMaxAggregateOutputType | null
+  }
+
+  type GetDesignAssetGroupByPayload<T extends DesignAssetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DesignAssetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DesignAssetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DesignAssetGroupByOutputType[P]>
+            : GetScalarType<T[P], DesignAssetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DesignAssetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    imageUrl?: boolean
+    category?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["designAsset"]>
+
+  export type DesignAssetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    imageUrl?: boolean
+    category?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["designAsset"]>
+
+  export type DesignAssetSelectScalar = {
+    id?: boolean
+    name?: boolean
+    imageUrl?: boolean
+    category?: boolean
+    createdAt?: boolean
+  }
+
+
+  export type $DesignAssetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DesignAsset"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      imageUrl: string
+      category: $Enums.AssetCategory
+      createdAt: Date
+    }, ExtArgs["result"]["designAsset"]>
+    composites: {}
+  }
+
+  type DesignAssetGetPayload<S extends boolean | null | undefined | DesignAssetDefaultArgs> = $Result.GetResult<Prisma.$DesignAssetPayload, S>
+
+  type DesignAssetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<DesignAssetFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: DesignAssetCountAggregateInputType | true
+    }
+
+  export interface DesignAssetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DesignAsset'], meta: { name: 'DesignAsset' } }
+    /**
+     * Find zero or one DesignAsset that matches the filter.
+     * @param {DesignAssetFindUniqueArgs} args - Arguments to find a DesignAsset
+     * @example
+     * // Get one DesignAsset
+     * const designAsset = await prisma.designAsset.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DesignAssetFindUniqueArgs>(args: SelectSubset<T, DesignAssetFindUniqueArgs<ExtArgs>>): Prisma__DesignAssetClient<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one DesignAsset that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {DesignAssetFindUniqueOrThrowArgs} args - Arguments to find a DesignAsset
+     * @example
+     * // Get one DesignAsset
+     * const designAsset = await prisma.designAsset.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DesignAssetFindUniqueOrThrowArgs>(args: SelectSubset<T, DesignAssetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DesignAssetClient<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first DesignAsset that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DesignAssetFindFirstArgs} args - Arguments to find a DesignAsset
+     * @example
+     * // Get one DesignAsset
+     * const designAsset = await prisma.designAsset.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DesignAssetFindFirstArgs>(args?: SelectSubset<T, DesignAssetFindFirstArgs<ExtArgs>>): Prisma__DesignAssetClient<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first DesignAsset that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DesignAssetFindFirstOrThrowArgs} args - Arguments to find a DesignAsset
+     * @example
+     * // Get one DesignAsset
+     * const designAsset = await prisma.designAsset.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DesignAssetFindFirstOrThrowArgs>(args?: SelectSubset<T, DesignAssetFindFirstOrThrowArgs<ExtArgs>>): Prisma__DesignAssetClient<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more DesignAssets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DesignAssetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DesignAssets
+     * const designAssets = await prisma.designAsset.findMany()
+     * 
+     * // Get first 10 DesignAssets
+     * const designAssets = await prisma.designAsset.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const designAssetWithIdOnly = await prisma.designAsset.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DesignAssetFindManyArgs>(args?: SelectSubset<T, DesignAssetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a DesignAsset.
+     * @param {DesignAssetCreateArgs} args - Arguments to create a DesignAsset.
+     * @example
+     * // Create one DesignAsset
+     * const DesignAsset = await prisma.designAsset.create({
+     *   data: {
+     *     // ... data to create a DesignAsset
+     *   }
+     * })
+     * 
+     */
+    create<T extends DesignAssetCreateArgs>(args: SelectSubset<T, DesignAssetCreateArgs<ExtArgs>>): Prisma__DesignAssetClient<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many DesignAssets.
+     * @param {DesignAssetCreateManyArgs} args - Arguments to create many DesignAssets.
+     * @example
+     * // Create many DesignAssets
+     * const designAsset = await prisma.designAsset.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DesignAssetCreateManyArgs>(args?: SelectSubset<T, DesignAssetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DesignAssets and returns the data saved in the database.
+     * @param {DesignAssetCreateManyAndReturnArgs} args - Arguments to create many DesignAssets.
+     * @example
+     * // Create many DesignAssets
+     * const designAsset = await prisma.designAsset.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DesignAssets and only return the `id`
+     * const designAssetWithIdOnly = await prisma.designAsset.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DesignAssetCreateManyAndReturnArgs>(args?: SelectSubset<T, DesignAssetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a DesignAsset.
+     * @param {DesignAssetDeleteArgs} args - Arguments to delete one DesignAsset.
+     * @example
+     * // Delete one DesignAsset
+     * const DesignAsset = await prisma.designAsset.delete({
+     *   where: {
+     *     // ... filter to delete one DesignAsset
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DesignAssetDeleteArgs>(args: SelectSubset<T, DesignAssetDeleteArgs<ExtArgs>>): Prisma__DesignAssetClient<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one DesignAsset.
+     * @param {DesignAssetUpdateArgs} args - Arguments to update one DesignAsset.
+     * @example
+     * // Update one DesignAsset
+     * const designAsset = await prisma.designAsset.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DesignAssetUpdateArgs>(args: SelectSubset<T, DesignAssetUpdateArgs<ExtArgs>>): Prisma__DesignAssetClient<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more DesignAssets.
+     * @param {DesignAssetDeleteManyArgs} args - Arguments to filter DesignAssets to delete.
+     * @example
+     * // Delete a few DesignAssets
+     * const { count } = await prisma.designAsset.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DesignAssetDeleteManyArgs>(args?: SelectSubset<T, DesignAssetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DesignAssets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DesignAssetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DesignAssets
+     * const designAsset = await prisma.designAsset.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DesignAssetUpdateManyArgs>(args: SelectSubset<T, DesignAssetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one DesignAsset.
+     * @param {DesignAssetUpsertArgs} args - Arguments to update or create a DesignAsset.
+     * @example
+     * // Update or create a DesignAsset
+     * const designAsset = await prisma.designAsset.upsert({
+     *   create: {
+     *     // ... data to create a DesignAsset
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DesignAsset we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DesignAssetUpsertArgs>(args: SelectSubset<T, DesignAssetUpsertArgs<ExtArgs>>): Prisma__DesignAssetClient<$Result.GetResult<Prisma.$DesignAssetPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of DesignAssets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DesignAssetCountArgs} args - Arguments to filter DesignAssets to count.
+     * @example
+     * // Count the number of DesignAssets
+     * const count = await prisma.designAsset.count({
+     *   where: {
+     *     // ... the filter for the DesignAssets we want to count
+     *   }
+     * })
+    **/
+    count<T extends DesignAssetCountArgs>(
+      args?: Subset<T, DesignAssetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DesignAssetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DesignAsset.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DesignAssetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DesignAssetAggregateArgs>(args: Subset<T, DesignAssetAggregateArgs>): Prisma.PrismaPromise<GetDesignAssetAggregateType<T>>
+
+    /**
+     * Group by DesignAsset.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DesignAssetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DesignAssetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DesignAssetGroupByArgs['orderBy'] }
+        : { orderBy?: DesignAssetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DesignAssetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDesignAssetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DesignAsset model
+   */
+  readonly fields: DesignAssetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DesignAsset.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DesignAssetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DesignAsset model
+   */ 
+  interface DesignAssetFieldRefs {
+    readonly id: FieldRef<"DesignAsset", 'String'>
+    readonly name: FieldRef<"DesignAsset", 'String'>
+    readonly imageUrl: FieldRef<"DesignAsset", 'String'>
+    readonly category: FieldRef<"DesignAsset", 'AssetCategory'>
+    readonly createdAt: FieldRef<"DesignAsset", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DesignAsset findUnique
+   */
+  export type DesignAssetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * Filter, which DesignAsset to fetch.
+     */
+    where: DesignAssetWhereUniqueInput
+  }
+
+  /**
+   * DesignAsset findUniqueOrThrow
+   */
+  export type DesignAssetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * Filter, which DesignAsset to fetch.
+     */
+    where: DesignAssetWhereUniqueInput
+  }
+
+  /**
+   * DesignAsset findFirst
+   */
+  export type DesignAssetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * Filter, which DesignAsset to fetch.
+     */
+    where?: DesignAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DesignAssets to fetch.
+     */
+    orderBy?: DesignAssetOrderByWithRelationInput | DesignAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DesignAssets.
+     */
+    cursor?: DesignAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DesignAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DesignAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DesignAssets.
+     */
+    distinct?: DesignAssetScalarFieldEnum | DesignAssetScalarFieldEnum[]
+  }
+
+  /**
+   * DesignAsset findFirstOrThrow
+   */
+  export type DesignAssetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * Filter, which DesignAsset to fetch.
+     */
+    where?: DesignAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DesignAssets to fetch.
+     */
+    orderBy?: DesignAssetOrderByWithRelationInput | DesignAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DesignAssets.
+     */
+    cursor?: DesignAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DesignAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DesignAssets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DesignAssets.
+     */
+    distinct?: DesignAssetScalarFieldEnum | DesignAssetScalarFieldEnum[]
+  }
+
+  /**
+   * DesignAsset findMany
+   */
+  export type DesignAssetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * Filter, which DesignAssets to fetch.
+     */
+    where?: DesignAssetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DesignAssets to fetch.
+     */
+    orderBy?: DesignAssetOrderByWithRelationInput | DesignAssetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DesignAssets.
+     */
+    cursor?: DesignAssetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DesignAssets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DesignAssets.
+     */
+    skip?: number
+    distinct?: DesignAssetScalarFieldEnum | DesignAssetScalarFieldEnum[]
+  }
+
+  /**
+   * DesignAsset create
+   */
+  export type DesignAssetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * The data needed to create a DesignAsset.
+     */
+    data: XOR<DesignAssetCreateInput, DesignAssetUncheckedCreateInput>
+  }
+
+  /**
+   * DesignAsset createMany
+   */
+  export type DesignAssetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DesignAssets.
+     */
+    data: DesignAssetCreateManyInput | DesignAssetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DesignAsset createManyAndReturn
+   */
+  export type DesignAssetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many DesignAssets.
+     */
+    data: DesignAssetCreateManyInput | DesignAssetCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DesignAsset update
+   */
+  export type DesignAssetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * The data needed to update a DesignAsset.
+     */
+    data: XOR<DesignAssetUpdateInput, DesignAssetUncheckedUpdateInput>
+    /**
+     * Choose, which DesignAsset to update.
+     */
+    where: DesignAssetWhereUniqueInput
+  }
+
+  /**
+   * DesignAsset updateMany
+   */
+  export type DesignAssetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DesignAssets.
+     */
+    data: XOR<DesignAssetUpdateManyMutationInput, DesignAssetUncheckedUpdateManyInput>
+    /**
+     * Filter which DesignAssets to update
+     */
+    where?: DesignAssetWhereInput
+  }
+
+  /**
+   * DesignAsset upsert
+   */
+  export type DesignAssetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * The filter to search for the DesignAsset to update in case it exists.
+     */
+    where: DesignAssetWhereUniqueInput
+    /**
+     * In case the DesignAsset found by the `where` argument doesn't exist, create a new DesignAsset with this data.
+     */
+    create: XOR<DesignAssetCreateInput, DesignAssetUncheckedCreateInput>
+    /**
+     * In case the DesignAsset was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DesignAssetUpdateInput, DesignAssetUncheckedUpdateInput>
+  }
+
+  /**
+   * DesignAsset delete
+   */
+  export type DesignAssetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+    /**
+     * Filter which DesignAsset to delete.
+     */
+    where: DesignAssetWhereUniqueInput
+  }
+
+  /**
+   * DesignAsset deleteMany
+   */
+  export type DesignAssetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DesignAssets to delete
+     */
+    where?: DesignAssetWhereInput
+  }
+
+  /**
+   * DesignAsset without action
+   */
+  export type DesignAssetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DesignAsset
+     */
+    select?: DesignAssetSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -6354,6 +12198,101 @@ export namespace Prisma {
   };
 
   export type PackageScalarFieldEnum = (typeof PackageScalarFieldEnum)[keyof typeof PackageScalarFieldEnum]
+
+
+  export const WeddingInvitationScalarFieldEnum: {
+    id: 'id',
+    bookingId: 'bookingId',
+    brideName: 'brideName',
+    groomName: 'groomName',
+    slug: 'slug',
+    weddingDate: 'weddingDate',
+    weddingTime: 'weddingTime',
+    venueName: 'venueName',
+    venueAddress: 'venueAddress',
+    dressCode: 'dressCode',
+    mapUrl: 'mapUrl',
+    welcomeMessage: 'welcomeMessage',
+    story: 'story',
+    heroImageUrl: 'heroImageUrl',
+    coverImage: 'coverImage',
+    galleryImages: 'galleryImages',
+    templateKey: 'templateKey',
+    theme: 'theme',
+    themeColor: 'themeColor',
+    primaryColor: 'primaryColor',
+    secondaryColor: 'secondaryColor',
+    customMessage: 'customMessage',
+    floralTopLeft: 'floralTopLeft',
+    floralTopRight: 'floralTopRight',
+    floralBottomLeft: 'floralBottomLeft',
+    floralBottomRight: 'floralBottomRight',
+    status: 'status',
+    allowRSVP: 'allowRSVP',
+    allowGiftRegistry: 'allowGiftRegistry',
+    publishedAt: 'publishedAt',
+    isPublished: 'isPublished',
+    pdfUrl: 'pdfUrl',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type WeddingInvitationScalarFieldEnum = (typeof WeddingInvitationScalarFieldEnum)[keyof typeof WeddingInvitationScalarFieldEnum]
+
+
+  export const RSVPScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    guestName: 'guestName',
+    guestPhone: 'guestPhone',
+    attendance: 'attendance',
+    message: 'message',
+    createdAt: 'createdAt'
+  };
+
+  export type RSVPScalarFieldEnum = (typeof RSVPScalarFieldEnum)[keyof typeof RSVPScalarFieldEnum]
+
+
+  export const GiftRegistryScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    giftName: 'giftName',
+    title: 'title',
+    description: 'description',
+    imageUrl: 'imageUrl',
+    priority: 'priority',
+    priorityLabel: 'priorityLabel',
+    allowDuplicates: 'allowDuplicates',
+    isReserved: 'isReserved',
+    reservedBy: 'reservedBy',
+    reservedMessage: 'reservedMessage',
+    createdAt: 'createdAt'
+  };
+
+  export type GiftRegistryScalarFieldEnum = (typeof GiftRegistryScalarFieldEnum)[keyof typeof GiftRegistryScalarFieldEnum]
+
+
+  export const GiftReservationScalarFieldEnum: {
+    id: 'id',
+    invitationId: 'invitationId',
+    giftId: 'giftId',
+    reservedBy: 'reservedBy',
+    reservedMessage: 'reservedMessage',
+    createdAt: 'createdAt'
+  };
+
+  export type GiftReservationScalarFieldEnum = (typeof GiftReservationScalarFieldEnum)[keyof typeof GiftReservationScalarFieldEnum]
+
+
+  export const DesignAssetScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    imageUrl: 'imageUrl',
+    category: 'category',
+    createdAt: 'createdAt'
+  };
+
+  export type DesignAssetScalarFieldEnum = (typeof DesignAssetScalarFieldEnum)[keyof typeof DesignAssetScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -6516,6 +12455,76 @@ export namespace Prisma {
    */
   export type ListEnumGalleryCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GalleryCategory[]'>
     
+
+
+  /**
+   * Reference to a field of type 'InvitationTheme'
+   */
+  export type EnumInvitationThemeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationTheme'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvitationTheme[]'
+   */
+  export type ListEnumInvitationThemeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationTheme[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvitationStatus'
+   */
+  export type EnumInvitationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'InvitationStatus[]'
+   */
+  export type ListEnumInvitationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'InvitationStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'RSVPStatus'
+   */
+  export type EnumRSVPStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RSVPStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'RSVPStatus[]'
+   */
+  export type ListEnumRSVPStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RSVPStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'GiftPriority'
+   */
+  export type EnumGiftPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GiftPriority'>
+    
+
+
+  /**
+   * Reference to a field of type 'GiftPriority[]'
+   */
+  export type ListEnumGiftPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GiftPriority[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'AssetCategory'
+   */
+  export type EnumAssetCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssetCategory'>
+    
+
+
+  /**
+   * Reference to a field of type 'AssetCategory[]'
+   */
+  export type ListEnumAssetCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AssetCategory[]'>
+    
   /**
    * Deep Input Types
    */
@@ -6604,6 +12613,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Booking"> | Date | string
     updatedAt?: DateTimeFilter<"Booking"> | Date | string
     messages?: MessageListRelationFilter
+    invitations?: WeddingInvitationListRelationFilter
   }
 
   export type BookingOrderByWithRelationInput = {
@@ -6629,6 +12639,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     messages?: MessageOrderByRelationAggregateInput
+    invitations?: WeddingInvitationOrderByRelationAggregateInput
   }
 
   export type BookingWhereUniqueInput = Prisma.AtLeast<{
@@ -6657,6 +12668,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Booking"> | Date | string
     updatedAt?: DateTimeFilter<"Booking"> | Date | string
     messages?: MessageListRelationFilter
+    invitations?: WeddingInvitationListRelationFilter
   }, "id">
 
   export type BookingOrderByWithAggregationInput = {
@@ -6933,6 +12945,495 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Package"> | Date | string
   }
 
+  export type WeddingInvitationWhereInput = {
+    AND?: WeddingInvitationWhereInput | WeddingInvitationWhereInput[]
+    OR?: WeddingInvitationWhereInput[]
+    NOT?: WeddingInvitationWhereInput | WeddingInvitationWhereInput[]
+    id?: StringFilter<"WeddingInvitation"> | string
+    bookingId?: StringFilter<"WeddingInvitation"> | string
+    brideName?: StringFilter<"WeddingInvitation"> | string
+    groomName?: StringFilter<"WeddingInvitation"> | string
+    slug?: StringFilter<"WeddingInvitation"> | string
+    weddingDate?: DateTimeFilter<"WeddingInvitation"> | Date | string
+    weddingTime?: StringFilter<"WeddingInvitation"> | string
+    venueName?: StringFilter<"WeddingInvitation"> | string
+    venueAddress?: StringFilter<"WeddingInvitation"> | string
+    dressCode?: StringNullableFilter<"WeddingInvitation"> | string | null
+    mapUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    welcomeMessage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    story?: StringNullableFilter<"WeddingInvitation"> | string | null
+    heroImageUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    coverImage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    galleryImages?: StringNullableListFilter<"WeddingInvitation">
+    templateKey?: StringFilter<"WeddingInvitation"> | string
+    theme?: EnumInvitationThemeFilter<"WeddingInvitation"> | $Enums.InvitationTheme
+    themeColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    primaryColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    secondaryColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    customMessage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralTopLeft?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralTopRight?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralBottomLeft?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralBottomRight?: StringNullableFilter<"WeddingInvitation"> | string | null
+    status?: EnumInvitationStatusFilter<"WeddingInvitation"> | $Enums.InvitationStatus
+    allowRSVP?: BoolFilter<"WeddingInvitation"> | boolean
+    allowGiftRegistry?: BoolFilter<"WeddingInvitation"> | boolean
+    publishedAt?: DateTimeNullableFilter<"WeddingInvitation"> | Date | string | null
+    isPublished?: BoolFilter<"WeddingInvitation"> | boolean
+    pdfUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    createdAt?: DateTimeFilter<"WeddingInvitation"> | Date | string
+    updatedAt?: DateTimeFilter<"WeddingInvitation"> | Date | string
+    booking?: XOR<BookingRelationFilter, BookingWhereInput>
+    gifts?: GiftRegistryListRelationFilter
+    reservations?: GiftReservationListRelationFilter
+    rsvps?: RSVPListRelationFilter
+  }
+
+  export type WeddingInvitationOrderByWithRelationInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    brideName?: SortOrder
+    groomName?: SortOrder
+    slug?: SortOrder
+    weddingDate?: SortOrder
+    weddingTime?: SortOrder
+    venueName?: SortOrder
+    venueAddress?: SortOrder
+    dressCode?: SortOrderInput | SortOrder
+    mapUrl?: SortOrderInput | SortOrder
+    welcomeMessage?: SortOrderInput | SortOrder
+    story?: SortOrderInput | SortOrder
+    heroImageUrl?: SortOrderInput | SortOrder
+    coverImage?: SortOrderInput | SortOrder
+    galleryImages?: SortOrder
+    templateKey?: SortOrder
+    theme?: SortOrder
+    themeColor?: SortOrderInput | SortOrder
+    primaryColor?: SortOrderInput | SortOrder
+    secondaryColor?: SortOrderInput | SortOrder
+    customMessage?: SortOrderInput | SortOrder
+    floralTopLeft?: SortOrderInput | SortOrder
+    floralTopRight?: SortOrderInput | SortOrder
+    floralBottomLeft?: SortOrderInput | SortOrder
+    floralBottomRight?: SortOrderInput | SortOrder
+    status?: SortOrder
+    allowRSVP?: SortOrder
+    allowGiftRegistry?: SortOrder
+    publishedAt?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    booking?: BookingOrderByWithRelationInput
+    gifts?: GiftRegistryOrderByRelationAggregateInput
+    reservations?: GiftReservationOrderByRelationAggregateInput
+    rsvps?: RSVPOrderByRelationAggregateInput
+  }
+
+  export type WeddingInvitationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    bookingId?: string
+    slug?: string
+    AND?: WeddingInvitationWhereInput | WeddingInvitationWhereInput[]
+    OR?: WeddingInvitationWhereInput[]
+    NOT?: WeddingInvitationWhereInput | WeddingInvitationWhereInput[]
+    brideName?: StringFilter<"WeddingInvitation"> | string
+    groomName?: StringFilter<"WeddingInvitation"> | string
+    weddingDate?: DateTimeFilter<"WeddingInvitation"> | Date | string
+    weddingTime?: StringFilter<"WeddingInvitation"> | string
+    venueName?: StringFilter<"WeddingInvitation"> | string
+    venueAddress?: StringFilter<"WeddingInvitation"> | string
+    dressCode?: StringNullableFilter<"WeddingInvitation"> | string | null
+    mapUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    welcomeMessage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    story?: StringNullableFilter<"WeddingInvitation"> | string | null
+    heroImageUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    coverImage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    galleryImages?: StringNullableListFilter<"WeddingInvitation">
+    templateKey?: StringFilter<"WeddingInvitation"> | string
+    theme?: EnumInvitationThemeFilter<"WeddingInvitation"> | $Enums.InvitationTheme
+    themeColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    primaryColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    secondaryColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    customMessage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralTopLeft?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralTopRight?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralBottomLeft?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralBottomRight?: StringNullableFilter<"WeddingInvitation"> | string | null
+    status?: EnumInvitationStatusFilter<"WeddingInvitation"> | $Enums.InvitationStatus
+    allowRSVP?: BoolFilter<"WeddingInvitation"> | boolean
+    allowGiftRegistry?: BoolFilter<"WeddingInvitation"> | boolean
+    publishedAt?: DateTimeNullableFilter<"WeddingInvitation"> | Date | string | null
+    isPublished?: BoolFilter<"WeddingInvitation"> | boolean
+    pdfUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    createdAt?: DateTimeFilter<"WeddingInvitation"> | Date | string
+    updatedAt?: DateTimeFilter<"WeddingInvitation"> | Date | string
+    booking?: XOR<BookingRelationFilter, BookingWhereInput>
+    gifts?: GiftRegistryListRelationFilter
+    reservations?: GiftReservationListRelationFilter
+    rsvps?: RSVPListRelationFilter
+  }, "id" | "bookingId" | "slug">
+
+  export type WeddingInvitationOrderByWithAggregationInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    brideName?: SortOrder
+    groomName?: SortOrder
+    slug?: SortOrder
+    weddingDate?: SortOrder
+    weddingTime?: SortOrder
+    venueName?: SortOrder
+    venueAddress?: SortOrder
+    dressCode?: SortOrderInput | SortOrder
+    mapUrl?: SortOrderInput | SortOrder
+    welcomeMessage?: SortOrderInput | SortOrder
+    story?: SortOrderInput | SortOrder
+    heroImageUrl?: SortOrderInput | SortOrder
+    coverImage?: SortOrderInput | SortOrder
+    galleryImages?: SortOrder
+    templateKey?: SortOrder
+    theme?: SortOrder
+    themeColor?: SortOrderInput | SortOrder
+    primaryColor?: SortOrderInput | SortOrder
+    secondaryColor?: SortOrderInput | SortOrder
+    customMessage?: SortOrderInput | SortOrder
+    floralTopLeft?: SortOrderInput | SortOrder
+    floralTopRight?: SortOrderInput | SortOrder
+    floralBottomLeft?: SortOrderInput | SortOrder
+    floralBottomRight?: SortOrderInput | SortOrder
+    status?: SortOrder
+    allowRSVP?: SortOrder
+    allowGiftRegistry?: SortOrder
+    publishedAt?: SortOrderInput | SortOrder
+    isPublished?: SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: WeddingInvitationCountOrderByAggregateInput
+    _max?: WeddingInvitationMaxOrderByAggregateInput
+    _min?: WeddingInvitationMinOrderByAggregateInput
+  }
+
+  export type WeddingInvitationScalarWhereWithAggregatesInput = {
+    AND?: WeddingInvitationScalarWhereWithAggregatesInput | WeddingInvitationScalarWhereWithAggregatesInput[]
+    OR?: WeddingInvitationScalarWhereWithAggregatesInput[]
+    NOT?: WeddingInvitationScalarWhereWithAggregatesInput | WeddingInvitationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    bookingId?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    brideName?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    groomName?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    slug?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    weddingDate?: DateTimeWithAggregatesFilter<"WeddingInvitation"> | Date | string
+    weddingTime?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    venueName?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    venueAddress?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    dressCode?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    mapUrl?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    welcomeMessage?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    story?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    heroImageUrl?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    coverImage?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    galleryImages?: StringNullableListFilter<"WeddingInvitation">
+    templateKey?: StringWithAggregatesFilter<"WeddingInvitation"> | string
+    theme?: EnumInvitationThemeWithAggregatesFilter<"WeddingInvitation"> | $Enums.InvitationTheme
+    themeColor?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    primaryColor?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    secondaryColor?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    customMessage?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    floralTopLeft?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    floralTopRight?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    floralBottomLeft?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    floralBottomRight?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    status?: EnumInvitationStatusWithAggregatesFilter<"WeddingInvitation"> | $Enums.InvitationStatus
+    allowRSVP?: BoolWithAggregatesFilter<"WeddingInvitation"> | boolean
+    allowGiftRegistry?: BoolWithAggregatesFilter<"WeddingInvitation"> | boolean
+    publishedAt?: DateTimeNullableWithAggregatesFilter<"WeddingInvitation"> | Date | string | null
+    isPublished?: BoolWithAggregatesFilter<"WeddingInvitation"> | boolean
+    pdfUrl?: StringNullableWithAggregatesFilter<"WeddingInvitation"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"WeddingInvitation"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"WeddingInvitation"> | Date | string
+  }
+
+  export type RSVPWhereInput = {
+    AND?: RSVPWhereInput | RSVPWhereInput[]
+    OR?: RSVPWhereInput[]
+    NOT?: RSVPWhereInput | RSVPWhereInput[]
+    id?: StringFilter<"RSVP"> | string
+    invitationId?: StringFilter<"RSVP"> | string
+    guestName?: StringFilter<"RSVP"> | string
+    guestPhone?: StringNullableFilter<"RSVP"> | string | null
+    attendance?: EnumRSVPStatusFilter<"RSVP"> | $Enums.RSVPStatus
+    message?: StringNullableFilter<"RSVP"> | string | null
+    createdAt?: DateTimeFilter<"RSVP"> | Date | string
+    invitation?: XOR<WeddingInvitationRelationFilter, WeddingInvitationWhereInput>
+  }
+
+  export type RSVPOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    guestName?: SortOrder
+    guestPhone?: SortOrderInput | SortOrder
+    attendance?: SortOrder
+    message?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    invitation?: WeddingInvitationOrderByWithRelationInput
+  }
+
+  export type RSVPWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: RSVPWhereInput | RSVPWhereInput[]
+    OR?: RSVPWhereInput[]
+    NOT?: RSVPWhereInput | RSVPWhereInput[]
+    invitationId?: StringFilter<"RSVP"> | string
+    guestName?: StringFilter<"RSVP"> | string
+    guestPhone?: StringNullableFilter<"RSVP"> | string | null
+    attendance?: EnumRSVPStatusFilter<"RSVP"> | $Enums.RSVPStatus
+    message?: StringNullableFilter<"RSVP"> | string | null
+    createdAt?: DateTimeFilter<"RSVP"> | Date | string
+    invitation?: XOR<WeddingInvitationRelationFilter, WeddingInvitationWhereInput>
+  }, "id">
+
+  export type RSVPOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    guestName?: SortOrder
+    guestPhone?: SortOrderInput | SortOrder
+    attendance?: SortOrder
+    message?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: RSVPCountOrderByAggregateInput
+    _max?: RSVPMaxOrderByAggregateInput
+    _min?: RSVPMinOrderByAggregateInput
+  }
+
+  export type RSVPScalarWhereWithAggregatesInput = {
+    AND?: RSVPScalarWhereWithAggregatesInput | RSVPScalarWhereWithAggregatesInput[]
+    OR?: RSVPScalarWhereWithAggregatesInput[]
+    NOT?: RSVPScalarWhereWithAggregatesInput | RSVPScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"RSVP"> | string
+    invitationId?: StringWithAggregatesFilter<"RSVP"> | string
+    guestName?: StringWithAggregatesFilter<"RSVP"> | string
+    guestPhone?: StringNullableWithAggregatesFilter<"RSVP"> | string | null
+    attendance?: EnumRSVPStatusWithAggregatesFilter<"RSVP"> | $Enums.RSVPStatus
+    message?: StringNullableWithAggregatesFilter<"RSVP"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"RSVP"> | Date | string
+  }
+
+  export type GiftRegistryWhereInput = {
+    AND?: GiftRegistryWhereInput | GiftRegistryWhereInput[]
+    OR?: GiftRegistryWhereInput[]
+    NOT?: GiftRegistryWhereInput | GiftRegistryWhereInput[]
+    id?: StringFilter<"GiftRegistry"> | string
+    invitationId?: StringFilter<"GiftRegistry"> | string
+    giftName?: StringFilter<"GiftRegistry"> | string
+    title?: StringNullableFilter<"GiftRegistry"> | string | null
+    description?: StringNullableFilter<"GiftRegistry"> | string | null
+    imageUrl?: StringNullableFilter<"GiftRegistry"> | string | null
+    priority?: IntFilter<"GiftRegistry"> | number
+    priorityLabel?: EnumGiftPriorityFilter<"GiftRegistry"> | $Enums.GiftPriority
+    allowDuplicates?: BoolFilter<"GiftRegistry"> | boolean
+    isReserved?: BoolFilter<"GiftRegistry"> | boolean
+    reservedBy?: StringNullableFilter<"GiftRegistry"> | string | null
+    reservedMessage?: StringNullableFilter<"GiftRegistry"> | string | null
+    createdAt?: DateTimeFilter<"GiftRegistry"> | Date | string
+    invitation?: XOR<WeddingInvitationRelationFilter, WeddingInvitationWhereInput>
+    reservations?: GiftReservationListRelationFilter
+  }
+
+  export type GiftRegistryOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftName?: SortOrder
+    title?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    priority?: SortOrder
+    priorityLabel?: SortOrder
+    allowDuplicates?: SortOrder
+    isReserved?: SortOrder
+    reservedBy?: SortOrderInput | SortOrder
+    reservedMessage?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    invitation?: WeddingInvitationOrderByWithRelationInput
+    reservations?: GiftReservationOrderByRelationAggregateInput
+  }
+
+  export type GiftRegistryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GiftRegistryWhereInput | GiftRegistryWhereInput[]
+    OR?: GiftRegistryWhereInput[]
+    NOT?: GiftRegistryWhereInput | GiftRegistryWhereInput[]
+    invitationId?: StringFilter<"GiftRegistry"> | string
+    giftName?: StringFilter<"GiftRegistry"> | string
+    title?: StringNullableFilter<"GiftRegistry"> | string | null
+    description?: StringNullableFilter<"GiftRegistry"> | string | null
+    imageUrl?: StringNullableFilter<"GiftRegistry"> | string | null
+    priority?: IntFilter<"GiftRegistry"> | number
+    priorityLabel?: EnumGiftPriorityFilter<"GiftRegistry"> | $Enums.GiftPriority
+    allowDuplicates?: BoolFilter<"GiftRegistry"> | boolean
+    isReserved?: BoolFilter<"GiftRegistry"> | boolean
+    reservedBy?: StringNullableFilter<"GiftRegistry"> | string | null
+    reservedMessage?: StringNullableFilter<"GiftRegistry"> | string | null
+    createdAt?: DateTimeFilter<"GiftRegistry"> | Date | string
+    invitation?: XOR<WeddingInvitationRelationFilter, WeddingInvitationWhereInput>
+    reservations?: GiftReservationListRelationFilter
+  }, "id">
+
+  export type GiftRegistryOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftName?: SortOrder
+    title?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    priority?: SortOrder
+    priorityLabel?: SortOrder
+    allowDuplicates?: SortOrder
+    isReserved?: SortOrder
+    reservedBy?: SortOrderInput | SortOrder
+    reservedMessage?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: GiftRegistryCountOrderByAggregateInput
+    _avg?: GiftRegistryAvgOrderByAggregateInput
+    _max?: GiftRegistryMaxOrderByAggregateInput
+    _min?: GiftRegistryMinOrderByAggregateInput
+    _sum?: GiftRegistrySumOrderByAggregateInput
+  }
+
+  export type GiftRegistryScalarWhereWithAggregatesInput = {
+    AND?: GiftRegistryScalarWhereWithAggregatesInput | GiftRegistryScalarWhereWithAggregatesInput[]
+    OR?: GiftRegistryScalarWhereWithAggregatesInput[]
+    NOT?: GiftRegistryScalarWhereWithAggregatesInput | GiftRegistryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GiftRegistry"> | string
+    invitationId?: StringWithAggregatesFilter<"GiftRegistry"> | string
+    giftName?: StringWithAggregatesFilter<"GiftRegistry"> | string
+    title?: StringNullableWithAggregatesFilter<"GiftRegistry"> | string | null
+    description?: StringNullableWithAggregatesFilter<"GiftRegistry"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"GiftRegistry"> | string | null
+    priority?: IntWithAggregatesFilter<"GiftRegistry"> | number
+    priorityLabel?: EnumGiftPriorityWithAggregatesFilter<"GiftRegistry"> | $Enums.GiftPriority
+    allowDuplicates?: BoolWithAggregatesFilter<"GiftRegistry"> | boolean
+    isReserved?: BoolWithAggregatesFilter<"GiftRegistry"> | boolean
+    reservedBy?: StringNullableWithAggregatesFilter<"GiftRegistry"> | string | null
+    reservedMessage?: StringNullableWithAggregatesFilter<"GiftRegistry"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"GiftRegistry"> | Date | string
+  }
+
+  export type GiftReservationWhereInput = {
+    AND?: GiftReservationWhereInput | GiftReservationWhereInput[]
+    OR?: GiftReservationWhereInput[]
+    NOT?: GiftReservationWhereInput | GiftReservationWhereInput[]
+    id?: StringFilter<"GiftReservation"> | string
+    invitationId?: StringFilter<"GiftReservation"> | string
+    giftId?: StringFilter<"GiftReservation"> | string
+    reservedBy?: StringFilter<"GiftReservation"> | string
+    reservedMessage?: StringNullableFilter<"GiftReservation"> | string | null
+    createdAt?: DateTimeFilter<"GiftReservation"> | Date | string
+    invitation?: XOR<WeddingInvitationRelationFilter, WeddingInvitationWhereInput>
+    gift?: XOR<GiftRegistryRelationFilter, GiftRegistryWhereInput>
+  }
+
+  export type GiftReservationOrderByWithRelationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftId?: SortOrder
+    reservedBy?: SortOrder
+    reservedMessage?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    invitation?: WeddingInvitationOrderByWithRelationInput
+    gift?: GiftRegistryOrderByWithRelationInput
+  }
+
+  export type GiftReservationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GiftReservationWhereInput | GiftReservationWhereInput[]
+    OR?: GiftReservationWhereInput[]
+    NOT?: GiftReservationWhereInput | GiftReservationWhereInput[]
+    invitationId?: StringFilter<"GiftReservation"> | string
+    giftId?: StringFilter<"GiftReservation"> | string
+    reservedBy?: StringFilter<"GiftReservation"> | string
+    reservedMessage?: StringNullableFilter<"GiftReservation"> | string | null
+    createdAt?: DateTimeFilter<"GiftReservation"> | Date | string
+    invitation?: XOR<WeddingInvitationRelationFilter, WeddingInvitationWhereInput>
+    gift?: XOR<GiftRegistryRelationFilter, GiftRegistryWhereInput>
+  }, "id">
+
+  export type GiftReservationOrderByWithAggregationInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftId?: SortOrder
+    reservedBy?: SortOrder
+    reservedMessage?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: GiftReservationCountOrderByAggregateInput
+    _max?: GiftReservationMaxOrderByAggregateInput
+    _min?: GiftReservationMinOrderByAggregateInput
+  }
+
+  export type GiftReservationScalarWhereWithAggregatesInput = {
+    AND?: GiftReservationScalarWhereWithAggregatesInput | GiftReservationScalarWhereWithAggregatesInput[]
+    OR?: GiftReservationScalarWhereWithAggregatesInput[]
+    NOT?: GiftReservationScalarWhereWithAggregatesInput | GiftReservationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GiftReservation"> | string
+    invitationId?: StringWithAggregatesFilter<"GiftReservation"> | string
+    giftId?: StringWithAggregatesFilter<"GiftReservation"> | string
+    reservedBy?: StringWithAggregatesFilter<"GiftReservation"> | string
+    reservedMessage?: StringNullableWithAggregatesFilter<"GiftReservation"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"GiftReservation"> | Date | string
+  }
+
+  export type DesignAssetWhereInput = {
+    AND?: DesignAssetWhereInput | DesignAssetWhereInput[]
+    OR?: DesignAssetWhereInput[]
+    NOT?: DesignAssetWhereInput | DesignAssetWhereInput[]
+    id?: StringFilter<"DesignAsset"> | string
+    name?: StringFilter<"DesignAsset"> | string
+    imageUrl?: StringFilter<"DesignAsset"> | string
+    category?: EnumAssetCategoryFilter<"DesignAsset"> | $Enums.AssetCategory
+    createdAt?: DateTimeFilter<"DesignAsset"> | Date | string
+  }
+
+  export type DesignAssetOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    imageUrl?: SortOrder
+    category?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DesignAssetWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DesignAssetWhereInput | DesignAssetWhereInput[]
+    OR?: DesignAssetWhereInput[]
+    NOT?: DesignAssetWhereInput | DesignAssetWhereInput[]
+    name?: StringFilter<"DesignAsset"> | string
+    imageUrl?: StringFilter<"DesignAsset"> | string
+    category?: EnumAssetCategoryFilter<"DesignAsset"> | $Enums.AssetCategory
+    createdAt?: DateTimeFilter<"DesignAsset"> | Date | string
+  }, "id">
+
+  export type DesignAssetOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    imageUrl?: SortOrder
+    category?: SortOrder
+    createdAt?: SortOrder
+    _count?: DesignAssetCountOrderByAggregateInput
+    _max?: DesignAssetMaxOrderByAggregateInput
+    _min?: DesignAssetMinOrderByAggregateInput
+  }
+
+  export type DesignAssetScalarWhereWithAggregatesInput = {
+    AND?: DesignAssetScalarWhereWithAggregatesInput | DesignAssetScalarWhereWithAggregatesInput[]
+    OR?: DesignAssetScalarWhereWithAggregatesInput[]
+    NOT?: DesignAssetScalarWhereWithAggregatesInput | DesignAssetScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DesignAsset"> | string
+    name?: StringWithAggregatesFilter<"DesignAsset"> | string
+    imageUrl?: StringWithAggregatesFilter<"DesignAsset"> | string
+    category?: EnumAssetCategoryWithAggregatesFilter<"DesignAsset"> | $Enums.AssetCategory
+    createdAt?: DateTimeWithAggregatesFilter<"DesignAsset"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -7019,6 +13520,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     messages?: MessageCreateNestedManyWithoutBookingInput
+    invitations?: WeddingInvitationCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateInput = {
@@ -7044,6 +13546,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     messages?: MessageUncheckedCreateNestedManyWithoutBookingInput
+    invitations?: WeddingInvitationUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUpdateInput = {
@@ -7069,6 +13572,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: MessageUpdateManyWithoutBookingNestedInput
+    invitations?: WeddingInvitationUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateInput = {
@@ -7094,6 +13598,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     messages?: MessageUncheckedUpdateManyWithoutBookingNestedInput
+    invitations?: WeddingInvitationUncheckedUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingCreateManyInput = {
@@ -7412,6 +13917,577 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type WeddingInvitationCreateInput = {
+    id?: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutInvitationsInput
+    gifts?: GiftRegistryCreateNestedManyWithoutInvitationInput
+    reservations?: GiftReservationCreateNestedManyWithoutInvitationInput
+    rsvps?: RSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationUncheckedCreateInput = {
+    id?: string
+    bookingId: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    gifts?: GiftRegistryUncheckedCreateNestedManyWithoutInvitationInput
+    reservations?: GiftReservationUncheckedCreateNestedManyWithoutInvitationInput
+    rsvps?: RSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutInvitationsNestedInput
+    gifts?: GiftRegistryUpdateManyWithoutInvitationNestedInput
+    reservations?: GiftReservationUpdateManyWithoutInvitationNestedInput
+    rsvps?: RSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type WeddingInvitationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gifts?: GiftRegistryUncheckedUpdateManyWithoutInvitationNestedInput
+    reservations?: GiftReservationUncheckedUpdateManyWithoutInvitationNestedInput
+    rsvps?: RSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type WeddingInvitationCreateManyInput = {
+    id?: string
+    bookingId: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WeddingInvitationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WeddingInvitationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RSVPCreateInput = {
+    id?: string
+    guestName: string
+    guestPhone?: string | null
+    attendance: $Enums.RSVPStatus
+    message?: string | null
+    createdAt?: Date | string
+    invitation: WeddingInvitationCreateNestedOneWithoutRsvpsInput
+  }
+
+  export type RSVPUncheckedCreateInput = {
+    id?: string
+    invitationId: string
+    guestName: string
+    guestPhone?: string | null
+    attendance: $Enums.RSVPStatus
+    message?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RSVPUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    guestName?: StringFieldUpdateOperationsInput | string
+    guestPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: EnumRSVPStatusFieldUpdateOperationsInput | $Enums.RSVPStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: WeddingInvitationUpdateOneRequiredWithoutRsvpsNestedInput
+  }
+
+  export type RSVPUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    guestName?: StringFieldUpdateOperationsInput | string
+    guestPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: EnumRSVPStatusFieldUpdateOperationsInput | $Enums.RSVPStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RSVPCreateManyInput = {
+    id?: string
+    invitationId: string
+    guestName: string
+    guestPhone?: string | null
+    attendance: $Enums.RSVPStatus
+    message?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RSVPUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    guestName?: StringFieldUpdateOperationsInput | string
+    guestPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: EnumRSVPStatusFieldUpdateOperationsInput | $Enums.RSVPStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RSVPUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    guestName?: StringFieldUpdateOperationsInput | string
+    guestPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: EnumRSVPStatusFieldUpdateOperationsInput | $Enums.RSVPStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftRegistryCreateInput = {
+    id?: string
+    giftName: string
+    title?: string | null
+    description?: string | null
+    imageUrl?: string | null
+    priority?: number
+    priorityLabel?: $Enums.GiftPriority
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: string | null
+    reservedMessage?: string | null
+    createdAt?: Date | string
+    invitation: WeddingInvitationCreateNestedOneWithoutGiftsInput
+    reservations?: GiftReservationCreateNestedManyWithoutGiftInput
+  }
+
+  export type GiftRegistryUncheckedCreateInput = {
+    id?: string
+    invitationId: string
+    giftName: string
+    title?: string | null
+    description?: string | null
+    imageUrl?: string | null
+    priority?: number
+    priorityLabel?: $Enums.GiftPriority
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: string | null
+    reservedMessage?: string | null
+    createdAt?: Date | string
+    reservations?: GiftReservationUncheckedCreateNestedManyWithoutGiftInput
+  }
+
+  export type GiftRegistryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: WeddingInvitationUpdateOneRequiredWithoutGiftsNestedInput
+    reservations?: GiftReservationUpdateManyWithoutGiftNestedInput
+  }
+
+  export type GiftRegistryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reservations?: GiftReservationUncheckedUpdateManyWithoutGiftNestedInput
+  }
+
+  export type GiftRegistryCreateManyInput = {
+    id?: string
+    invitationId: string
+    giftName: string
+    title?: string | null
+    description?: string | null
+    imageUrl?: string | null
+    priority?: number
+    priorityLabel?: $Enums.GiftPriority
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: string | null
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftRegistryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftRegistryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftReservationCreateInput = {
+    id?: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+    invitation: WeddingInvitationCreateNestedOneWithoutReservationsInput
+    gift: GiftRegistryCreateNestedOneWithoutReservationsInput
+  }
+
+  export type GiftReservationUncheckedCreateInput = {
+    id?: string
+    invitationId: string
+    giftId: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftReservationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: WeddingInvitationUpdateOneRequiredWithoutReservationsNestedInput
+    gift?: GiftRegistryUpdateOneRequiredWithoutReservationsNestedInput
+  }
+
+  export type GiftReservationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    giftId?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftReservationCreateManyInput = {
+    id?: string
+    invitationId: string
+    giftId: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftReservationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftReservationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    giftId?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DesignAssetCreateInput = {
+    id?: string
+    name: string
+    imageUrl: string
+    category: $Enums.AssetCategory
+    createdAt?: Date | string
+  }
+
+  export type DesignAssetUncheckedCreateInput = {
+    id?: string
+    name: string
+    imageUrl: string
+    category: $Enums.AssetCategory
+    createdAt?: Date | string
+  }
+
+  export type DesignAssetUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    category?: EnumAssetCategoryFieldUpdateOperationsInput | $Enums.AssetCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DesignAssetUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    category?: EnumAssetCategoryFieldUpdateOperationsInput | $Enums.AssetCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DesignAssetCreateManyInput = {
+    id?: string
+    name: string
+    imageUrl: string
+    category: $Enums.AssetCategory
+    createdAt?: Date | string
+  }
+
+  export type DesignAssetUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    category?: EnumAssetCategoryFieldUpdateOperationsInput | $Enums.AssetCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DesignAssetUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    category?: EnumAssetCategoryFieldUpdateOperationsInput | $Enums.AssetCategory
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -7577,12 +14653,22 @@ export namespace Prisma {
     none?: MessageWhereInput
   }
 
+  export type WeddingInvitationListRelationFilter = {
+    every?: WeddingInvitationWhereInput
+    some?: WeddingInvitationWhereInput
+    none?: WeddingInvitationWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type MessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WeddingInvitationOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7994,6 +15080,377 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type EnumInvitationThemeFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationTheme | EnumInvitationThemeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
+    not?: NestedEnumInvitationThemeFilter<$PrismaModel> | $Enums.InvitationTheme
+  }
+
+  export type EnumInvitationStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationStatus | EnumInvitationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumInvitationStatusFilter<$PrismaModel> | $Enums.InvitationStatus
+  }
+
+  export type GiftRegistryListRelationFilter = {
+    every?: GiftRegistryWhereInput
+    some?: GiftRegistryWhereInput
+    none?: GiftRegistryWhereInput
+  }
+
+  export type GiftReservationListRelationFilter = {
+    every?: GiftReservationWhereInput
+    some?: GiftReservationWhereInput
+    none?: GiftReservationWhereInput
+  }
+
+  export type RSVPListRelationFilter = {
+    every?: RSVPWhereInput
+    some?: RSVPWhereInput
+    none?: RSVPWhereInput
+  }
+
+  export type GiftRegistryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GiftReservationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RSVPOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WeddingInvitationCountOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    brideName?: SortOrder
+    groomName?: SortOrder
+    slug?: SortOrder
+    weddingDate?: SortOrder
+    weddingTime?: SortOrder
+    venueName?: SortOrder
+    venueAddress?: SortOrder
+    dressCode?: SortOrder
+    mapUrl?: SortOrder
+    welcomeMessage?: SortOrder
+    story?: SortOrder
+    heroImageUrl?: SortOrder
+    coverImage?: SortOrder
+    galleryImages?: SortOrder
+    templateKey?: SortOrder
+    theme?: SortOrder
+    themeColor?: SortOrder
+    primaryColor?: SortOrder
+    secondaryColor?: SortOrder
+    customMessage?: SortOrder
+    floralTopLeft?: SortOrder
+    floralTopRight?: SortOrder
+    floralBottomLeft?: SortOrder
+    floralBottomRight?: SortOrder
+    status?: SortOrder
+    allowRSVP?: SortOrder
+    allowGiftRegistry?: SortOrder
+    publishedAt?: SortOrder
+    isPublished?: SortOrder
+    pdfUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WeddingInvitationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    brideName?: SortOrder
+    groomName?: SortOrder
+    slug?: SortOrder
+    weddingDate?: SortOrder
+    weddingTime?: SortOrder
+    venueName?: SortOrder
+    venueAddress?: SortOrder
+    dressCode?: SortOrder
+    mapUrl?: SortOrder
+    welcomeMessage?: SortOrder
+    story?: SortOrder
+    heroImageUrl?: SortOrder
+    coverImage?: SortOrder
+    templateKey?: SortOrder
+    theme?: SortOrder
+    themeColor?: SortOrder
+    primaryColor?: SortOrder
+    secondaryColor?: SortOrder
+    customMessage?: SortOrder
+    floralTopLeft?: SortOrder
+    floralTopRight?: SortOrder
+    floralBottomLeft?: SortOrder
+    floralBottomRight?: SortOrder
+    status?: SortOrder
+    allowRSVP?: SortOrder
+    allowGiftRegistry?: SortOrder
+    publishedAt?: SortOrder
+    isPublished?: SortOrder
+    pdfUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type WeddingInvitationMinOrderByAggregateInput = {
+    id?: SortOrder
+    bookingId?: SortOrder
+    brideName?: SortOrder
+    groomName?: SortOrder
+    slug?: SortOrder
+    weddingDate?: SortOrder
+    weddingTime?: SortOrder
+    venueName?: SortOrder
+    venueAddress?: SortOrder
+    dressCode?: SortOrder
+    mapUrl?: SortOrder
+    welcomeMessage?: SortOrder
+    story?: SortOrder
+    heroImageUrl?: SortOrder
+    coverImage?: SortOrder
+    templateKey?: SortOrder
+    theme?: SortOrder
+    themeColor?: SortOrder
+    primaryColor?: SortOrder
+    secondaryColor?: SortOrder
+    customMessage?: SortOrder
+    floralTopLeft?: SortOrder
+    floralTopRight?: SortOrder
+    floralBottomLeft?: SortOrder
+    floralBottomRight?: SortOrder
+    status?: SortOrder
+    allowRSVP?: SortOrder
+    allowGiftRegistry?: SortOrder
+    publishedAt?: SortOrder
+    isPublished?: SortOrder
+    pdfUrl?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EnumInvitationThemeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationTheme | EnumInvitationThemeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
+    not?: NestedEnumInvitationThemeWithAggregatesFilter<$PrismaModel> | $Enums.InvitationTheme
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationThemeFilter<$PrismaModel>
+    _max?: NestedEnumInvitationThemeFilter<$PrismaModel>
+  }
+
+  export type EnumInvitationStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationStatus | EnumInvitationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumInvitationStatusWithAggregatesFilter<$PrismaModel> | $Enums.InvitationStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationStatusFilter<$PrismaModel>
+    _max?: NestedEnumInvitationStatusFilter<$PrismaModel>
+  }
+
+  export type EnumRSVPStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.RSVPStatus | EnumRSVPStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RSVPStatus[] | ListEnumRSVPStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RSVPStatus[] | ListEnumRSVPStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRSVPStatusFilter<$PrismaModel> | $Enums.RSVPStatus
+  }
+
+  export type WeddingInvitationRelationFilter = {
+    is?: WeddingInvitationWhereInput
+    isNot?: WeddingInvitationWhereInput
+  }
+
+  export type RSVPCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    guestName?: SortOrder
+    guestPhone?: SortOrder
+    attendance?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RSVPMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    guestName?: SortOrder
+    guestPhone?: SortOrder
+    attendance?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type RSVPMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    guestName?: SortOrder
+    guestPhone?: SortOrder
+    attendance?: SortOrder
+    message?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnumRSVPStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RSVPStatus | EnumRSVPStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RSVPStatus[] | ListEnumRSVPStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RSVPStatus[] | ListEnumRSVPStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRSVPStatusWithAggregatesFilter<$PrismaModel> | $Enums.RSVPStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRSVPStatusFilter<$PrismaModel>
+    _max?: NestedEnumRSVPStatusFilter<$PrismaModel>
+  }
+
+  export type EnumGiftPriorityFilter<$PrismaModel = never> = {
+    equals?: $Enums.GiftPriority | EnumGiftPriorityFieldRefInput<$PrismaModel>
+    in?: $Enums.GiftPriority[] | ListEnumGiftPriorityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.GiftPriority[] | ListEnumGiftPriorityFieldRefInput<$PrismaModel>
+    not?: NestedEnumGiftPriorityFilter<$PrismaModel> | $Enums.GiftPriority
+  }
+
+  export type GiftRegistryCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftName?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    priority?: SortOrder
+    priorityLabel?: SortOrder
+    allowDuplicates?: SortOrder
+    isReserved?: SortOrder
+    reservedBy?: SortOrder
+    reservedMessage?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GiftRegistryAvgOrderByAggregateInput = {
+    priority?: SortOrder
+  }
+
+  export type GiftRegistryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftName?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    priority?: SortOrder
+    priorityLabel?: SortOrder
+    allowDuplicates?: SortOrder
+    isReserved?: SortOrder
+    reservedBy?: SortOrder
+    reservedMessage?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GiftRegistryMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftName?: SortOrder
+    title?: SortOrder
+    description?: SortOrder
+    imageUrl?: SortOrder
+    priority?: SortOrder
+    priorityLabel?: SortOrder
+    allowDuplicates?: SortOrder
+    isReserved?: SortOrder
+    reservedBy?: SortOrder
+    reservedMessage?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GiftRegistrySumOrderByAggregateInput = {
+    priority?: SortOrder
+  }
+
+  export type EnumGiftPriorityWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.GiftPriority | EnumGiftPriorityFieldRefInput<$PrismaModel>
+    in?: $Enums.GiftPriority[] | ListEnumGiftPriorityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.GiftPriority[] | ListEnumGiftPriorityFieldRefInput<$PrismaModel>
+    not?: NestedEnumGiftPriorityWithAggregatesFilter<$PrismaModel> | $Enums.GiftPriority
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumGiftPriorityFilter<$PrismaModel>
+    _max?: NestedEnumGiftPriorityFilter<$PrismaModel>
+  }
+
+  export type GiftRegistryRelationFilter = {
+    is?: GiftRegistryWhereInput
+    isNot?: GiftRegistryWhereInput
+  }
+
+  export type GiftReservationCountOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftId?: SortOrder
+    reservedBy?: SortOrder
+    reservedMessage?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GiftReservationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftId?: SortOrder
+    reservedBy?: SortOrder
+    reservedMessage?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GiftReservationMinOrderByAggregateInput = {
+    id?: SortOrder
+    invitationId?: SortOrder
+    giftId?: SortOrder
+    reservedBy?: SortOrder
+    reservedMessage?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnumAssetCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetCategory | EnumAssetCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetCategory[] | ListEnumAssetCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetCategory[] | ListEnumAssetCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetCategoryFilter<$PrismaModel> | $Enums.AssetCategory
+  }
+
+  export type DesignAssetCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    imageUrl?: SortOrder
+    category?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DesignAssetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    imageUrl?: SortOrder
+    category?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type DesignAssetMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    imageUrl?: SortOrder
+    category?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnumAssetCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetCategory | EnumAssetCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetCategory[] | ListEnumAssetCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetCategory[] | ListEnumAssetCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetCategoryWithAggregatesFilter<$PrismaModel> | $Enums.AssetCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAssetCategoryFilter<$PrismaModel>
+    _max?: NestedEnumAssetCategoryFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -8009,11 +15466,25 @@ export namespace Prisma {
     connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
   }
 
+  export type WeddingInvitationCreateNestedManyWithoutBookingInput = {
+    create?: XOR<WeddingInvitationCreateWithoutBookingInput, WeddingInvitationUncheckedCreateWithoutBookingInput> | WeddingInvitationCreateWithoutBookingInput[] | WeddingInvitationUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutBookingInput | WeddingInvitationCreateOrConnectWithoutBookingInput[]
+    createMany?: WeddingInvitationCreateManyBookingInputEnvelope
+    connect?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+  }
+
   export type MessageUncheckedCreateNestedManyWithoutBookingInput = {
     create?: XOR<MessageCreateWithoutBookingInput, MessageUncheckedCreateWithoutBookingInput> | MessageCreateWithoutBookingInput[] | MessageUncheckedCreateWithoutBookingInput[]
     connectOrCreate?: MessageCreateOrConnectWithoutBookingInput | MessageCreateOrConnectWithoutBookingInput[]
     createMany?: MessageCreateManyBookingInputEnvelope
     connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type WeddingInvitationUncheckedCreateNestedManyWithoutBookingInput = {
+    create?: XOR<WeddingInvitationCreateWithoutBookingInput, WeddingInvitationUncheckedCreateWithoutBookingInput> | WeddingInvitationCreateWithoutBookingInput[] | WeddingInvitationUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutBookingInput | WeddingInvitationCreateOrConnectWithoutBookingInput[]
+    createMany?: WeddingInvitationCreateManyBookingInputEnvelope
+    connect?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
   }
 
   export type EnumEventTypeFieldUpdateOperationsInput = {
@@ -8070,6 +15541,20 @@ export namespace Prisma {
     deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
   }
 
+  export type WeddingInvitationUpdateManyWithoutBookingNestedInput = {
+    create?: XOR<WeddingInvitationCreateWithoutBookingInput, WeddingInvitationUncheckedCreateWithoutBookingInput> | WeddingInvitationCreateWithoutBookingInput[] | WeddingInvitationUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutBookingInput | WeddingInvitationCreateOrConnectWithoutBookingInput[]
+    upsert?: WeddingInvitationUpsertWithWhereUniqueWithoutBookingInput | WeddingInvitationUpsertWithWhereUniqueWithoutBookingInput[]
+    createMany?: WeddingInvitationCreateManyBookingInputEnvelope
+    set?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+    disconnect?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+    delete?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+    connect?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+    update?: WeddingInvitationUpdateWithWhereUniqueWithoutBookingInput | WeddingInvitationUpdateWithWhereUniqueWithoutBookingInput[]
+    updateMany?: WeddingInvitationUpdateManyWithWhereWithoutBookingInput | WeddingInvitationUpdateManyWithWhereWithoutBookingInput[]
+    deleteMany?: WeddingInvitationScalarWhereInput | WeddingInvitationScalarWhereInput[]
+  }
+
   export type MessageUncheckedUpdateManyWithoutBookingNestedInput = {
     create?: XOR<MessageCreateWithoutBookingInput, MessageUncheckedCreateWithoutBookingInput> | MessageCreateWithoutBookingInput[] | MessageUncheckedCreateWithoutBookingInput[]
     connectOrCreate?: MessageCreateOrConnectWithoutBookingInput | MessageCreateOrConnectWithoutBookingInput[]
@@ -8082,6 +15567,20 @@ export namespace Prisma {
     update?: MessageUpdateWithWhereUniqueWithoutBookingInput | MessageUpdateWithWhereUniqueWithoutBookingInput[]
     updateMany?: MessageUpdateManyWithWhereWithoutBookingInput | MessageUpdateManyWithWhereWithoutBookingInput[]
     deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type WeddingInvitationUncheckedUpdateManyWithoutBookingNestedInput = {
+    create?: XOR<WeddingInvitationCreateWithoutBookingInput, WeddingInvitationUncheckedCreateWithoutBookingInput> | WeddingInvitationCreateWithoutBookingInput[] | WeddingInvitationUncheckedCreateWithoutBookingInput[]
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutBookingInput | WeddingInvitationCreateOrConnectWithoutBookingInput[]
+    upsert?: WeddingInvitationUpsertWithWhereUniqueWithoutBookingInput | WeddingInvitationUpsertWithWhereUniqueWithoutBookingInput[]
+    createMany?: WeddingInvitationCreateManyBookingInputEnvelope
+    set?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+    disconnect?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+    delete?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+    connect?: WeddingInvitationWhereUniqueInput | WeddingInvitationWhereUniqueInput[]
+    update?: WeddingInvitationUpdateWithWhereUniqueWithoutBookingInput | WeddingInvitationUpdateWithWhereUniqueWithoutBookingInput[]
+    updateMany?: WeddingInvitationUpdateManyWithWhereWithoutBookingInput | WeddingInvitationUpdateManyWithWhereWithoutBookingInput[]
+    deleteMany?: WeddingInvitationScalarWhereInput | WeddingInvitationScalarWhereInput[]
   }
 
   export type BookingCreateNestedOneWithoutMessagesInput = {
@@ -8129,6 +15628,273 @@ export namespace Prisma {
   export type PackageUpdatefeaturesInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type WeddingInvitationCreategalleryImagesInput = {
+    set: string[]
+  }
+
+  export type BookingCreateNestedOneWithoutInvitationsInput = {
+    create?: XOR<BookingCreateWithoutInvitationsInput, BookingUncheckedCreateWithoutInvitationsInput>
+    connectOrCreate?: BookingCreateOrConnectWithoutInvitationsInput
+    connect?: BookingWhereUniqueInput
+  }
+
+  export type GiftRegistryCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<GiftRegistryCreateWithoutInvitationInput, GiftRegistryUncheckedCreateWithoutInvitationInput> | GiftRegistryCreateWithoutInvitationInput[] | GiftRegistryUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: GiftRegistryCreateOrConnectWithoutInvitationInput | GiftRegistryCreateOrConnectWithoutInvitationInput[]
+    createMany?: GiftRegistryCreateManyInvitationInputEnvelope
+    connect?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+  }
+
+  export type GiftReservationCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<GiftReservationCreateWithoutInvitationInput, GiftReservationUncheckedCreateWithoutInvitationInput> | GiftReservationCreateWithoutInvitationInput[] | GiftReservationUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: GiftReservationCreateOrConnectWithoutInvitationInput | GiftReservationCreateOrConnectWithoutInvitationInput[]
+    createMany?: GiftReservationCreateManyInvitationInputEnvelope
+    connect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+  }
+
+  export type RSVPCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<RSVPCreateWithoutInvitationInput, RSVPUncheckedCreateWithoutInvitationInput> | RSVPCreateWithoutInvitationInput[] | RSVPUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: RSVPCreateOrConnectWithoutInvitationInput | RSVPCreateOrConnectWithoutInvitationInput[]
+    createMany?: RSVPCreateManyInvitationInputEnvelope
+    connect?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+  }
+
+  export type GiftRegistryUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<GiftRegistryCreateWithoutInvitationInput, GiftRegistryUncheckedCreateWithoutInvitationInput> | GiftRegistryCreateWithoutInvitationInput[] | GiftRegistryUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: GiftRegistryCreateOrConnectWithoutInvitationInput | GiftRegistryCreateOrConnectWithoutInvitationInput[]
+    createMany?: GiftRegistryCreateManyInvitationInputEnvelope
+    connect?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+  }
+
+  export type GiftReservationUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<GiftReservationCreateWithoutInvitationInput, GiftReservationUncheckedCreateWithoutInvitationInput> | GiftReservationCreateWithoutInvitationInput[] | GiftReservationUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: GiftReservationCreateOrConnectWithoutInvitationInput | GiftReservationCreateOrConnectWithoutInvitationInput[]
+    createMany?: GiftReservationCreateManyInvitationInputEnvelope
+    connect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+  }
+
+  export type RSVPUncheckedCreateNestedManyWithoutInvitationInput = {
+    create?: XOR<RSVPCreateWithoutInvitationInput, RSVPUncheckedCreateWithoutInvitationInput> | RSVPCreateWithoutInvitationInput[] | RSVPUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: RSVPCreateOrConnectWithoutInvitationInput | RSVPCreateOrConnectWithoutInvitationInput[]
+    createMany?: RSVPCreateManyInvitationInputEnvelope
+    connect?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+  }
+
+  export type WeddingInvitationUpdategalleryImagesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type EnumInvitationThemeFieldUpdateOperationsInput = {
+    set?: $Enums.InvitationTheme
+  }
+
+  export type EnumInvitationStatusFieldUpdateOperationsInput = {
+    set?: $Enums.InvitationStatus
+  }
+
+  export type BookingUpdateOneRequiredWithoutInvitationsNestedInput = {
+    create?: XOR<BookingCreateWithoutInvitationsInput, BookingUncheckedCreateWithoutInvitationsInput>
+    connectOrCreate?: BookingCreateOrConnectWithoutInvitationsInput
+    upsert?: BookingUpsertWithoutInvitationsInput
+    connect?: BookingWhereUniqueInput
+    update?: XOR<XOR<BookingUpdateToOneWithWhereWithoutInvitationsInput, BookingUpdateWithoutInvitationsInput>, BookingUncheckedUpdateWithoutInvitationsInput>
+  }
+
+  export type GiftRegistryUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<GiftRegistryCreateWithoutInvitationInput, GiftRegistryUncheckedCreateWithoutInvitationInput> | GiftRegistryCreateWithoutInvitationInput[] | GiftRegistryUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: GiftRegistryCreateOrConnectWithoutInvitationInput | GiftRegistryCreateOrConnectWithoutInvitationInput[]
+    upsert?: GiftRegistryUpsertWithWhereUniqueWithoutInvitationInput | GiftRegistryUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: GiftRegistryCreateManyInvitationInputEnvelope
+    set?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+    disconnect?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+    delete?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+    connect?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+    update?: GiftRegistryUpdateWithWhereUniqueWithoutInvitationInput | GiftRegistryUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: GiftRegistryUpdateManyWithWhereWithoutInvitationInput | GiftRegistryUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: GiftRegistryScalarWhereInput | GiftRegistryScalarWhereInput[]
+  }
+
+  export type GiftReservationUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<GiftReservationCreateWithoutInvitationInput, GiftReservationUncheckedCreateWithoutInvitationInput> | GiftReservationCreateWithoutInvitationInput[] | GiftReservationUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: GiftReservationCreateOrConnectWithoutInvitationInput | GiftReservationCreateOrConnectWithoutInvitationInput[]
+    upsert?: GiftReservationUpsertWithWhereUniqueWithoutInvitationInput | GiftReservationUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: GiftReservationCreateManyInvitationInputEnvelope
+    set?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    disconnect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    delete?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    connect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    update?: GiftReservationUpdateWithWhereUniqueWithoutInvitationInput | GiftReservationUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: GiftReservationUpdateManyWithWhereWithoutInvitationInput | GiftReservationUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: GiftReservationScalarWhereInput | GiftReservationScalarWhereInput[]
+  }
+
+  export type RSVPUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<RSVPCreateWithoutInvitationInput, RSVPUncheckedCreateWithoutInvitationInput> | RSVPCreateWithoutInvitationInput[] | RSVPUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: RSVPCreateOrConnectWithoutInvitationInput | RSVPCreateOrConnectWithoutInvitationInput[]
+    upsert?: RSVPUpsertWithWhereUniqueWithoutInvitationInput | RSVPUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: RSVPCreateManyInvitationInputEnvelope
+    set?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+    disconnect?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+    delete?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+    connect?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+    update?: RSVPUpdateWithWhereUniqueWithoutInvitationInput | RSVPUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: RSVPUpdateManyWithWhereWithoutInvitationInput | RSVPUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: RSVPScalarWhereInput | RSVPScalarWhereInput[]
+  }
+
+  export type GiftRegistryUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<GiftRegistryCreateWithoutInvitationInput, GiftRegistryUncheckedCreateWithoutInvitationInput> | GiftRegistryCreateWithoutInvitationInput[] | GiftRegistryUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: GiftRegistryCreateOrConnectWithoutInvitationInput | GiftRegistryCreateOrConnectWithoutInvitationInput[]
+    upsert?: GiftRegistryUpsertWithWhereUniqueWithoutInvitationInput | GiftRegistryUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: GiftRegistryCreateManyInvitationInputEnvelope
+    set?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+    disconnect?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+    delete?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+    connect?: GiftRegistryWhereUniqueInput | GiftRegistryWhereUniqueInput[]
+    update?: GiftRegistryUpdateWithWhereUniqueWithoutInvitationInput | GiftRegistryUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: GiftRegistryUpdateManyWithWhereWithoutInvitationInput | GiftRegistryUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: GiftRegistryScalarWhereInput | GiftRegistryScalarWhereInput[]
+  }
+
+  export type GiftReservationUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<GiftReservationCreateWithoutInvitationInput, GiftReservationUncheckedCreateWithoutInvitationInput> | GiftReservationCreateWithoutInvitationInput[] | GiftReservationUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: GiftReservationCreateOrConnectWithoutInvitationInput | GiftReservationCreateOrConnectWithoutInvitationInput[]
+    upsert?: GiftReservationUpsertWithWhereUniqueWithoutInvitationInput | GiftReservationUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: GiftReservationCreateManyInvitationInputEnvelope
+    set?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    disconnect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    delete?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    connect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    update?: GiftReservationUpdateWithWhereUniqueWithoutInvitationInput | GiftReservationUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: GiftReservationUpdateManyWithWhereWithoutInvitationInput | GiftReservationUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: GiftReservationScalarWhereInput | GiftReservationScalarWhereInput[]
+  }
+
+  export type RSVPUncheckedUpdateManyWithoutInvitationNestedInput = {
+    create?: XOR<RSVPCreateWithoutInvitationInput, RSVPUncheckedCreateWithoutInvitationInput> | RSVPCreateWithoutInvitationInput[] | RSVPUncheckedCreateWithoutInvitationInput[]
+    connectOrCreate?: RSVPCreateOrConnectWithoutInvitationInput | RSVPCreateOrConnectWithoutInvitationInput[]
+    upsert?: RSVPUpsertWithWhereUniqueWithoutInvitationInput | RSVPUpsertWithWhereUniqueWithoutInvitationInput[]
+    createMany?: RSVPCreateManyInvitationInputEnvelope
+    set?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+    disconnect?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+    delete?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+    connect?: RSVPWhereUniqueInput | RSVPWhereUniqueInput[]
+    update?: RSVPUpdateWithWhereUniqueWithoutInvitationInput | RSVPUpdateWithWhereUniqueWithoutInvitationInput[]
+    updateMany?: RSVPUpdateManyWithWhereWithoutInvitationInput | RSVPUpdateManyWithWhereWithoutInvitationInput[]
+    deleteMany?: RSVPScalarWhereInput | RSVPScalarWhereInput[]
+  }
+
+  export type WeddingInvitationCreateNestedOneWithoutRsvpsInput = {
+    create?: XOR<WeddingInvitationCreateWithoutRsvpsInput, WeddingInvitationUncheckedCreateWithoutRsvpsInput>
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutRsvpsInput
+    connect?: WeddingInvitationWhereUniqueInput
+  }
+
+  export type EnumRSVPStatusFieldUpdateOperationsInput = {
+    set?: $Enums.RSVPStatus
+  }
+
+  export type WeddingInvitationUpdateOneRequiredWithoutRsvpsNestedInput = {
+    create?: XOR<WeddingInvitationCreateWithoutRsvpsInput, WeddingInvitationUncheckedCreateWithoutRsvpsInput>
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutRsvpsInput
+    upsert?: WeddingInvitationUpsertWithoutRsvpsInput
+    connect?: WeddingInvitationWhereUniqueInput
+    update?: XOR<XOR<WeddingInvitationUpdateToOneWithWhereWithoutRsvpsInput, WeddingInvitationUpdateWithoutRsvpsInput>, WeddingInvitationUncheckedUpdateWithoutRsvpsInput>
+  }
+
+  export type WeddingInvitationCreateNestedOneWithoutGiftsInput = {
+    create?: XOR<WeddingInvitationCreateWithoutGiftsInput, WeddingInvitationUncheckedCreateWithoutGiftsInput>
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutGiftsInput
+    connect?: WeddingInvitationWhereUniqueInput
+  }
+
+  export type GiftReservationCreateNestedManyWithoutGiftInput = {
+    create?: XOR<GiftReservationCreateWithoutGiftInput, GiftReservationUncheckedCreateWithoutGiftInput> | GiftReservationCreateWithoutGiftInput[] | GiftReservationUncheckedCreateWithoutGiftInput[]
+    connectOrCreate?: GiftReservationCreateOrConnectWithoutGiftInput | GiftReservationCreateOrConnectWithoutGiftInput[]
+    createMany?: GiftReservationCreateManyGiftInputEnvelope
+    connect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+  }
+
+  export type GiftReservationUncheckedCreateNestedManyWithoutGiftInput = {
+    create?: XOR<GiftReservationCreateWithoutGiftInput, GiftReservationUncheckedCreateWithoutGiftInput> | GiftReservationCreateWithoutGiftInput[] | GiftReservationUncheckedCreateWithoutGiftInput[]
+    connectOrCreate?: GiftReservationCreateOrConnectWithoutGiftInput | GiftReservationCreateOrConnectWithoutGiftInput[]
+    createMany?: GiftReservationCreateManyGiftInputEnvelope
+    connect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+  }
+
+  export type EnumGiftPriorityFieldUpdateOperationsInput = {
+    set?: $Enums.GiftPriority
+  }
+
+  export type WeddingInvitationUpdateOneRequiredWithoutGiftsNestedInput = {
+    create?: XOR<WeddingInvitationCreateWithoutGiftsInput, WeddingInvitationUncheckedCreateWithoutGiftsInput>
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutGiftsInput
+    upsert?: WeddingInvitationUpsertWithoutGiftsInput
+    connect?: WeddingInvitationWhereUniqueInput
+    update?: XOR<XOR<WeddingInvitationUpdateToOneWithWhereWithoutGiftsInput, WeddingInvitationUpdateWithoutGiftsInput>, WeddingInvitationUncheckedUpdateWithoutGiftsInput>
+  }
+
+  export type GiftReservationUpdateManyWithoutGiftNestedInput = {
+    create?: XOR<GiftReservationCreateWithoutGiftInput, GiftReservationUncheckedCreateWithoutGiftInput> | GiftReservationCreateWithoutGiftInput[] | GiftReservationUncheckedCreateWithoutGiftInput[]
+    connectOrCreate?: GiftReservationCreateOrConnectWithoutGiftInput | GiftReservationCreateOrConnectWithoutGiftInput[]
+    upsert?: GiftReservationUpsertWithWhereUniqueWithoutGiftInput | GiftReservationUpsertWithWhereUniqueWithoutGiftInput[]
+    createMany?: GiftReservationCreateManyGiftInputEnvelope
+    set?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    disconnect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    delete?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    connect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    update?: GiftReservationUpdateWithWhereUniqueWithoutGiftInput | GiftReservationUpdateWithWhereUniqueWithoutGiftInput[]
+    updateMany?: GiftReservationUpdateManyWithWhereWithoutGiftInput | GiftReservationUpdateManyWithWhereWithoutGiftInput[]
+    deleteMany?: GiftReservationScalarWhereInput | GiftReservationScalarWhereInput[]
+  }
+
+  export type GiftReservationUncheckedUpdateManyWithoutGiftNestedInput = {
+    create?: XOR<GiftReservationCreateWithoutGiftInput, GiftReservationUncheckedCreateWithoutGiftInput> | GiftReservationCreateWithoutGiftInput[] | GiftReservationUncheckedCreateWithoutGiftInput[]
+    connectOrCreate?: GiftReservationCreateOrConnectWithoutGiftInput | GiftReservationCreateOrConnectWithoutGiftInput[]
+    upsert?: GiftReservationUpsertWithWhereUniqueWithoutGiftInput | GiftReservationUpsertWithWhereUniqueWithoutGiftInput[]
+    createMany?: GiftReservationCreateManyGiftInputEnvelope
+    set?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    disconnect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    delete?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    connect?: GiftReservationWhereUniqueInput | GiftReservationWhereUniqueInput[]
+    update?: GiftReservationUpdateWithWhereUniqueWithoutGiftInput | GiftReservationUpdateWithWhereUniqueWithoutGiftInput[]
+    updateMany?: GiftReservationUpdateManyWithWhereWithoutGiftInput | GiftReservationUpdateManyWithWhereWithoutGiftInput[]
+    deleteMany?: GiftReservationScalarWhereInput | GiftReservationScalarWhereInput[]
+  }
+
+  export type WeddingInvitationCreateNestedOneWithoutReservationsInput = {
+    create?: XOR<WeddingInvitationCreateWithoutReservationsInput, WeddingInvitationUncheckedCreateWithoutReservationsInput>
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutReservationsInput
+    connect?: WeddingInvitationWhereUniqueInput
+  }
+
+  export type GiftRegistryCreateNestedOneWithoutReservationsInput = {
+    create?: XOR<GiftRegistryCreateWithoutReservationsInput, GiftRegistryUncheckedCreateWithoutReservationsInput>
+    connectOrCreate?: GiftRegistryCreateOrConnectWithoutReservationsInput
+    connect?: GiftRegistryWhereUniqueInput
+  }
+
+  export type WeddingInvitationUpdateOneRequiredWithoutReservationsNestedInput = {
+    create?: XOR<WeddingInvitationCreateWithoutReservationsInput, WeddingInvitationUncheckedCreateWithoutReservationsInput>
+    connectOrCreate?: WeddingInvitationCreateOrConnectWithoutReservationsInput
+    upsert?: WeddingInvitationUpsertWithoutReservationsInput
+    connect?: WeddingInvitationWhereUniqueInput
+    update?: XOR<XOR<WeddingInvitationUpdateToOneWithWhereWithoutReservationsInput, WeddingInvitationUpdateWithoutReservationsInput>, WeddingInvitationUncheckedUpdateWithoutReservationsInput>
+  }
+
+  export type GiftRegistryUpdateOneRequiredWithoutReservationsNestedInput = {
+    create?: XOR<GiftRegistryCreateWithoutReservationsInput, GiftRegistryUncheckedCreateWithoutReservationsInput>
+    connectOrCreate?: GiftRegistryCreateOrConnectWithoutReservationsInput
+    upsert?: GiftRegistryUpsertWithoutReservationsInput
+    connect?: GiftRegistryWhereUniqueInput
+    update?: XOR<XOR<GiftRegistryUpdateToOneWithWhereWithoutReservationsInput, GiftRegistryUpdateWithoutReservationsInput>, GiftRegistryUncheckedUpdateWithoutReservationsInput>
+  }
+
+  export type EnumAssetCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.AssetCategory
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8449,6 +16215,91 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type NestedEnumInvitationThemeFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationTheme | EnumInvitationThemeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
+    not?: NestedEnumInvitationThemeFilter<$PrismaModel> | $Enums.InvitationTheme
+  }
+
+  export type NestedEnumInvitationStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationStatus | EnumInvitationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumInvitationStatusFilter<$PrismaModel> | $Enums.InvitationStatus
+  }
+
+  export type NestedEnumInvitationThemeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationTheme | EnumInvitationThemeFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
+    not?: NestedEnumInvitationThemeWithAggregatesFilter<$PrismaModel> | $Enums.InvitationTheme
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationThemeFilter<$PrismaModel>
+    _max?: NestedEnumInvitationThemeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumInvitationStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.InvitationStatus | EnumInvitationStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.InvitationStatus[] | ListEnumInvitationStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumInvitationStatusWithAggregatesFilter<$PrismaModel> | $Enums.InvitationStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumInvitationStatusFilter<$PrismaModel>
+    _max?: NestedEnumInvitationStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumRSVPStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.RSVPStatus | EnumRSVPStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RSVPStatus[] | ListEnumRSVPStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RSVPStatus[] | ListEnumRSVPStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRSVPStatusFilter<$PrismaModel> | $Enums.RSVPStatus
+  }
+
+  export type NestedEnumRSVPStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.RSVPStatus | EnumRSVPStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.RSVPStatus[] | ListEnumRSVPStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RSVPStatus[] | ListEnumRSVPStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumRSVPStatusWithAggregatesFilter<$PrismaModel> | $Enums.RSVPStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumRSVPStatusFilter<$PrismaModel>
+    _max?: NestedEnumRSVPStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumGiftPriorityFilter<$PrismaModel = never> = {
+    equals?: $Enums.GiftPriority | EnumGiftPriorityFieldRefInput<$PrismaModel>
+    in?: $Enums.GiftPriority[] | ListEnumGiftPriorityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.GiftPriority[] | ListEnumGiftPriorityFieldRefInput<$PrismaModel>
+    not?: NestedEnumGiftPriorityFilter<$PrismaModel> | $Enums.GiftPriority
+  }
+
+  export type NestedEnumGiftPriorityWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.GiftPriority | EnumGiftPriorityFieldRefInput<$PrismaModel>
+    in?: $Enums.GiftPriority[] | ListEnumGiftPriorityFieldRefInput<$PrismaModel>
+    notIn?: $Enums.GiftPriority[] | ListEnumGiftPriorityFieldRefInput<$PrismaModel>
+    not?: NestedEnumGiftPriorityWithAggregatesFilter<$PrismaModel> | $Enums.GiftPriority
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumGiftPriorityFilter<$PrismaModel>
+    _max?: NestedEnumGiftPriorityFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAssetCategoryFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetCategory | EnumAssetCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetCategory[] | ListEnumAssetCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetCategory[] | ListEnumAssetCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetCategoryFilter<$PrismaModel> | $Enums.AssetCategory
+  }
+
+  export type NestedEnumAssetCategoryWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AssetCategory | EnumAssetCategoryFieldRefInput<$PrismaModel>
+    in?: $Enums.AssetCategory[] | ListEnumAssetCategoryFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AssetCategory[] | ListEnumAssetCategoryFieldRefInput<$PrismaModel>
+    not?: NestedEnumAssetCategoryWithAggregatesFilter<$PrismaModel> | $Enums.AssetCategory
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAssetCategoryFilter<$PrismaModel>
+    _max?: NestedEnumAssetCategoryFilter<$PrismaModel>
+  }
+
   export type MessageCreateWithoutBookingInput = {
     id?: string
     sender: $Enums.MessageSender
@@ -8470,6 +16321,94 @@ export namespace Prisma {
 
   export type MessageCreateManyBookingInputEnvelope = {
     data: MessageCreateManyBookingInput | MessageCreateManyBookingInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WeddingInvitationCreateWithoutBookingInput = {
+    id?: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    gifts?: GiftRegistryCreateNestedManyWithoutInvitationInput
+    reservations?: GiftReservationCreateNestedManyWithoutInvitationInput
+    rsvps?: RSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationUncheckedCreateWithoutBookingInput = {
+    id?: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    gifts?: GiftRegistryUncheckedCreateNestedManyWithoutInvitationInput
+    reservations?: GiftReservationUncheckedCreateNestedManyWithoutInvitationInput
+    rsvps?: RSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationCreateOrConnectWithoutBookingInput = {
+    where: WeddingInvitationWhereUniqueInput
+    create: XOR<WeddingInvitationCreateWithoutBookingInput, WeddingInvitationUncheckedCreateWithoutBookingInput>
+  }
+
+  export type WeddingInvitationCreateManyBookingInputEnvelope = {
+    data: WeddingInvitationCreateManyBookingInput | WeddingInvitationCreateManyBookingInput[]
     skipDuplicates?: boolean
   }
 
@@ -8500,6 +16439,62 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Message"> | Date | string
   }
 
+  export type WeddingInvitationUpsertWithWhereUniqueWithoutBookingInput = {
+    where: WeddingInvitationWhereUniqueInput
+    update: XOR<WeddingInvitationUpdateWithoutBookingInput, WeddingInvitationUncheckedUpdateWithoutBookingInput>
+    create: XOR<WeddingInvitationCreateWithoutBookingInput, WeddingInvitationUncheckedCreateWithoutBookingInput>
+  }
+
+  export type WeddingInvitationUpdateWithWhereUniqueWithoutBookingInput = {
+    where: WeddingInvitationWhereUniqueInput
+    data: XOR<WeddingInvitationUpdateWithoutBookingInput, WeddingInvitationUncheckedUpdateWithoutBookingInput>
+  }
+
+  export type WeddingInvitationUpdateManyWithWhereWithoutBookingInput = {
+    where: WeddingInvitationScalarWhereInput
+    data: XOR<WeddingInvitationUpdateManyMutationInput, WeddingInvitationUncheckedUpdateManyWithoutBookingInput>
+  }
+
+  export type WeddingInvitationScalarWhereInput = {
+    AND?: WeddingInvitationScalarWhereInput | WeddingInvitationScalarWhereInput[]
+    OR?: WeddingInvitationScalarWhereInput[]
+    NOT?: WeddingInvitationScalarWhereInput | WeddingInvitationScalarWhereInput[]
+    id?: StringFilter<"WeddingInvitation"> | string
+    bookingId?: StringFilter<"WeddingInvitation"> | string
+    brideName?: StringFilter<"WeddingInvitation"> | string
+    groomName?: StringFilter<"WeddingInvitation"> | string
+    slug?: StringFilter<"WeddingInvitation"> | string
+    weddingDate?: DateTimeFilter<"WeddingInvitation"> | Date | string
+    weddingTime?: StringFilter<"WeddingInvitation"> | string
+    venueName?: StringFilter<"WeddingInvitation"> | string
+    venueAddress?: StringFilter<"WeddingInvitation"> | string
+    dressCode?: StringNullableFilter<"WeddingInvitation"> | string | null
+    mapUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    welcomeMessage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    story?: StringNullableFilter<"WeddingInvitation"> | string | null
+    heroImageUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    coverImage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    galleryImages?: StringNullableListFilter<"WeddingInvitation">
+    templateKey?: StringFilter<"WeddingInvitation"> | string
+    theme?: EnumInvitationThemeFilter<"WeddingInvitation"> | $Enums.InvitationTheme
+    themeColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    primaryColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    secondaryColor?: StringNullableFilter<"WeddingInvitation"> | string | null
+    customMessage?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralTopLeft?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralTopRight?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralBottomLeft?: StringNullableFilter<"WeddingInvitation"> | string | null
+    floralBottomRight?: StringNullableFilter<"WeddingInvitation"> | string | null
+    status?: EnumInvitationStatusFilter<"WeddingInvitation"> | $Enums.InvitationStatus
+    allowRSVP?: BoolFilter<"WeddingInvitation"> | boolean
+    allowGiftRegistry?: BoolFilter<"WeddingInvitation"> | boolean
+    publishedAt?: DateTimeNullableFilter<"WeddingInvitation"> | Date | string | null
+    isPublished?: BoolFilter<"WeddingInvitation"> | boolean
+    pdfUrl?: StringNullableFilter<"WeddingInvitation"> | string | null
+    createdAt?: DateTimeFilter<"WeddingInvitation"> | Date | string
+    updatedAt?: DateTimeFilter<"WeddingInvitation"> | Date | string
+  }
+
   export type BookingCreateWithoutMessagesInput = {
     id?: string
     clientName: string
@@ -8522,6 +16517,7 @@ export namespace Prisma {
     balanceDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    invitations?: WeddingInvitationCreateNestedManyWithoutBookingInput
   }
 
   export type BookingUncheckedCreateWithoutMessagesInput = {
@@ -8546,6 +16542,7 @@ export namespace Prisma {
     balanceDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    invitations?: WeddingInvitationUncheckedCreateNestedManyWithoutBookingInput
   }
 
   export type BookingCreateOrConnectWithoutMessagesInput = {
@@ -8586,6 +16583,7 @@ export namespace Prisma {
     balanceDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitations?: WeddingInvitationUpdateManyWithoutBookingNestedInput
   }
 
   export type BookingUncheckedUpdateWithoutMessagesInput = {
@@ -8610,6 +16608,949 @@ export namespace Prisma {
     balanceDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitations?: WeddingInvitationUncheckedUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingCreateWithoutInvitationsInput = {
+    id?: string
+    clientName: string
+    clientEmail: string
+    clientPhone: string
+    eventType: $Enums.EventType
+    eventDate: Date | string
+    location: string
+    guestCount?: number | null
+    budgetRange: $Enums.BudgetRange
+    notes?: string | null
+    status?: $Enums.BookingStatus
+    internalNotes?: string | null
+    assignedTo?: string | null
+    agreedAmount?: number | null
+    depositAmount?: number | null
+    depositPaid?: boolean
+    depositDate?: Date | string | null
+    balancePaid?: boolean
+    balanceDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingUncheckedCreateWithoutInvitationsInput = {
+    id?: string
+    clientName: string
+    clientEmail: string
+    clientPhone: string
+    eventType: $Enums.EventType
+    eventDate: Date | string
+    location: string
+    guestCount?: number | null
+    budgetRange: $Enums.BudgetRange
+    notes?: string | null
+    status?: $Enums.BookingStatus
+    internalNotes?: string | null
+    assignedTo?: string | null
+    agreedAmount?: number | null
+    depositAmount?: number | null
+    depositPaid?: boolean
+    depositDate?: Date | string | null
+    balancePaid?: boolean
+    balanceDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    messages?: MessageUncheckedCreateNestedManyWithoutBookingInput
+  }
+
+  export type BookingCreateOrConnectWithoutInvitationsInput = {
+    where: BookingWhereUniqueInput
+    create: XOR<BookingCreateWithoutInvitationsInput, BookingUncheckedCreateWithoutInvitationsInput>
+  }
+
+  export type GiftRegistryCreateWithoutInvitationInput = {
+    id?: string
+    giftName: string
+    title?: string | null
+    description?: string | null
+    imageUrl?: string | null
+    priority?: number
+    priorityLabel?: $Enums.GiftPriority
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: string | null
+    reservedMessage?: string | null
+    createdAt?: Date | string
+    reservations?: GiftReservationCreateNestedManyWithoutGiftInput
+  }
+
+  export type GiftRegistryUncheckedCreateWithoutInvitationInput = {
+    id?: string
+    giftName: string
+    title?: string | null
+    description?: string | null
+    imageUrl?: string | null
+    priority?: number
+    priorityLabel?: $Enums.GiftPriority
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: string | null
+    reservedMessage?: string | null
+    createdAt?: Date | string
+    reservations?: GiftReservationUncheckedCreateNestedManyWithoutGiftInput
+  }
+
+  export type GiftRegistryCreateOrConnectWithoutInvitationInput = {
+    where: GiftRegistryWhereUniqueInput
+    create: XOR<GiftRegistryCreateWithoutInvitationInput, GiftRegistryUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type GiftRegistryCreateManyInvitationInputEnvelope = {
+    data: GiftRegistryCreateManyInvitationInput | GiftRegistryCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type GiftReservationCreateWithoutInvitationInput = {
+    id?: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+    gift: GiftRegistryCreateNestedOneWithoutReservationsInput
+  }
+
+  export type GiftReservationUncheckedCreateWithoutInvitationInput = {
+    id?: string
+    giftId: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftReservationCreateOrConnectWithoutInvitationInput = {
+    where: GiftReservationWhereUniqueInput
+    create: XOR<GiftReservationCreateWithoutInvitationInput, GiftReservationUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type GiftReservationCreateManyInvitationInputEnvelope = {
+    data: GiftReservationCreateManyInvitationInput | GiftReservationCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RSVPCreateWithoutInvitationInput = {
+    id?: string
+    guestName: string
+    guestPhone?: string | null
+    attendance: $Enums.RSVPStatus
+    message?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RSVPUncheckedCreateWithoutInvitationInput = {
+    id?: string
+    guestName: string
+    guestPhone?: string | null
+    attendance: $Enums.RSVPStatus
+    message?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RSVPCreateOrConnectWithoutInvitationInput = {
+    where: RSVPWhereUniqueInput
+    create: XOR<RSVPCreateWithoutInvitationInput, RSVPUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type RSVPCreateManyInvitationInputEnvelope = {
+    data: RSVPCreateManyInvitationInput | RSVPCreateManyInvitationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BookingUpsertWithoutInvitationsInput = {
+    update: XOR<BookingUpdateWithoutInvitationsInput, BookingUncheckedUpdateWithoutInvitationsInput>
+    create: XOR<BookingCreateWithoutInvitationsInput, BookingUncheckedCreateWithoutInvitationsInput>
+    where?: BookingWhereInput
+  }
+
+  export type BookingUpdateToOneWithWhereWithoutInvitationsInput = {
+    where?: BookingWhereInput
+    data: XOR<BookingUpdateWithoutInvitationsInput, BookingUncheckedUpdateWithoutInvitationsInput>
+  }
+
+  export type BookingUpdateWithoutInvitationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientName?: StringFieldUpdateOperationsInput | string
+    clientEmail?: StringFieldUpdateOperationsInput | string
+    clientPhone?: StringFieldUpdateOperationsInput | string
+    eventType?: EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
+    eventDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    guestCount?: NullableIntFieldUpdateOperationsInput | number | null
+    budgetRange?: EnumBudgetRangeFieldUpdateOperationsInput | $Enums.BudgetRange
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    assignedTo?: NullableStringFieldUpdateOperationsInput | string | null
+    agreedAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    depositAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    depositPaid?: BoolFieldUpdateOperationsInput | boolean
+    depositDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balancePaid?: BoolFieldUpdateOperationsInput | boolean
+    balanceDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUpdateManyWithoutBookingNestedInput
+  }
+
+  export type BookingUncheckedUpdateWithoutInvitationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clientName?: StringFieldUpdateOperationsInput | string
+    clientEmail?: StringFieldUpdateOperationsInput | string
+    clientPhone?: StringFieldUpdateOperationsInput | string
+    eventType?: EnumEventTypeFieldUpdateOperationsInput | $Enums.EventType
+    eventDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    guestCount?: NullableIntFieldUpdateOperationsInput | number | null
+    budgetRange?: EnumBudgetRangeFieldUpdateOperationsInput | $Enums.BudgetRange
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
+    internalNotes?: NullableStringFieldUpdateOperationsInput | string | null
+    assignedTo?: NullableStringFieldUpdateOperationsInput | string | null
+    agreedAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    depositAmount?: NullableFloatFieldUpdateOperationsInput | number | null
+    depositPaid?: BoolFieldUpdateOperationsInput | boolean
+    depositDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balancePaid?: BoolFieldUpdateOperationsInput | boolean
+    balanceDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    messages?: MessageUncheckedUpdateManyWithoutBookingNestedInput
+  }
+
+  export type GiftRegistryUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: GiftRegistryWhereUniqueInput
+    update: XOR<GiftRegistryUpdateWithoutInvitationInput, GiftRegistryUncheckedUpdateWithoutInvitationInput>
+    create: XOR<GiftRegistryCreateWithoutInvitationInput, GiftRegistryUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type GiftRegistryUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: GiftRegistryWhereUniqueInput
+    data: XOR<GiftRegistryUpdateWithoutInvitationInput, GiftRegistryUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type GiftRegistryUpdateManyWithWhereWithoutInvitationInput = {
+    where: GiftRegistryScalarWhereInput
+    data: XOR<GiftRegistryUpdateManyMutationInput, GiftRegistryUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type GiftRegistryScalarWhereInput = {
+    AND?: GiftRegistryScalarWhereInput | GiftRegistryScalarWhereInput[]
+    OR?: GiftRegistryScalarWhereInput[]
+    NOT?: GiftRegistryScalarWhereInput | GiftRegistryScalarWhereInput[]
+    id?: StringFilter<"GiftRegistry"> | string
+    invitationId?: StringFilter<"GiftRegistry"> | string
+    giftName?: StringFilter<"GiftRegistry"> | string
+    title?: StringNullableFilter<"GiftRegistry"> | string | null
+    description?: StringNullableFilter<"GiftRegistry"> | string | null
+    imageUrl?: StringNullableFilter<"GiftRegistry"> | string | null
+    priority?: IntFilter<"GiftRegistry"> | number
+    priorityLabel?: EnumGiftPriorityFilter<"GiftRegistry"> | $Enums.GiftPriority
+    allowDuplicates?: BoolFilter<"GiftRegistry"> | boolean
+    isReserved?: BoolFilter<"GiftRegistry"> | boolean
+    reservedBy?: StringNullableFilter<"GiftRegistry"> | string | null
+    reservedMessage?: StringNullableFilter<"GiftRegistry"> | string | null
+    createdAt?: DateTimeFilter<"GiftRegistry"> | Date | string
+  }
+
+  export type GiftReservationUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: GiftReservationWhereUniqueInput
+    update: XOR<GiftReservationUpdateWithoutInvitationInput, GiftReservationUncheckedUpdateWithoutInvitationInput>
+    create: XOR<GiftReservationCreateWithoutInvitationInput, GiftReservationUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type GiftReservationUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: GiftReservationWhereUniqueInput
+    data: XOR<GiftReservationUpdateWithoutInvitationInput, GiftReservationUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type GiftReservationUpdateManyWithWhereWithoutInvitationInput = {
+    where: GiftReservationScalarWhereInput
+    data: XOR<GiftReservationUpdateManyMutationInput, GiftReservationUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type GiftReservationScalarWhereInput = {
+    AND?: GiftReservationScalarWhereInput | GiftReservationScalarWhereInput[]
+    OR?: GiftReservationScalarWhereInput[]
+    NOT?: GiftReservationScalarWhereInput | GiftReservationScalarWhereInput[]
+    id?: StringFilter<"GiftReservation"> | string
+    invitationId?: StringFilter<"GiftReservation"> | string
+    giftId?: StringFilter<"GiftReservation"> | string
+    reservedBy?: StringFilter<"GiftReservation"> | string
+    reservedMessage?: StringNullableFilter<"GiftReservation"> | string | null
+    createdAt?: DateTimeFilter<"GiftReservation"> | Date | string
+  }
+
+  export type RSVPUpsertWithWhereUniqueWithoutInvitationInput = {
+    where: RSVPWhereUniqueInput
+    update: XOR<RSVPUpdateWithoutInvitationInput, RSVPUncheckedUpdateWithoutInvitationInput>
+    create: XOR<RSVPCreateWithoutInvitationInput, RSVPUncheckedCreateWithoutInvitationInput>
+  }
+
+  export type RSVPUpdateWithWhereUniqueWithoutInvitationInput = {
+    where: RSVPWhereUniqueInput
+    data: XOR<RSVPUpdateWithoutInvitationInput, RSVPUncheckedUpdateWithoutInvitationInput>
+  }
+
+  export type RSVPUpdateManyWithWhereWithoutInvitationInput = {
+    where: RSVPScalarWhereInput
+    data: XOR<RSVPUpdateManyMutationInput, RSVPUncheckedUpdateManyWithoutInvitationInput>
+  }
+
+  export type RSVPScalarWhereInput = {
+    AND?: RSVPScalarWhereInput | RSVPScalarWhereInput[]
+    OR?: RSVPScalarWhereInput[]
+    NOT?: RSVPScalarWhereInput | RSVPScalarWhereInput[]
+    id?: StringFilter<"RSVP"> | string
+    invitationId?: StringFilter<"RSVP"> | string
+    guestName?: StringFilter<"RSVP"> | string
+    guestPhone?: StringNullableFilter<"RSVP"> | string | null
+    attendance?: EnumRSVPStatusFilter<"RSVP"> | $Enums.RSVPStatus
+    message?: StringNullableFilter<"RSVP"> | string | null
+    createdAt?: DateTimeFilter<"RSVP"> | Date | string
+  }
+
+  export type WeddingInvitationCreateWithoutRsvpsInput = {
+    id?: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutInvitationsInput
+    gifts?: GiftRegistryCreateNestedManyWithoutInvitationInput
+    reservations?: GiftReservationCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationUncheckedCreateWithoutRsvpsInput = {
+    id?: string
+    bookingId: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    gifts?: GiftRegistryUncheckedCreateNestedManyWithoutInvitationInput
+    reservations?: GiftReservationUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationCreateOrConnectWithoutRsvpsInput = {
+    where: WeddingInvitationWhereUniqueInput
+    create: XOR<WeddingInvitationCreateWithoutRsvpsInput, WeddingInvitationUncheckedCreateWithoutRsvpsInput>
+  }
+
+  export type WeddingInvitationUpsertWithoutRsvpsInput = {
+    update: XOR<WeddingInvitationUpdateWithoutRsvpsInput, WeddingInvitationUncheckedUpdateWithoutRsvpsInput>
+    create: XOR<WeddingInvitationCreateWithoutRsvpsInput, WeddingInvitationUncheckedCreateWithoutRsvpsInput>
+    where?: WeddingInvitationWhereInput
+  }
+
+  export type WeddingInvitationUpdateToOneWithWhereWithoutRsvpsInput = {
+    where?: WeddingInvitationWhereInput
+    data: XOR<WeddingInvitationUpdateWithoutRsvpsInput, WeddingInvitationUncheckedUpdateWithoutRsvpsInput>
+  }
+
+  export type WeddingInvitationUpdateWithoutRsvpsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutInvitationsNestedInput
+    gifts?: GiftRegistryUpdateManyWithoutInvitationNestedInput
+    reservations?: GiftReservationUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type WeddingInvitationUncheckedUpdateWithoutRsvpsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gifts?: GiftRegistryUncheckedUpdateManyWithoutInvitationNestedInput
+    reservations?: GiftReservationUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type WeddingInvitationCreateWithoutGiftsInput = {
+    id?: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutInvitationsInput
+    reservations?: GiftReservationCreateNestedManyWithoutInvitationInput
+    rsvps?: RSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationUncheckedCreateWithoutGiftsInput = {
+    id?: string
+    bookingId: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    reservations?: GiftReservationUncheckedCreateNestedManyWithoutInvitationInput
+    rsvps?: RSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationCreateOrConnectWithoutGiftsInput = {
+    where: WeddingInvitationWhereUniqueInput
+    create: XOR<WeddingInvitationCreateWithoutGiftsInput, WeddingInvitationUncheckedCreateWithoutGiftsInput>
+  }
+
+  export type GiftReservationCreateWithoutGiftInput = {
+    id?: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+    invitation: WeddingInvitationCreateNestedOneWithoutReservationsInput
+  }
+
+  export type GiftReservationUncheckedCreateWithoutGiftInput = {
+    id?: string
+    invitationId: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftReservationCreateOrConnectWithoutGiftInput = {
+    where: GiftReservationWhereUniqueInput
+    create: XOR<GiftReservationCreateWithoutGiftInput, GiftReservationUncheckedCreateWithoutGiftInput>
+  }
+
+  export type GiftReservationCreateManyGiftInputEnvelope = {
+    data: GiftReservationCreateManyGiftInput | GiftReservationCreateManyGiftInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WeddingInvitationUpsertWithoutGiftsInput = {
+    update: XOR<WeddingInvitationUpdateWithoutGiftsInput, WeddingInvitationUncheckedUpdateWithoutGiftsInput>
+    create: XOR<WeddingInvitationCreateWithoutGiftsInput, WeddingInvitationUncheckedCreateWithoutGiftsInput>
+    where?: WeddingInvitationWhereInput
+  }
+
+  export type WeddingInvitationUpdateToOneWithWhereWithoutGiftsInput = {
+    where?: WeddingInvitationWhereInput
+    data: XOR<WeddingInvitationUpdateWithoutGiftsInput, WeddingInvitationUncheckedUpdateWithoutGiftsInput>
+  }
+
+  export type WeddingInvitationUpdateWithoutGiftsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutInvitationsNestedInput
+    reservations?: GiftReservationUpdateManyWithoutInvitationNestedInput
+    rsvps?: RSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type WeddingInvitationUncheckedUpdateWithoutGiftsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reservations?: GiftReservationUncheckedUpdateManyWithoutInvitationNestedInput
+    rsvps?: RSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type GiftReservationUpsertWithWhereUniqueWithoutGiftInput = {
+    where: GiftReservationWhereUniqueInput
+    update: XOR<GiftReservationUpdateWithoutGiftInput, GiftReservationUncheckedUpdateWithoutGiftInput>
+    create: XOR<GiftReservationCreateWithoutGiftInput, GiftReservationUncheckedCreateWithoutGiftInput>
+  }
+
+  export type GiftReservationUpdateWithWhereUniqueWithoutGiftInput = {
+    where: GiftReservationWhereUniqueInput
+    data: XOR<GiftReservationUpdateWithoutGiftInput, GiftReservationUncheckedUpdateWithoutGiftInput>
+  }
+
+  export type GiftReservationUpdateManyWithWhereWithoutGiftInput = {
+    where: GiftReservationScalarWhereInput
+    data: XOR<GiftReservationUpdateManyMutationInput, GiftReservationUncheckedUpdateManyWithoutGiftInput>
+  }
+
+  export type WeddingInvitationCreateWithoutReservationsInput = {
+    id?: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    booking: BookingCreateNestedOneWithoutInvitationsInput
+    gifts?: GiftRegistryCreateNestedManyWithoutInvitationInput
+    rsvps?: RSVPCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationUncheckedCreateWithoutReservationsInput = {
+    id?: string
+    bookingId: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    gifts?: GiftRegistryUncheckedCreateNestedManyWithoutInvitationInput
+    rsvps?: RSVPUncheckedCreateNestedManyWithoutInvitationInput
+  }
+
+  export type WeddingInvitationCreateOrConnectWithoutReservationsInput = {
+    where: WeddingInvitationWhereUniqueInput
+    create: XOR<WeddingInvitationCreateWithoutReservationsInput, WeddingInvitationUncheckedCreateWithoutReservationsInput>
+  }
+
+  export type GiftRegistryCreateWithoutReservationsInput = {
+    id?: string
+    giftName: string
+    title?: string | null
+    description?: string | null
+    imageUrl?: string | null
+    priority?: number
+    priorityLabel?: $Enums.GiftPriority
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: string | null
+    reservedMessage?: string | null
+    createdAt?: Date | string
+    invitation: WeddingInvitationCreateNestedOneWithoutGiftsInput
+  }
+
+  export type GiftRegistryUncheckedCreateWithoutReservationsInput = {
+    id?: string
+    invitationId: string
+    giftName: string
+    title?: string | null
+    description?: string | null
+    imageUrl?: string | null
+    priority?: number
+    priorityLabel?: $Enums.GiftPriority
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: string | null
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftRegistryCreateOrConnectWithoutReservationsInput = {
+    where: GiftRegistryWhereUniqueInput
+    create: XOR<GiftRegistryCreateWithoutReservationsInput, GiftRegistryUncheckedCreateWithoutReservationsInput>
+  }
+
+  export type WeddingInvitationUpsertWithoutReservationsInput = {
+    update: XOR<WeddingInvitationUpdateWithoutReservationsInput, WeddingInvitationUncheckedUpdateWithoutReservationsInput>
+    create: XOR<WeddingInvitationCreateWithoutReservationsInput, WeddingInvitationUncheckedCreateWithoutReservationsInput>
+    where?: WeddingInvitationWhereInput
+  }
+
+  export type WeddingInvitationUpdateToOneWithWhereWithoutReservationsInput = {
+    where?: WeddingInvitationWhereInput
+    data: XOR<WeddingInvitationUpdateWithoutReservationsInput, WeddingInvitationUncheckedUpdateWithoutReservationsInput>
+  }
+
+  export type WeddingInvitationUpdateWithoutReservationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    booking?: BookingUpdateOneRequiredWithoutInvitationsNestedInput
+    gifts?: GiftRegistryUpdateManyWithoutInvitationNestedInput
+    rsvps?: RSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type WeddingInvitationUncheckedUpdateWithoutReservationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    bookingId?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gifts?: GiftRegistryUncheckedUpdateManyWithoutInvitationNestedInput
+    rsvps?: RSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type GiftRegistryUpsertWithoutReservationsInput = {
+    update: XOR<GiftRegistryUpdateWithoutReservationsInput, GiftRegistryUncheckedUpdateWithoutReservationsInput>
+    create: XOR<GiftRegistryCreateWithoutReservationsInput, GiftRegistryUncheckedCreateWithoutReservationsInput>
+    where?: GiftRegistryWhereInput
+  }
+
+  export type GiftRegistryUpdateToOneWithWhereWithoutReservationsInput = {
+    where?: GiftRegistryWhereInput
+    data: XOR<GiftRegistryUpdateWithoutReservationsInput, GiftRegistryUncheckedUpdateWithoutReservationsInput>
+  }
+
+  export type GiftRegistryUpdateWithoutReservationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: WeddingInvitationUpdateOneRequiredWithoutGiftsNestedInput
+  }
+
+  export type GiftRegistryUncheckedUpdateWithoutReservationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MessageCreateManyBookingInput = {
@@ -8617,6 +17558,42 @@ export namespace Prisma {
     sender: $Enums.MessageSender
     content: string
     createdAt?: Date | string
+  }
+
+  export type WeddingInvitationCreateManyBookingInput = {
+    id?: string
+    brideName: string
+    groomName: string
+    slug: string
+    weddingDate: Date | string
+    weddingTime: string
+    venueName: string
+    venueAddress: string
+    dressCode?: string | null
+    mapUrl?: string | null
+    welcomeMessage?: string | null
+    story?: string | null
+    heroImageUrl?: string | null
+    coverImage?: string | null
+    galleryImages?: WeddingInvitationCreategalleryImagesInput | string[]
+    templateKey?: string
+    theme?: $Enums.InvitationTheme
+    themeColor?: string | null
+    primaryColor?: string | null
+    secondaryColor?: string | null
+    customMessage?: string | null
+    floralTopLeft?: string | null
+    floralTopRight?: string | null
+    floralBottomLeft?: string | null
+    floralBottomRight?: string | null
+    status?: $Enums.InvitationStatus
+    allowRSVP?: boolean
+    allowGiftRegistry?: boolean
+    publishedAt?: Date | string | null
+    isPublished?: boolean
+    pdfUrl?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type MessageUpdateWithoutBookingInput = {
@@ -8640,6 +17617,282 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type WeddingInvitationUpdateWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gifts?: GiftRegistryUpdateManyWithoutInvitationNestedInput
+    reservations?: GiftReservationUpdateManyWithoutInvitationNestedInput
+    rsvps?: RSVPUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type WeddingInvitationUncheckedUpdateWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gifts?: GiftRegistryUncheckedUpdateManyWithoutInvitationNestedInput
+    reservations?: GiftReservationUncheckedUpdateManyWithoutInvitationNestedInput
+    rsvps?: RSVPUncheckedUpdateManyWithoutInvitationNestedInput
+  }
+
+  export type WeddingInvitationUncheckedUpdateManyWithoutBookingInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    brideName?: StringFieldUpdateOperationsInput | string
+    groomName?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    weddingDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    weddingTime?: StringFieldUpdateOperationsInput | string
+    venueName?: StringFieldUpdateOperationsInput | string
+    venueAddress?: StringFieldUpdateOperationsInput | string
+    dressCode?: NullableStringFieldUpdateOperationsInput | string | null
+    mapUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    welcomeMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    story?: NullableStringFieldUpdateOperationsInput | string | null
+    heroImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: WeddingInvitationUpdategalleryImagesInput | string[]
+    templateKey?: StringFieldUpdateOperationsInput | string
+    theme?: EnumInvitationThemeFieldUpdateOperationsInput | $Enums.InvitationTheme
+    themeColor?: NullableStringFieldUpdateOperationsInput | string | null
+    primaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    secondaryColor?: NullableStringFieldUpdateOperationsInput | string | null
+    customMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralTopRight?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomLeft?: NullableStringFieldUpdateOperationsInput | string | null
+    floralBottomRight?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
+    allowRSVP?: BoolFieldUpdateOperationsInput | boolean
+    allowGiftRegistry?: BoolFieldUpdateOperationsInput | boolean
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftRegistryCreateManyInvitationInput = {
+    id?: string
+    giftName: string
+    title?: string | null
+    description?: string | null
+    imageUrl?: string | null
+    priority?: number
+    priorityLabel?: $Enums.GiftPriority
+    allowDuplicates?: boolean
+    isReserved?: boolean
+    reservedBy?: string | null
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftReservationCreateManyInvitationInput = {
+    id?: string
+    giftId: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RSVPCreateManyInvitationInput = {
+    id?: string
+    guestName: string
+    guestPhone?: string | null
+    attendance: $Enums.RSVPStatus
+    message?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftRegistryUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reservations?: GiftReservationUpdateManyWithoutGiftNestedInput
+  }
+
+  export type GiftRegistryUncheckedUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reservations?: GiftReservationUncheckedUpdateManyWithoutGiftNestedInput
+  }
+
+  export type GiftRegistryUncheckedUpdateManyWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    giftName?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    priority?: IntFieldUpdateOperationsInput | number
+    priorityLabel?: EnumGiftPriorityFieldUpdateOperationsInput | $Enums.GiftPriority
+    allowDuplicates?: BoolFieldUpdateOperationsInput | boolean
+    isReserved?: BoolFieldUpdateOperationsInput | boolean
+    reservedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftReservationUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gift?: GiftRegistryUpdateOneRequiredWithoutReservationsNestedInput
+  }
+
+  export type GiftReservationUncheckedUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    giftId?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftReservationUncheckedUpdateManyWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    giftId?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RSVPUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    guestName?: StringFieldUpdateOperationsInput | string
+    guestPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: EnumRSVPStatusFieldUpdateOperationsInput | $Enums.RSVPStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RSVPUncheckedUpdateWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    guestName?: StringFieldUpdateOperationsInput | string
+    guestPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: EnumRSVPStatusFieldUpdateOperationsInput | $Enums.RSVPStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RSVPUncheckedUpdateManyWithoutInvitationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    guestName?: StringFieldUpdateOperationsInput | string
+    guestPhone?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: EnumRSVPStatusFieldUpdateOperationsInput | $Enums.RSVPStatus
+    message?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftReservationCreateManyGiftInput = {
+    id?: string
+    invitationId: string
+    reservedBy: string
+    reservedMessage?: string | null
+    createdAt?: Date | string
+  }
+
+  export type GiftReservationUpdateWithoutGiftInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    invitation?: WeddingInvitationUpdateOneRequiredWithoutReservationsNestedInput
+  }
+
+  export type GiftReservationUncheckedUpdateWithoutGiftInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiftReservationUncheckedUpdateManyWithoutGiftInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    invitationId?: StringFieldUpdateOperationsInput | string
+    reservedBy?: StringFieldUpdateOperationsInput | string
+    reservedMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
 
 
   /**
@@ -8649,6 +17902,14 @@ export namespace Prisma {
      * @deprecated Use BookingCountOutputTypeDefaultArgs instead
      */
     export type BookingCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BookingCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WeddingInvitationCountOutputTypeDefaultArgs instead
+     */
+    export type WeddingInvitationCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WeddingInvitationCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use GiftRegistryCountOutputTypeDefaultArgs instead
+     */
+    export type GiftRegistryCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GiftRegistryCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */
@@ -8669,6 +17930,26 @@ export namespace Prisma {
      * @deprecated Use PackageDefaultArgs instead
      */
     export type PackageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PackageDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WeddingInvitationDefaultArgs instead
+     */
+    export type WeddingInvitationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WeddingInvitationDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use RSVPDefaultArgs instead
+     */
+    export type RSVPArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = RSVPDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use GiftRegistryDefaultArgs instead
+     */
+    export type GiftRegistryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GiftRegistryDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use GiftReservationDefaultArgs instead
+     */
+    export type GiftReservationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GiftReservationDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use DesignAssetDefaultArgs instead
+     */
+    export type DesignAssetArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DesignAssetDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

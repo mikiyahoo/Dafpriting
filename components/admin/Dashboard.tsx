@@ -55,7 +55,7 @@ export function Dashboard() {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-400" />
+        <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
       </div>
     );
   }
@@ -63,59 +63,59 @@ export function Dashboard() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-white">Dashboard</h1>
-        <p className="text-gray-400 mt-1">Overview of your event bookings</p>
+        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+        <p className="text-gray-600 mt-1">Overview of your event bookings</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {statCards.map((card) => {
           const Icon = card.icon;
           return (
-            <div key={card.label} className="bg-white/5 border border-white/10 rounded-xl p-5">
+            <div key={card.label} className="bg-white border border-gray-200 rounded-xl p-5">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-gray-400 text-sm">{card.label}</span>
+                <span className="text-gray-600 text-sm">{card.label}</span>
                 <div className={`p-2 rounded-lg ${card.color}`}>
                   <Icon className="w-4 h-4" />
                 </div>
               </div>
-              <p className="text-3xl font-bold text-white">{card.value}</p>
+              <p className="text-3xl font-bold text-gray-900">{card.value}</p>
             </div>
           );
         })}
       </div>
 
-      <div className="bg-white/5 border border-white/10 rounded-xl">
-        <div className="p-5 border-b border-white/5">
-          <h2 className="text-lg font-semibold text-white">Recent Bookings</h2>
+      <div className="bg-white border border-gray-200 rounded-xl">
+        <div className="p-5 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-900">Recent Bookings</h2>
         </div>
 
         {recentBookings.length === 0 ? (
           <div className="p-8 text-center">
-            <p className="text-gray-500">No bookings yet</p>
+            <p className="text-gray-600">No bookings yet</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/5">
-                  <th className="text-left py-3 px-5 font-medium text-gray-400">Client</th>
-                  <th className="text-left py-3 px-5 font-medium text-gray-400 hidden sm:table-cell">Event</th>
-                  <th className="text-left py-3 px-5 font-medium text-gray-400 hidden md:table-cell">Date</th>
-                  <th className="text-left py-3 px-5 font-medium text-gray-400">Status</th>
-                  <th className="text-right py-3 px-5 font-medium text-gray-400">Action</th>
+                <tr className="border-b border-gray-200">
+                  <th className="text-left py-3 px-5 font-medium text-gray-600">Client</th>
+                  <th className="text-left py-3 px-5 font-medium text-gray-600 hidden sm:table-cell">Event</th>
+                  <th className="text-left py-3 px-5 font-medium text-gray-600 hidden md:table-cell">Date</th>
+                  <th className="text-left py-3 px-5 font-medium text-gray-600">Status</th>
+                  <th className="text-right py-3 px-5 font-medium text-gray-600">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {recentBookings.map((booking) => (
-                  <tr key={booking.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <tr key={booking.id} className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
                     <td className="py-3 px-5">
-                      <div className="text-white font-medium">{booking.clientName}</div>
-                      <div className="text-gray-500 text-xs">{booking.clientEmail}</div>
+                      <div className="text-gray-900 font-medium">{booking.clientName}</div>
+                      <div className="text-gray-600 text-xs">{booking.clientEmail}</div>
                     </td>
-                    <td className="py-3 px-5 text-gray-300 hidden sm:table-cell">
+                    <td className="py-3 px-5 text-gray-700 hidden sm:table-cell">
                       {EVENT_TYPE_LABELS[booking.eventType] || booking.eventType}
                     </td>
-                    <td className="py-3 px-5 text-gray-400 hidden md:table-cell">
+                    <td className="py-3 px-5 text-gray-600 hidden md:table-cell">
                       {booking.eventDate ? new Date(booking.eventDate).toLocaleDateString() : "-"}
                     </td>
                     <td className="py-3 px-5">
@@ -124,7 +124,7 @@ export function Dashboard() {
                     <td className="py-3 px-5 text-right">
                       <button
                         onClick={() => router.push(`/admin/bookings/${booking.id}`)}
-                        className="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors"
+                        className="text-amber-600 hover:text-amber-500 text-sm font-medium transition-colors"
                       >
                         View
                       </button>

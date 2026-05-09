@@ -1,17 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { BookingRecord, BookingStatus, BOOKING_STATUS, STATUS_LABELS, EVENT_TYPE_LABELS, BUDGET_LABELS } from "@/types";
-import { Loader2, Search, ChevronRight, Phone, Check } from "lucide-react";
+import { Loader2, Search, ChevronRight, Phone, Check, WandSparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function BookingTable() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [bookings, setBookings] = useState<BookingRecord[]>([]);
   const [loading, setLoading] = useState(true);
-  const [statusFilter, setStatusFilter] = useState<string>("ALL");
+  const [statusFilter, setStatusFilter] = useState<string>(
+    searchParams.get("status") || "ALL"
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const [error, setError] = useState("");
   const [updatingId, setUpdatingId] = useState<string | null>(null);
@@ -80,8 +83,8 @@ export function BookingTable() {
   if (error) {
     return (
       <div className="text-center py-12">
-        <p className="text-red-400 mb-4">{error}</p>
-        <button onClick={fetchBookings} className="text-amber-400 underline hover:no-underline">
+        <p className="text-red-600 mb-4">{error}</p>
+        <button onClick={fetchBookings} className="text-amber-600 underline hover:no-underline">
           Try again
         </button>
       </div>
@@ -100,7 +103,7 @@ export function BookingTable() {
                 "px-3 py-1.5 text-sm rounded-full whitespace-nowrap transition-colors border",
                 statusFilter === option.value
                   ? "bg-amber-500 text-white border-amber-500"
-                  : "bg-white/5 text-gray-400 border-white/10 hover:border-amber-500/30"
+                  : "bg-gray-100 text-gray-600 border-gray-200 hover:border-amber-500"
               )}
             >
               {option.label}
@@ -115,61 +118,61 @@ export function BookingTable() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by name..."
-            className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 w-full sm:w-64"
+            className="pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 w-full sm:w-64"
           />
         </form>
       </div>
 
       {loading && (
         <div className="flex justify-center py-12">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-400" />
+          <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
         </div>
       )}
 
       {!loading && bookings.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500">No bookings found</p>
+          <p className="text-gray-600">No bookings found</p>
         </div>
       )}
 
       {!loading && bookings.length > 0 && (
-        <div className="overflow-x-auto bg-white/5 border border-white/10 rounded-xl">
+        <div className="overflow-x-auto bg-white border border-gray-200 rounded-xl">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-white/5">
-                <th className="text-left py-3 px-5 font-medium text-gray-400">Client</th>
-                <th className="text-left py-3 px-5 font-medium text-gray-400">Event</th>
-                <th className="text-left py-3 px-5 font-medium text-gray-400 hidden md:table-cell">Date</th>
-                <th className="text-left py-3 px-5 font-medium text-gray-400 hidden sm:table-cell">Budget</th>
-                <th className="text-left py-3 px-5 font-medium text-gray-400">Status</th>
-                <th className="text-left py-3 px-5 font-medium text-gray-400">Submitted</th>
-                <th className="text-right py-3 px-5 font-medium text-gray-400">Actions</th>
+              <tr className="border-b border-gray-200">
+                <th className="text-left py-3 px-5 font-medium text-gray-600">Client</th>
+                <th className="text-left py-3 px-5 font-medium text-gray-600">Event</th>
+                <th className="text-left py-3 px-5 font-medium text-gray-600 hidden md:table-cell">Date</th>
+                <th className="text-left py-3 px-5 font-medium text-gray-600 hidden sm:table-cell">Budget</th>
+                <th className="text-left py-3 px-5 font-medium text-gray-600">Status</th>
+                <th className="text-left py-3 px-5 font-medium text-gray-600">Submitted</th>
+                <th className="text-right py-3 px-5 font-medium text-gray-600">Actions</th>
               </tr>
             </thead>
             <tbody>
               {bookings.map((booking) => (
                 <tr
                   key={booking.id}
-                  className="border-b border-white/5 hover:bg-white/5 transition-colors cursor-pointer"
+                  className="border-b border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer"
                   onClick={() => router.push(`/admin/bookings/${booking.id}`)}
                 >
                   <td className="py-3 px-5">
-                    <div className="text-white font-medium">{booking.clientName}</div>
-                    <div className="text-gray-500 text-xs">{booking.clientEmail}</div>
+                    <div className="text-gray-900 font-medium">{booking.clientName}</div>
+                    <div className="text-gray-600 text-xs">{booking.clientEmail}</div>
                   </td>
-                  <td className="py-3 px-5 text-gray-300">
+                  <td className="py-3 px-5 text-gray-700">
                     {EVENT_TYPE_LABELS[booking.eventType] || booking.eventType}
                   </td>
-                  <td className="py-3 px-5 text-gray-400 hidden md:table-cell">
+                  <td className="py-3 px-5 text-gray-600 hidden md:table-cell">
                     {booking.eventDate ? new Date(booking.eventDate).toLocaleDateString() : "-"}
                   </td>
-                  <td className="py-3 px-5 text-gray-400 hidden sm:table-cell">
+                  <td className="py-3 px-5 text-gray-600 hidden sm:table-cell">
                     {BUDGET_LABELS[booking.budgetRange] || booking.budgetRange}
                   </td>
                   <td className="py-3 px-5">
                     <StatusBadge status={booking.status as BookingStatus} />
                   </td>
-                  <td className="py-3 px-5 text-gray-400 text-xs">
+                  <td className="py-3 px-5 text-gray-600 text-xs">
                     {new Date(booking.createdAt).toLocaleDateString()}
                   </td>
                   <td className="py-3 px-5 text-right">
@@ -181,7 +184,7 @@ export function BookingTable() {
                             quickUpdateStatus(booking.id, BOOKING_STATUS.CONTACTED);
                           }}
                           disabled={updatingId === booking.id}
-                          className="p-1.5 text-xs rounded border border-blue-500/30 text-blue-400 hover:bg-blue-500/10 transition-colors"
+                          className="p-1.5 text-xs rounded border border-blue-500 text-blue-600 hover:bg-blue-50 transition-colors"
                           title="Mark Contacted"
                         >
                           {updatingId === booking.id ? (
@@ -198,7 +201,7 @@ export function BookingTable() {
                             quickUpdateStatus(booking.id, BOOKING_STATUS.CONFIRMED);
                           }}
                           disabled={updatingId === booking.id}
-                          className="p-1.5 text-xs rounded border border-green-500/30 text-green-400 hover:bg-green-500/10 transition-colors"
+                          className="p-1.5 text-xs rounded border border-green-500 text-green-600 hover:bg-green-50 transition-colors"
                           title="Mark Confirmed"
                         >
                           {updatingId === booking.id ? (
@@ -208,12 +211,28 @@ export function BookingTable() {
                           )}
                         </button>
                       )}
+                      {booking.eventType === "WEDDING" &&
+                        [BOOKING_STATUS.CONFIRMED, BOOKING_STATUS.PLANNED].includes(
+                          booking.status as typeof BOOKING_STATUS.CONFIRMED | typeof BOOKING_STATUS.PLANNED
+                        ) && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              router.push(`/admin/bookings/${booking.id}/invitation`);
+                            }}
+                            className="inline-flex items-center gap-1 rounded border border-pink-400 px-2 py-1.5 text-xs font-medium text-pink-600 transition-colors hover:bg-pink-50"
+                            title={booking.invitations?.[0] ? "Edit Wedding Card" : "Design Wedding Card"}
+                          >
+                            <WandSparkles className="w-3.5 h-3.5" />
+                            <span className="hidden lg:inline">Cards</span>
+                          </button>
+                        )}
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           router.push(`/admin/bookings/${booking.id}`);
                         }}
-                        className="p-1.5 text-xs rounded border border-amber-500/30 text-amber-400 hover:bg-amber-500/10 transition-colors"
+                        className="p-1.5 text-xs rounded border border-amber-500 text-amber-600 hover:bg-amber-50 transition-colors"
                         title="View Details"
                       >
                         <ChevronRight className="w-3.5 h-3.5" />
@@ -228,7 +247,7 @@ export function BookingTable() {
       )}
 
       {!loading && bookings.length > 0 && (
-        <p className="text-xs text-gray-500 mt-4">
+        <p className="text-xs text-gray-600 mt-4">
           Showing {bookings.length} booking{bookings.length !== 1 ? "s" : ""}
         </p>
       )}

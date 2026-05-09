@@ -190,6 +190,86 @@ exports.Prisma.PackageScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.WeddingInvitationScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  brideName: 'brideName',
+  groomName: 'groomName',
+  slug: 'slug',
+  weddingDate: 'weddingDate',
+  weddingTime: 'weddingTime',
+  venueName: 'venueName',
+  venueAddress: 'venueAddress',
+  dressCode: 'dressCode',
+  mapUrl: 'mapUrl',
+  welcomeMessage: 'welcomeMessage',
+  story: 'story',
+  heroImageUrl: 'heroImageUrl',
+  coverImage: 'coverImage',
+  galleryImages: 'galleryImages',
+  templateKey: 'templateKey',
+  theme: 'theme',
+  themeColor: 'themeColor',
+  primaryColor: 'primaryColor',
+  secondaryColor: 'secondaryColor',
+  customMessage: 'customMessage',
+  floralTopLeft: 'floralTopLeft',
+  floralTopRight: 'floralTopRight',
+  floralBottomLeft: 'floralBottomLeft',
+  floralBottomRight: 'floralBottomRight',
+  status: 'status',
+  allowRSVP: 'allowRSVP',
+  allowGiftRegistry: 'allowGiftRegistry',
+  publishedAt: 'publishedAt',
+  isPublished: 'isPublished',
+  pdfUrl: 'pdfUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RSVPScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  guestName: 'guestName',
+  guestPhone: 'guestPhone',
+  attendance: 'attendance',
+  message: 'message',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.GiftRegistryScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  giftName: 'giftName',
+  title: 'title',
+  description: 'description',
+  imageUrl: 'imageUrl',
+  priority: 'priority',
+  priorityLabel: 'priorityLabel',
+  allowDuplicates: 'allowDuplicates',
+  isReserved: 'isReserved',
+  reservedBy: 'reservedBy',
+  reservedMessage: 'reservedMessage',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.GiftReservationScalarFieldEnum = {
+  id: 'id',
+  invitationId: 'invitationId',
+  giftId: 'giftId',
+  reservedBy: 'reservedBy',
+  reservedMessage: 'reservedMessage',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.DesignAssetScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  imageUrl: 'imageUrl',
+  category: 'category',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -245,12 +325,57 @@ exports.GalleryCategory = exports.$Enums.GalleryCategory = {
   BEHIND_THE_SCENES: 'BEHIND_THE_SCENES'
 };
 
+exports.InvitationTheme = exports.$Enums.InvitationTheme = {
+  FLORAL_LUXURY: 'FLORAL_LUXURY',
+  MODERN_MINIMAL: 'MODERN_MINIMAL',
+  ROYAL_GOLD: 'ROYAL_GOLD',
+  TRADITIONAL_ETHIOPIAN: 'TRADITIONAL_ETHIOPIAN',
+  ELEGANT_BLACK: 'ELEGANT_BLACK',
+  GARDEN_WEDDING: 'GARDEN_WEDDING',
+  LUXURY_WHITE: 'LUXURY_WHITE',
+  CLASSIC_SERIF: 'CLASSIC_SERIF'
+};
+
+exports.InvitationStatus = exports.$Enums.InvitationStatus = {
+  DRAFT: 'DRAFT',
+  REVIEW: 'REVIEW',
+  APPROVED: 'APPROVED',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
+};
+
+exports.RSVPStatus = exports.$Enums.RSVPStatus = {
+  ATTENDING: 'ATTENDING',
+  NOT_ATTENDING: 'NOT_ATTENDING',
+  MAYBE: 'MAYBE',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED'
+};
+
+exports.GiftPriority = exports.$Enums.GiftPriority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+};
+
+exports.AssetCategory = exports.$Enums.AssetCategory = {
+  FLORAL: 'FLORAL',
+  FRAME: 'FRAME',
+  ORNAMENT: 'ORNAMENT',
+  TEXTURE: 'TEXTURE'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Booking: 'Booking',
   Message: 'Message',
   GalleryImage: 'GalleryImage',
-  Package: 'Package'
+  Package: 'Package',
+  WeddingInvitation: 'WeddingInvitation',
+  RSVP: 'RSVP',
+  GiftRegistry: 'GiftRegistry',
+  GiftReservation: 'GiftReservation',
+  DesignAsset: 'DesignAsset'
 };
 
 /**

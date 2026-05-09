@@ -52,6 +52,60 @@ export const EVENT_TYPE_LABELS: Record<string, string> = {
   OTHER: "Other",
 };
 
+export const INVITATION_THEMES = {
+  FLORAL_LUXURY: "FLORAL_LUXURY",
+  MODERN_MINIMAL: "MODERN_MINIMAL",
+  ROYAL_GOLD: "ROYAL_GOLD",
+  TRADITIONAL_ETHIOPIAN: "TRADITIONAL_ETHIOPIAN",
+  ELEGANT_BLACK: "ELEGANT_BLACK",
+  GARDEN_WEDDING: "GARDEN_WEDDING",
+  LUXURY_WHITE: "LUXURY_WHITE",
+  CLASSIC_SERIF: "CLASSIC_SERIF",
+} as const;
+
+export type InvitationTheme =
+  (typeof INVITATION_THEMES)[keyof typeof INVITATION_THEMES];
+
+export const INVITATION_THEME_LABELS: Record<string, string> = {
+  FLORAL_LUXURY: "Floral Luxury",
+  MODERN_MINIMAL: "Modern Minimal",
+  ROYAL_GOLD: "Royal Gold",
+  TRADITIONAL_ETHIOPIAN: "Traditional Ethiopian",
+  ELEGANT_BLACK: "Elegant Black",
+  GARDEN_WEDDING: "Garden Wedding",
+  LUXURY_WHITE: "Luxury White",
+  CLASSIC_SERIF: "Classic Serif",
+};
+
+export const RSVP_STATUS = {
+  ATTENDING: "ACCEPTED",
+  NOT_ATTENDING: "DECLINED",
+  ACCEPTED: "ACCEPTED",
+  DECLINED: "DECLINED",
+  MAYBE: "MAYBE",
+} as const;
+
+export type RSVPStatus = (typeof RSVP_STATUS)[keyof typeof RSVP_STATUS];
+
+export const INVITATION_STATUS = {
+  DRAFT: "DRAFT",
+  REVIEW: "REVIEW",
+  APPROVED: "APPROVED",
+  PUBLISHED: "PUBLISHED",
+  ARCHIVED: "ARCHIVED",
+} as const;
+
+export type InvitationStatus =
+  (typeof INVITATION_STATUS)[keyof typeof INVITATION_STATUS];
+
+export const GIFT_PRIORITIES = {
+  LOW: "LOW",
+  MEDIUM: "MEDIUM",
+  HIGH: "HIGH",
+} as const;
+
+export type GiftPriority = (typeof GIFT_PRIORITIES)[keyof typeof GIFT_PRIORITIES];
+
 export const STATUS_LABELS: Record<string, string> = {
   NEW_REQUEST: "New Request",
   CONTACTED: "Contacted",
@@ -83,6 +137,86 @@ export interface BookingRecord {
   balanceDate: string | null;
   createdAt: string;
   updatedAt: string;
+  invitations?: WeddingInvitationSummary[];
+}
+
+export interface WeddingInvitationSummary {
+  id: string;
+  slug: string;
+  brideName: string;
+  groomName: string;
+  weddingDate: string;
+  isPublished: boolean;
+  status?: InvitationStatus;
+  theme: string;
+  templateKey?: string;
+  _count?: {
+    rsvps: number;
+    gifts: number;
+  };
+}
+
+export interface GiftRegistryItem {
+  id: string;
+  giftName: string;
+  title?: string | null;
+  description: string | null;
+  imageUrl: string | null;
+  priority: number;
+  priorityLabel?: GiftPriority;
+  allowDuplicates?: boolean;
+  isReserved: boolean;
+  reservedBy: string | null;
+  reservedMessage?: string | null;
+  createdAt: string;
+}
+
+export interface RSVPRecord {
+  id: string;
+  guestName: string;
+  guestPhone: string | null;
+  attendance: RSVPStatus;
+  message: string | null;
+  createdAt: string;
+}
+
+export interface WeddingInvitationRecord {
+  id: string;
+  bookingId: string;
+  brideName: string;
+  groomName: string;
+  slug: string;
+  weddingDate: string;
+  weddingTime: string;
+  venueName: string;
+  venueAddress: string;
+  dressCode: string | null;
+  mapUrl: string | null;
+  welcomeMessage?: string | null;
+  story: string | null;
+  heroImageUrl?: string | null;
+  coverImage: string | null;
+  galleryImages: string[];
+  theme: InvitationTheme;
+  templateKey?: string;
+  themeColor?: string | null;
+  primaryColor: string | null;
+  secondaryColor: string | null;
+  customMessage: string | null;
+  floralTopLeft?: string | null;
+  floralTopRight?: string | null;
+  floralBottomLeft?: string | null;
+  floralBottomRight?: string | null;
+  status?: InvitationStatus;
+  allowRSVP?: boolean;
+  allowGiftRegistry?: boolean;
+  publishedAt?: string | null;
+  isPublished: boolean;
+  pdfUrl: string | null;
+  createdAt: string;
+  updatedAt: string;
+  gifts: GiftRegistryItem[];
+  rsvps?: RSVPRecord[];
 }
 
 export interface BookingMessage {

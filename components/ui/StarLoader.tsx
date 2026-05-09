@@ -1,6 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState, ReactNode, useCallback } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  ReactNode,
+} from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
 interface StarLoaderProps {
@@ -8,6 +17,7 @@ interface StarLoaderProps {
 }
 
 export default function StarLoader({ children }: StarLoaderProps) {
+  const pathname = usePathname();
   const overlayRef = useRef<HTMLDivElement>(null);
   const starIconRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -15,13 +25,14 @@ export default function StarLoader({ children }: StarLoaderProps) {
   const [animationComplete, setAnimationComplete] = useState(false);
   const animationStarted = useRef(false);
 
-  // Check sessionStorage before rendering
-  const [shouldRender] = useState(() => {
-    if (typeof window !== "undefined") {
+  const shouldRender = useSyncExternalStore(
+    () => () => {},
+    () => {
+      if (pathname?.startsWith("/admin")) return false;
       return !sessionStorage.getItem("radiance_visited");
-    }
-    return true;
-  });
+    },
+    () => false
+  );
 
   const startAnimation = useCallback(() => {
     if (animationStarted.current || !shouldRender) return;
@@ -95,6 +106,10 @@ export default function StarLoader({ children }: StarLoaderProps) {
   useEffect(() => {
     if (!shouldRender) return;
     startAnimation();
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [shouldRender, startAnimation]);
 
   // If animation is complete or user has already visited, just render children
@@ -126,9 +141,11 @@ export default function StarLoader({ children }: StarLoaderProps) {
           className="relative z-10 w-24 h-24"
           style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.5))" }}
         >
-          <img
+          <Image
             src="/assets/Radiance Star Icon_color.svg"
             alt="Radiance Loading..."
+            width={96}
+            height={96}
             className="w-full h-full object-contain"
           />
         </div>

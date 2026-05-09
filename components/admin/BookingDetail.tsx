@@ -6,7 +6,19 @@ import { StatusBadge } from "@/components/ui/StatusBadge";
 import { MessageThread } from "@/components/admin/MessageThread";
 import { PaymentTracker } from "@/components/admin/PaymentTracker";
 import { BookingRecord, BookingStatus, BOOKING_STATUS, EVENT_TYPE_LABELS, BUDGET_LABELS } from "@/types";
-import { Loader2, ArrowLeft, Calendar, Phone, Mail, DollarSign, MapPin, Users } from "lucide-react";
+import {
+  Loader2,
+  ArrowLeft,
+  Calendar,
+  Phone,
+  Mail,
+  DollarSign,
+  MapPin,
+  Users,
+  Heart,
+  ExternalLink,
+  WandSparkles,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface BookingDetailProps {
@@ -78,7 +90,7 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
   if (loading) {
     return (
       <div className="flex justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-amber-400" />
+        <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
       </div>
     );
   }
@@ -86,10 +98,10 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
   if (error || !booking) {
     return (
       <div className="text-center py-20">
-        <p className="text-red-400 mb-4">{error || "Booking not found"}</p>
+        <p className="text-red-600 mb-4">{error || "Booking not found"}</p>
         <button
           onClick={() => router.push("/admin/bookings")}
-          className="text-amber-400 underline hover:no-underline"
+          className="text-amber-600 underline hover:no-underline"
         >
           Back to bookings
         </button>
@@ -107,6 +119,12 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
   };
 
   const availableTransitions = statusTransitions[booking.status] ?? [];
+  const invitation = booking.invitations?.[0];
+  const canCreateWeddingExperience =
+    booking.eventType === "WEDDING" &&
+    [BOOKING_STATUS.CONFIRMED, BOOKING_STATUS.PLANNED].includes(
+      booking.status as typeof BOOKING_STATUS.CONFIRMED | typeof BOOKING_STATUS.PLANNED
+    );
 
   return (
     <div className="space-y-6">
@@ -120,13 +138,13 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
         <div>
           <button
             onClick={() => router.push("/admin/bookings")}
-            className="flex items-center gap-1 text-sm text-gray-400 hover:text-white mb-3 transition-colors"
+            className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900 mb-3 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to bookings
           </button>
-          <h1 className="text-2xl font-bold text-white">{booking.clientName}</h1>
-          <p className="text-gray-500 text-sm mt-1">
+          <h1 className="text-2xl font-bold text-gray-900">{booking.clientName}</h1>
+          <p className="text-gray-600 text-sm mt-1">
             Created {new Date(booking.createdAt).toLocaleDateString()}
           </p>
         </div>
@@ -134,34 +152,34 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">Client Information</h2>
+        <div className="bg-white border border-gray-200 rounded-xl p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Client Information</h2>
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
-              <Mail className="w-4 h-4 text-gray-400" />
-              <a href={`mailto:${booking.clientEmail}`} className="text-amber-400 hover:text-amber-300">
+              <Mail className="w-4 h-4 text-gray-600" />
+              <a href={`mailto:${booking.clientEmail}`} className="text-amber-600 hover:text-amber-500">
                 {booking.clientEmail}
               </a>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Phone className="w-4 h-4 text-gray-400" />
-              <a href={`tel:${booking.clientPhone}`} className="text-amber-400 hover:text-amber-300">
+              <Phone className="w-4 h-4 text-gray-600" />
+              <a href={`tel:${booking.clientPhone}`} className="text-amber-600 hover:text-amber-500">
                 {booking.clientPhone}
               </a>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">Event Details</h2>
+        <div className="bg-white border border-gray-200 rounded-xl p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Event Details</h2>
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
-              <span className="text-gray-400 w-24">Type</span>
-              <span className="font-medium text-white">{EVENT_TYPE_LABELS[booking.eventType] || booking.eventType}</span>
+              <span className="text-gray-600 w-24">Type</span>
+              <span className="font-medium text-gray-900">{EVENT_TYPE_LABELS[booking.eventType] || booking.eventType}</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Calendar className="w-4 h-4 text-gray-400" />
-              <span className="text-gray-300">
+              <Calendar className="w-4 h-4 text-gray-600" />
+              <span className="text-gray-700">
                 {booking.eventDate
                   ? new Date(booking.eventDate).toLocaleDateString("en-US", {
                       weekday: "long", year: "numeric", month: "long", day: "numeric",
@@ -170,32 +188,92 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
               </span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <MapPin className="w-4 h-4 text-gray-400" />
-              <span className="text-gray-300">{booking.location || "Not specified"}</span>
+              <MapPin className="w-4 h-4 text-gray-600" />
+              <span className="text-gray-700">{booking.location || "Not specified"}</span>
             </div>
             {booking.guestCount && (
               <div className="flex items-center gap-3 text-sm">
-                <Users className="w-4 h-4 text-gray-400" />
-                <span className="text-gray-300">{booking.guestCount} guests</span>
+                <Users className="w-4 h-4 text-gray-600" />
+                <span className="text-gray-700">{booking.guestCount} guests</span>
               </div>
             )}
             <div className="flex items-center gap-3 text-sm">
-              <DollarSign className="w-4 h-4 text-gray-400" />
-              <span className="text-gray-300">{BUDGET_LABELS[booking.budgetRange] || booking.budgetRange}</span>
+              <DollarSign className="w-4 h-4 text-gray-600" />
+              <span className="text-gray-700">{BUDGET_LABELS[booking.budgetRange] || booking.budgetRange}</span>
             </div>
           </div>
         </div>
       </div>
 
       {booking.notes && (
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-          <h2 className="text-lg font-semibold text-white mb-3">Client Notes</h2>
-          <p className="text-gray-300 whitespace-pre-wrap">{booking.notes}</p>
+        <div className="bg-white border border-gray-200 rounded-xl p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">Client Notes</h2>
+          <p className="text-gray-700 whitespace-pre-wrap">{booking.notes}</p>
         </div>
       )}
 
-      <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">Status Control</h2>
+      {booking.eventType === "WEDDING" && (
+        <div className="bg-white border border-amber-200 rounded-xl p-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700">
+                <Heart className="h-4 w-4" />
+                Premium Wedding Experience
+              </div>
+              <h2 className="mt-2 text-lg font-semibold text-gray-900">
+                Invitation cards
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm text-gray-600">
+                Design editable wedding invitation cards from this booking, preview the
+                result, then publish the invitation page with RSVP and gifts.
+              </p>
+              {invitation && (
+                <div className="mt-3 flex flex-wrap gap-2 text-xs text-gray-600">
+                  <span className="rounded-full bg-gray-100 px-3 py-1">
+                    {invitation.status || (invitation.isPublished ? "Published" : "Draft")}
+                  </span>
+                  <span className="rounded-full bg-gray-100 px-3 py-1">
+                    {invitation._count?.rsvps ?? 0} RSVPs
+                  </span>
+                  <span className="rounded-full bg-gray-100 px-3 py-1">
+                    {invitation._count?.gifts ?? 0} gifts
+                  </span>
+                </div>
+              )}
+              {!canCreateWeddingExperience && !invitation && (
+                <p className="mt-3 text-xs text-amber-700">
+                  Available once this wedding booking is confirmed.
+                </p>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {(canCreateWeddingExperience || invitation) && (
+                <button
+                  onClick={() => router.push(`/admin/bookings/${booking.id}/invitation`)}
+                  className="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500"
+                >
+                  <WandSparkles className="h-4 w-4" />
+                  {invitation ? "Edit & Preview Invitation Cards" : "Design Invitation Cards"}
+                </button>
+              )}
+              {invitation?.isPublished && (
+                <a
+                  href={`/wedding/${invitation.slug}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  View Live
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="bg-white border border-gray-200 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Status Control</h2>
         {availableTransitions.length > 0 ? (
           <div className="flex flex-wrap gap-2">
             {availableTransitions.map((transition) => (
@@ -206,8 +284,8 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
                 className={cn(
                   "px-4 py-2 text-sm rounded-lg transition-colors border font-medium",
                   transition === BOOKING_STATUS.CANCELLED
-                    ? "border-red-500/30 text-red-400 hover:bg-red-500/10"
-                    : "border-amber-500/30 text-amber-400 hover:bg-amber-500/10",
+                     ? "border-red-200 text-red-600 hover:bg-red-50"
+                     : "border-amber-500/30 text-amber-600 hover:bg-amber-50",
                   updating && "opacity-50 cursor-not-allowed"
                 )}
               >
@@ -217,17 +295,17 @@ export function BookingDetail({ bookingId }: BookingDetailProps) {
             ))}
           </div>
         ) : (
-          <p className="text-sm text-gray-500">No further status changes available.</p>
+          <p className="text-sm text-gray-600">No further status changes available.</p>
         )}
       </div>
 
-      <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">Payment Tracking</h2>
+      <div className="bg-white border border-gray-200 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Payment Tracking</h2>
         <PaymentTracker bookingId={bookingId} />
       </div>
 
-      <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-        <h2 className="text-lg font-semibold text-white mb-4">Communication Log</h2>
+      <div className="bg-white border border-gray-200 rounded-xl p-6">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Communication Log</h2>
         <MessageThread bookingId={bookingId} />
       </div>
     </div>

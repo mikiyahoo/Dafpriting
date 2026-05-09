@@ -57,6 +57,7 @@ model Booking {
 
   // Relations
   messages      Message[]
+  invitations   WeddingInvitation[]
 
   // Timestamps
   createdAt     DateTime        @default(now())
@@ -147,4 +148,156 @@ model Package {
   isActive    Boolean  @default(true)
   sortOrder   Int      @default(0)
   createdAt   DateTime @default(now())
+}
+
+// WEDDING DIGITAL EXPERIENCE
+model WeddingInvitation {
+  id             String          @id @default(cuid())
+
+  bookingId      String          @unique
+  booking        Booking         @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  brideName      String
+  groomName      String
+  slug           String          @unique
+
+  weddingDate    DateTime
+  weddingTime    String
+
+  venueName      String
+  venueAddress   String
+  dressCode      String?
+  mapUrl         String?
+
+  welcomeMessage String?         @db.Text
+  story          String?         @db.Text
+  heroImageUrl   String?
+  coverImage     String?
+  galleryImages  String[]        @default([])
+
+  templateKey    String          @default("FLORAL_LUXURY")
+  theme          InvitationTheme @default(FLORAL_LUXURY)
+  themeColor     String?
+  primaryColor   String?
+  secondaryColor String?
+  customMessage  String?         @db.Text
+
+  floralTopLeft     String?
+  floralTopRight    String?
+  floralBottomLeft  String?
+  floralBottomRight String?
+
+  status         InvitationStatus @default(DRAFT)
+  allowRSVP      Boolean          @default(true)
+  allowGiftRegistry Boolean       @default(true)
+  publishedAt    DateTime?
+  isPublished    Boolean         @default(false)
+  pdfUrl         String?
+
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  gifts          GiftRegistry[]
+  reservations   GiftReservation[]
+  rsvps          RSVP[]
+}
+
+model RSVP {
+  id             String            @id @default(cuid())
+
+  invitationId   String
+  invitation     WeddingInvitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+
+  guestName      String
+  guestPhone     String?
+  attendance     RSVPStatus
+  message        String?           @db.Text
+
+  createdAt      DateTime          @default(now())
+}
+
+model GiftRegistry {
+  id             String            @id @default(cuid())
+
+  invitationId   String
+  invitation     WeddingInvitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+
+  giftName       String
+  title          String?
+  description    String?
+  imageUrl       String?
+  priority       Int               @default(1)
+  priorityLabel  GiftPriority      @default(MEDIUM)
+  allowDuplicates Boolean          @default(false)
+
+  isReserved     Boolean           @default(false)
+  reservedBy     String?
+  reservedMessage String?
+
+  createdAt      DateTime          @default(now())
+
+  reservations   GiftReservation[]
+}
+
+model GiftReservation {
+  id             String            @id @default(cuid())
+
+  invitationId   String
+  invitation     WeddingInvitation @relation(fields: [invitationId], references: [id], onDelete: Cascade)
+
+  giftId         String
+  gift           GiftRegistry      @relation(fields: [giftId], references: [id], onDelete: Cascade)
+
+  reservedBy     String
+  reservedMessage String?
+
+  createdAt      DateTime          @default(now())
+}
+
+model DesignAsset {
+  id        String        @id @default(cuid())
+  name      String
+  imageUrl  String
+  category  AssetCategory
+  createdAt DateTime      @default(now())
+}
+
+enum InvitationTheme {
+  FLORAL_LUXURY
+  MODERN_MINIMAL
+  ROYAL_GOLD
+  TRADITIONAL_ETHIOPIAN
+  ELEGANT_BLACK
+  GARDEN_WEDDING
+  LUXURY_WHITE
+  CLASSIC_SERIF
+}
+
+enum RSVPStatus {
+  ATTENDING
+  NOT_ATTENDING
+  MAYBE
+  ACCEPTED
+  DECLINED
+}
+
+enum InvitationStatus {
+  DRAFT
+  REVIEW
+  APPROVED
+  PUBLISHED
+  ARCHIVED
+}
+
+enum GiftPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum AssetCategory {
+  FLORAL
+  FRAME
+  ORNAMENT
+  TEXTURE
 }

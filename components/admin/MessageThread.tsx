@@ -70,7 +70,7 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
   if (loading) {
     return (
       <div className="flex justify-center py-8">
-        <Loader2 className="w-6 h-6 animate-spin text-amber-400" />
+        <Loader2 className="w-6 h-6 animate-spin text-amber-600" />
       </div>
     );
   }
@@ -78,10 +78,10 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
   if (error) {
     return (
       <div className="text-center py-8">
-        <p className="text-red-400 text-sm">{error}</p>
+        <p className="text-red-600 text-sm">{error}</p>
         <button
           onClick={fetchMessages}
-          className="text-amber-400 underline hover:no-underline text-sm mt-2"
+          className="text-amber-600 underline hover:no-underline text-sm mt-2"
         >
           Retry
         </button>
@@ -93,7 +93,7 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-y-auto space-y-3 mb-4 max-h-80">
         {messages.length === 0 && (
-          <p className="text-center text-gray-500 text-sm py-8">
+          <p className="text-center text-gray-600 text-sm py-8">
             No messages yet
           </p>
         )}
@@ -112,16 +112,16 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
             <div
               className={`max-w-[80%] rounded-lg px-4 py-2 text-sm ${
                 message.sender === "ADMIN"
-                  ? "bg-amber-500 text-white"
-                  : message.sender === "SYSTEM"
-                  ? "bg-gray-800 text-gray-400 text-xs italic"
-                  : "bg-gray-700 text-gray-200"
+                   ? "bg-amber-500 text-white"
+                   : message.sender === "SYSTEM"
+                   ? "bg-gray-200 text-gray-600 text-xs italic"
+                   : "bg-gray-300 text-gray-800"
               }`}
             >
               <p>{message.content}</p>
               <p
                 className={`text-xs mt-1 ${
-                  message.sender === "ADMIN" ? "text-white/60" : "text-gray-500"
+                  message.sender === "ADMIN" ? "text-white/60" : "text-gray-600"
                 }`}
               >
                 {new Date(message.createdAt).toLocaleString()}
@@ -138,7 +138,7 @@ export function MessageThread({ bookingId }: MessageThreadProps) {
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           placeholder="Type a message..."
-          className="flex-1 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500"
+          className="flex-1 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
           disabled={sending}
         />
         <button

@@ -69,7 +69,7 @@ export function PaymentTracker({
       {/* Status indicator */}
       <div className="flex items-center gap-3">
         <div className={cn("w-3 h-3 rounded-full", statusIndicator[paymentStatus])} />
-        <span className="text-sm text-gray-400">
+        <span className="text-sm text-gray-600">
           {paymentStatus === "none" && "No payment recorded"}
           {paymentStatus === "deposit" && "Deposit received"}
           {paymentStatus === "paid" && "Fully paid"}
@@ -79,7 +79,7 @@ export function PaymentTracker({
       <div className="space-y-4">
         {/* Agreed Amount */}
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-1.5">
+          <label className="block text-sm font-medium text-gray-700 mb-1.5">
             Agreed Amount (ETB)
           </label>
           <input
@@ -89,14 +89,14 @@ export function PaymentTracker({
               setData((prev) => ({ ...prev, agreed_amount: e.target.value }))
             }
             placeholder="0.00"
-            className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-colors text-sm"
+              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors text-sm"
           />
         </div>
 
         {/* Deposit */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1.5">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Deposit Amount
             </label>
             <input
@@ -106,11 +106,11 @@ export function PaymentTracker({
                 setData((prev) => ({ ...prev, deposit_amount: e.target.value }))
               }
               placeholder="0.00"
-              className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-colors text-sm"
+            className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors text-sm"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1.5">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Deposit Received
             </label>
             <button
@@ -123,8 +123,8 @@ export function PaymentTracker({
               className={cn(
                 "w-full px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors flex items-center justify-center gap-2",
                 data.deposit_received
-                  ? "bg-green-500/10 border-green-500/30 text-green-400"
-                  : "bg-white/5 border-white/10 text-gray-400 hover:border-gray-500"
+                  ? "bg-green-50 border-green-200 text-green-700"
+                  : "bg-white border-gray-200 text-gray-600 hover:border-gray-500"
               )}
             >
               {data.deposit_received && <Check className="w-4 h-4" />}
@@ -132,7 +132,7 @@ export function PaymentTracker({
             </button>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1.5">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Deposit Date
             </label>
             <input
@@ -141,7 +141,7 @@ export function PaymentTracker({
               onChange={(e) =>
                 setData((prev) => ({ ...prev, deposit_date: e.target.value }))
               }
-              className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-colors text-sm [color-scheme:dark]"
+              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors text-sm"
             />
           </div>
         </div>
@@ -149,7 +149,7 @@ export function PaymentTracker({
         {/* Balance */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1.5">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Balance Paid
             </label>
             <button
@@ -165,8 +165,8 @@ export function PaymentTracker({
               className={cn(
                 "w-full px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors flex items-center justify-center gap-2",
                 data.balance_paid
-                  ? "bg-green-500/10 border-green-500/30 text-green-400"
-                  : "bg-white/5 border-white/10 text-gray-400 hover:border-gray-500"
+                  ? "bg-green-50 border-green-200 text-green-700"
+                  : "bg-white border-gray-200 text-gray-600 hover:border-gray-500"
               )}
             >
               {data.balance_paid && <Check className="w-4 h-4" />}
@@ -174,7 +174,7 @@ export function PaymentTracker({
             </button>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1.5">
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Balance Date
             </label>
             <input
@@ -183,7 +183,7 @@ export function PaymentTracker({
               onChange={(e) =>
                 setData((prev) => ({ ...prev, balance_date: e.target.value }))
               }
-              className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500 transition-colors text-sm [color-scheme:dark]"
+              className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors text-sm"
             />
           </div>
         </div>

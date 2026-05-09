@@ -138,11 +138,15 @@ CREATE INDEX IF NOT EXISTS idx_gallery_category ON "GalleryImage"(category);
 INSERT INTO "User" (email, password, name, role)
 VALUES (
   'admin@radiance.com',
-  '$2b$10$els2/dTNzxiOCMh0Fh7kWu9iHBwV4s21HKnuJQNPSQCheCae3JHie',
+  '$2b$10$FfArhqaqfM9ySZFRo2y9Su2TfWj2CY5NdOag8bo4jbFvrMi/YOmIm',
   'Radiance Admin',
   'admin'
 )
-ON CONFLICT (email) DO NOTHING;
+ON CONFLICT (email) DO UPDATE
+SET
+  password = EXCLUDED.password,
+  name = EXCLUDED.name,
+  role = EXCLUDED.role;
 
 -- Sample Bookings
 INSERT INTO "Booking" (id, "clientName", "clientEmail", "clientPhone", "eventType", "eventDate", location, "guestCount", "budgetRange", notes, status, "assignedTo", "createdAt")

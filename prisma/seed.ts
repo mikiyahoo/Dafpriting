@@ -5,14 +5,18 @@ const prisma = new PrismaClient();
 async function main() {
   console.log("🌱 Seeding database...");
 
-  // Create a sample admin user
+  // Create a sample admin user (password: Admin@2026)
   const admin = await prisma.user.upsert({
-    where: { email: "admin@example.com" },
-    update: {},
+    where: { email: "admin@radiance.com" },
+    update: {
+      password: "$2b$10$FfArhqaqfM9ySZFRo2y9Su2TfWj2CY5NdOag8bo4jbFvrMi/YOmIm",
+      name: "Radiance Admin",
+      role: "admin",
+    },
     create: {
-      email: "admin@example.com",
-      password: "$2b$10$example.hash.here", // This would be a proper bcrypt hash
-      name: "Admin User",
+      email: "admin@radiance.com",
+      password: "$2b$10$FfArhqaqfM9ySZFRo2y9Su2TfWj2CY5NdOag8bo4jbFvrMi/YOmIm",
+      name: "Radiance Admin",
       role: "admin",
     },
   });

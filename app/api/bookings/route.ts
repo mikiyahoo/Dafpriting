@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { bookingFormSchema } from "@/lib/validations";
 import { auth } from "@/lib/auth";
+import { isMissingWeddingExperienceTable } from "@/lib/prisma-errors";
 
 export async function POST(request: NextRequest) {
   try {
@@ -80,15 +81,55 @@ export async function GET(request: NextRequest) {
     }
 
     if (search) {
-      where.clientName = { contains: search, mode: "insensitive" };
+      where.OR = [
+        { id: search },
+        { clientName: { contains: search, mode: "insensitive" } },
+        { clientEmail: { contains: search, mode: "insensitive" } },
+      ];
     }
 
-    const bookings = await prisma.booking.findMany({
-      where,
-      orderBy: { createdAt: "desc" },
-    });
+    try {
+      const bookings = await prisma.booking.findMany({
+        where,
+        orderBy: { createdAt: "desc" },
+        include: {
+          invitations: {
+            select: {
+              id: true,
+              slug: true,
+              brideName: true,
+              groomName: true,
+              weddingDate: true,
+              isPublished: true,
+              status: true,
+              templateKey: true,
+              theme: true,
+              _count: {
+                select: {
+                  rsvps: true,
+                  gifts: true,
+                },
+              },
+            },
+          },
+        },
+      });
 
-    return NextResponse.json({ success: true, data: bookings ?? [] });
+      return NextResponse.json({ success: true, data: bookings ?? [] });
+    } catch (error) {
+      if (!isMissingWeddingExperienceTable(error)) throw error;
+
+      const bookings = await prisma.booking.findMany({
+        where,
+        orderBy: { createdAt: "desc" },
+      });
+
+      return NextResponse.json({
+        success: true,
+        data: bookings.map((booking) => ({ ...booking, invitations: [] })),
+        warning: "Wedding experience tables are not installed yet.",
+      });
+    }
   } catch (error) {
     console.error("BOOKING_API_ERROR", error);
     return NextResponse.json(

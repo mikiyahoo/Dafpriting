@@ -1,5 +1,13 @@
 import { z } from "zod";
-import { BOOKING_STATUS, EVENT_TYPES, BUDGET_RANGES } from "@/types";
+import {
+  BOOKING_STATUS,
+  EVENT_TYPES,
+  BUDGET_RANGES,
+  INVITATION_THEMES,
+  INVITATION_STATUS,
+  GIFT_PRIORITIES,
+  RSVP_STATUS,
+} from "@/types";
 
 export const bookingFormSchema = z.object({
   clientName: z
@@ -59,6 +67,101 @@ export const bookingMessageSchema = z.object({
     .max(2000, "Message is too long"),
 });
 
+const optionalUrl = z
+  .string()
+  .trim()
+  .url("Please enter a valid URL")
+  .optional()
+  .or(z.literal(""));
+
+export const giftRegistryInputSchema = z.object({
+  id: z.string().optional(),
+  giftName: z.string().trim().min(1, "Gift name is required").max(120),
+  description: z.string().trim().max(500).optional().default(""),
+  imageUrl: optionalUrl,
+  priority: z.coerce.number().int().min(1).max(5).optional().default(1),
+  priorityLabel: z
+    .enum([GIFT_PRIORITIES.LOW, GIFT_PRIORITIES.MEDIUM, GIFT_PRIORITIES.HIGH])
+    .optional()
+    .default(GIFT_PRIORITIES.MEDIUM),
+  allowDuplicates: z.boolean().optional().default(false),
+  reservedMessage: z.string().trim().max(500).optional().default(""),
+});
+
+export const weddingInvitationSchema = z.object({
+  bookingId: z.string().min(1, "Booking is required"),
+  brideName: z.string().trim().min(1, "Bride name is required").max(100),
+  groomName: z.string().trim().min(1, "Groom name is required").max(100),
+  slug: z
+    .string()
+    .trim()
+    .min(3, "Slug must be at least 3 characters")
+    .max(80, "Slug is too long")
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use lowercase letters, numbers, and hyphens"),
+  weddingDate: z.string().min(1, "Wedding date is required"),
+  weddingTime: z.string().trim().min(1, "Wedding time is required").max(40),
+  venueName: z.string().trim().min(1, "Venue name is required").max(160),
+  venueAddress: z.string().trim().min(1, "Venue address is required").max(300),
+  dressCode: z.string().trim().max(100).optional().default(""),
+  mapUrl: optionalUrl,
+  welcomeMessage: z.string().trim().max(1200).optional().default(""),
+  story: z.string().trim().max(3000).optional().default(""),
+  heroImageUrl: optionalUrl,
+  coverImage: optionalUrl,
+  galleryImages: z.array(z.string().trim().url()).max(12).optional().default([]),
+  theme: z.enum([
+    INVITATION_THEMES.FLORAL_LUXURY,
+    INVITATION_THEMES.MODERN_MINIMAL,
+    INVITATION_THEMES.ROYAL_GOLD,
+    INVITATION_THEMES.TRADITIONAL_ETHIOPIAN,
+    INVITATION_THEMES.ELEGANT_BLACK,
+    INVITATION_THEMES.GARDEN_WEDDING,
+    INVITATION_THEMES.LUXURY_WHITE,
+    INVITATION_THEMES.CLASSIC_SERIF,
+  ]),
+  templateKey: z.string().trim().max(80).optional().default(""),
+  themeColor: z.string().trim().max(20).optional().default(""),
+  primaryColor: z.string().trim().max(20).optional().default(""),
+  secondaryColor: z.string().trim().max(20).optional().default(""),
+  customMessage: z.string().trim().max(1200).optional().default(""),
+  floralTopLeft: optionalUrl,
+  floralTopRight: optionalUrl,
+  floralBottomLeft: optionalUrl,
+  floralBottomRight: optionalUrl,
+  status: z
+    .enum([
+      INVITATION_STATUS.DRAFT,
+      INVITATION_STATUS.REVIEW,
+      INVITATION_STATUS.APPROVED,
+      INVITATION_STATUS.PUBLISHED,
+      INVITATION_STATUS.ARCHIVED,
+    ])
+    .optional()
+    .default(INVITATION_STATUS.DRAFT),
+  allowRSVP: z.boolean().optional().default(true),
+  allowGiftRegistry: z.boolean().optional().default(true),
+  isPublished: z.boolean().optional().default(false),
+  gifts: z.array(giftRegistryInputSchema).max(40).optional().default([]),
+});
+
+export const rsvpSchema = z.object({
+  guestName: z.string().trim().min(2, "Please enter your name").max(100),
+  guestPhone: z.string().trim().max(40).optional().default(""),
+  attendance: z.enum([
+    RSVP_STATUS.ACCEPTED,
+    RSVP_STATUS.DECLINED,
+    RSVP_STATUS.MAYBE,
+  ]),
+  message: z.string().trim().max(1000).optional().default(""),
+});
+
+export const giftReservationSchema = z.object({
+  reservedBy: z.string().trim().min(2, "Please enter your name").max(100),
+  reservedMessage: z.string().trim().max(500).optional().default(""),
+});
+
 export type BookingFormInput = z.infer<typeof bookingFormSchema>;
 export type BookingStatusInput = z.infer<typeof bookingStatusSchema>;
 export type BookingMessageInput = z.infer<typeof bookingMessageSchema>;
+export type WeddingInvitationInput = z.infer<typeof weddingInvitationSchema>;
+export type RSVPInput = z.infer<typeof rsvpSchema>;
