@@ -24,7 +24,7 @@ export function Footer() {
               Navigation
             </h4>
             <nav className="flex flex-col gap-3">
-              {["About", "Services", "Experiences", "Insights", "Contact"].map(
+              {["About", "Services", "Packages", "Experiences", "Insights", "Contact"].map(
                 (item) => (
                   <Link
                     key={item}

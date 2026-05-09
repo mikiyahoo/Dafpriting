@@ -22,11 +22,16 @@ const navItems: NavItem[] = [
       { label: "Destination Events", href: "/services?category=destination" },
       { label: "Corporate Events", href: "/services?category=corporate" },
       { label: "Consulting & Branding", href: "/services?category=consulting" },
+      { label: "Packages", href: "/packages" },
     ],
   },
   {
     label: "Gallery",
     href: "/gallery",
+  },
+  {
+    label: "Packages",
+    href: "/packages",
   },
 ];
 

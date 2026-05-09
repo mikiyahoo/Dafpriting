@@ -227,6 +227,42 @@ export interface BookingMessage {
   createdAt: string;
 }
 
+export interface PackageCategoryRecord {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  coverImage: string | null;
+  sortOrder: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  _count?: {
+    packages: number;
+  };
+}
+
+export interface PackageRecord {
+  id: string;
+  categoryId: string;
+  category?: PackageCategoryRecord;
+  name: string;
+  shortDesc: string;
+  description: string;
+  price: number | null;
+  priceLabel: string;
+  features: string[];
+  exclusions: string[];
+  imageUrl: string | null;
+  galleryImages: string[];
+  isPopular: boolean;
+  isFeatured: boolean;
+  isActive: boolean;
+  sortOrder: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;

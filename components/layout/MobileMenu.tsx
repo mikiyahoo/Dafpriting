@@ -51,6 +51,15 @@ const menuItems: MenuItem[] = [
   },
   {
     number: "05",
+    title: "PACKAGES",
+    subtitle: "TAILORED SOLUTIONS",
+    description:
+      "Browse dynamic event packages with pricing, inclusions, and booking paths.",
+    image: "https://picsum.photos/id/225/600/450",
+    href: "/packages",
+  },
+  {
+    number: "06",
     title: "CONSULTING",
     subtitle: "STRATEGIC VISION",
     description:
@@ -171,7 +180,7 @@ export function MobileMenu({ variant: _variant = "dark" }: MobileMenuProps) {
       >
         <div className="menu-header">
           <div className="header-left">
-            <span>(5) EVENT CATEGORIES</span>
+            <span>(6) EVENT CATEGORIES</span>
             <span>INTERNAL WORKS / 2026</span>
           </div>
           <div className="header-right">

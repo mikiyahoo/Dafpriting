@@ -160,8 +160,44 @@ export const giftReservationSchema = z.object({
   reservedMessage: z.string().trim().max(500).optional().default(""),
 });
 
+export const packageCategorySchema = z.object({
+  name: z.string().trim().min(2, "Category name is required").max(120),
+  slug: z
+    .string()
+    .trim()
+    .min(2, "Slug is required")
+    .max(80)
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use lowercase letters, numbers, and hyphens"),
+  description: z.string().trim().max(500).optional().default(""),
+  coverImage: optionalUrl,
+  sortOrder: z.coerce.number().int().min(0).optional().default(0),
+  isActive: z.boolean().optional().default(true),
+});
+
+export const packageSchema = z.object({
+  categoryId: z.string().min(1, "Category is required"),
+  name: z.string().trim().min(2, "Package name is required").max(140),
+  shortDesc: z.string().trim().min(2, "Short description is required").max(220),
+  description: z.string().trim().min(2, "Description is required").max(4000),
+  price: z
+    .union([z.coerce.number().min(0), z.literal("").transform(() => null)])
+    .nullable()
+    .optional(),
+  priceLabel: z.string().trim().min(1, "Price label is required").max(120),
+  features: z.array(z.string().trim().min(1).max(180)).max(80).default([]),
+  exclusions: z.array(z.string().trim().min(1).max(180)).max(80).default([]),
+  imageUrl: optionalUrl,
+  galleryImages: z.array(z.string().trim().url()).max(12).optional().default([]),
+  isPopular: z.boolean().optional().default(false),
+  isFeatured: z.boolean().optional().default(false),
+  isActive: z.boolean().optional().default(true),
+  sortOrder: z.coerce.number().int().min(0).optional().default(0),
+});
+
 export type BookingFormInput = z.infer<typeof bookingFormSchema>;
 export type BookingStatusInput = z.infer<typeof bookingStatusSchema>;
 export type BookingMessageInput = z.infer<typeof bookingMessageSchema>;
 export type WeddingInvitationInput = z.infer<typeof weddingInvitationSchema>;
 export type RSVPInput = z.infer<typeof rsvpSchema>;
+export type PackageCategoryInput = z.infer<typeof packageCategorySchema>;
+export type PackageInput = z.infer<typeof packageSchema>;

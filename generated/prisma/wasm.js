@@ -177,17 +177,36 @@ exports.Prisma.GalleryImageScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.PackageScalarFieldEnum = {
+exports.Prisma.PackageCategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  slug: 'slug',
+  description: 'description',
+  coverImage: 'coverImage',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PackageScalarFieldEnum = {
+  id: 'id',
+  categoryId: 'categoryId',
+  name: 'name',
+  shortDesc: 'shortDesc',
+  description: 'description',
   price: 'price',
   priceLabel: 'priceLabel',
-  description: 'description',
   features: 'features',
+  exclusions: 'exclusions',
+  imageUrl: 'imageUrl',
+  galleryImages: 'galleryImages',
   isPopular: 'isPopular',
+  isFeatured: 'isFeatured',
   isActive: 'isActive',
   sortOrder: 'sortOrder',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.WeddingInvitationScalarFieldEnum = {
@@ -370,6 +389,7 @@ exports.Prisma.ModelName = {
   Booking: 'Booking',
   Message: 'Message',
   GalleryImage: 'GalleryImage',
+  PackageCategory: 'PackageCategory',
   Package: 'Package',
   WeddingInvitation: 'WeddingInvitation',
   RSVP: 'RSVP',

@@ -34,6 +34,11 @@ export type Message = $Result.DefaultSelection<Prisma.$MessagePayload>
  */
 export type GalleryImage = $Result.DefaultSelection<Prisma.$GalleryImagePayload>
 /**
+ * Model PackageCategory
+ * 
+ */
+export type PackageCategory = $Result.DefaultSelection<Prisma.$PackageCategoryPayload>
+/**
  * Model Package
  * 
  */
@@ -382,6 +387,16 @@ export class PrismaClient<
     * ```
     */
   get galleryImage(): Prisma.GalleryImageDelegate<ExtArgs>;
+
+  /**
+   * `prisma.packageCategory`: Exposes CRUD operations for the **PackageCategory** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PackageCategories
+    * const packageCategories = await prisma.packageCategory.findMany()
+    * ```
+    */
+  get packageCategory(): Prisma.PackageCategoryDelegate<ExtArgs>;
 
   /**
    * `prisma.package`: Exposes CRUD operations for the **Package** model.
@@ -887,6 +902,7 @@ export namespace Prisma {
     Booking: 'Booking',
     Message: 'Message',
     GalleryImage: 'GalleryImage',
+    PackageCategory: 'PackageCategory',
     Package: 'Package',
     WeddingInvitation: 'WeddingInvitation',
     RSVP: 'RSVP',
@@ -908,7 +924,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "booking" | "message" | "galleryImage" | "package" | "weddingInvitation" | "rSVP" | "giftRegistry" | "giftReservation" | "designAsset"
+      modelProps: "user" | "booking" | "message" | "galleryImage" | "packageCategory" | "package" | "weddingInvitation" | "rSVP" | "giftRegistry" | "giftReservation" | "designAsset"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1189,6 +1205,76 @@ export namespace Prisma {
           count: {
             args: Prisma.GalleryImageCountArgs<ExtArgs>
             result: $Utils.Optional<GalleryImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      PackageCategory: {
+        payload: Prisma.$PackageCategoryPayload<ExtArgs>
+        fields: Prisma.PackageCategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PackageCategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PackageCategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.PackageCategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PackageCategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload>
+          }
+          findMany: {
+            args: Prisma.PackageCategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload>[]
+          }
+          create: {
+            args: Prisma.PackageCategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload>
+          }
+          createMany: {
+            args: Prisma.PackageCategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PackageCategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.PackageCategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload>
+          }
+          update: {
+            args: Prisma.PackageCategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.PackageCategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PackageCategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PackageCategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PackageCategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.PackageCategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePackageCategory>
+          }
+          groupBy: {
+            args: Prisma.PackageCategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PackageCategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PackageCategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<PackageCategoryCountAggregateOutputType> | number
           }
         }
       }
@@ -1805,6 +1891,37 @@ export namespace Prisma {
    */
   export type BookingCountOutputTypeCountInvitationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WeddingInvitationWhereInput
+  }
+
+
+  /**
+   * Count Type PackageCategoryCountOutputType
+   */
+
+  export type PackageCategoryCountOutputType = {
+    packages: number
+  }
+
+  export type PackageCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    packages?: boolean | PackageCategoryCountOutputTypeCountPackagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PackageCategoryCountOutputType without action
+   */
+  export type PackageCategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategoryCountOutputType
+     */
+    select?: PackageCategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PackageCategoryCountOutputType without action
+   */
+  export type PackageCategoryCountOutputTypeCountPackagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageWhereInput
   }
 
 
@@ -5906,6 +6023,1036 @@ export namespace Prisma {
 
 
   /**
+   * Model PackageCategory
+   */
+
+  export type AggregatePackageCategory = {
+    _count: PackageCategoryCountAggregateOutputType | null
+    _avg: PackageCategoryAvgAggregateOutputType | null
+    _sum: PackageCategorySumAggregateOutputType | null
+    _min: PackageCategoryMinAggregateOutputType | null
+    _max: PackageCategoryMaxAggregateOutputType | null
+  }
+
+  export type PackageCategoryAvgAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type PackageCategorySumAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type PackageCategoryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    coverImage: string | null
+    sortOrder: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PackageCategoryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    coverImage: string | null
+    sortOrder: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PackageCategoryCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    description: number
+    coverImage: number
+    sortOrder: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PackageCategoryAvgAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type PackageCategorySumAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type PackageCategoryMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    coverImage?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PackageCategoryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    coverImage?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PackageCategoryCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    coverImage?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PackageCategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageCategory to aggregate.
+     */
+    where?: PackageCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageCategories to fetch.
+     */
+    orderBy?: PackageCategoryOrderByWithRelationInput | PackageCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PackageCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PackageCategories
+    **/
+    _count?: true | PackageCategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PackageCategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PackageCategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PackageCategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PackageCategoryMaxAggregateInputType
+  }
+
+  export type GetPackageCategoryAggregateType<T extends PackageCategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregatePackageCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePackageCategory[P]>
+      : GetScalarType<T[P], AggregatePackageCategory[P]>
+  }
+
+
+
+
+  export type PackageCategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PackageCategoryWhereInput
+    orderBy?: PackageCategoryOrderByWithAggregationInput | PackageCategoryOrderByWithAggregationInput[]
+    by: PackageCategoryScalarFieldEnum[] | PackageCategoryScalarFieldEnum
+    having?: PackageCategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PackageCategoryCountAggregateInputType | true
+    _avg?: PackageCategoryAvgAggregateInputType
+    _sum?: PackageCategorySumAggregateInputType
+    _min?: PackageCategoryMinAggregateInputType
+    _max?: PackageCategoryMaxAggregateInputType
+  }
+
+  export type PackageCategoryGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    description: string | null
+    coverImage: string | null
+    sortOrder: number
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: PackageCategoryCountAggregateOutputType | null
+    _avg: PackageCategoryAvgAggregateOutputType | null
+    _sum: PackageCategorySumAggregateOutputType | null
+    _min: PackageCategoryMinAggregateOutputType | null
+    _max: PackageCategoryMaxAggregateOutputType | null
+  }
+
+  type GetPackageCategoryGroupByPayload<T extends PackageCategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PackageCategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PackageCategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PackageCategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], PackageCategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PackageCategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    coverImage?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    packages?: boolean | PackageCategory$packagesArgs<ExtArgs>
+    _count?: boolean | PackageCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["packageCategory"]>
+
+  export type PackageCategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    coverImage?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["packageCategory"]>
+
+  export type PackageCategorySelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    coverImage?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PackageCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    packages?: boolean | PackageCategory$packagesArgs<ExtArgs>
+    _count?: boolean | PackageCategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PackageCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $PackageCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PackageCategory"
+    objects: {
+      packages: Prisma.$PackagePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+      description: string | null
+      coverImage: string | null
+      sortOrder: number
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["packageCategory"]>
+    composites: {}
+  }
+
+  type PackageCategoryGetPayload<S extends boolean | null | undefined | PackageCategoryDefaultArgs> = $Result.GetResult<Prisma.$PackageCategoryPayload, S>
+
+  type PackageCategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PackageCategoryFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PackageCategoryCountAggregateInputType | true
+    }
+
+  export interface PackageCategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PackageCategory'], meta: { name: 'PackageCategory' } }
+    /**
+     * Find zero or one PackageCategory that matches the filter.
+     * @param {PackageCategoryFindUniqueArgs} args - Arguments to find a PackageCategory
+     * @example
+     * // Get one PackageCategory
+     * const packageCategory = await prisma.packageCategory.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PackageCategoryFindUniqueArgs>(args: SelectSubset<T, PackageCategoryFindUniqueArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one PackageCategory that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {PackageCategoryFindUniqueOrThrowArgs} args - Arguments to find a PackageCategory
+     * @example
+     * // Get one PackageCategory
+     * const packageCategory = await prisma.packageCategory.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PackageCategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, PackageCategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first PackageCategory that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageCategoryFindFirstArgs} args - Arguments to find a PackageCategory
+     * @example
+     * // Get one PackageCategory
+     * const packageCategory = await prisma.packageCategory.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PackageCategoryFindFirstArgs>(args?: SelectSubset<T, PackageCategoryFindFirstArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first PackageCategory that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageCategoryFindFirstOrThrowArgs} args - Arguments to find a PackageCategory
+     * @example
+     * // Get one PackageCategory
+     * const packageCategory = await prisma.packageCategory.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PackageCategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, PackageCategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more PackageCategories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageCategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PackageCategories
+     * const packageCategories = await prisma.packageCategory.findMany()
+     * 
+     * // Get first 10 PackageCategories
+     * const packageCategories = await prisma.packageCategory.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const packageCategoryWithIdOnly = await prisma.packageCategory.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PackageCategoryFindManyArgs>(args?: SelectSubset<T, PackageCategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a PackageCategory.
+     * @param {PackageCategoryCreateArgs} args - Arguments to create a PackageCategory.
+     * @example
+     * // Create one PackageCategory
+     * const PackageCategory = await prisma.packageCategory.create({
+     *   data: {
+     *     // ... data to create a PackageCategory
+     *   }
+     * })
+     * 
+     */
+    create<T extends PackageCategoryCreateArgs>(args: SelectSubset<T, PackageCategoryCreateArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many PackageCategories.
+     * @param {PackageCategoryCreateManyArgs} args - Arguments to create many PackageCategories.
+     * @example
+     * // Create many PackageCategories
+     * const packageCategory = await prisma.packageCategory.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PackageCategoryCreateManyArgs>(args?: SelectSubset<T, PackageCategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PackageCategories and returns the data saved in the database.
+     * @param {PackageCategoryCreateManyAndReturnArgs} args - Arguments to create many PackageCategories.
+     * @example
+     * // Create many PackageCategories
+     * const packageCategory = await prisma.packageCategory.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PackageCategories and only return the `id`
+     * const packageCategoryWithIdOnly = await prisma.packageCategory.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PackageCategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, PackageCategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a PackageCategory.
+     * @param {PackageCategoryDeleteArgs} args - Arguments to delete one PackageCategory.
+     * @example
+     * // Delete one PackageCategory
+     * const PackageCategory = await prisma.packageCategory.delete({
+     *   where: {
+     *     // ... filter to delete one PackageCategory
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PackageCategoryDeleteArgs>(args: SelectSubset<T, PackageCategoryDeleteArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one PackageCategory.
+     * @param {PackageCategoryUpdateArgs} args - Arguments to update one PackageCategory.
+     * @example
+     * // Update one PackageCategory
+     * const packageCategory = await prisma.packageCategory.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PackageCategoryUpdateArgs>(args: SelectSubset<T, PackageCategoryUpdateArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more PackageCategories.
+     * @param {PackageCategoryDeleteManyArgs} args - Arguments to filter PackageCategories to delete.
+     * @example
+     * // Delete a few PackageCategories
+     * const { count } = await prisma.packageCategory.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PackageCategoryDeleteManyArgs>(args?: SelectSubset<T, PackageCategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PackageCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageCategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PackageCategories
+     * const packageCategory = await prisma.packageCategory.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PackageCategoryUpdateManyArgs>(args: SelectSubset<T, PackageCategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PackageCategory.
+     * @param {PackageCategoryUpsertArgs} args - Arguments to update or create a PackageCategory.
+     * @example
+     * // Update or create a PackageCategory
+     * const packageCategory = await prisma.packageCategory.upsert({
+     *   create: {
+     *     // ... data to create a PackageCategory
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PackageCategory we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PackageCategoryUpsertArgs>(args: SelectSubset<T, PackageCategoryUpsertArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of PackageCategories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageCategoryCountArgs} args - Arguments to filter PackageCategories to count.
+     * @example
+     * // Count the number of PackageCategories
+     * const count = await prisma.packageCategory.count({
+     *   where: {
+     *     // ... the filter for the PackageCategories we want to count
+     *   }
+     * })
+    **/
+    count<T extends PackageCategoryCountArgs>(
+      args?: Subset<T, PackageCategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PackageCategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PackageCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageCategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PackageCategoryAggregateArgs>(args: Subset<T, PackageCategoryAggregateArgs>): Prisma.PrismaPromise<GetPackageCategoryAggregateType<T>>
+
+    /**
+     * Group by PackageCategory.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PackageCategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PackageCategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PackageCategoryGroupByArgs['orderBy'] }
+        : { orderBy?: PackageCategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PackageCategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPackageCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PackageCategory model
+   */
+  readonly fields: PackageCategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PackageCategory.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PackageCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    packages<T extends PackageCategory$packagesArgs<ExtArgs> = {}>(args?: Subset<T, PackageCategory$packagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PackagePayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PackageCategory model
+   */ 
+  interface PackageCategoryFieldRefs {
+    readonly id: FieldRef<"PackageCategory", 'String'>
+    readonly name: FieldRef<"PackageCategory", 'String'>
+    readonly slug: FieldRef<"PackageCategory", 'String'>
+    readonly description: FieldRef<"PackageCategory", 'String'>
+    readonly coverImage: FieldRef<"PackageCategory", 'String'>
+    readonly sortOrder: FieldRef<"PackageCategory", 'Int'>
+    readonly isActive: FieldRef<"PackageCategory", 'Boolean'>
+    readonly createdAt: FieldRef<"PackageCategory", 'DateTime'>
+    readonly updatedAt: FieldRef<"PackageCategory", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PackageCategory findUnique
+   */
+  export type PackageCategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageCategory to fetch.
+     */
+    where: PackageCategoryWhereUniqueInput
+  }
+
+  /**
+   * PackageCategory findUniqueOrThrow
+   */
+  export type PackageCategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageCategory to fetch.
+     */
+    where: PackageCategoryWhereUniqueInput
+  }
+
+  /**
+   * PackageCategory findFirst
+   */
+  export type PackageCategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageCategory to fetch.
+     */
+    where?: PackageCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageCategories to fetch.
+     */
+    orderBy?: PackageCategoryOrderByWithRelationInput | PackageCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageCategories.
+     */
+    cursor?: PackageCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageCategories.
+     */
+    distinct?: PackageCategoryScalarFieldEnum | PackageCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * PackageCategory findFirstOrThrow
+   */
+  export type PackageCategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageCategory to fetch.
+     */
+    where?: PackageCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageCategories to fetch.
+     */
+    orderBy?: PackageCategoryOrderByWithRelationInput | PackageCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PackageCategories.
+     */
+    cursor?: PackageCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageCategories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PackageCategories.
+     */
+    distinct?: PackageCategoryScalarFieldEnum | PackageCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * PackageCategory findMany
+   */
+  export type PackageCategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which PackageCategories to fetch.
+     */
+    where?: PackageCategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PackageCategories to fetch.
+     */
+    orderBy?: PackageCategoryOrderByWithRelationInput | PackageCategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PackageCategories.
+     */
+    cursor?: PackageCategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PackageCategories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PackageCategories.
+     */
+    skip?: number
+    distinct?: PackageCategoryScalarFieldEnum | PackageCategoryScalarFieldEnum[]
+  }
+
+  /**
+   * PackageCategory create
+   */
+  export type PackageCategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PackageCategory.
+     */
+    data: XOR<PackageCategoryCreateInput, PackageCategoryUncheckedCreateInput>
+  }
+
+  /**
+   * PackageCategory createMany
+   */
+  export type PackageCategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PackageCategories.
+     */
+    data: PackageCategoryCreateManyInput | PackageCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PackageCategory createManyAndReturn
+   */
+  export type PackageCategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many PackageCategories.
+     */
+    data: PackageCategoryCreateManyInput | PackageCategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PackageCategory update
+   */
+  export type PackageCategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PackageCategory.
+     */
+    data: XOR<PackageCategoryUpdateInput, PackageCategoryUncheckedUpdateInput>
+    /**
+     * Choose, which PackageCategory to update.
+     */
+    where: PackageCategoryWhereUniqueInput
+  }
+
+  /**
+   * PackageCategory updateMany
+   */
+  export type PackageCategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PackageCategories.
+     */
+    data: XOR<PackageCategoryUpdateManyMutationInput, PackageCategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which PackageCategories to update
+     */
+    where?: PackageCategoryWhereInput
+  }
+
+  /**
+   * PackageCategory upsert
+   */
+  export type PackageCategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PackageCategory to update in case it exists.
+     */
+    where: PackageCategoryWhereUniqueInput
+    /**
+     * In case the PackageCategory found by the `where` argument doesn't exist, create a new PackageCategory with this data.
+     */
+    create: XOR<PackageCategoryCreateInput, PackageCategoryUncheckedCreateInput>
+    /**
+     * In case the PackageCategory was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PackageCategoryUpdateInput, PackageCategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * PackageCategory delete
+   */
+  export type PackageCategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+    /**
+     * Filter which PackageCategory to delete.
+     */
+    where: PackageCategoryWhereUniqueInput
+  }
+
+  /**
+   * PackageCategory deleteMany
+   */
+  export type PackageCategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PackageCategories to delete
+     */
+    where?: PackageCategoryWhereInput
+  }
+
+  /**
+   * PackageCategory.packages
+   */
+  export type PackageCategory$packagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Package
+     */
+    select?: PackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
+    where?: PackageWhereInput
+    orderBy?: PackageOrderByWithRelationInput | PackageOrderByWithRelationInput[]
+    cursor?: PackageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PackageScalarFieldEnum | PackageScalarFieldEnum[]
+  }
+
+  /**
+   * PackageCategory without action
+   */
+  export type PackageCategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PackageCategory
+     */
+    select?: PackageCategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageCategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Package
    */
 
@@ -5929,39 +7076,56 @@ export namespace Prisma {
 
   export type PackageMinAggregateOutputType = {
     id: string | null
+    categoryId: string | null
     name: string | null
+    shortDesc: string | null
+    description: string | null
     price: number | null
     priceLabel: string | null
-    description: string | null
+    imageUrl: string | null
     isPopular: boolean | null
+    isFeatured: boolean | null
     isActive: boolean | null
     sortOrder: number | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type PackageMaxAggregateOutputType = {
     id: string | null
+    categoryId: string | null
     name: string | null
+    shortDesc: string | null
+    description: string | null
     price: number | null
     priceLabel: string | null
-    description: string | null
+    imageUrl: string | null
     isPopular: boolean | null
+    isFeatured: boolean | null
     isActive: boolean | null
     sortOrder: number | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type PackageCountAggregateOutputType = {
     id: number
+    categoryId: number
     name: number
+    shortDesc: number
+    description: number
     price: number
     priceLabel: number
-    description: number
     features: number
+    exclusions: number
+    imageUrl: number
+    galleryImages: number
     isPopular: number
+    isFeatured: number
     isActive: number
     sortOrder: number
     createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -5978,39 +7142,56 @@ export namespace Prisma {
 
   export type PackageMinAggregateInputType = {
     id?: true
+    categoryId?: true
     name?: true
+    shortDesc?: true
+    description?: true
     price?: true
     priceLabel?: true
-    description?: true
+    imageUrl?: true
     isPopular?: true
+    isFeatured?: true
     isActive?: true
     sortOrder?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type PackageMaxAggregateInputType = {
     id?: true
+    categoryId?: true
     name?: true
+    shortDesc?: true
+    description?: true
     price?: true
     priceLabel?: true
-    description?: true
+    imageUrl?: true
     isPopular?: true
+    isFeatured?: true
     isActive?: true
     sortOrder?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type PackageCountAggregateInputType = {
     id?: true
+    categoryId?: true
     name?: true
+    shortDesc?: true
+    description?: true
     price?: true
     priceLabel?: true
-    description?: true
     features?: true
+    exclusions?: true
+    imageUrl?: true
+    galleryImages?: true
     isPopular?: true
+    isFeatured?: true
     isActive?: true
     sortOrder?: true
     createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -6102,15 +7283,22 @@ export namespace Prisma {
 
   export type PackageGroupByOutputType = {
     id: string
+    categoryId: string
     name: string
-    price: number
-    priceLabel: string
+    shortDesc: string
     description: string
+    price: number | null
+    priceLabel: string
     features: string[]
+    exclusions: string[]
+    imageUrl: string | null
+    galleryImages: string[]
     isPopular: boolean
+    isFeatured: boolean
     isActive: boolean
     sortOrder: number
     createdAt: Date
+    updatedAt: Date
     _count: PackageCountAggregateOutputType | null
     _avg: PackageAvgAggregateOutputType | null
     _sum: PackageSumAggregateOutputType | null
@@ -6134,58 +7322,96 @@ export namespace Prisma {
 
   export type PackageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    categoryId?: boolean
     name?: boolean
+    shortDesc?: boolean
+    description?: boolean
     price?: boolean
     priceLabel?: boolean
-    description?: boolean
     features?: boolean
+    exclusions?: boolean
+    imageUrl?: boolean
+    galleryImages?: boolean
     isPopular?: boolean
+    isFeatured?: boolean
     isActive?: boolean
     sortOrder?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
+    category?: boolean | PackageCategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["package"]>
 
   export type PackageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    categoryId?: boolean
     name?: boolean
+    shortDesc?: boolean
+    description?: boolean
     price?: boolean
     priceLabel?: boolean
-    description?: boolean
     features?: boolean
+    exclusions?: boolean
+    imageUrl?: boolean
+    galleryImages?: boolean
     isPopular?: boolean
+    isFeatured?: boolean
     isActive?: boolean
     sortOrder?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
+    category?: boolean | PackageCategoryDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["package"]>
 
   export type PackageSelectScalar = {
     id?: boolean
+    categoryId?: boolean
     name?: boolean
+    shortDesc?: boolean
+    description?: boolean
     price?: boolean
     priceLabel?: boolean
-    description?: boolean
     features?: boolean
+    exclusions?: boolean
+    imageUrl?: boolean
+    galleryImages?: boolean
     isPopular?: boolean
+    isFeatured?: boolean
     isActive?: boolean
     sortOrder?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
   }
 
+  export type PackageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | PackageCategoryDefaultArgs<ExtArgs>
+  }
+  export type PackageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | PackageCategoryDefaultArgs<ExtArgs>
+  }
 
   export type $PackagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Package"
-    objects: {}
+    objects: {
+      category: Prisma.$PackageCategoryPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      categoryId: string
       name: string
-      price: number
-      priceLabel: string
+      shortDesc: string
       description: string
+      price: number | null
+      priceLabel: string
       features: string[]
+      exclusions: string[]
+      imageUrl: string | null
+      galleryImages: string[]
       isPopular: boolean
+      isFeatured: boolean
       isActive: boolean
       sortOrder: number
       createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["package"]>
     composites: {}
   }
@@ -6550,6 +7776,7 @@ export namespace Prisma {
    */
   export interface Prisma__PackageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    category<T extends PackageCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PackageCategoryDefaultArgs<ExtArgs>>): Prisma__PackageCategoryClient<$Result.GetResult<Prisma.$PackageCategoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6580,15 +7807,22 @@ export namespace Prisma {
    */ 
   interface PackageFieldRefs {
     readonly id: FieldRef<"Package", 'String'>
+    readonly categoryId: FieldRef<"Package", 'String'>
     readonly name: FieldRef<"Package", 'String'>
+    readonly shortDesc: FieldRef<"Package", 'String'>
+    readonly description: FieldRef<"Package", 'String'>
     readonly price: FieldRef<"Package", 'Float'>
     readonly priceLabel: FieldRef<"Package", 'String'>
-    readonly description: FieldRef<"Package", 'String'>
     readonly features: FieldRef<"Package", 'String[]'>
+    readonly exclusions: FieldRef<"Package", 'String[]'>
+    readonly imageUrl: FieldRef<"Package", 'String'>
+    readonly galleryImages: FieldRef<"Package", 'String[]'>
     readonly isPopular: FieldRef<"Package", 'Boolean'>
+    readonly isFeatured: FieldRef<"Package", 'Boolean'>
     readonly isActive: FieldRef<"Package", 'Boolean'>
     readonly sortOrder: FieldRef<"Package", 'Int'>
     readonly createdAt: FieldRef<"Package", 'DateTime'>
+    readonly updatedAt: FieldRef<"Package", 'DateTime'>
   }
     
 
@@ -6601,6 +7835,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Package
      */
     select?: PackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
     /**
      * Filter, which Package to fetch.
      */
@@ -6616,6 +7854,10 @@ export namespace Prisma {
      */
     select?: PackageSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
+    /**
      * Filter, which Package to fetch.
      */
     where: PackageWhereUniqueInput
@@ -6629,6 +7871,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Package
      */
     select?: PackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
     /**
      * Filter, which Package to fetch.
      */
@@ -6674,6 +7920,10 @@ export namespace Prisma {
      */
     select?: PackageSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
+    /**
      * Filter, which Package to fetch.
      */
     where?: PackageWhereInput
@@ -6718,6 +7968,10 @@ export namespace Prisma {
      */
     select?: PackageSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
+    /**
      * Filter, which Packages to fetch.
      */
     where?: PackageWhereInput
@@ -6757,6 +8011,10 @@ export namespace Prisma {
      */
     select?: PackageSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
+    /**
      * The data needed to create a Package.
      */
     data: XOR<PackageCreateInput, PackageUncheckedCreateInput>
@@ -6786,6 +8044,10 @@ export namespace Prisma {
      */
     data: PackageCreateManyInput | PackageCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -6796,6 +8058,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Package
      */
     select?: PackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
     /**
      * The data needed to update a Package.
      */
@@ -6829,6 +8095,10 @@ export namespace Prisma {
      */
     select?: PackageSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
+    /**
      * The filter to search for the Package to update in case it exists.
      */
     where: PackageWhereUniqueInput
@@ -6850,6 +8120,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Package
      */
     select?: PackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
     /**
      * Filter which Package to delete.
      */
@@ -6874,6 +8148,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Package
      */
     select?: PackageSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PackageInclude<ExtArgs> | null
   }
 
 
@@ -12184,17 +13462,39 @@ export namespace Prisma {
   export type GalleryImageScalarFieldEnum = (typeof GalleryImageScalarFieldEnum)[keyof typeof GalleryImageScalarFieldEnum]
 
 
-  export const PackageScalarFieldEnum: {
+  export const PackageCategoryScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    slug: 'slug',
+    description: 'description',
+    coverImage: 'coverImage',
+    sortOrder: 'sortOrder',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PackageCategoryScalarFieldEnum = (typeof PackageCategoryScalarFieldEnum)[keyof typeof PackageCategoryScalarFieldEnum]
+
+
+  export const PackageScalarFieldEnum: {
+    id: 'id',
+    categoryId: 'categoryId',
+    name: 'name',
+    shortDesc: 'shortDesc',
+    description: 'description',
     price: 'price',
     priceLabel: 'priceLabel',
-    description: 'description',
     features: 'features',
+    exclusions: 'exclusions',
+    imageUrl: 'imageUrl',
+    galleryImages: 'galleryImages',
     isPopular: 'isPopular',
+    isFeatured: 'isFeatured',
     isActive: 'isActive',
     sortOrder: 'sortOrder',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type PackageScalarFieldEnum = (typeof PackageScalarFieldEnum)[keyof typeof PackageScalarFieldEnum]
@@ -12866,33 +14166,126 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"GalleryImage"> | Date | string
   }
 
+  export type PackageCategoryWhereInput = {
+    AND?: PackageCategoryWhereInput | PackageCategoryWhereInput[]
+    OR?: PackageCategoryWhereInput[]
+    NOT?: PackageCategoryWhereInput | PackageCategoryWhereInput[]
+    id?: StringFilter<"PackageCategory"> | string
+    name?: StringFilter<"PackageCategory"> | string
+    slug?: StringFilter<"PackageCategory"> | string
+    description?: StringNullableFilter<"PackageCategory"> | string | null
+    coverImage?: StringNullableFilter<"PackageCategory"> | string | null
+    sortOrder?: IntFilter<"PackageCategory"> | number
+    isActive?: BoolFilter<"PackageCategory"> | boolean
+    createdAt?: DateTimeFilter<"PackageCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"PackageCategory"> | Date | string
+    packages?: PackageListRelationFilter
+  }
+
+  export type PackageCategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrderInput | SortOrder
+    coverImage?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    packages?: PackageOrderByRelationAggregateInput
+  }
+
+  export type PackageCategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: PackageCategoryWhereInput | PackageCategoryWhereInput[]
+    OR?: PackageCategoryWhereInput[]
+    NOT?: PackageCategoryWhereInput | PackageCategoryWhereInput[]
+    name?: StringFilter<"PackageCategory"> | string
+    description?: StringNullableFilter<"PackageCategory"> | string | null
+    coverImage?: StringNullableFilter<"PackageCategory"> | string | null
+    sortOrder?: IntFilter<"PackageCategory"> | number
+    isActive?: BoolFilter<"PackageCategory"> | boolean
+    createdAt?: DateTimeFilter<"PackageCategory"> | Date | string
+    updatedAt?: DateTimeFilter<"PackageCategory"> | Date | string
+    packages?: PackageListRelationFilter
+  }, "id" | "slug">
+
+  export type PackageCategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrderInput | SortOrder
+    coverImage?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PackageCategoryCountOrderByAggregateInput
+    _avg?: PackageCategoryAvgOrderByAggregateInput
+    _max?: PackageCategoryMaxOrderByAggregateInput
+    _min?: PackageCategoryMinOrderByAggregateInput
+    _sum?: PackageCategorySumOrderByAggregateInput
+  }
+
+  export type PackageCategoryScalarWhereWithAggregatesInput = {
+    AND?: PackageCategoryScalarWhereWithAggregatesInput | PackageCategoryScalarWhereWithAggregatesInput[]
+    OR?: PackageCategoryScalarWhereWithAggregatesInput[]
+    NOT?: PackageCategoryScalarWhereWithAggregatesInput | PackageCategoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PackageCategory"> | string
+    name?: StringWithAggregatesFilter<"PackageCategory"> | string
+    slug?: StringWithAggregatesFilter<"PackageCategory"> | string
+    description?: StringNullableWithAggregatesFilter<"PackageCategory"> | string | null
+    coverImage?: StringNullableWithAggregatesFilter<"PackageCategory"> | string | null
+    sortOrder?: IntWithAggregatesFilter<"PackageCategory"> | number
+    isActive?: BoolWithAggregatesFilter<"PackageCategory"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"PackageCategory"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PackageCategory"> | Date | string
+  }
+
   export type PackageWhereInput = {
     AND?: PackageWhereInput | PackageWhereInput[]
     OR?: PackageWhereInput[]
     NOT?: PackageWhereInput | PackageWhereInput[]
     id?: StringFilter<"Package"> | string
+    categoryId?: StringFilter<"Package"> | string
     name?: StringFilter<"Package"> | string
-    price?: FloatFilter<"Package"> | number
-    priceLabel?: StringFilter<"Package"> | string
+    shortDesc?: StringFilter<"Package"> | string
     description?: StringFilter<"Package"> | string
+    price?: FloatNullableFilter<"Package"> | number | null
+    priceLabel?: StringFilter<"Package"> | string
     features?: StringNullableListFilter<"Package">
+    exclusions?: StringNullableListFilter<"Package">
+    imageUrl?: StringNullableFilter<"Package"> | string | null
+    galleryImages?: StringNullableListFilter<"Package">
     isPopular?: BoolFilter<"Package"> | boolean
+    isFeatured?: BoolFilter<"Package"> | boolean
     isActive?: BoolFilter<"Package"> | boolean
     sortOrder?: IntFilter<"Package"> | number
     createdAt?: DateTimeFilter<"Package"> | Date | string
+    updatedAt?: DateTimeFilter<"Package"> | Date | string
+    category?: XOR<PackageCategoryRelationFilter, PackageCategoryWhereInput>
   }
 
   export type PackageOrderByWithRelationInput = {
     id?: SortOrder
+    categoryId?: SortOrder
     name?: SortOrder
-    price?: SortOrder
-    priceLabel?: SortOrder
+    shortDesc?: SortOrder
     description?: SortOrder
+    price?: SortOrderInput | SortOrder
+    priceLabel?: SortOrder
     features?: SortOrder
+    exclusions?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    galleryImages?: SortOrder
     isPopular?: SortOrder
+    isFeatured?: SortOrder
     isActive?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
+    category?: PackageCategoryOrderByWithRelationInput
   }
 
   export type PackageWhereUniqueInput = Prisma.AtLeast<{
@@ -12900,28 +14293,43 @@ export namespace Prisma {
     AND?: PackageWhereInput | PackageWhereInput[]
     OR?: PackageWhereInput[]
     NOT?: PackageWhereInput | PackageWhereInput[]
+    categoryId?: StringFilter<"Package"> | string
     name?: StringFilter<"Package"> | string
-    price?: FloatFilter<"Package"> | number
-    priceLabel?: StringFilter<"Package"> | string
+    shortDesc?: StringFilter<"Package"> | string
     description?: StringFilter<"Package"> | string
+    price?: FloatNullableFilter<"Package"> | number | null
+    priceLabel?: StringFilter<"Package"> | string
     features?: StringNullableListFilter<"Package">
+    exclusions?: StringNullableListFilter<"Package">
+    imageUrl?: StringNullableFilter<"Package"> | string | null
+    galleryImages?: StringNullableListFilter<"Package">
     isPopular?: BoolFilter<"Package"> | boolean
+    isFeatured?: BoolFilter<"Package"> | boolean
     isActive?: BoolFilter<"Package"> | boolean
     sortOrder?: IntFilter<"Package"> | number
     createdAt?: DateTimeFilter<"Package"> | Date | string
+    updatedAt?: DateTimeFilter<"Package"> | Date | string
+    category?: XOR<PackageCategoryRelationFilter, PackageCategoryWhereInput>
   }, "id">
 
   export type PackageOrderByWithAggregationInput = {
     id?: SortOrder
+    categoryId?: SortOrder
     name?: SortOrder
-    price?: SortOrder
-    priceLabel?: SortOrder
+    shortDesc?: SortOrder
     description?: SortOrder
+    price?: SortOrderInput | SortOrder
+    priceLabel?: SortOrder
     features?: SortOrder
+    exclusions?: SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    galleryImages?: SortOrder
     isPopular?: SortOrder
+    isFeatured?: SortOrder
     isActive?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: PackageCountOrderByAggregateInput
     _avg?: PackageAvgOrderByAggregateInput
     _max?: PackageMaxOrderByAggregateInput
@@ -12934,15 +14342,22 @@ export namespace Prisma {
     OR?: PackageScalarWhereWithAggregatesInput[]
     NOT?: PackageScalarWhereWithAggregatesInput | PackageScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Package"> | string
+    categoryId?: StringWithAggregatesFilter<"Package"> | string
     name?: StringWithAggregatesFilter<"Package"> | string
-    price?: FloatWithAggregatesFilter<"Package"> | number
-    priceLabel?: StringWithAggregatesFilter<"Package"> | string
+    shortDesc?: StringWithAggregatesFilter<"Package"> | string
     description?: StringWithAggregatesFilter<"Package"> | string
+    price?: FloatNullableWithAggregatesFilter<"Package"> | number | null
+    priceLabel?: StringWithAggregatesFilter<"Package"> | string
     features?: StringNullableListFilter<"Package">
+    exclusions?: StringNullableListFilter<"Package">
+    imageUrl?: StringNullableWithAggregatesFilter<"Package"> | string | null
+    galleryImages?: StringNullableListFilter<"Package">
     isPopular?: BoolWithAggregatesFilter<"Package"> | boolean
+    isFeatured?: BoolWithAggregatesFilter<"Package"> | boolean
     isActive?: BoolWithAggregatesFilter<"Package"> | boolean
     sortOrder?: IntWithAggregatesFilter<"Package"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Package"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Package"> | Date | string
   }
 
   export type WeddingInvitationWhereInput = {
@@ -13826,95 +15241,231 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PackageCategoryCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    coverImage?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    packages?: PackageCreateNestedManyWithoutCategoryInput
+  }
+
+  export type PackageCategoryUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    coverImage?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    packages?: PackageUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type PackageCategoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    packages?: PackageUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type PackageCategoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    packages?: PackageUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type PackageCategoryCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    coverImage?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageCategoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageCategoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type PackageCreateInput = {
     id?: string
     name: string
-    price: number
-    priceLabel: string
+    shortDesc?: string
     description: string
+    price?: number | null
+    priceLabel: string
     features?: PackageCreatefeaturesInput | string[]
+    exclusions?: PackageCreateexclusionsInput | string[]
+    imageUrl?: string | null
+    galleryImages?: PackageCreategalleryImagesInput | string[]
     isPopular?: boolean
+    isFeatured?: boolean
     isActive?: boolean
     sortOrder?: number
     createdAt?: Date | string
+    updatedAt?: Date | string
+    category: PackageCategoryCreateNestedOneWithoutPackagesInput
   }
 
   export type PackageUncheckedCreateInput = {
     id?: string
+    categoryId: string
     name: string
-    price: number
-    priceLabel: string
+    shortDesc?: string
     description: string
+    price?: number | null
+    priceLabel: string
     features?: PackageCreatefeaturesInput | string[]
+    exclusions?: PackageCreateexclusionsInput | string[]
+    imageUrl?: string | null
+    galleryImages?: PackageCreategalleryImagesInput | string[]
     isPopular?: boolean
+    isFeatured?: boolean
     isActive?: boolean
     sortOrder?: number
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PackageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    priceLabel?: StringFieldUpdateOperationsInput | string
+    shortDesc?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    priceLabel?: StringFieldUpdateOperationsInput | string
     features?: PackageUpdatefeaturesInput | string[]
+    exclusions?: PackageUpdateexclusionsInput | string[]
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: PackageUpdategalleryImagesInput | string[]
     isPopular?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: PackageCategoryUpdateOneRequiredWithoutPackagesNestedInput
   }
 
   export type PackageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    priceLabel?: StringFieldUpdateOperationsInput | string
+    shortDesc?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    priceLabel?: StringFieldUpdateOperationsInput | string
     features?: PackageUpdatefeaturesInput | string[]
+    exclusions?: PackageUpdateexclusionsInput | string[]
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: PackageUpdategalleryImagesInput | string[]
     isPopular?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PackageCreateManyInput = {
     id?: string
+    categoryId: string
     name: string
-    price: number
-    priceLabel: string
+    shortDesc?: string
     description: string
+    price?: number | null
+    priceLabel: string
     features?: PackageCreatefeaturesInput | string[]
+    exclusions?: PackageCreateexclusionsInput | string[]
+    imageUrl?: string | null
+    galleryImages?: PackageCreategalleryImagesInput | string[]
     isPopular?: boolean
+    isFeatured?: boolean
     isActive?: boolean
     sortOrder?: number
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PackageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    priceLabel?: StringFieldUpdateOperationsInput | string
+    shortDesc?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    priceLabel?: StringFieldUpdateOperationsInput | string
     features?: PackageUpdatefeaturesInput | string[]
+    exclusions?: PackageUpdateexclusionsInput | string[]
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: PackageUpdategalleryImagesInput | string[]
     isPopular?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PackageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    price?: FloatFieldUpdateOperationsInput | number
-    priceLabel?: StringFieldUpdateOperationsInput | string
+    shortDesc?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    priceLabel?: StringFieldUpdateOperationsInput | string
     features?: PackageUpdatefeaturesInput | string[]
+    exclusions?: PackageUpdateexclusionsInput | string[]
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: PackageUpdategalleryImagesInput | string[]
     isPopular?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
     sortOrder?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WeddingInvitationCreateInput = {
@@ -14998,15 +16549,58 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+  export type PackageListRelationFilter = {
+    every?: PackageWhereInput
+    some?: PackageWhereInput
+    none?: PackageWhereInput
+  }
+
+  export type PackageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PackageCategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    coverImage?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageCategoryAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type PackageCategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    coverImage?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageCategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    coverImage?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PackageCategorySumOrderByAggregateInput = {
+    sortOrder?: SortOrder
   }
 
   export type StringNullableListFilter<$PrismaModel = never> = {
@@ -15017,17 +16611,29 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type PackageCategoryRelationFilter = {
+    is?: PackageCategoryWhereInput
+    isNot?: PackageCategoryWhereInput
+  }
+
   export type PackageCountOrderByAggregateInput = {
     id?: SortOrder
+    categoryId?: SortOrder
     name?: SortOrder
+    shortDesc?: SortOrder
+    description?: SortOrder
     price?: SortOrder
     priceLabel?: SortOrder
-    description?: SortOrder
     features?: SortOrder
+    exclusions?: SortOrder
+    imageUrl?: SortOrder
+    galleryImages?: SortOrder
     isPopular?: SortOrder
+    isFeatured?: SortOrder
     isActive?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PackageAvgOrderByAggregateInput = {
@@ -15037,47 +16643,41 @@ export namespace Prisma {
 
   export type PackageMaxOrderByAggregateInput = {
     id?: SortOrder
+    categoryId?: SortOrder
     name?: SortOrder
+    shortDesc?: SortOrder
+    description?: SortOrder
     price?: SortOrder
     priceLabel?: SortOrder
-    description?: SortOrder
+    imageUrl?: SortOrder
     isPopular?: SortOrder
+    isFeatured?: SortOrder
     isActive?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PackageMinOrderByAggregateInput = {
     id?: SortOrder
+    categoryId?: SortOrder
     name?: SortOrder
+    shortDesc?: SortOrder
+    description?: SortOrder
     price?: SortOrder
     priceLabel?: SortOrder
-    description?: SortOrder
+    imageUrl?: SortOrder
     isPopular?: SortOrder
+    isFeatured?: SortOrder
     isActive?: SortOrder
     sortOrder?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type PackageSumOrderByAggregateInput = {
     price?: SortOrder
     sortOrder?: SortOrder
-  }
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type EnumInvitationThemeFilter<$PrismaModel = never> = {
@@ -15613,21 +17213,87 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type PackageCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<PackageCreateWithoutCategoryInput, PackageUncheckedCreateWithoutCategoryInput> | PackageCreateWithoutCategoryInput[] | PackageUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: PackageCreateOrConnectWithoutCategoryInput | PackageCreateOrConnectWithoutCategoryInput[]
+    createMany?: PackageCreateManyCategoryInputEnvelope
+    connect?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+  }
+
+  export type PackageUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<PackageCreateWithoutCategoryInput, PackageUncheckedCreateWithoutCategoryInput> | PackageCreateWithoutCategoryInput[] | PackageUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: PackageCreateOrConnectWithoutCategoryInput | PackageCreateOrConnectWithoutCategoryInput[]
+    createMany?: PackageCreateManyCategoryInputEnvelope
+    connect?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+  }
+
+  export type PackageUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<PackageCreateWithoutCategoryInput, PackageUncheckedCreateWithoutCategoryInput> | PackageCreateWithoutCategoryInput[] | PackageUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: PackageCreateOrConnectWithoutCategoryInput | PackageCreateOrConnectWithoutCategoryInput[]
+    upsert?: PackageUpsertWithWhereUniqueWithoutCategoryInput | PackageUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: PackageCreateManyCategoryInputEnvelope
+    set?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+    disconnect?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+    delete?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+    connect?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+    update?: PackageUpdateWithWhereUniqueWithoutCategoryInput | PackageUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: PackageUpdateManyWithWhereWithoutCategoryInput | PackageUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: PackageScalarWhereInput | PackageScalarWhereInput[]
+  }
+
+  export type PackageUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<PackageCreateWithoutCategoryInput, PackageUncheckedCreateWithoutCategoryInput> | PackageCreateWithoutCategoryInput[] | PackageUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: PackageCreateOrConnectWithoutCategoryInput | PackageCreateOrConnectWithoutCategoryInput[]
+    upsert?: PackageUpsertWithWhereUniqueWithoutCategoryInput | PackageUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: PackageCreateManyCategoryInputEnvelope
+    set?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+    disconnect?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+    delete?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+    connect?: PackageWhereUniqueInput | PackageWhereUniqueInput[]
+    update?: PackageUpdateWithWhereUniqueWithoutCategoryInput | PackageUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: PackageUpdateManyWithWhereWithoutCategoryInput | PackageUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: PackageScalarWhereInput | PackageScalarWhereInput[]
+  }
+
   export type PackageCreatefeaturesInput = {
     set: string[]
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type PackageCreateexclusionsInput = {
+    set: string[]
+  }
+
+  export type PackageCreategalleryImagesInput = {
+    set: string[]
+  }
+
+  export type PackageCategoryCreateNestedOneWithoutPackagesInput = {
+    create?: XOR<PackageCategoryCreateWithoutPackagesInput, PackageCategoryUncheckedCreateWithoutPackagesInput>
+    connectOrCreate?: PackageCategoryCreateOrConnectWithoutPackagesInput
+    connect?: PackageCategoryWhereUniqueInput
   }
 
   export type PackageUpdatefeaturesInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type PackageUpdateexclusionsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type PackageUpdategalleryImagesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type PackageCategoryUpdateOneRequiredWithoutPackagesNestedInput = {
+    create?: XOR<PackageCategoryCreateWithoutPackagesInput, PackageCategoryUncheckedCreateWithoutPackagesInput>
+    connectOrCreate?: PackageCategoryCreateOrConnectWithoutPackagesInput
+    upsert?: PackageCategoryUpsertWithoutPackagesInput
+    connect?: PackageCategoryWhereUniqueInput
+    update?: XOR<XOR<PackageCategoryUpdateToOneWithWhereWithoutPackagesInput, PackageCategoryUpdateWithoutPackagesInput>, PackageCategoryUncheckedUpdateWithoutPackagesInput>
   }
 
   export type WeddingInvitationCreategalleryImagesInput = {
@@ -16199,22 +17865,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
-  }
-
   export type NestedEnumInvitationThemeFilter<$PrismaModel = never> = {
     equals?: $Enums.InvitationTheme | EnumInvitationThemeFieldRefInput<$PrismaModel>
     in?: $Enums.InvitationTheme[] | ListEnumInvitationThemeFieldRefInput<$PrismaModel>
@@ -16609,6 +18259,157 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     invitations?: WeddingInvitationUncheckedUpdateManyWithoutBookingNestedInput
+  }
+
+  export type PackageCreateWithoutCategoryInput = {
+    id?: string
+    name: string
+    shortDesc?: string
+    description: string
+    price?: number | null
+    priceLabel: string
+    features?: PackageCreatefeaturesInput | string[]
+    exclusions?: PackageCreateexclusionsInput | string[]
+    imageUrl?: string | null
+    galleryImages?: PackageCreategalleryImagesInput | string[]
+    isPopular?: boolean
+    isFeatured?: boolean
+    isActive?: boolean
+    sortOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    name: string
+    shortDesc?: string
+    description: string
+    price?: number | null
+    priceLabel: string
+    features?: PackageCreatefeaturesInput | string[]
+    exclusions?: PackageCreateexclusionsInput | string[]
+    imageUrl?: string | null
+    galleryImages?: PackageCreategalleryImagesInput | string[]
+    isPopular?: boolean
+    isFeatured?: boolean
+    isActive?: boolean
+    sortOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageCreateOrConnectWithoutCategoryInput = {
+    where: PackageWhereUniqueInput
+    create: XOR<PackageCreateWithoutCategoryInput, PackageUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type PackageCreateManyCategoryInputEnvelope = {
+    data: PackageCreateManyCategoryInput | PackageCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PackageUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: PackageWhereUniqueInput
+    update: XOR<PackageUpdateWithoutCategoryInput, PackageUncheckedUpdateWithoutCategoryInput>
+    create: XOR<PackageCreateWithoutCategoryInput, PackageUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type PackageUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: PackageWhereUniqueInput
+    data: XOR<PackageUpdateWithoutCategoryInput, PackageUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type PackageUpdateManyWithWhereWithoutCategoryInput = {
+    where: PackageScalarWhereInput
+    data: XOR<PackageUpdateManyMutationInput, PackageUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type PackageScalarWhereInput = {
+    AND?: PackageScalarWhereInput | PackageScalarWhereInput[]
+    OR?: PackageScalarWhereInput[]
+    NOT?: PackageScalarWhereInput | PackageScalarWhereInput[]
+    id?: StringFilter<"Package"> | string
+    categoryId?: StringFilter<"Package"> | string
+    name?: StringFilter<"Package"> | string
+    shortDesc?: StringFilter<"Package"> | string
+    description?: StringFilter<"Package"> | string
+    price?: FloatNullableFilter<"Package"> | number | null
+    priceLabel?: StringFilter<"Package"> | string
+    features?: StringNullableListFilter<"Package">
+    exclusions?: StringNullableListFilter<"Package">
+    imageUrl?: StringNullableFilter<"Package"> | string | null
+    galleryImages?: StringNullableListFilter<"Package">
+    isPopular?: BoolFilter<"Package"> | boolean
+    isFeatured?: BoolFilter<"Package"> | boolean
+    isActive?: BoolFilter<"Package"> | boolean
+    sortOrder?: IntFilter<"Package"> | number
+    createdAt?: DateTimeFilter<"Package"> | Date | string
+    updatedAt?: DateTimeFilter<"Package"> | Date | string
+  }
+
+  export type PackageCategoryCreateWithoutPackagesInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    coverImage?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageCategoryUncheckedCreateWithoutPackagesInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    coverImage?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageCategoryCreateOrConnectWithoutPackagesInput = {
+    where: PackageCategoryWhereUniqueInput
+    create: XOR<PackageCategoryCreateWithoutPackagesInput, PackageCategoryUncheckedCreateWithoutPackagesInput>
+  }
+
+  export type PackageCategoryUpsertWithoutPackagesInput = {
+    update: XOR<PackageCategoryUpdateWithoutPackagesInput, PackageCategoryUncheckedUpdateWithoutPackagesInput>
+    create: XOR<PackageCategoryCreateWithoutPackagesInput, PackageCategoryUncheckedCreateWithoutPackagesInput>
+    where?: PackageCategoryWhereInput
+  }
+
+  export type PackageCategoryUpdateToOneWithWhereWithoutPackagesInput = {
+    where?: PackageCategoryWhereInput
+    data: XOR<PackageCategoryUpdateWithoutPackagesInput, PackageCategoryUncheckedUpdateWithoutPackagesInput>
+  }
+
+  export type PackageCategoryUpdateWithoutPackagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageCategoryUncheckedUpdateWithoutPackagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImage?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BookingCreateWithoutInvitationsInput = {
@@ -17731,6 +19532,82 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PackageCreateManyCategoryInput = {
+    id?: string
+    name: string
+    shortDesc?: string
+    description: string
+    price?: number | null
+    priceLabel: string
+    features?: PackageCreatefeaturesInput | string[]
+    exclusions?: PackageCreateexclusionsInput | string[]
+    imageUrl?: string | null
+    galleryImages?: PackageCreategalleryImagesInput | string[]
+    isPopular?: boolean
+    isFeatured?: boolean
+    isActive?: boolean
+    sortOrder?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PackageUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    shortDesc?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    priceLabel?: StringFieldUpdateOperationsInput | string
+    features?: PackageUpdatefeaturesInput | string[]
+    exclusions?: PackageUpdateexclusionsInput | string[]
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: PackageUpdategalleryImagesInput | string[]
+    isPopular?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    shortDesc?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    priceLabel?: StringFieldUpdateOperationsInput | string
+    features?: PackageUpdatefeaturesInput | string[]
+    exclusions?: PackageUpdateexclusionsInput | string[]
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: PackageUpdategalleryImagesInput | string[]
+    isPopular?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PackageUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    shortDesc?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    priceLabel?: StringFieldUpdateOperationsInput | string
+    features?: PackageUpdatefeaturesInput | string[]
+    exclusions?: PackageUpdateexclusionsInput | string[]
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    galleryImages?: PackageUpdategalleryImagesInput | string[]
+    isPopular?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type GiftRegistryCreateManyInvitationInput = {
     id?: string
     giftName: string
@@ -17903,6 +19780,10 @@ export namespace Prisma {
      */
     export type BookingCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BookingCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use PackageCategoryCountOutputTypeDefaultArgs instead
+     */
+    export type PackageCategoryCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PackageCategoryCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use WeddingInvitationCountOutputTypeDefaultArgs instead
      */
     export type WeddingInvitationCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WeddingInvitationCountOutputTypeDefaultArgs<ExtArgs>
@@ -17926,6 +19807,10 @@ export namespace Prisma {
      * @deprecated Use GalleryImageDefaultArgs instead
      */
     export type GalleryImageArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = GalleryImageDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PackageCategoryDefaultArgs instead
+     */
+    export type PackageCategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PackageCategoryDefaultArgs<ExtArgs>
     /**
      * @deprecated Use PackageDefaultArgs instead
      */

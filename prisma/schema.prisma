@@ -137,17 +137,46 @@ enum GalleryCategory {
 // ─────────────────────────────────────────
 // SERVICE PACKAGES
 // ─────────────────────────────────────────
+model PackageCategory {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  coverImage  String?
+  sortOrder   Int       @default(0)
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  packages    Package[]
+}
+
 model Package {
-  id          String   @id @default(cuid())
-  name        String   // e.g. "Basic", "Standard", "Premium"
-  price       Float    // in ETB
-  priceLabel  String   // e.g. "Starting from ETB 50,000"
-  description String
-  features    String[] // array of feature strings
-  isPopular   Boolean  @default(false)
-  isActive    Boolean  @default(true)
-  sortOrder   Int      @default(0)
-  createdAt   DateTime @default(now())
+  id            String          @id @default(cuid())
+
+  categoryId    String
+  category      PackageCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+
+  name          String
+  shortDesc     String          @default("")
+  description   String          @db.Text
+
+  price         Float?
+  priceLabel    String
+
+  features      String[]
+  exclusions    String[]        @default([])
+
+  imageUrl      String?
+  galleryImages String[]        @default([])
+
+  isPopular     Boolean         @default(false)
+  isFeatured    Boolean         @default(false)
+  isActive      Boolean         @default(true)
+  sortOrder     Int             @default(0)
+
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
 }
 
 // WEDDING DIGITAL EXPERIENCE
