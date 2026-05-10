@@ -11,6 +11,7 @@ import {
   Image,
   Package,
   Heart,
+  Users,
   Menu,
   X,
   LogOut,
@@ -22,6 +23,7 @@ const navItems = [
   { label: "Weddings", href: "/admin/weddings", icon: Heart },
   { label: "Gallery", href: "/admin/gallery", icon: Image },
   { label: "Packages", href: "/admin/packages", icon: Package },
+  { label: "Users", href: "/admin/users", icon: Users },
 ];
 
 export function Sidebar() {

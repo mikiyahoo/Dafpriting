@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../generated/prisma";
 
 const prisma = new PrismaClient();
 
@@ -11,13 +11,15 @@ async function main() {
     update: {
       password: "$2b$10$FfArhqaqfM9ySZFRo2y9Su2TfWj2CY5NdOag8bo4jbFvrMi/YOmIm",
       name: "Radiance Admin",
-      role: "admin",
+      role: "SUPER_ADMIN",
+      isActive: true,
     },
     create: {
       email: "admin@radiance.com",
       password: "$2b$10$FfArhqaqfM9ySZFRo2y9Su2TfWj2CY5NdOag8bo4jbFvrMi/YOmIm",
       name: "Radiance Admin",
-      role: "admin",
+      role: "SUPER_ADMIN",
+      isActive: true,
     },
   });
 

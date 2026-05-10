@@ -327,24 +327,25 @@ export function AdminBookingCreateForm() {
             {errors.notes && <p className="mt-1 text-sm text-red-500">{errors.notes}</p>}
           </div>
 
-          <div className="pt-4">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-lg bg-amber-600 hover:bg-amber-500 text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                  Creating booking...
-                </>
-              ) : (
-                <>
-                  <CheckCircle className="h-4 w-4 mr-2" />
-                  Create Booking
-                </>
-              )}
-            </div>
+              <div className="pt-4">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-lg bg-amber-600 hover:bg-amber-500 text-white transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <div>
+                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                      Creating booking...
+                    </div>
+                  ) : (
+                    <div>
+                      <CheckCircle className="h-4 w-4 mr-2" />
+                      Create Booking
+                    </div>
+                  )}
+                </button>
+              </div>
           </form>
         </div>
 
@@ -361,9 +362,8 @@ export function AdminBookingCreateForm() {
             <div className="text-sm text-gray-600">
               • All created bookings will trigger the standard workflow and notifications
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+           </div>
+         </div>
+       </div>
+   );
+ }

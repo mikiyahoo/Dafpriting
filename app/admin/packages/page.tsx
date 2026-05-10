@@ -1,44 +1,67 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import { Package, Layers, Eye, PlusCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Packages | Admin | Radiance",
-  description: "Manage service packages",
+  description: "Manage service packages and categories",
 };
 
 export default function AdminPackagesPage() {
   return (
-    <div className="flex h-screen bg-gray-50">
-      {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-gray-200 flex-shrink-0">
-        <div className="p-6">
-          <Link href="/admin/packages/view" className="flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg {`text-gray-900 bg-gray-50`}">
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            View Packages
-          </Link>
-          
-          <Link href="/admin/packages/manage" className="flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg hover:bg-gray-100">
-            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>
-            Manage Packages & Categories
-          </Link>
-        </div>
-      </aside>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-2xl font-bold text-gray-900">Packages</h1>
+        <p className="mt-2 text-gray-600">
+          Manage your service packages, categories, pricing, and features.
+        </p>
+      </div>
 
-      {/* Main Content */}
-      <main className="flex-1 p-6 overflow-y-auto">
-        <div className="space-y-4">
-          <h1 className="text-2xl font-bold text-gray-900">Packages</h1>
-          <p className="text-gray-600">
-            Manage your service packages, categories, pricing, and features.
-          </p>
-          
-          <div className="border-t border-gray-200 pt-4">
-            <p className="text-sm text-gray-500">
-              Select an option from the sidebar to view or manage packages.
-            </p>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Link
+          href="/admin/packages/view"
+          className="group rounded-xl border border-gray-200 bg-white p-6 transition hover:border-amber-200 hover:shadow-md"
+        >
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-50 text-amber-600 group-hover:bg-amber-100">
+            <Eye className="h-6 w-6" />
           </div>
-        </div>
-      </main>
+          <h3 className="font-semibold text-gray-900">View Packages</h3>
+          <p className="mt-1 text-sm text-gray-500">Browse all packages and their details</p>
+        </Link>
+
+        <Link
+          href="/admin/packages/manage"
+          className="group rounded-xl border border-gray-200 bg-white p-6 transition hover:border-amber-200 hover:shadow-md"
+        >
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-50 text-amber-600 group-hover:bg-amber-100">
+            <Package className="h-6 w-6" />
+          </div>
+          <h3 className="font-semibold text-gray-900">Manage Packages</h3>
+          <p className="mt-1 text-sm text-gray-500">Create and edit packages, features, pricing</p>
+        </Link>
+
+        <Link
+          href="/admin/packages/categories"
+          className="group rounded-xl border border-gray-200 bg-white p-6 transition hover:border-amber-200 hover:shadow-md"
+        >
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-50 text-amber-600 group-hover:bg-amber-100">
+            <Layers className="h-6 w-6" />
+          </div>
+          <h3 className="font-semibold text-gray-900">Categories</h3>
+          <p className="mt-1 text-sm text-gray-500">Manage package categories and ordering</p>
+        </Link>
+
+        <Link
+          href="/admin/packages/manage"
+          className="group rounded-xl border border-gray-200 bg-white p-6 transition hover:border-amber-200 hover:shadow-md"
+        >
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-50 text-amber-600 group-hover:bg-amber-100">
+            <PlusCircle className="h-6 w-6" />
+          </div>
+          <h3 className="font-semibold text-gray-900">Add New Package</h3>
+          <p className="mt-1 text-sm text-gray-500">Create a new service package</p>
+        </Link>
+      </div>
     </div>
   );
 }

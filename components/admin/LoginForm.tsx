@@ -25,7 +25,11 @@ export function LoginForm() {
       });
 
       if (result?.error) {
-        setError("Invalid email or password. Please try again.");
+        if (result.error === "AccessDenied" || result.error?.includes("disabled")) {
+          setError("This account has been disabled. Contact your administrator.");
+        } else {
+          setError("Invalid email or password. Please try again.");
+        }
         return;
       }
 

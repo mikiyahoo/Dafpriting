@@ -124,11 +124,14 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   email: 'email',
   password: 'password',
-  name: 'name',
   role: 'role',
-  createdAt: 'createdAt'
+  isActive: 'isActive',
+  avatarUrl: 'avatarUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.BookingScalarFieldEnum = {
@@ -303,6 +306,12 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.UserRole = exports.$Enums.UserRole = {
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  ADMIN: 'ADMIN',
+  STAFF: 'STAFF'
+};
+
 exports.EventType = exports.$Enums.EventType = {
   WEDDING: 'WEDDING',
   BIRTHDAY: 'BIRTHDAY',

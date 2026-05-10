@@ -21,6 +21,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           if (!user) return null;
 
+          // Check if account is active
+          if (!user.isActive) {
+            throw new Error("Account disabled");
+          }
+
           const isPasswordValid = await bcrypt.compare(
             credentials.password as string,
             user.password
@@ -32,8 +37,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             id: user.id,
             email: user.email,
             name: user.name,
+            role: user.role,
           };
         } catch (error) {
+          if (error instanceof Error && error.message === "Account disabled") {
+            throw error;
+          }
           console.error("Failed to authorize admin credentials:", error);
           return null;
         }
@@ -46,13 +55,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
+        token.id = (user as { id: string }).id ?? "";
+        token.role = (user as { role: string }).role ?? "STAFF";
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as { id: string }).id = token.id as string;
+        (session.user as unknown as { id: string }).id = token.id as string;
+        (session.user as unknown as { role: string }).role = token.role as string;
       }
       return session;
     },
