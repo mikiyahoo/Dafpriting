@@ -1,61 +1,62 @@
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
 
 export function Footer() {
   return (
-    <footer className="bg-primary-navy py-16">
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <Link href="/" className="flex items-center">
-              <img
-                src="/assets/Radiance_Logo_Horizontal.svg"
-                alt="Radiance"
-                className="h-8 w-auto brightness-0 invert"
-              />
-            </Link>
-            <p className="mt-4 text-secondary-white/70 text-sm leading-relaxed">
-              Crafting extraordinary events that leave lasting impressions.
+    <footer className="bg-primary-navy text-secondary-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div className="md:col-span-2">
+            <h3 className="text-xl font-bold tracking-tight mb-4">
+              <span className="text-primary-brown">Daf</span> Printing
+            </h3>
+            <p className="text-secondary-white/60 text-sm leading-relaxed max-w-md">
+              Premium printing services for businesses and individuals. 
+              From business cards to banners, we deliver quality that makes an impression.
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium tracking-wide uppercase text-secondary-white mb-4">
-              Navigation
+            <h4 className="text-sm font-semibold tracking-wide uppercase mb-4 text-secondary-white/80">
+              Quick Links
             </h4>
-            <nav className="flex flex-col gap-3">
-              {["About", "Services", "Packages", "Experiences", "Insights", "Contact"].map(
-                (item) => (
+            <ul className="space-y-2">
+              {[
+                { label: "Home", href: "/" },
+                { label: "About", href: "/about" },
+                { label: "Services", href: "/services" },
+                { label: "Portfolio", href: "/portfolio" },
+                { label: "Contact", href: "/contact" },
+              ].map((link) => (
+                <li key={link.href}>
                   <Link
-                    key={item}
-                    href={`/${item.toLowerCase()}`}
-                    className="text-secondary-white/70 text-sm hover:text-secondary-white transition-colors"
+                    href={link.href}
+                    className="text-sm text-secondary-white/60 hover:text-secondary-white transition-colors"
                   >
-                    {item}
+                    {link.label}
                   </Link>
-                )
-              )}
-            </nav>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium tracking-wide uppercase text-secondary-white mb-4">
+            <h4 className="text-sm font-semibold tracking-wide uppercase mb-4 text-secondary-white/80">
               Contact
             </h4>
-            <div className="flex flex-col gap-3 text-secondary-white/70 text-sm">
-              <p>hello@radiance.events</p>
-              <p>+1 (555) 123-4567</p>
-              <p>New York, NY</p>
-            </div>
+            <ul className="space-y-2 text-sm text-secondary-white/60">
+              <li>info@dafprinting.com</li>
+              <li>+251 911 234 567</li>
+              <li>Addis Ababa, Ethiopia</li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-secondary-white/10">
-          <p className="text-secondary-white/50 text-xs text-center">
-            &copy; {new Date().getFullYear()} Radiance Events. All rights reserved.
+        <div className="border-t border-secondary-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-secondary-white/40">
+            &copy; {new Date().getFullYear()} Daf Printing. All rights reserved.
           </p>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }

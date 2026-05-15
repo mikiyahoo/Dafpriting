@@ -1,203 +1,133 @@
 import { z } from "zod";
-import {
-  BOOKING_STATUS,
-  EVENT_TYPES,
-  BUDGET_RANGES,
-  INVITATION_THEMES,
-  INVITATION_STATUS,
-  GIFT_PRIORITIES,
-  RSVP_STATUS,
-} from "@/types";
 
-export const bookingFormSchema = z.object({
-  clientName: z
+// ─────────────────────────────────────────
+// DAF PRINTING — QUOTE FORM
+// ─────────────────────────────────────────
+export const quoteFormSchema = z.object({
+  name: z
     .string()
     .min(2, "Name must be at least 2 characters")
-    .max(100, "Name is too long"),
-  clientEmail: z.string().email("Please enter a valid email address"),
-  clientPhone: z.string().min(6, "Phone number is required"),
-  eventType: z.enum([
-    EVENT_TYPES.WEDDING,
-    EVENT_TYPES.BIRTHDAY,
-    EVENT_TYPES.CORPORATE,
-    EVENT_TYPES.GRADUATION,
-    EVENT_TYPES.ENGAGEMENT,
-    EVENT_TYPES.ANNIVERSARY,
-    EVENT_TYPES.CULTURAL,
-    EVENT_TYPES.OTHER,
-  ]),
-  eventDate: z.string().refine(
-    (val) => {
-      if (!val) return false;
-      const date = new Date(val);
-      const now = new Date();
-      now.setHours(0, 0, 0, 0);
-      return date >= now;
-    },
-    { message: "Event date must be today or in the future" }
-  ),
-  location: z.string().min(1, "Location is required"),
-  guestCount: z.coerce.number().min(1, "Guest count must be at least 1").optional(),
-  budgetRange: z.enum([
-    BUDGET_RANGES.UNDER_50K,
-    BUDGET_RANGES.RANGE_50K_100K,
-    BUDGET_RANGES.RANGE_100K_200K,
-    BUDGET_RANGES.RANGE_200K_500K,
-    BUDGET_RANGES.ABOVE_500K,
-  ]),
-  notes: z.string().optional().default(""),
+    .max(100, "Name must be under 100 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(7, "Please enter a valid phone number"),
+  company: z.string().max(200).optional(),
+  serviceId: z.string().min(1, "Please select a service"),
+  quantity: z.coerce.number().int().min(1, "Quantity must be at least 1"),
+  size: z.string().min(1, "Please select a size"),
+  material: z.string().min(1, "Please select a material"),
+  notes: z
+    .string()
+    .max(2000, "Notes must be under 2000 characters")
+    .optional(),
 });
 
+export type QuoteFormValues = z.infer<typeof quoteFormSchema>;
+
+// ─────────────────────────────────────────
+// DAF PRINTING — LOGIN
+// ─────────────────────────────────────────
+export const loginSchema = z.object({
+  email: z.string().email("Please enter a valid email"),
+  password: z.string().min(1, "Password is required"),
+});
+
+export type LoginFormValues = z.infer<typeof loginSchema>;
+
+// ─────────────────────────────────────────
+// LEGACY — RADIANCE BACKWARD COMPATIBILITY
+// These will be removed in a future cleanup.
+// ─────────────────────────────────────────
+
+export const bookingFormSchema = z.object({
+  clientName: z.string().min(1, "Name is required"),
+  clientEmail: z.string().email("Valid email is required"),
+  clientPhone: z.string().min(1, "Phone is required"),
+  eventType: z.string().min(1, "Event type is required"),
+  eventDate: z.string().min(1, "Event date is required"),
+  location: z.string().min(1, "Location is required"),
+  guestCount: z.string().optional(),
+  budgetRange: z.string().min(1, "Budget range is required"),
+  notes: z.string().optional(),
+});
+
+export type BookingFormValues = z.infer<typeof bookingFormSchema>;
+
 export const bookingStatusSchema = z.object({
-  status: z.enum([
-    BOOKING_STATUS.NEW_REQUEST,
-    BOOKING_STATUS.CONTACTED,
-    BOOKING_STATUS.CONFIRMED,
-    BOOKING_STATUS.PLANNED,
-    BOOKING_STATUS.COMPLETED,
-    BOOKING_STATUS.CANCELLED,
-  ]),
+  status: z.string().min(1),
+  internalNotes: z.string().optional(),
+  assignedTo: z.string().optional(),
+  agreedAmount: z.number().optional(),
+  depositAmount: z.number().optional(),
+  depositPaid: z.boolean().optional(),
+  balancePaid: z.boolean().optional(),
 });
 
 export const bookingMessageSchema = z.object({
+  content: z.string().min(1, "Message cannot be empty"),
   sender: z.enum(["ADMIN", "SYSTEM"]),
-  content: z
-    .string()
-    .min(1, "Message cannot be empty")
-    .max(2000, "Message is too long"),
-});
-
-const optionalUrl = z
-  .string()
-  .trim()
-  .url("Please enter a valid URL")
-  .optional()
-  .or(z.literal(""));
-
-export const giftRegistryInputSchema = z.object({
-  id: z.string().optional(),
-  giftName: z.string().trim().min(1, "Gift name is required").max(120),
-  description: z.string().trim().max(500).optional().default(""),
-  imageUrl: optionalUrl,
-  priority: z.coerce.number().int().min(1).max(5).optional().default(1),
-  priorityLabel: z
-    .enum([GIFT_PRIORITIES.LOW, GIFT_PRIORITIES.MEDIUM, GIFT_PRIORITIES.HIGH])
-    .optional()
-    .default(GIFT_PRIORITIES.MEDIUM),
-  allowDuplicates: z.boolean().optional().default(false),
-  reservedMessage: z.string().trim().max(500).optional().default(""),
-});
-
-export const weddingInvitationSchema = z.object({
-  bookingId: z.string().min(1, "Booking is required"),
-  brideName: z.string().trim().min(1, "Bride name is required").max(100),
-  groomName: z.string().trim().min(1, "Groom name is required").max(100),
-  slug: z
-    .string()
-    .trim()
-    .min(3, "Slug must be at least 3 characters")
-    .max(80, "Slug is too long")
-    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use lowercase letters, numbers, and hyphens"),
-  weddingDate: z.string().min(1, "Wedding date is required"),
-  weddingTime: z.string().trim().min(1, "Wedding time is required").max(40),
-  venueName: z.string().trim().min(1, "Venue name is required").max(160),
-  venueAddress: z.string().trim().min(1, "Venue address is required").max(300),
-  dressCode: z.string().trim().max(100).optional().default(""),
-  mapUrl: optionalUrl,
-  welcomeMessage: z.string().trim().max(1200).optional().default(""),
-  story: z.string().trim().max(3000).optional().default(""),
-  heroImageUrl: optionalUrl,
-  coverImage: optionalUrl,
-  galleryImages: z.array(z.string().trim().url()).max(12).optional().default([]),
-  theme: z.enum([
-    INVITATION_THEMES.FLORAL_LUXURY,
-    INVITATION_THEMES.MODERN_MINIMAL,
-    INVITATION_THEMES.ROYAL_GOLD,
-    INVITATION_THEMES.TRADITIONAL_ETHIOPIAN,
-    INVITATION_THEMES.ELEGANT_BLACK,
-    INVITATION_THEMES.GARDEN_WEDDING,
-    INVITATION_THEMES.LUXURY_WHITE,
-    INVITATION_THEMES.CLASSIC_SERIF,
-  ]),
-  templateKey: z.string().trim().max(80).optional().default(""),
-  themeColor: z.string().trim().max(20).optional().default(""),
-  primaryColor: z.string().trim().max(20).optional().default(""),
-  secondaryColor: z.string().trim().max(20).optional().default(""),
-  customMessage: z.string().trim().max(1200).optional().default(""),
-  floralTopLeft: optionalUrl,
-  floralTopRight: optionalUrl,
-  floralBottomLeft: optionalUrl,
-  floralBottomRight: optionalUrl,
-  status: z
-    .enum([
-      INVITATION_STATUS.DRAFT,
-      INVITATION_STATUS.REVIEW,
-      INVITATION_STATUS.APPROVED,
-      INVITATION_STATUS.PUBLISHED,
-      INVITATION_STATUS.ARCHIVED,
-    ])
-    .optional()
-    .default(INVITATION_STATUS.DRAFT),
-  allowRSVP: z.boolean().optional().default(true),
-  allowGiftRegistry: z.boolean().optional().default(true),
-  isPublished: z.boolean().optional().default(false),
-  gifts: z.array(giftRegistryInputSchema).max(40).optional().default([]),
 });
 
 export const rsvpSchema = z.object({
-  guestName: z.string().trim().min(2, "Please enter your name").max(100),
-  guestPhone: z.string().trim().max(40).optional().default(""),
-  attendance: z.enum([
-    RSVP_STATUS.ACCEPTED,
-    RSVP_STATUS.DECLINED,
-    RSVP_STATUS.MAYBE,
-  ]),
-  message: z.string().trim().max(1000).optional().default(""),
+  guestName: z.string().min(1, "Name is required"),
+  guestPhone: z.string().optional(),
+  attendance: z.enum(["ATTENDING", "NOT_ATTENDING", "MAYBE"]),
+  message: z.string().optional(),
 });
 
 export const giftReservationSchema = z.object({
-  reservedBy: z.string().trim().min(2, "Please enter your name").max(100),
-  reservedMessage: z.string().trim().max(500).optional().default(""),
+  giftId: z.string().min(1, "Gift is required"),
+  reservedBy: z.string().min(1, "Your name is required"),
+  reservedMessage: z.string().optional(),
 });
 
 export const packageCategorySchema = z.object({
-  name: z.string().trim().min(2, "Category name is required").max(120),
-  slug: z
-    .string()
-    .trim()
-    .min(2, "Slug is required")
-    .max(80)
-    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use lowercase letters, numbers, and hyphens"),
-  description: z.string().trim().max(500).optional().default(""),
-  coverImage: optionalUrl,
-  sortOrder: z.coerce.number().int().min(0).optional().default(0),
-  isActive: z.boolean().optional().default(true),
+  name: z.string().min(1, "Name is required"),
+  slug: z.string().min(1, "Slug is required"),
+  description: z.string().optional(),
+  coverImage: z.string().optional(),
+  sortOrder: z.number().optional(),
+  isActive: z.boolean().optional(),
 });
 
 export const packageSchema = z.object({
   categoryId: z.string().min(1, "Category is required"),
-  name: z.string().trim().min(2, "Package name is required").max(140),
-  shortDesc: z.string().trim().min(2, "Short description is required").max(220),
-  description: z.string().trim().min(2, "Description is required").max(4000),
-  price: z
-    .union([z.coerce.number().min(0), z.literal("").transform(() => null)])
-    .nullable()
-    .optional(),
-  priceLabel: z.string().trim().min(1, "Price label is required").max(120),
-  features: z.array(z.string().trim().min(1).max(180)).max(80).default([]),
-  exclusions: z.array(z.string().trim().min(1).max(180)).max(80).default([]),
-  imageUrl: optionalUrl,
-  galleryImages: z.array(z.string().trim().url()).max(12).optional().default([]),
-  isPopular: z.boolean().optional().default(false),
-  isFeatured: z.boolean().optional().default(false),
-  isActive: z.boolean().optional().default(true),
-  sortOrder: z.coerce.number().int().min(0).optional().default(0),
+  name: z.string().min(1, "Name is required"),
+  shortDesc: z.string().optional(),
+  description: z.string().min(1, "Description is required"),
+  price: z.number().nullable().optional(),
+  priceLabel: z.string().min(1, "Price label is required"),
+  features: z.array(z.string()).optional(),
+  exclusions: z.array(z.string()).optional(),
+  imageUrl: z.string().optional(),
+  galleryImages: z.array(z.string()).optional(),
+  isPopular: z.boolean().optional(),
+  isFeatured: z.boolean().optional(),
+  isActive: z.boolean().optional(),
+  sortOrder: z.number().optional(),
 });
 
-export type BookingFormInput = z.infer<typeof bookingFormSchema>;
-export type BookingStatusInput = z.infer<typeof bookingStatusSchema>;
-export type BookingMessageInput = z.infer<typeof bookingMessageSchema>;
-export type WeddingInvitationInput = z.infer<typeof weddingInvitationSchema>;
-export type RSVPInput = z.infer<typeof rsvpSchema>;
-export type PackageCategoryInput = z.infer<typeof packageCategorySchema>;
-export type PackageInput = z.infer<typeof packageSchema>;
+export const weddingInvitationSchema = z.object({
+  brideName: z.string().min(1, "Bride name is required"),
+  groomName: z.string().min(1, "Groom name is required"),
+  slug: z.string().min(1, "Slug is required"),
+  weddingDate: z.string().min(1, "Wedding date is required"),
+  weddingTime: z.string().min(1, "Wedding time is required"),
+  venueName: z.string().min(1, "Venue name is required"),
+  venueAddress: z.string().min(1, "Venue address is required"),
+  dressCode: z.string().optional(),
+  mapUrl: z.string().optional(),
+  welcomeMessage: z.string().optional(),
+  story: z.string().optional(),
+  heroImageUrl: z.string().optional(),
+  coverImage: z.string().optional(),
+  galleryImages: z.array(z.string()).optional(),
+  templateKey: z.string().optional(),
+  themeColor: z.string().optional(),
+  primaryColor: z.string().optional(),
+  secondaryColor: z.string().optional(),
+  customMessage: z.string().optional(),
+  floralTopLeft: z.string().optional(),
+  floralTopRight: z.string().optional(),
+  floralBottomLeft: z.string().optional(),
+  floralBottomRight: z.string().optional(),
+});

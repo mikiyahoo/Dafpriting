@@ -7,25 +7,32 @@ import { cn } from "@/lib/utils";
 import { signOut } from "next-auth/react";
 import {
   LayoutDashboard,
-  CalendarCheck,
-  Image,
-  Package,
-  Heart,
+  FileText,
   Users,
   Menu,
   X,
   LogOut,
-  FileText,
+  Image,
+  MessageSquare,
+  Package,
+  Settings,
+  ShoppingBag,
+  Truck,
+  Grid3X3,
+  Layers,
 } from "lucide-react";
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
-  { label: "Bookings", href: "/admin/bookings", icon: CalendarCheck },
-  { label: "Proposals", href: "/admin/proposals", icon: FileText },
-  { label: "Weddings", href: "/admin/weddings", icon: Heart },
-  { label: "Gallery", href: "/admin/gallery", icon: Image },
-  { label: "Packages", href: "/admin/packages", icon: Package },
-  { label: "Users", href: "/admin/users", icon: Users },
+  { label: "Quotes", href: "/admin/quotes", icon: FileText },
+  { label: "Customers", href: "/admin/customers", icon: Users },
+  { label: "Categories", href: "/admin/categories", icon: Grid3X3 },
+  { label: "Collections", href: "/admin/collections", icon: Layers },
+  { label: "Portfolio", href: "/admin/portfolio", icon: Image },
+  { label: "Testimonials", href: "/admin/testimonials", icon: MessageSquare },
+  { label: "Order Tracking", href: "/admin/tracking", icon: Truck },
+  { label: "Services", href: "/admin/services", icon: Package },
+  { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
 
 export function Sidebar() {
@@ -34,7 +41,6 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile toggle */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="fixed top-4 left-4 z-50 lg:hidden bg-white text-gray-900 p-2 rounded-md border border-gray-200"
@@ -43,7 +49,6 @@ export function Sidebar() {
         {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
 
-      {/* Overlay for mobile */}
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-30 lg:hidden"
@@ -51,7 +56,6 @@ export function Sidebar() {
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={cn(
           "fixed top-0 left-0 z-40 h-full w-64 bg-white border-r border-gray-200 transform transition-transform duration-200 ease-in-out",
@@ -59,18 +63,18 @@ export function Sidebar() {
         )}
       >
         <div className="flex flex-col h-full">
-          {/* Logo */}
           <div className="p-6 border-b border-gray-200">
             <Link href="/admin" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-xs font-bold text-white">
-                R
+              <div className="w-8 h-8 rounded-full bg-primary-navy flex items-center justify-center text-xs font-bold text-white">
+                D
               </div>
-              <span className="text-gray-900 font-semibold text-lg">Radiance</span>
+              <span className="text-gray-900 font-semibold text-lg">
+                <span className="text-primary-brown">Daf</span> Printing
+              </span>
             </Link>
           </div>
 
-          {/* Navigation */}
-          <nav className="flex-1 p-4 space-y-1">
+          <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
             {navItems.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
               const Icon = item.icon;
@@ -93,7 +97,6 @@ export function Sidebar() {
             })}
           </nav>
 
-          {/* Logout */}
           <div className="p-4 border-t border-gray-200">
             <button
               onClick={() => signOut({ callbackUrl: "/admin/login" })}

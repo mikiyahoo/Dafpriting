@@ -1,12 +1,10 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Section } from "@/components/ui/Section";
-import { Container } from "@/components/ui/Container";
-import { BookingForm } from "@/components/forms/BookingForm";
 
-export const metadata = {
-  title: "Contact | Radiance",
-  description: "Get in touch with Radiance Events to start planning your extraordinary experience.",
+export const metadata: Metadata = {
+  title: "Contact | Daf Printing",
+  description: "Get in touch with Daf Printing. We are here to help with your printing needs.",
 };
 
 export default function ContactPage() {
@@ -14,48 +12,121 @@ export default function ContactPage() {
     <>
       <Header />
       <main>
-        <Section className="pt-32">
-          <Container>
+        <section className="pt-32 pb-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               <div>
-                <p className="text-sm font-medium tracking-[0.2em] uppercase text-radiance-navy/60 mb-3">
+                <p className="text-primary-brown text-sm font-medium tracking-[0.2em] uppercase mb-3">
                   Get in Touch
                 </p>
-                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-radiance-navy tracking-tight mb-6">
-                   Let&apos;s Create Together
-                 </h1>
-                <p className="text-radiance-navy/70 text-lg leading-relaxed mb-12">
-                  Ready to bring your vision to life? Fill out the form and our team will reach out within 24 hours to discuss how we can make your event extraordinary.
+                <h1 className="text-4xl md:text-5xl font-bold text-primary-navy tracking-tight mb-6">
+                  Let's Talk About Your Project
+                </h1>
+                <p className="text-primary-navy/70 text-lg leading-relaxed mb-12">
+                  Have a project in mind? Reach out to us and we'll help you 
+                  find the perfect printing solution. Free quotes and consultation.
                 </p>
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-sm font-medium tracking-wide uppercase text-radiance-navy mb-2">
+                    <h3 className="text-sm font-medium tracking-wide uppercase text-primary-navy mb-2">
                       Email
                     </h3>
-                    <p className="text-radiance-navy/70">hello@radiance.events</p>
+                    <p className="text-primary-navy/70">info@dafprinting.com</p>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium tracking-wide uppercase text-radiance-navy mb-2">
+                    <h3 className="text-sm font-medium tracking-wide uppercase text-primary-navy mb-2">
                       Phone
                     </h3>
-                    <p className="text-radiance-navy/70">+1 (555) 123-4567</p>
+                    <p className="text-primary-navy/70">+251 911 234 567</p>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium tracking-wide uppercase text-radiance-navy mb-2">
+                    <h3 className="text-sm font-medium tracking-wide uppercase text-primary-navy mb-2">
                       Location
                     </h3>
-                    <p className="text-radiance-navy/70">New York, NY</p>
+                    <p className="text-primary-navy/70">Addis Ababa, Ethiopia</p>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium tracking-wide uppercase text-primary-navy mb-2">
+                      Hours
+                    </h3>
+                    <p className="text-primary-navy/70">
+                      Monday - Friday: 8:00 AM - 6:00 PM<br />
+                      Saturday: 9:00 AM - 2:00 PM
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-radiance-white border border-radiance-navy/10 p-8 md:p-10">
-                <BookingForm />
+              <div className="bg-white border border-primary-navy/10 p-8 md:p-10">
+                <h2 className="text-xl font-bold text-primary-navy mb-6">
+                  Send Us a Message
+                </h2>
+                <form className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-primary-navy mb-1">
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-primary-navy mb-1">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors"
+                        placeholder="Your email"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-primary-navy mb-1">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors"
+                      placeholder="How can we help?"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-primary-navy mb-1">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors resize-none"
+                      placeholder="Tell us about your project..."
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full px-8 py-4 bg-primary-navy text-white text-sm font-semibold tracking-wide uppercase hover:bg-primary-navy/90 transition-colors"
+                  >
+                    Send Message
+                  </button>
+                </form>
               </div>
             </div>
-          </Container>
-        </Section>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

@@ -134,238 +134,130 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.BookingScalarFieldEnum = {
-  id: 'id',
-  clientName: 'clientName',
-  clientEmail: 'clientEmail',
-  clientPhone: 'clientPhone',
-  eventType: 'eventType',
-  eventDate: 'eventDate',
-  location: 'location',
-  guestCount: 'guestCount',
-  budgetRange: 'budgetRange',
-  notes: 'notes',
-  status: 'status',
-  internalNotes: 'internalNotes',
-  assignedTo: 'assignedTo',
-  agreedAmount: 'agreedAmount',
-  depositAmount: 'depositAmount',
-  depositPaid: 'depositPaid',
-  depositDate: 'depositDate',
-  balancePaid: 'balancePaid',
-  balanceDate: 'balanceDate',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.MessageScalarFieldEnum = {
-  id: 'id',
-  bookingId: 'bookingId',
-  sender: 'sender',
-  content: 'content',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.GalleryImageScalarFieldEnum = {
+exports.Prisma.ServiceScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  description: 'description',
-  imageUrl: 'imageUrl',
-  category: 'category',
-  isFeatured: 'isFeatured',
-  isBeforeAfter: 'isBeforeAfter',
-  beforeImageUrl: 'beforeImageUrl',
-  afterImageUrl: 'afterImageUrl',
-  sortOrder: 'sortOrder',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.PackageCategoryScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
   slug: 'slug',
   description: 'description',
-  coverImage: 'coverImage',
-  sortOrder: 'sortOrder',
-  isActive: 'isActive',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.PackageScalarFieldEnum = {
-  id: 'id',
-  categoryId: 'categoryId',
-  name: 'name',
-  shortDesc: 'shortDesc',
-  description: 'description',
-  price: 'price',
-  priceLabel: 'priceLabel',
-  features: 'features',
-  exclusions: 'exclusions',
-  imageUrl: 'imageUrl',
-  galleryImages: 'galleryImages',
-  isPopular: 'isPopular',
-  isFeatured: 'isFeatured',
+  image: 'image',
   isActive: 'isActive',
   sortOrder: 'sortOrder',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.WeddingInvitationScalarFieldEnum = {
-  id: 'id',
-  bookingId: 'bookingId',
-  brideName: 'brideName',
-  groomName: 'groomName',
-  slug: 'slug',
-  weddingDate: 'weddingDate',
-  weddingTime: 'weddingTime',
-  venueName: 'venueName',
-  venueAddress: 'venueAddress',
-  dressCode: 'dressCode',
-  mapUrl: 'mapUrl',
-  welcomeMessage: 'welcomeMessage',
-  story: 'story',
-  heroImageUrl: 'heroImageUrl',
-  coverImage: 'coverImage',
-  galleryImages: 'galleryImages',
-  templateKey: 'templateKey',
-  theme: 'theme',
-  themeColor: 'themeColor',
-  primaryColor: 'primaryColor',
-  secondaryColor: 'secondaryColor',
-  customMessage: 'customMessage',
-  floralTopLeft: 'floralTopLeft',
-  floralTopRight: 'floralTopRight',
-  floralBottomLeft: 'floralBottomLeft',
-  floralBottomRight: 'floralBottomRight',
-  status: 'status',
-  allowRSVP: 'allowRSVP',
-  allowGiftRegistry: 'allowGiftRegistry',
-  publishedAt: 'publishedAt',
-  isPublished: 'isPublished',
-  pdfUrl: 'pdfUrl',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.RSVPScalarFieldEnum = {
-  id: 'id',
-  invitationId: 'invitationId',
-  guestName: 'guestName',
-  guestPhone: 'guestPhone',
-  attendance: 'attendance',
-  message: 'message',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.GiftRegistryScalarFieldEnum = {
-  id: 'id',
-  invitationId: 'invitationId',
-  giftName: 'giftName',
-  title: 'title',
-  description: 'description',
-  imageUrl: 'imageUrl',
-  priority: 'priority',
-  priorityLabel: 'priorityLabel',
-  allowDuplicates: 'allowDuplicates',
-  isReserved: 'isReserved',
-  reservedBy: 'reservedBy',
-  reservedMessage: 'reservedMessage',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.GiftReservationScalarFieldEnum = {
-  id: 'id',
-  invitationId: 'invitationId',
-  giftId: 'giftId',
-  reservedBy: 'reservedBy',
-  reservedMessage: 'reservedMessage',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.DesignAssetScalarFieldEnum = {
+exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  imageUrl: 'imageUrl',
-  category: 'category',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.ProposalScalarFieldEnum = {
-  id: 'id',
-  bookingId: 'bookingId',
-  title: 'title',
-  proposalNumber: 'proposalNumber',
-  introduction: 'introduction',
-  eventVision: 'eventVision',
-  themeConcept: 'themeConcept',
-  totalAmount: 'totalAmount',
-  currency: 'currency',
-  status: 'status',
-  validUntil: 'validUntil',
-  pdfUrl: 'pdfUrl',
-  publicToken: 'publicToken',
-  clientApproved: 'clientApproved',
-  clientApprovedAt: 'clientApprovedAt',
-  clientRejected: 'clientRejected',
-  rejectionReason: 'rejectionReason',
-  notes: 'notes',
-  createdById: 'createdById',
+  slug: 'slug',
+  description: 'description',
+  image: 'image',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ProposalItemScalarFieldEnum = {
+exports.Prisma.CollectionScalarFieldEnum = {
   id: 'id',
-  proposalId: 'proposalId',
-  title: 'title',
+  name: 'name',
+  slug: 'slug',
   description: 'description',
+  image: 'image',
+  linkUrl: 'linkUrl',
+  isFeatured: 'isFeatured',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CustomerScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  company: 'company',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.QuoteRequestScalarFieldEnum = {
+  id: 'id',
+  quoteNumber: 'quoteNumber',
+  customerId: 'customerId',
+  serviceId: 'serviceId',
   quantity: 'quantity',
-  unitPrice: 'unitPrice',
-  totalPrice: 'totalPrice',
-  category: 'category',
-  sortOrder: 'sortOrder',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.ProposalSectionScalarFieldEnum = {
-  id: 'id',
-  proposalId: 'proposalId',
-  title: 'title',
-  content: 'content',
-  sortOrder: 'sortOrder',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.ProposalContractScalarFieldEnum = {
-  id: 'id',
-  proposalId: 'proposalId',
-  title: 'title',
-  content: 'content',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.ProposalCommentScalarFieldEnum = {
-  id: 'id',
-  proposalId: 'proposalId',
-  authorName: 'authorName',
-  content: 'content',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.ProposalTemplateScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  description: 'description',
-  eventType: 'eventType',
-  coverImage: 'coverImage',
-  sections: 'sections',
-  contractTerms: 'contractTerms',
-  isActive: 'isActive',
-  createdById: 'createdById',
+  size: 'size',
+  material: 'material',
+  notes: 'notes',
+  status: 'status',
+  assignedTo: 'assignedTo',
+  quotedPrice: 'quotedPrice',
+  validUntil: 'validUntil',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.QuoteFileScalarFieldEnum = {
+  id: 'id',
+  quoteRequestId: 'quoteRequestId',
+  fileUrl: 'fileUrl',
+  fileType: 'fileType',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PortfolioItemScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  coverImage: 'coverImage',
+  featured: 'featured',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PortfolioImageScalarFieldEnum = {
+  id: 'id',
+  portfolioItemId: 'portfolioItemId',
+  imageUrl: 'imageUrl',
+  caption: 'caption',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TestimonialScalarFieldEnum = {
+  id: 'id',
+  customerName: 'customerName',
+  company: 'company',
+  review: 'review',
+  rating: 'rating',
+  isApproved: 'isApproved',
+  isFeatured: 'isFeatured',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OrderTrackingScalarFieldEnum = {
+  id: 'id',
+  quoteRequestId: 'quoteRequestId',
+  currentStage: 'currentStage',
+  notes: 'notes',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OrderStageScalarFieldEnum = {
+  id: 'id',
+  orderTrackingId: 'orderTrackingId',
+  stage: 'stage',
+  label: 'label',
+  completed: 'completed',
+  completedAt: 'completedAt',
+  note: 'note',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -388,127 +280,28 @@ exports.UserRole = exports.$Enums.UserRole = {
   STAFF: 'STAFF'
 };
 
-exports.EventType = exports.$Enums.EventType = {
-  WEDDING: 'WEDDING',
-  BIRTHDAY: 'BIRTHDAY',
-  CORPORATE: 'CORPORATE',
-  GRADUATION: 'GRADUATION',
-  ENGAGEMENT: 'ENGAGEMENT',
-  ANNIVERSARY: 'ANNIVERSARY',
-  CULTURAL: 'CULTURAL',
-  OTHER: 'OTHER'
-};
-
-exports.BudgetRange = exports.$Enums.BudgetRange = {
-  UNDER_50K: 'UNDER_50K',
-  RANGE_50K_100K: 'RANGE_50K_100K',
-  RANGE_100K_200K: 'RANGE_100K_200K',
-  RANGE_200K_500K: 'RANGE_200K_500K',
-  ABOVE_500K: 'ABOVE_500K'
-};
-
-exports.BookingStatus = exports.$Enums.BookingStatus = {
-  NEW_REQUEST: 'NEW_REQUEST',
-  CONTACTED: 'CONTACTED',
-  CONFIRMED: 'CONFIRMED',
-  PLANNED: 'PLANNED',
-  COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
-};
-
-exports.MessageSender = exports.$Enums.MessageSender = {
-  ADMIN: 'ADMIN',
-  SYSTEM: 'SYSTEM'
-};
-
-exports.GalleryCategory = exports.$Enums.GalleryCategory = {
-  WEDDINGS: 'WEDDINGS',
-  BIRTHDAYS: 'BIRTHDAYS',
-  CORPORATE: 'CORPORATE',
-  DECORATIONS: 'DECORATIONS',
-  BEHIND_THE_SCENES: 'BEHIND_THE_SCENES'
-};
-
-exports.InvitationTheme = exports.$Enums.InvitationTheme = {
-  FLORAL_LUXURY: 'FLORAL_LUXURY',
-  MODERN_MINIMAL: 'MODERN_MINIMAL',
-  ROYAL_GOLD: 'ROYAL_GOLD',
-  TRADITIONAL_ETHIOPIAN: 'TRADITIONAL_ETHIOPIAN',
-  ELEGANT_BLACK: 'ELEGANT_BLACK',
-  GARDEN_WEDDING: 'GARDEN_WEDDING',
-  LUXURY_WHITE: 'LUXURY_WHITE',
-  CLASSIC_SERIF: 'CLASSIC_SERIF'
-};
-
-exports.InvitationStatus = exports.$Enums.InvitationStatus = {
-  DRAFT: 'DRAFT',
-  REVIEW: 'REVIEW',
-  APPROVED: 'APPROVED',
-  PUBLISHED: 'PUBLISHED',
-  ARCHIVED: 'ARCHIVED'
-};
-
-exports.RSVPStatus = exports.$Enums.RSVPStatus = {
-  ATTENDING: 'ATTENDING',
-  NOT_ATTENDING: 'NOT_ATTENDING',
-  MAYBE: 'MAYBE',
+exports.QuoteStatus = exports.$Enums.QuoteStatus = {
+  PENDING: 'PENDING',
+  REVIEWING: 'REVIEWING',
+  QUOTED: 'QUOTED',
   ACCEPTED: 'ACCEPTED',
-  DECLINED: 'DECLINED'
-};
-
-exports.GiftPriority = exports.$Enums.GiftPriority = {
-  LOW: 'LOW',
-  MEDIUM: 'MEDIUM',
-  HIGH: 'HIGH'
-};
-
-exports.AssetCategory = exports.$Enums.AssetCategory = {
-  FLORAL: 'FLORAL',
-  FRAME: 'FRAME',
-  ORNAMENT: 'ORNAMENT',
-  TEXTURE: 'TEXTURE'
-};
-
-exports.ProposalStatus = exports.$Enums.ProposalStatus = {
-  DRAFT: 'DRAFT',
-  SENT: 'SENT',
-  VIEWED: 'VIEWED',
-  APPROVED: 'APPROVED',
-  REJECTED: 'REJECTED',
-  EXPIRED: 'EXPIRED'
-};
-
-exports.ProposalItemCategory = exports.$Enums.ProposalItemCategory = {
-  DECORATION: 'DECORATION',
-  CATERING: 'CATERING',
-  PHOTOGRAPHY: 'PHOTOGRAPHY',
-  VENUE: 'VENUE',
-  ENTERTAINMENT: 'ENTERTAINMENT',
-  FLORAL: 'FLORAL',
-  LIGHTING: 'LIGHTING',
-  TRANSPORT: 'TRANSPORT',
-  COORDINATION: 'COORDINATION',
-  CUSTOM: 'CUSTOM'
+  DECLINED: 'DECLINED',
+  ARCHIVED: 'ARCHIVED'
 };
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Booking: 'Booking',
-  Message: 'Message',
-  GalleryImage: 'GalleryImage',
-  PackageCategory: 'PackageCategory',
-  Package: 'Package',
-  WeddingInvitation: 'WeddingInvitation',
-  RSVP: 'RSVP',
-  GiftRegistry: 'GiftRegistry',
-  GiftReservation: 'GiftReservation',
-  DesignAsset: 'DesignAsset',
-  Proposal: 'Proposal',
-  ProposalItem: 'ProposalItem',
-  ProposalSection: 'ProposalSection',
-  ProposalContract: 'ProposalContract',
-  ProposalComment: 'ProposalComment',
-  ProposalTemplate: 'ProposalTemplate'
+  Service: 'Service',
+  Category: 'Category',
+  Collection: 'Collection',
+  Customer: 'Customer',
+  QuoteRequest: 'QuoteRequest',
+  QuoteFile: 'QuoteFile',
+  PortfolioItem: 'PortfolioItem',
+  PortfolioImage: 'PortfolioImage',
+  Testimonial: 'Testimonial',
+  OrderTracking: 'OrderTracking',
+  OrderStage: 'OrderStage'
 };
 
 /**
