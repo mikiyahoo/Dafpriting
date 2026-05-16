@@ -87,7 +87,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   cookies: {
     sessionToken: {
-      name: `__Secure-authjs.session-token`,
+      name: `__Secure-authjs.session-token.v2`,
       options: {
         httpOnly: true,
         sameSite: "lax",
@@ -96,7 +96,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     },
     callbackUrl: {
-      name: `__Secure-authjs.callback-url`,
+      name: `__Secure-authjs.callback-url.v2`,
       options: {
         httpOnly: true,
         sameSite: "lax",
@@ -105,7 +105,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     },
     csrfToken: {
-      name: `__Secure-authjs.csrf-token`,
+      name: `__Secure-authjs.csrf-token.v2`,
       options: {
         httpOnly: true,
         sameSite: "lax",
