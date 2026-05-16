@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { prisma } from "@/lib/prisma";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  trustHost: true,
   providers: [
     Credentials({
       name: "Credentials",
@@ -12,14 +13,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) return null;
+        if (!credentials?.email || !credentials?.password) {
+          console.error("Auth: Missing email or password");
+          return null;
+        }
 
         try {
           const user = await prisma.user.findUnique({
             where: { email: credentials.email as string },
           });
 
-          if (!user) return null;
+          if (!user) {
+            console.error(`Auth: No user found for email: ${credentials.email}`);
+            return null;
+          }
 
           // Check if account is active
           if (!user.isActive) {
@@ -31,8 +38,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             user.password
           );
 
-          if (!isPasswordValid) return null;
+          if (!isPasswordValid) {
+            console.error(`Auth: Invalid password for: ${credentials.email}`);
+            return null;
+          }
 
+          console.log(`Auth: Login successful for: ${credentials.email}`);
           return {
             id: user.id,
             email: user.email,
@@ -43,7 +54,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           if (error instanceof Error && error.message === "Account disabled") {
             throw error;
           }
-          console.error("Failed to authorize admin credentials:", error);
+          console.error("Auth error:", error);
           return null;
         }
       },
@@ -51,6 +62,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   pages: {
     signIn: "/admin/login",
+    signOut: "/admin/login",
+    error: "/admin/login",
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -70,5 +83,35 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-authjs.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true,
+      },
+    },
+    callbackUrl: {
+      name: `__Secure-authjs.callback-url`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true,
+      },
+    },
+    csrfToken: {
+      name: `__Secure-authjs.csrf-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true,
+      },
+    },
   },
 });
