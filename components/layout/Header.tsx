@@ -43,7 +43,7 @@ export function Header() {
             ))}
             <Link
               href="/request-quote"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-dark to-primary text-bgPure text-sm font-semibold tracking-wide rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-bgPure text-sm font-semibold tracking-wide rounded-full hover:bg-primary/90 hover:-translate-y-0.5 transition-all duration-300"
             >
               Request Quote
               <ArrowRight size={16} />
@@ -110,7 +110,7 @@ export function Header() {
               <div className="mt-8">
                 <Link
                   href="/request-quote"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-gradient-to-r from-primary-dark to-primary text-bgPure text-base font-bold tracking-wide rounded-xl hover:shadow-lg transition-all duration-300"
+                  className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-primary text-bgPure text-base font-bold tracking-wide rounded-xl hover:bg-primary/90 hover:-translate-y-0.5 transition-all duration-300"
                   onClick={() => setMobileOpen(false)}
                 >
                   Request a Free Quote
