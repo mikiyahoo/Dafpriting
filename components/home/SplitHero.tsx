@@ -122,9 +122,9 @@ export default function SplitHero() {
   };
 
   return (
-    <section className="bg-white min-h-screen pt-20">
+    <section className="bg-transparent min-h-screen pt-20">
       {/* 👇 TOP HERO BANNER SLIDER (managed from Admin > Banner Ads) */}
-      <div className="w-full bg-gradient-to-b from-bgLight to-white">
+      <div className="w-full bg-gradient-to-b from-transparent to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl mt-4 mb-2 shadow-elevated">
             {displayBanners && displayBanners.length > 0 ? (
@@ -144,7 +144,7 @@ export default function SplitHero() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent rounded-2xl" />
                     {b.title && (
                       <div className="absolute left-6 md:left-8 bottom-6 md:bottom-8 text-white max-w-lg">
-                        <div className="backdrop-blur-sm bg-black/20 rounded-2xl p-4 md:p-6">
+                        <div className="rounded-2xl p-4 md:p-6">
                           <h3 className="text-xl md:text-2xl lg:text-3xl font-black drop-shadow-lg">
                             {b.title}
                           </h3>

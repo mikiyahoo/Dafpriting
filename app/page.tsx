@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import SplitHero from "@/components/home/SplitHero";
 import { CollectionsGrid } from "@/components/home/CollectionsGrid";
 import { ChatWidget } from "@/components/home/ChatWidget";
+import { QuoteModal } from "@/components/forms/QuoteModal";
 import { ArrowRight, Printer, FileText, Image, Shirt, Stamp, Box } from "lucide-react";
 
 const services = [
@@ -40,8 +44,11 @@ const services = [
 ];
 
 export default function HomePage() {
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+
   return (
     <>
+      <QuoteModal isOpen={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} />
       <Header />
       <main>
         {/* Split Hero with ad banners + shop by categories */}
@@ -144,13 +151,13 @@ export default function HomePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/request-quote"
+              <button
+                onClick={() => setQuoteModalOpen(true)}
                 className="inline-flex items-center gap-3 px-10 py-5 bg-secondary text-bgPure text-base font-bold tracking-wide rounded-full shadow-2xl hover:bg-secondary/90 hover:-translate-y-1 transition-all duration-300 group"
               >
                 Request a Free Quote
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </button>
               
               <Link
                 href="/portfolio"

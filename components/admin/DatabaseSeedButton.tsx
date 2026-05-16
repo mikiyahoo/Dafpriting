@@ -165,22 +165,6 @@ export function DatabaseSeedButton() {
               Refresh Status
             </button>
           </div>
-
-          {status?.adminExists && (
-            <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
-              <p className="text-sm text-blue-800 font-medium mb-1">Admin Credentials:</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-                <div>
-                  <span className="text-blue-600">Email:</span>{" "}
-                  <code className="bg-white px-2 py-0.5 rounded border border-blue-200">admin@dafprinting.com</code>
-                </div>
-                <div>
-                  <span className="text-blue-600">Password:</span>{" "}
-                  <code className="bg-white px-2 py-0.5 rounded border border-blue-200">Admin@2026</code>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>

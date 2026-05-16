@@ -66,7 +66,7 @@ export function Header() {
             </nav>
 
             <button
-              className={`md:hidden p-2 transition-colors ${scrolled ? "text-textMain" : "text-textMain"}`}
+              className="md:hidden p-2 transition-colors text-textMain"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
