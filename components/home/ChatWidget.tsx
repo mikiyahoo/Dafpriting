@@ -28,7 +28,7 @@ export function ChatWidget() {
       {/* Chat button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-secondary to-secondary-light text-bgPure rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group"
+        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-secondary-dark to-secondary text-bgPure rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group"
         aria-label="Chat with us"
       >
         {isOpen ? (
@@ -50,7 +50,7 @@ export function ChatWidget() {
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] bg-bgPure rounded-3xl shadow-elevated border border-gray-100 overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-primary-light p-5">
+          <div className="bg-gradient-to-r from-primary-dark to-primary p-5">
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="w-12 h-12 rounded-full bg-bgPure flex items-center justify-center font-bold text-sm text-primary shadow-lg">
@@ -181,14 +181,14 @@ export function ChatWidget() {
             <div className="grid grid-cols-2 gap-3">
               <a
                 href={`mailto:${contactInfo.email}`}
-                className="flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-primary to-primary-light text-bgPure rounded-xl text-sm font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+                className="flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-primary-dark to-primary text-bgPure rounded-xl text-sm font-semibold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
               >
                 <Mail className="w-4 h-4" />
                 Email Us
               </a>
               <a
                 href="/contact"
-                className="flex items-center justify-center gap-2 py-3 bg-bgLight text-textMain rounded-xl text-sm font-semibold hover:bg-bgLight/80 hover:-translate-y-0.5 transition-all duration-300 border border-gray-200"
+                className="flex items-center justify-center gap-2 py-3 bg-secondary/10 text-secondary rounded-xl text-sm font-semibold hover:bg-secondary/20 hover:-translate-y-0.5 transition-all duration-300"
               >
                 Contact Page
               </a>

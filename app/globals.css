@@ -68,8 +68,10 @@ p, button, li, span, a, input, textarea, blockquote, cite, small, .meta, .captio
   --color-textMuted: #64748B;
 
   /* The 30%: Structural Brand Trust - Enhanced for better contrast */
+  --color-primary-dark: #005A8C;
   --color-primary: #0077B6;
   --color-primary-light: #00A3E0;
+  --color-secondary-dark: #B86600;
   --color-secondary: #E67E00;
   --color-secondary-light: #FF9E1B;
 
@@ -103,8 +105,10 @@ p, button, li, span, a, input, textarea, blockquote, cite, small, .meta, .captio
   .text-bgPure { color: #FFFFFF; }
   .text-textMain { color: #1A1A1A; }
   .text-textMuted { color: #64748B; }
+  .text-primary-dark { color: #005A8C; }
   .text-primary { color: #0077B6; }
   .text-primary-light { color: #00A3E0; }
+  .text-secondary-dark { color: #B86600; }
   .text-secondary { color: #E67E00; }
   .text-secondary-light { color: #FF9E1B; }
   .text-cta { color: #C4006A; }
@@ -115,16 +119,20 @@ p, button, li, span, a, input, textarea, blockquote, cite, small, .meta, .captio
   .bg-bgPure { background-color: #FFFFFF; }
   .bg-textMain { background-color: #1A1A1A; }
   .bg-textMuted { background-color: #64748B; }
+  .bg-primary-dark { background-color: #005A8C; }
   .bg-primary { background-color: #0077B6; }
   .bg-primary-light { background-color: #00A3E0; }
+  .bg-secondary-dark { background-color: #B86600; }
   .bg-secondary { background-color: #E67E00; }
   .bg-secondary-light { background-color: #FF9E1B; }
   .bg-cta { background-color: #C4006A; }
   .bg-highlight { background-color: #F5D600; }
 
   /* Border color utilities */
+  .border-primary-dark { border-color: #005A8C; }
   .border-primary { border-color: #0077B6; }
   .border-primary-light { border-color: #00A3E0; }
+  .border-secondary-dark { border-color: #B86600; }
   .border-secondary { border-color: #E67E00; }
   .border-secondary-light { border-color: #FF9E1B; }
   .border-cta { border-color: #C4006A; }

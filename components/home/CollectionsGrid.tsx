@@ -43,7 +43,7 @@ const fallbackCollections = [
     id: "3",
     name: "Wedding & Events",
     slug: "wedding-events",
-    description: "Make your special day unforgettable",
+    description: "Premium printing for weddings and corporate events",
     image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=600&fit=crop",
     linkUrl: "/services",
     isFeatured: false,

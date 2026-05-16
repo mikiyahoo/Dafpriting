@@ -43,7 +43,7 @@ export function Header() {
             ))}
             <Link
               href="/request-quote"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-light text-bgPure text-sm font-semibold tracking-wide rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-dark to-primary text-bgPure text-sm font-semibold tracking-wide rounded-full hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
             >
               Request Quote
               <ArrowRight size={16} />
@@ -62,7 +62,7 @@ export function Header() {
 
       {/* Full-screen mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 md:hidden">
+        <div className="fixed inset-0 z-50 md:hidden">
           {/* Backdrop */}
           <div 
             className="absolute inset-0 bg-textMain/50 backdrop-blur-sm"
@@ -70,7 +70,7 @@ export function Header() {
           />
           
           {/* Menu panel */}
-          <div className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-bgPure shadow-2xl overflow-y-auto">
+          <div className="absolute right-0 top-0 bottom-0 w-4/5 max-w-sm bg-bgPure shadow-2xl overflow-y-auto z-50">
             <div className="p-6">
               {/* Header */}
               <div className="flex items-center justify-between mb-8">
@@ -110,7 +110,7 @@ export function Header() {
               <div className="mt-8">
                 <Link
                   href="/request-quote"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-gradient-to-r from-primary to-primary-light text-bgPure text-base font-bold tracking-wide rounded-xl hover:shadow-lg transition-all duration-300"
+                  className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-gradient-to-r from-primary-dark to-primary text-bgPure text-base font-bold tracking-wide rounded-xl hover:shadow-lg transition-all duration-300"
                   onClick={() => setMobileOpen(false)}
                 >
                   Request a Free Quote

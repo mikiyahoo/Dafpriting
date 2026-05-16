@@ -105,7 +105,7 @@ export default function HomePage() {
             <div className="text-center mt-16">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-light text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-dark to-primary text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group"
               >
                 View All Services
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -146,7 +146,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/request-quote"
-                className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-secondary to-secondary-light text-bgPure text-base font-bold tracking-wide rounded-full shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(230,126,0,0.5)] hover:-translate-y-1 transition-all duration-300 group"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-secondary-dark to-secondary text-bgPure text-base font-bold tracking-wide rounded-full shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(230,126,0,0.5)] hover:-translate-y-1 transition-all duration-300 group"
               >
                 Request a Free Quote
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
