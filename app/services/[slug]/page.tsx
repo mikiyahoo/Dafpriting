@@ -102,19 +102,6 @@ const serviceDetails: Record<string, {
     ],
     finishes: ["Matte Cover", "Gloss Cover", "Soft Touch", "Spot UV"],
   },
-  "event-materials": {
-    title: "Event Materials",
-    description: "Complete event stationery and materials to make your occasion memorable. From weddings to corporate events, we print it all.",
-    details: [
-      "Invitations with envelopes",
-      "Event programs and itineraries",
-      "Menus and place cards",
-      "Tickets and wristbands",
-      "Name badges and lanyards",
-      "Table numbers and signage",
-    ],
-    finishes: ["Matte", "Gloss", "Soft Touch", "Foil Stamping", "Embossing"],
-  },
 };
 
 export async function generateStaticParams() {
@@ -138,33 +125,33 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
     <>
       <Header />
       <main>
-        <section className="pt-32 pb-24">
+        <section className="pt-32 pb-24 bg-gradient-subtle">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               href="/services"
-              className="text-sm text-textMuted hover:text-secondary transition-colors mb-6 inline-block"
+              className="text-sm text-textMuted hover:text-primary transition-colors mb-6 inline-block"
             >
               &larr; Back to Services
             </Link>
 
-            <div className="max-w-4xl">
-              <h1 className="text-4xl md:text-5xl font-black text-textMain mb-6">
+            <div className="max-w-4xl mb-16">
+              <h1 className="text-4xl md:text-5xl font-black text-textMain mb-6 leading-tight">
                 {service.title}
               </h1>
-              <p className="text-lg text-textMuted leading-relaxed mb-12">
+              <p className="text-textMuted text-lg leading-relaxed">
                 {service.description}
               </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
               <div>
-                <h2 className="text-xl font-bold text-primary-navy mb-6">
-                  What We Offer
-                </h2>
-                <ul className="space-y-3">
+                <h2 className="text-xl font-black text-textMain mb-6">What We Offer</h2>
+                <ul className="space-y-4">
                   {service.details.map((detail) => (
                     <li key={detail} className="flex items-start gap-3">
-                      <Check size={18} className="text-secondary flex-shrink-0 mt-0.5" />
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check size={14} className="text-primary" />
+                      </div>
                       <span className="text-textMuted">{detail}</span>
                     </li>
                   ))}
@@ -172,30 +159,26 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
               </div>
 
               <div>
-                <h2 className="text-xl font-bold text-primary-navy mb-6">
-                  Available Finishes
-                </h2>
+                <h2 className="text-xl font-black text-textMain mb-6">Available Finishes</h2>
                 <div className="flex flex-wrap gap-3">
                   {service.finishes.map((finish) => (
                     <span
                       key={finish}
-                      className="px-4 py-2 border border-primary/20 text-sm font-medium text-textMuted"
+                      className="px-4 py-2 bg-bgPure border border-gray-200 text-sm font-medium text-textMuted rounded-lg"
                     >
                       {finish}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-10 p-8 bg-primary">
-                  <h3 className="text-lg font-black text-bgPure mb-2">
-                    Need a Quote?
-                  </h3>
-                  <p className="text-bgPure/60 text-sm mb-6">
+                <div className="mt-10 p-8 bg-gradient-primary rounded-2xl text-bgPure">
+                  <h3 className="text-lg font-black mb-2">Need a Quote?</h3>
+                  <p className="text-bgPure/80 text-sm mb-6">
                     Tell us about your project and we'll provide a free quote within 24 hours.
                   </p>
                   <Link
                     href={`/request-quote?service=${params.slug}`}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-bgPure text-sm font-semibold tracking-wide uppercase hover:bg-secondary/90 transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-bgPure text-sm font-bold tracking-wide uppercase rounded-full shadow-lg hover:bg-secondary/90 hover:-translate-y-0.5 transition-all duration-300"
                   >
                     Get a Free Quote
                     <ArrowRight size={16} />

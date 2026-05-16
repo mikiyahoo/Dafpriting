@@ -309,7 +309,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "c:\\Users\\LEGION\\Documents\\My Project\\Daf Printing\\generated\\prisma",
+      "value": "C:\\Users\\LEGION\\Documents\\My Project\\Daf Printing\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -323,7 +323,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "c:\\Users\\LEGION\\Documents\\My Project\\Daf Printing\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\LEGION\\Documents\\My Project\\Daf Printing\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

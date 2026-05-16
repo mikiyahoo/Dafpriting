@@ -4,8 +4,9 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { 
   Printer, FileText, Image, Shirt, Stamp, Box, 
-  BookOpen, Tag, Building, Shapes, Megaphone 
+  BookOpen, Megaphone 
 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services | Daf Printing",
@@ -62,13 +63,6 @@ const serviceCategories = [
     description: "Professional book printing, magazines, catalogs, and bound documents.",
     items: ["Books", "Magazines", "Catalogs", "Brochures", "Manuals"],
   },
-  {
-    title: "Event Materials",
-    slug: "event-materials",
-    icon: Building,
-    description: "Invitations, programs, menus, place cards, and all your event stationery needs.",
-    items: ["Invitations", "Programs", "Menus", "Tickets", "Name Badges"],
-  },
 ];
 
 export default function ServicesPage() {
@@ -76,16 +70,19 @@ export default function ServicesPage() {
     <>
       <Header />
       <main>
-        <section className="pt-32 pb-24">
+        <section className="pt-32 pb-24 bg-gradient-subtle">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-16">
-              <p className="text-secondary text-sm font-medium tracking-[0.2em] uppercase mb-3">
+              <span className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4">
                 Our Services
-              </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-primary tracking-tight mb-6">
-                Comprehensive Printing Services
+              </span>
+              <h1 className="text-4xl md:text-5xl font-black text-textMain mb-6 leading-tight">
+                Comprehensive Printing{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
+                  Services
+                </span>
               </h1>
-              <p className="text-primary/70 text-lg leading-relaxed">
+              <p className="text-textMuted text-lg leading-relaxed">
                 From business essentials to large format displays, we offer a complete 
                 range of printing services tailored to your needs.
               </p>
@@ -95,24 +92,27 @@ export default function ServicesPage() {
               {serviceCategories.map((cat, index) => (
                 <div
                   key={cat.slug}
-                  className="group p-8 md:p-10 border border-primary/10 hover:border-primary/30 transition-colors"
+                  className="group relative p-8 md:p-10 bg-bgPure rounded-2xl border border-gray-100 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex flex-col md:flex-row gap-8">
                     <div className="flex-shrink-0">
-                      <cat.icon className="w-10 h-10 text-secondary" />
+                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <cat.icon className="w-7 h-7 text-white" />
+                      </div>
                     </div>
                     <div className="flex-1">
-                      <h2 className="text-2xl font-bold text-primary mb-3">
+                      <h2 className="text-2xl font-black text-textMain mb-3 group-hover:text-primary transition-colors">
                         {cat.title}
                       </h2>
-                      <p className="text-primary/60 text-sm leading-relaxed mb-6 max-w-2xl">
+                      <p className="text-textMuted text-sm leading-relaxed mb-6 max-w-2xl">
                         {cat.description}
                       </p>
                       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                         {cat.items.map((item) => (
                           <span
                             key={item}
-                            className="text-xs font-medium uppercase tracking-wide text-primary/70 bg-primary/5 px-3 py-2 text-center"
+                            className="text-xs font-medium uppercase tracking-wide text-textMuted bg-bgLight px-3 py-2 text-center rounded-lg"
                           >
                             {item}
                           </span>
@@ -120,9 +120,10 @@ export default function ServicesPage() {
                       </div>
                       <Link
                         href={`/services/${cat.slug}`}
-                        className="inline-flex items-center gap-2 mt-6 text-sm font-medium text-secondary hover:text-primary transition-colors"
+                        className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-primary hover:text-secondary transition-colors"
                       >
-                        Learn More &rarr;
+                        Learn More
+                        <ArrowRight size={16} />
                       </Link>
                     </div>
                   </div>

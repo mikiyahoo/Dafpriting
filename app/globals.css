@@ -1,24 +1,5 @@
 @import "tailwindcss";
-
-/* ============================================
-   FONT FACES - Daf Printing
-   ============================================ */
-
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* ============================================
    COLOR PALETTE - Daf Printing
@@ -26,22 +7,18 @@
 
 :root {
   /* The 60%: Clean Canvas & Typography */
-  --color-bgLight: '#F8F9FA';
-  --color-bgPure: '#FFFFFF';
-  --color-textMain: '#1A1A1A';
-  --color-textMuted: '#64748B';
+  --color-bgLight: #F8F9FA;
+  --color-bgPure: #FFFFFF;
+  --color-textMain: #1A1A1A;
+  --color-textMuted: #64748B;
 
   /* The 30%: Structural Brand Trust */
-  --color-primary: '#00A3E0';
-  --color-secondary: '#FF9E1B';
+  --color-primary: #00A3E0;
+  --color-secondary: #FF9E1B;
 
   /* The 10%: Action & Highlights */
-  --color-cta: '#E3007B';
-  --color-highlight: '#FFE000';
-
-  /* Legacy aliases for backwards compatibility */
-  --color-bg: var(--color-bgPure);
-  --color-text: var(--color-textMain);
+  --color-cta: #E3007B;
+  --color-highlight: #FFE000;
 }
 
 body {
