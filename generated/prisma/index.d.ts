@@ -29,6 +29,11 @@ export type Service = $Result.DefaultSelection<Prisma.$ServicePayload>
  */
 export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
 /**
+ * Model Banner
+ * 
+ */
+export type Banner = $Result.DefaultSelection<Prisma.$BannerPayload>
+/**
  * Model Collection
  * 
  */
@@ -38,6 +43,11 @@ export type Collection = $Result.DefaultSelection<Prisma.$CollectionPayload>
  * 
  */
 export type Customer = $Result.DefaultSelection<Prisma.$CustomerPayload>
+/**
+ * Model QuickRequest
+ * 
+ */
+export type QuickRequest = $Result.DefaultSelection<Prisma.$QuickRequestPayload>
 /**
  * Model QuoteRequest
  * 
@@ -262,6 +272,16 @@ export class PrismaClient<
   get category(): Prisma.CategoryDelegate<ExtArgs>;
 
   /**
+   * `prisma.banner`: Exposes CRUD operations for the **Banner** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Banners
+    * const banners = await prisma.banner.findMany()
+    * ```
+    */
+  get banner(): Prisma.BannerDelegate<ExtArgs>;
+
+  /**
    * `prisma.collection`: Exposes CRUD operations for the **Collection** model.
     * Example usage:
     * ```ts
@@ -280,6 +300,16 @@ export class PrismaClient<
     * ```
     */
   get customer(): Prisma.CustomerDelegate<ExtArgs>;
+
+  /**
+   * `prisma.quickRequest`: Exposes CRUD operations for the **QuickRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more QuickRequests
+    * const quickRequests = await prisma.quickRequest.findMany()
+    * ```
+    */
+  get quickRequest(): Prisma.QuickRequestDelegate<ExtArgs>;
 
   /**
    * `prisma.quoteRequest`: Exposes CRUD operations for the **QuoteRequest** model.
@@ -794,8 +824,10 @@ export namespace Prisma {
     User: 'User',
     Service: 'Service',
     Category: 'Category',
+    Banner: 'Banner',
     Collection: 'Collection',
     Customer: 'Customer',
+    QuickRequest: 'QuickRequest',
     QuoteRequest: 'QuoteRequest',
     QuoteFile: 'QuoteFile',
     PortfolioItem: 'PortfolioItem',
@@ -818,7 +850,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "service" | "category" | "collection" | "customer" | "quoteRequest" | "quoteFile" | "portfolioItem" | "portfolioImage" | "testimonial" | "orderTracking" | "orderStage"
+      modelProps: "user" | "service" | "category" | "banner" | "collection" | "customer" | "quickRequest" | "quoteRequest" | "quoteFile" | "portfolioItem" | "portfolioImage" | "testimonial" | "orderTracking" | "orderStage"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1032,6 +1064,76 @@ export namespace Prisma {
           }
         }
       }
+      Banner: {
+        payload: Prisma.$BannerPayload<ExtArgs>
+        fields: Prisma.BannerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BannerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BannerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload>
+          }
+          findFirst: {
+            args: Prisma.BannerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BannerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload>
+          }
+          findMany: {
+            args: Prisma.BannerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload>[]
+          }
+          create: {
+            args: Prisma.BannerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload>
+          }
+          createMany: {
+            args: Prisma.BannerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BannerCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload>[]
+          }
+          delete: {
+            args: Prisma.BannerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload>
+          }
+          update: {
+            args: Prisma.BannerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload>
+          }
+          deleteMany: {
+            args: Prisma.BannerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BannerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.BannerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BannerPayload>
+          }
+          aggregate: {
+            args: Prisma.BannerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBanner>
+          }
+          groupBy: {
+            args: Prisma.BannerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BannerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BannerCountArgs<ExtArgs>
+            result: $Utils.Optional<BannerCountAggregateOutputType> | number
+          }
+        }
+      }
       Collection: {
         payload: Prisma.$CollectionPayload<ExtArgs>
         fields: Prisma.CollectionFieldRefs
@@ -1169,6 +1271,76 @@ export namespace Prisma {
           count: {
             args: Prisma.CustomerCountArgs<ExtArgs>
             result: $Utils.Optional<CustomerCountAggregateOutputType> | number
+          }
+        }
+      }
+      QuickRequest: {
+        payload: Prisma.$QuickRequestPayload<ExtArgs>
+        fields: Prisma.QuickRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.QuickRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.QuickRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.QuickRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.QuickRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload>
+          }
+          findMany: {
+            args: Prisma.QuickRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload>[]
+          }
+          create: {
+            args: Prisma.QuickRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload>
+          }
+          createMany: {
+            args: Prisma.QuickRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.QuickRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.QuickRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload>
+          }
+          update: {
+            args: Prisma.QuickRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.QuickRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.QuickRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.QuickRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuickRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.QuickRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateQuickRequest>
+          }
+          groupBy: {
+            args: Prisma.QuickRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<QuickRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.QuickRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<QuickRequestCountAggregateOutputType> | number
           }
         }
       }
@@ -4995,6 +5167,954 @@ export namespace Prisma {
 
 
   /**
+   * Model Banner
+   */
+
+  export type AggregateBanner = {
+    _count: BannerCountAggregateOutputType | null
+    _avg: BannerAvgAggregateOutputType | null
+    _sum: BannerSumAggregateOutputType | null
+    _min: BannerMinAggregateOutputType | null
+    _max: BannerMaxAggregateOutputType | null
+  }
+
+  export type BannerAvgAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type BannerSumAggregateOutputType = {
+    sortOrder: number | null
+  }
+
+  export type BannerMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    imageUrl: string | null
+    linkUrl: string | null
+    sortOrder: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BannerMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    imageUrl: string | null
+    linkUrl: string | null
+    sortOrder: number | null
+    isActive: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BannerCountAggregateOutputType = {
+    id: number
+    title: number
+    imageUrl: number
+    linkUrl: number
+    sortOrder: number
+    isActive: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BannerAvgAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type BannerSumAggregateInputType = {
+    sortOrder?: true
+  }
+
+  export type BannerMinAggregateInputType = {
+    id?: true
+    title?: true
+    imageUrl?: true
+    linkUrl?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BannerMaxAggregateInputType = {
+    id?: true
+    title?: true
+    imageUrl?: true
+    linkUrl?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BannerCountAggregateInputType = {
+    id?: true
+    title?: true
+    imageUrl?: true
+    linkUrl?: true
+    sortOrder?: true
+    isActive?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BannerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Banner to aggregate.
+     */
+    where?: BannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banners to fetch.
+     */
+    orderBy?: BannerOrderByWithRelationInput | BannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Banners
+    **/
+    _count?: true | BannerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BannerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BannerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BannerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BannerMaxAggregateInputType
+  }
+
+  export type GetBannerAggregateType<T extends BannerAggregateArgs> = {
+        [P in keyof T & keyof AggregateBanner]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBanner[P]>
+      : GetScalarType<T[P], AggregateBanner[P]>
+  }
+
+
+
+
+  export type BannerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BannerWhereInput
+    orderBy?: BannerOrderByWithAggregationInput | BannerOrderByWithAggregationInput[]
+    by: BannerScalarFieldEnum[] | BannerScalarFieldEnum
+    having?: BannerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BannerCountAggregateInputType | true
+    _avg?: BannerAvgAggregateInputType
+    _sum?: BannerSumAggregateInputType
+    _min?: BannerMinAggregateInputType
+    _max?: BannerMaxAggregateInputType
+  }
+
+  export type BannerGroupByOutputType = {
+    id: string
+    title: string | null
+    imageUrl: string
+    linkUrl: string | null
+    sortOrder: number
+    isActive: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: BannerCountAggregateOutputType | null
+    _avg: BannerAvgAggregateOutputType | null
+    _sum: BannerSumAggregateOutputType | null
+    _min: BannerMinAggregateOutputType | null
+    _max: BannerMaxAggregateOutputType | null
+  }
+
+  type GetBannerGroupByPayload<T extends BannerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BannerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BannerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BannerGroupByOutputType[P]>
+            : GetScalarType<T[P], BannerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BannerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    imageUrl?: boolean
+    linkUrl?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["banner"]>
+
+  export type BannerSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    imageUrl?: boolean
+    linkUrl?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["banner"]>
+
+  export type BannerSelectScalar = {
+    id?: boolean
+    title?: boolean
+    imageUrl?: boolean
+    linkUrl?: boolean
+    sortOrder?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $BannerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Banner"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string | null
+      imageUrl: string
+      linkUrl: string | null
+      sortOrder: number
+      isActive: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["banner"]>
+    composites: {}
+  }
+
+  type BannerGetPayload<S extends boolean | null | undefined | BannerDefaultArgs> = $Result.GetResult<Prisma.$BannerPayload, S>
+
+  type BannerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<BannerFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: BannerCountAggregateInputType | true
+    }
+
+  export interface BannerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Banner'], meta: { name: 'Banner' } }
+    /**
+     * Find zero or one Banner that matches the filter.
+     * @param {BannerFindUniqueArgs} args - Arguments to find a Banner
+     * @example
+     * // Get one Banner
+     * const banner = await prisma.banner.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BannerFindUniqueArgs>(args: SelectSubset<T, BannerFindUniqueArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Banner that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {BannerFindUniqueOrThrowArgs} args - Arguments to find a Banner
+     * @example
+     * // Get one Banner
+     * const banner = await prisma.banner.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BannerFindUniqueOrThrowArgs>(args: SelectSubset<T, BannerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Banner that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerFindFirstArgs} args - Arguments to find a Banner
+     * @example
+     * // Get one Banner
+     * const banner = await prisma.banner.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BannerFindFirstArgs>(args?: SelectSubset<T, BannerFindFirstArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Banner that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerFindFirstOrThrowArgs} args - Arguments to find a Banner
+     * @example
+     * // Get one Banner
+     * const banner = await prisma.banner.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BannerFindFirstOrThrowArgs>(args?: SelectSubset<T, BannerFindFirstOrThrowArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Banners that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Banners
+     * const banners = await prisma.banner.findMany()
+     * 
+     * // Get first 10 Banners
+     * const banners = await prisma.banner.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bannerWithIdOnly = await prisma.banner.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BannerFindManyArgs>(args?: SelectSubset<T, BannerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Banner.
+     * @param {BannerCreateArgs} args - Arguments to create a Banner.
+     * @example
+     * // Create one Banner
+     * const Banner = await prisma.banner.create({
+     *   data: {
+     *     // ... data to create a Banner
+     *   }
+     * })
+     * 
+     */
+    create<T extends BannerCreateArgs>(args: SelectSubset<T, BannerCreateArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Banners.
+     * @param {BannerCreateManyArgs} args - Arguments to create many Banners.
+     * @example
+     * // Create many Banners
+     * const banner = await prisma.banner.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BannerCreateManyArgs>(args?: SelectSubset<T, BannerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Banners and returns the data saved in the database.
+     * @param {BannerCreateManyAndReturnArgs} args - Arguments to create many Banners.
+     * @example
+     * // Create many Banners
+     * const banner = await prisma.banner.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Banners and only return the `id`
+     * const bannerWithIdOnly = await prisma.banner.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BannerCreateManyAndReturnArgs>(args?: SelectSubset<T, BannerCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Banner.
+     * @param {BannerDeleteArgs} args - Arguments to delete one Banner.
+     * @example
+     * // Delete one Banner
+     * const Banner = await prisma.banner.delete({
+     *   where: {
+     *     // ... filter to delete one Banner
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BannerDeleteArgs>(args: SelectSubset<T, BannerDeleteArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Banner.
+     * @param {BannerUpdateArgs} args - Arguments to update one Banner.
+     * @example
+     * // Update one Banner
+     * const banner = await prisma.banner.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BannerUpdateArgs>(args: SelectSubset<T, BannerUpdateArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Banners.
+     * @param {BannerDeleteManyArgs} args - Arguments to filter Banners to delete.
+     * @example
+     * // Delete a few Banners
+     * const { count } = await prisma.banner.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BannerDeleteManyArgs>(args?: SelectSubset<T, BannerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Banners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Banners
+     * const banner = await prisma.banner.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BannerUpdateManyArgs>(args: SelectSubset<T, BannerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Banner.
+     * @param {BannerUpsertArgs} args - Arguments to update or create a Banner.
+     * @example
+     * // Update or create a Banner
+     * const banner = await prisma.banner.upsert({
+     *   create: {
+     *     // ... data to create a Banner
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Banner we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BannerUpsertArgs>(args: SelectSubset<T, BannerUpsertArgs<ExtArgs>>): Prisma__BannerClient<$Result.GetResult<Prisma.$BannerPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Banners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerCountArgs} args - Arguments to filter Banners to count.
+     * @example
+     * // Count the number of Banners
+     * const count = await prisma.banner.count({
+     *   where: {
+     *     // ... the filter for the Banners we want to count
+     *   }
+     * })
+    **/
+    count<T extends BannerCountArgs>(
+      args?: Subset<T, BannerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BannerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Banner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BannerAggregateArgs>(args: Subset<T, BannerAggregateArgs>): Prisma.PrismaPromise<GetBannerAggregateType<T>>
+
+    /**
+     * Group by Banner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BannerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BannerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BannerGroupByArgs['orderBy'] }
+        : { orderBy?: BannerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BannerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBannerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Banner model
+   */
+  readonly fields: BannerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Banner.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BannerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Banner model
+   */ 
+  interface BannerFieldRefs {
+    readonly id: FieldRef<"Banner", 'String'>
+    readonly title: FieldRef<"Banner", 'String'>
+    readonly imageUrl: FieldRef<"Banner", 'String'>
+    readonly linkUrl: FieldRef<"Banner", 'String'>
+    readonly sortOrder: FieldRef<"Banner", 'Int'>
+    readonly isActive: FieldRef<"Banner", 'Boolean'>
+    readonly createdAt: FieldRef<"Banner", 'DateTime'>
+    readonly updatedAt: FieldRef<"Banner", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Banner findUnique
+   */
+  export type BannerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * Filter, which Banner to fetch.
+     */
+    where: BannerWhereUniqueInput
+  }
+
+  /**
+   * Banner findUniqueOrThrow
+   */
+  export type BannerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * Filter, which Banner to fetch.
+     */
+    where: BannerWhereUniqueInput
+  }
+
+  /**
+   * Banner findFirst
+   */
+  export type BannerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * Filter, which Banner to fetch.
+     */
+    where?: BannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banners to fetch.
+     */
+    orderBy?: BannerOrderByWithRelationInput | BannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Banners.
+     */
+    cursor?: BannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Banners.
+     */
+    distinct?: BannerScalarFieldEnum | BannerScalarFieldEnum[]
+  }
+
+  /**
+   * Banner findFirstOrThrow
+   */
+  export type BannerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * Filter, which Banner to fetch.
+     */
+    where?: BannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banners to fetch.
+     */
+    orderBy?: BannerOrderByWithRelationInput | BannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Banners.
+     */
+    cursor?: BannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Banners.
+     */
+    distinct?: BannerScalarFieldEnum | BannerScalarFieldEnum[]
+  }
+
+  /**
+   * Banner findMany
+   */
+  export type BannerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * Filter, which Banners to fetch.
+     */
+    where?: BannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banners to fetch.
+     */
+    orderBy?: BannerOrderByWithRelationInput | BannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Banners.
+     */
+    cursor?: BannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banners.
+     */
+    skip?: number
+    distinct?: BannerScalarFieldEnum | BannerScalarFieldEnum[]
+  }
+
+  /**
+   * Banner create
+   */
+  export type BannerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Banner.
+     */
+    data: XOR<BannerCreateInput, BannerUncheckedCreateInput>
+  }
+
+  /**
+   * Banner createMany
+   */
+  export type BannerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Banners.
+     */
+    data: BannerCreateManyInput | BannerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Banner createManyAndReturn
+   */
+  export type BannerCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Banners.
+     */
+    data: BannerCreateManyInput | BannerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Banner update
+   */
+  export type BannerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Banner.
+     */
+    data: XOR<BannerUpdateInput, BannerUncheckedUpdateInput>
+    /**
+     * Choose, which Banner to update.
+     */
+    where: BannerWhereUniqueInput
+  }
+
+  /**
+   * Banner updateMany
+   */
+  export type BannerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Banners.
+     */
+    data: XOR<BannerUpdateManyMutationInput, BannerUncheckedUpdateManyInput>
+    /**
+     * Filter which Banners to update
+     */
+    where?: BannerWhereInput
+  }
+
+  /**
+   * Banner upsert
+   */
+  export type BannerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Banner to update in case it exists.
+     */
+    where: BannerWhereUniqueInput
+    /**
+     * In case the Banner found by the `where` argument doesn't exist, create a new Banner with this data.
+     */
+    create: XOR<BannerCreateInput, BannerUncheckedCreateInput>
+    /**
+     * In case the Banner was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BannerUpdateInput, BannerUncheckedUpdateInput>
+  }
+
+  /**
+   * Banner delete
+   */
+  export type BannerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+    /**
+     * Filter which Banner to delete.
+     */
+    where: BannerWhereUniqueInput
+  }
+
+  /**
+   * Banner deleteMany
+   */
+  export type BannerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Banners to delete
+     */
+    where?: BannerWhereInput
+  }
+
+  /**
+   * Banner without action
+   */
+  export type BannerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Banner
+     */
+    select?: BannerSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Model Collection
    */
 
@@ -6947,6 +8067,978 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CustomerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model QuickRequest
+   */
+
+  export type AggregateQuickRequest = {
+    _count: QuickRequestCountAggregateOutputType | null
+    _avg: QuickRequestAvgAggregateOutputType | null
+    _sum: QuickRequestSumAggregateOutputType | null
+    _min: QuickRequestMinAggregateOutputType | null
+    _max: QuickRequestMaxAggregateOutputType | null
+  }
+
+  export type QuickRequestAvgAggregateOutputType = {
+    quantity: number | null
+  }
+
+  export type QuickRequestSumAggregateOutputType = {
+    quantity: number | null
+  }
+
+  export type QuickRequestMinAggregateOutputType = {
+    id: string | null
+    phone: string | null
+    email: string | null
+    company: string | null
+    firstName: string | null
+    magazineType: string | null
+    quantity: number | null
+    isRead: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type QuickRequestMaxAggregateOutputType = {
+    id: string | null
+    phone: string | null
+    email: string | null
+    company: string | null
+    firstName: string | null
+    magazineType: string | null
+    quantity: number | null
+    isRead: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type QuickRequestCountAggregateOutputType = {
+    id: number
+    phone: number
+    email: number
+    company: number
+    firstName: number
+    magazineType: number
+    quantity: number
+    isRead: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type QuickRequestAvgAggregateInputType = {
+    quantity?: true
+  }
+
+  export type QuickRequestSumAggregateInputType = {
+    quantity?: true
+  }
+
+  export type QuickRequestMinAggregateInputType = {
+    id?: true
+    phone?: true
+    email?: true
+    company?: true
+    firstName?: true
+    magazineType?: true
+    quantity?: true
+    isRead?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type QuickRequestMaxAggregateInputType = {
+    id?: true
+    phone?: true
+    email?: true
+    company?: true
+    firstName?: true
+    magazineType?: true
+    quantity?: true
+    isRead?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type QuickRequestCountAggregateInputType = {
+    id?: true
+    phone?: true
+    email?: true
+    company?: true
+    firstName?: true
+    magazineType?: true
+    quantity?: true
+    isRead?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type QuickRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which QuickRequest to aggregate.
+     */
+    where?: QuickRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuickRequests to fetch.
+     */
+    orderBy?: QuickRequestOrderByWithRelationInput | QuickRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: QuickRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuickRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuickRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned QuickRequests
+    **/
+    _count?: true | QuickRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: QuickRequestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: QuickRequestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: QuickRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: QuickRequestMaxAggregateInputType
+  }
+
+  export type GetQuickRequestAggregateType<T extends QuickRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateQuickRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateQuickRequest[P]>
+      : GetScalarType<T[P], AggregateQuickRequest[P]>
+  }
+
+
+
+
+  export type QuickRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: QuickRequestWhereInput
+    orderBy?: QuickRequestOrderByWithAggregationInput | QuickRequestOrderByWithAggregationInput[]
+    by: QuickRequestScalarFieldEnum[] | QuickRequestScalarFieldEnum
+    having?: QuickRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: QuickRequestCountAggregateInputType | true
+    _avg?: QuickRequestAvgAggregateInputType
+    _sum?: QuickRequestSumAggregateInputType
+    _min?: QuickRequestMinAggregateInputType
+    _max?: QuickRequestMaxAggregateInputType
+  }
+
+  export type QuickRequestGroupByOutputType = {
+    id: string
+    phone: string
+    email: string | null
+    company: string | null
+    firstName: string
+    magazineType: string
+    quantity: number
+    isRead: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: QuickRequestCountAggregateOutputType | null
+    _avg: QuickRequestAvgAggregateOutputType | null
+    _sum: QuickRequestSumAggregateOutputType | null
+    _min: QuickRequestMinAggregateOutputType | null
+    _max: QuickRequestMaxAggregateOutputType | null
+  }
+
+  type GetQuickRequestGroupByPayload<T extends QuickRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<QuickRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof QuickRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], QuickRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], QuickRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type QuickRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phone?: boolean
+    email?: boolean
+    company?: boolean
+    firstName?: boolean
+    magazineType?: boolean
+    quantity?: boolean
+    isRead?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["quickRequest"]>
+
+  export type QuickRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    phone?: boolean
+    email?: boolean
+    company?: boolean
+    firstName?: boolean
+    magazineType?: boolean
+    quantity?: boolean
+    isRead?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["quickRequest"]>
+
+  export type QuickRequestSelectScalar = {
+    id?: boolean
+    phone?: boolean
+    email?: boolean
+    company?: boolean
+    firstName?: boolean
+    magazineType?: boolean
+    quantity?: boolean
+    isRead?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $QuickRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "QuickRequest"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      phone: string
+      email: string | null
+      company: string | null
+      firstName: string
+      magazineType: string
+      quantity: number
+      isRead: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["quickRequest"]>
+    composites: {}
+  }
+
+  type QuickRequestGetPayload<S extends boolean | null | undefined | QuickRequestDefaultArgs> = $Result.GetResult<Prisma.$QuickRequestPayload, S>
+
+  type QuickRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<QuickRequestFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: QuickRequestCountAggregateInputType | true
+    }
+
+  export interface QuickRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['QuickRequest'], meta: { name: 'QuickRequest' } }
+    /**
+     * Find zero or one QuickRequest that matches the filter.
+     * @param {QuickRequestFindUniqueArgs} args - Arguments to find a QuickRequest
+     * @example
+     * // Get one QuickRequest
+     * const quickRequest = await prisma.quickRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends QuickRequestFindUniqueArgs>(args: SelectSubset<T, QuickRequestFindUniqueArgs<ExtArgs>>): Prisma__QuickRequestClient<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one QuickRequest that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {QuickRequestFindUniqueOrThrowArgs} args - Arguments to find a QuickRequest
+     * @example
+     * // Get one QuickRequest
+     * const quickRequest = await prisma.quickRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends QuickRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, QuickRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuickRequestClient<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first QuickRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuickRequestFindFirstArgs} args - Arguments to find a QuickRequest
+     * @example
+     * // Get one QuickRequest
+     * const quickRequest = await prisma.quickRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends QuickRequestFindFirstArgs>(args?: SelectSubset<T, QuickRequestFindFirstArgs<ExtArgs>>): Prisma__QuickRequestClient<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first QuickRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuickRequestFindFirstOrThrowArgs} args - Arguments to find a QuickRequest
+     * @example
+     * // Get one QuickRequest
+     * const quickRequest = await prisma.quickRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends QuickRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, QuickRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuickRequestClient<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more QuickRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuickRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all QuickRequests
+     * const quickRequests = await prisma.quickRequest.findMany()
+     * 
+     * // Get first 10 QuickRequests
+     * const quickRequests = await prisma.quickRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const quickRequestWithIdOnly = await prisma.quickRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends QuickRequestFindManyArgs>(args?: SelectSubset<T, QuickRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a QuickRequest.
+     * @param {QuickRequestCreateArgs} args - Arguments to create a QuickRequest.
+     * @example
+     * // Create one QuickRequest
+     * const QuickRequest = await prisma.quickRequest.create({
+     *   data: {
+     *     // ... data to create a QuickRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends QuickRequestCreateArgs>(args: SelectSubset<T, QuickRequestCreateArgs<ExtArgs>>): Prisma__QuickRequestClient<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many QuickRequests.
+     * @param {QuickRequestCreateManyArgs} args - Arguments to create many QuickRequests.
+     * @example
+     * // Create many QuickRequests
+     * const quickRequest = await prisma.quickRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends QuickRequestCreateManyArgs>(args?: SelectSubset<T, QuickRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many QuickRequests and returns the data saved in the database.
+     * @param {QuickRequestCreateManyAndReturnArgs} args - Arguments to create many QuickRequests.
+     * @example
+     * // Create many QuickRequests
+     * const quickRequest = await prisma.quickRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many QuickRequests and only return the `id`
+     * const quickRequestWithIdOnly = await prisma.quickRequest.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends QuickRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, QuickRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a QuickRequest.
+     * @param {QuickRequestDeleteArgs} args - Arguments to delete one QuickRequest.
+     * @example
+     * // Delete one QuickRequest
+     * const QuickRequest = await prisma.quickRequest.delete({
+     *   where: {
+     *     // ... filter to delete one QuickRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends QuickRequestDeleteArgs>(args: SelectSubset<T, QuickRequestDeleteArgs<ExtArgs>>): Prisma__QuickRequestClient<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one QuickRequest.
+     * @param {QuickRequestUpdateArgs} args - Arguments to update one QuickRequest.
+     * @example
+     * // Update one QuickRequest
+     * const quickRequest = await prisma.quickRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends QuickRequestUpdateArgs>(args: SelectSubset<T, QuickRequestUpdateArgs<ExtArgs>>): Prisma__QuickRequestClient<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more QuickRequests.
+     * @param {QuickRequestDeleteManyArgs} args - Arguments to filter QuickRequests to delete.
+     * @example
+     * // Delete a few QuickRequests
+     * const { count } = await prisma.quickRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends QuickRequestDeleteManyArgs>(args?: SelectSubset<T, QuickRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more QuickRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuickRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many QuickRequests
+     * const quickRequest = await prisma.quickRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends QuickRequestUpdateManyArgs>(args: SelectSubset<T, QuickRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one QuickRequest.
+     * @param {QuickRequestUpsertArgs} args - Arguments to update or create a QuickRequest.
+     * @example
+     * // Update or create a QuickRequest
+     * const quickRequest = await prisma.quickRequest.upsert({
+     *   create: {
+     *     // ... data to create a QuickRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the QuickRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends QuickRequestUpsertArgs>(args: SelectSubset<T, QuickRequestUpsertArgs<ExtArgs>>): Prisma__QuickRequestClient<$Result.GetResult<Prisma.$QuickRequestPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of QuickRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuickRequestCountArgs} args - Arguments to filter QuickRequests to count.
+     * @example
+     * // Count the number of QuickRequests
+     * const count = await prisma.quickRequest.count({
+     *   where: {
+     *     // ... the filter for the QuickRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends QuickRequestCountArgs>(
+      args?: Subset<T, QuickRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], QuickRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a QuickRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuickRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends QuickRequestAggregateArgs>(args: Subset<T, QuickRequestAggregateArgs>): Prisma.PrismaPromise<GetQuickRequestAggregateType<T>>
+
+    /**
+     * Group by QuickRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuickRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends QuickRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: QuickRequestGroupByArgs['orderBy'] }
+        : { orderBy?: QuickRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, QuickRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetQuickRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the QuickRequest model
+   */
+  readonly fields: QuickRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for QuickRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__QuickRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the QuickRequest model
+   */ 
+  interface QuickRequestFieldRefs {
+    readonly id: FieldRef<"QuickRequest", 'String'>
+    readonly phone: FieldRef<"QuickRequest", 'String'>
+    readonly email: FieldRef<"QuickRequest", 'String'>
+    readonly company: FieldRef<"QuickRequest", 'String'>
+    readonly firstName: FieldRef<"QuickRequest", 'String'>
+    readonly magazineType: FieldRef<"QuickRequest", 'String'>
+    readonly quantity: FieldRef<"QuickRequest", 'Int'>
+    readonly isRead: FieldRef<"QuickRequest", 'Boolean'>
+    readonly createdAt: FieldRef<"QuickRequest", 'DateTime'>
+    readonly updatedAt: FieldRef<"QuickRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * QuickRequest findUnique
+   */
+  export type QuickRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * Filter, which QuickRequest to fetch.
+     */
+    where: QuickRequestWhereUniqueInput
+  }
+
+  /**
+   * QuickRequest findUniqueOrThrow
+   */
+  export type QuickRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * Filter, which QuickRequest to fetch.
+     */
+    where: QuickRequestWhereUniqueInput
+  }
+
+  /**
+   * QuickRequest findFirst
+   */
+  export type QuickRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * Filter, which QuickRequest to fetch.
+     */
+    where?: QuickRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuickRequests to fetch.
+     */
+    orderBy?: QuickRequestOrderByWithRelationInput | QuickRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for QuickRequests.
+     */
+    cursor?: QuickRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuickRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuickRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of QuickRequests.
+     */
+    distinct?: QuickRequestScalarFieldEnum | QuickRequestScalarFieldEnum[]
+  }
+
+  /**
+   * QuickRequest findFirstOrThrow
+   */
+  export type QuickRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * Filter, which QuickRequest to fetch.
+     */
+    where?: QuickRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuickRequests to fetch.
+     */
+    orderBy?: QuickRequestOrderByWithRelationInput | QuickRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for QuickRequests.
+     */
+    cursor?: QuickRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuickRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuickRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of QuickRequests.
+     */
+    distinct?: QuickRequestScalarFieldEnum | QuickRequestScalarFieldEnum[]
+  }
+
+  /**
+   * QuickRequest findMany
+   */
+  export type QuickRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * Filter, which QuickRequests to fetch.
+     */
+    where?: QuickRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuickRequests to fetch.
+     */
+    orderBy?: QuickRequestOrderByWithRelationInput | QuickRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing QuickRequests.
+     */
+    cursor?: QuickRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuickRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuickRequests.
+     */
+    skip?: number
+    distinct?: QuickRequestScalarFieldEnum | QuickRequestScalarFieldEnum[]
+  }
+
+  /**
+   * QuickRequest create
+   */
+  export type QuickRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * The data needed to create a QuickRequest.
+     */
+    data: XOR<QuickRequestCreateInput, QuickRequestUncheckedCreateInput>
+  }
+
+  /**
+   * QuickRequest createMany
+   */
+  export type QuickRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many QuickRequests.
+     */
+    data: QuickRequestCreateManyInput | QuickRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * QuickRequest createManyAndReturn
+   */
+  export type QuickRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many QuickRequests.
+     */
+    data: QuickRequestCreateManyInput | QuickRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * QuickRequest update
+   */
+  export type QuickRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * The data needed to update a QuickRequest.
+     */
+    data: XOR<QuickRequestUpdateInput, QuickRequestUncheckedUpdateInput>
+    /**
+     * Choose, which QuickRequest to update.
+     */
+    where: QuickRequestWhereUniqueInput
+  }
+
+  /**
+   * QuickRequest updateMany
+   */
+  export type QuickRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update QuickRequests.
+     */
+    data: XOR<QuickRequestUpdateManyMutationInput, QuickRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which QuickRequests to update
+     */
+    where?: QuickRequestWhereInput
+  }
+
+  /**
+   * QuickRequest upsert
+   */
+  export type QuickRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * The filter to search for the QuickRequest to update in case it exists.
+     */
+    where: QuickRequestWhereUniqueInput
+    /**
+     * In case the QuickRequest found by the `where` argument doesn't exist, create a new QuickRequest with this data.
+     */
+    create: XOR<QuickRequestCreateInput, QuickRequestUncheckedCreateInput>
+    /**
+     * In case the QuickRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<QuickRequestUpdateInput, QuickRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * QuickRequest delete
+   */
+  export type QuickRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
+    /**
+     * Filter which QuickRequest to delete.
+     */
+    where: QuickRequestWhereUniqueInput
+  }
+
+  /**
+   * QuickRequest deleteMany
+   */
+  export type QuickRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which QuickRequests to delete
+     */
+    where?: QuickRequestWhereInput
+  }
+
+  /**
+   * QuickRequest without action
+   */
+  export type QuickRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuickRequest
+     */
+    select?: QuickRequestSelect<ExtArgs> | null
   }
 
 
@@ -14036,6 +16128,20 @@ export namespace Prisma {
   export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
+  export const BannerScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    imageUrl: 'imageUrl',
+    linkUrl: 'linkUrl',
+    sortOrder: 'sortOrder',
+    isActive: 'isActive',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BannerScalarFieldEnum = (typeof BannerScalarFieldEnum)[keyof typeof BannerScalarFieldEnum]
+
+
   export const CollectionScalarFieldEnum: {
     id: 'id',
     name: 'name',
@@ -14064,6 +16170,22 @@ export namespace Prisma {
   };
 
   export type CustomerScalarFieldEnum = (typeof CustomerScalarFieldEnum)[keyof typeof CustomerScalarFieldEnum]
+
+
+  export const QuickRequestScalarFieldEnum: {
+    id: 'id',
+    phone: 'phone',
+    email: 'email',
+    company: 'company',
+    firstName: 'firstName',
+    magazineType: 'magazineType',
+    quantity: 'quantity',
+    isRead: 'isRead',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type QuickRequestScalarFieldEnum = (typeof QuickRequestScalarFieldEnum)[keyof typeof QuickRequestScalarFieldEnum]
 
 
   export const QuoteRequestScalarFieldEnum: {
@@ -14514,6 +16636,75 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
 
+  export type BannerWhereInput = {
+    AND?: BannerWhereInput | BannerWhereInput[]
+    OR?: BannerWhereInput[]
+    NOT?: BannerWhereInput | BannerWhereInput[]
+    id?: StringFilter<"Banner"> | string
+    title?: StringNullableFilter<"Banner"> | string | null
+    imageUrl?: StringFilter<"Banner"> | string
+    linkUrl?: StringNullableFilter<"Banner"> | string | null
+    sortOrder?: IntFilter<"Banner"> | number
+    isActive?: BoolFilter<"Banner"> | boolean
+    createdAt?: DateTimeFilter<"Banner"> | Date | string
+    updatedAt?: DateTimeFilter<"Banner"> | Date | string
+  }
+
+  export type BannerOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrderInput | SortOrder
+    imageUrl?: SortOrder
+    linkUrl?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BannerWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: BannerWhereInput | BannerWhereInput[]
+    OR?: BannerWhereInput[]
+    NOT?: BannerWhereInput | BannerWhereInput[]
+    title?: StringNullableFilter<"Banner"> | string | null
+    imageUrl?: StringFilter<"Banner"> | string
+    linkUrl?: StringNullableFilter<"Banner"> | string | null
+    sortOrder?: IntFilter<"Banner"> | number
+    isActive?: BoolFilter<"Banner"> | boolean
+    createdAt?: DateTimeFilter<"Banner"> | Date | string
+    updatedAt?: DateTimeFilter<"Banner"> | Date | string
+  }, "id">
+
+  export type BannerOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrderInput | SortOrder
+    imageUrl?: SortOrder
+    linkUrl?: SortOrderInput | SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BannerCountOrderByAggregateInput
+    _avg?: BannerAvgOrderByAggregateInput
+    _max?: BannerMaxOrderByAggregateInput
+    _min?: BannerMinOrderByAggregateInput
+    _sum?: BannerSumOrderByAggregateInput
+  }
+
+  export type BannerScalarWhereWithAggregatesInput = {
+    AND?: BannerScalarWhereWithAggregatesInput | BannerScalarWhereWithAggregatesInput[]
+    OR?: BannerScalarWhereWithAggregatesInput[]
+    NOT?: BannerScalarWhereWithAggregatesInput | BannerScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Banner"> | string
+    title?: StringNullableWithAggregatesFilter<"Banner"> | string | null
+    imageUrl?: StringWithAggregatesFilter<"Banner"> | string
+    linkUrl?: StringNullableWithAggregatesFilter<"Banner"> | string | null
+    sortOrder?: IntWithAggregatesFilter<"Banner"> | number
+    isActive?: BoolWithAggregatesFilter<"Banner"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Banner"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Banner"> | Date | string
+  }
+
   export type CollectionWhereInput = {
     AND?: CollectionWhereInput | CollectionWhereInput[]
     OR?: CollectionWhereInput[]
@@ -14661,6 +16852,85 @@ export namespace Prisma {
     company?: StringNullableWithAggregatesFilter<"Customer"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Customer"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Customer"> | Date | string
+  }
+
+  export type QuickRequestWhereInput = {
+    AND?: QuickRequestWhereInput | QuickRequestWhereInput[]
+    OR?: QuickRequestWhereInput[]
+    NOT?: QuickRequestWhereInput | QuickRequestWhereInput[]
+    id?: StringFilter<"QuickRequest"> | string
+    phone?: StringFilter<"QuickRequest"> | string
+    email?: StringNullableFilter<"QuickRequest"> | string | null
+    company?: StringNullableFilter<"QuickRequest"> | string | null
+    firstName?: StringFilter<"QuickRequest"> | string
+    magazineType?: StringFilter<"QuickRequest"> | string
+    quantity?: IntFilter<"QuickRequest"> | number
+    isRead?: BoolFilter<"QuickRequest"> | boolean
+    createdAt?: DateTimeFilter<"QuickRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"QuickRequest"> | Date | string
+  }
+
+  export type QuickRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    email?: SortOrderInput | SortOrder
+    company?: SortOrderInput | SortOrder
+    firstName?: SortOrder
+    magazineType?: SortOrder
+    quantity?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuickRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: QuickRequestWhereInput | QuickRequestWhereInput[]
+    OR?: QuickRequestWhereInput[]
+    NOT?: QuickRequestWhereInput | QuickRequestWhereInput[]
+    phone?: StringFilter<"QuickRequest"> | string
+    email?: StringNullableFilter<"QuickRequest"> | string | null
+    company?: StringNullableFilter<"QuickRequest"> | string | null
+    firstName?: StringFilter<"QuickRequest"> | string
+    magazineType?: StringFilter<"QuickRequest"> | string
+    quantity?: IntFilter<"QuickRequest"> | number
+    isRead?: BoolFilter<"QuickRequest"> | boolean
+    createdAt?: DateTimeFilter<"QuickRequest"> | Date | string
+    updatedAt?: DateTimeFilter<"QuickRequest"> | Date | string
+  }, "id">
+
+  export type QuickRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    email?: SortOrderInput | SortOrder
+    company?: SortOrderInput | SortOrder
+    firstName?: SortOrder
+    magazineType?: SortOrder
+    quantity?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: QuickRequestCountOrderByAggregateInput
+    _avg?: QuickRequestAvgOrderByAggregateInput
+    _max?: QuickRequestMaxOrderByAggregateInput
+    _min?: QuickRequestMinOrderByAggregateInput
+    _sum?: QuickRequestSumOrderByAggregateInput
+  }
+
+  export type QuickRequestScalarWhereWithAggregatesInput = {
+    AND?: QuickRequestScalarWhereWithAggregatesInput | QuickRequestScalarWhereWithAggregatesInput[]
+    OR?: QuickRequestScalarWhereWithAggregatesInput[]
+    NOT?: QuickRequestScalarWhereWithAggregatesInput | QuickRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"QuickRequest"> | string
+    phone?: StringWithAggregatesFilter<"QuickRequest"> | string
+    email?: StringNullableWithAggregatesFilter<"QuickRequest"> | string | null
+    company?: StringNullableWithAggregatesFilter<"QuickRequest"> | string | null
+    firstName?: StringWithAggregatesFilter<"QuickRequest"> | string
+    magazineType?: StringWithAggregatesFilter<"QuickRequest"> | string
+    quantity?: IntWithAggregatesFilter<"QuickRequest"> | number
+    isRead?: BoolWithAggregatesFilter<"QuickRequest"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"QuickRequest"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"QuickRequest"> | Date | string
   }
 
   export type QuoteRequestWhereInput = {
@@ -15440,6 +17710,83 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type BannerCreateInput = {
+    id?: string
+    title?: string | null
+    imageUrl: string
+    linkUrl?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BannerUncheckedCreateInput = {
+    id?: string
+    title?: string | null
+    imageUrl: string
+    linkUrl?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BannerUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BannerUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BannerCreateManyInput = {
+    id?: string
+    title?: string | null
+    imageUrl: string
+    linkUrl?: string | null
+    sortOrder?: number
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BannerUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BannerUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: StringFieldUpdateOperationsInput | string
+    linkUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    sortOrder?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type CollectionCreateInput = {
     id?: string
     name: string
@@ -15608,6 +17955,97 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     company?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuickRequestCreateInput = {
+    id?: string
+    phone: string
+    email?: string | null
+    company?: string | null
+    firstName: string
+    magazineType: string
+    quantity: number
+    isRead?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuickRequestUncheckedCreateInput = {
+    id?: string
+    phone: string
+    email?: string | null
+    company?: string | null
+    firstName: string
+    magazineType: string
+    quantity: number
+    isRead?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuickRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
+    magazineType?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuickRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
+    magazineType?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuickRequestCreateManyInput = {
+    id?: string
+    phone: string
+    email?: string | null
+    company?: string | null
+    firstName: string
+    magazineType: string
+    quantity: number
+    isRead?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuickRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
+    magazineType?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    isRead?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuickRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    company?: NullableStringFieldUpdateOperationsInput | string | null
+    firstName?: StringFieldUpdateOperationsInput | string
+    magazineType?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    isRead?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16454,6 +18892,47 @@ export namespace Prisma {
     sortOrder?: SortOrder
   }
 
+  export type BannerCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    imageUrl?: SortOrder
+    linkUrl?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BannerAvgOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
+  export type BannerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    imageUrl?: SortOrder
+    linkUrl?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BannerMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    imageUrl?: SortOrder
+    linkUrl?: SortOrder
+    sortOrder?: SortOrder
+    isActive?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BannerSumOrderByAggregateInput = {
+    sortOrder?: SortOrder
+  }
+
   export type CollectionCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -16532,6 +19011,53 @@ export namespace Prisma {
     company?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type QuickRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    company?: SortOrder
+    firstName?: SortOrder
+    magazineType?: SortOrder
+    quantity?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuickRequestAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+  }
+
+  export type QuickRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    company?: SortOrder
+    firstName?: SortOrder
+    magazineType?: SortOrder
+    quantity?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuickRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    phone?: SortOrder
+    email?: SortOrder
+    company?: SortOrder
+    firstName?: SortOrder
+    magazineType?: SortOrder
+    quantity?: SortOrder
+    isRead?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuickRequestSumOrderByAggregateInput = {
+    quantity?: SortOrder
   }
 
   export type EnumQuoteStatusFilter<$PrismaModel = never> = {
@@ -18851,6 +21377,10 @@ export namespace Prisma {
      */
     export type CategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CategoryDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use BannerDefaultArgs instead
+     */
+    export type BannerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BannerDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use CollectionDefaultArgs instead
      */
     export type CollectionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CollectionDefaultArgs<ExtArgs>
@@ -18858,6 +21388,10 @@ export namespace Prisma {
      * @deprecated Use CustomerDefaultArgs instead
      */
     export type CustomerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CustomerDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use QuickRequestDefaultArgs instead
+     */
+    export type QuickRequestArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = QuickRequestDefaultArgs<ExtArgs>
     /**
      * @deprecated Use QuoteRequestDefaultArgs instead
      */

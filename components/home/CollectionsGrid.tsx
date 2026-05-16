@@ -108,16 +108,16 @@ export function CollectionsGrid() {
 
   if (loading) {
     return (
-      <section className="py-16 bg-secondary-white">
+      <section className="py-16 bg-bgPure">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-primary-navy">
+            <h2 className="text-2xl md:text-3xl font-bold text-primary">
               Shop by collection
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="aspect-[4/3] bg-gray-200 rounded-2xl animate-pulse" />
+              <div key={i} className="aspect-[4/3] bg-gray-100 rounded-2xl animate-pulse" />
             ))}
           </div>
         </div>
@@ -126,18 +126,29 @@ export function CollectionsGrid() {
   }
 
   return (
-    <section className="py-16 bg-secondary-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gradient-subtle relative">
+      {/* Decorative elements */}
+      <div className="absolute top-1/4 right-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-navy">
-            Shop by collection
-          </h2>
+          <div className="flex items-center gap-3">
+            <span className="w-1 h-10 bg-gradient-to-b from-primary to-primary-light rounded-full" />
+            <div>
+              <h2 className="text-2xl md:text-3xl font-black text-textMain">
+                Shop by Collection
+              </h2>
+              <p className="text-sm text-textMuted mt-1">
+                Curated selections for every need
+              </p>
+            </div>
+          </div>
           <Link
             href="/services"
-            className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-primary-brown hover:text-primary-brown/80 transition-colors"
+            className="hidden sm:flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light transition-colors group"
           >
             See all collections
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -150,29 +161,38 @@ export function CollectionsGrid() {
               <Link
                 key={collection.id}
                 href={collection.linkUrl || `/services/${collection.slug}`}
-                className={`group relative rounded-2xl overflow-hidden ${
+                className={`group relative rounded-3xl overflow-hidden shadow-card hover:shadow-elevated hover:-translate-y-2 transition-all duration-500 ${
                   isLarge ? "md:col-span-2 md:row-span-2" : ""
                 } ${isSplit ? "md:col-span-2 lg:col-span-1" : ""}`}
               >
                 <div
                   className={`relative ${
                     isLarge ? "aspect-square md:aspect-auto md:h-full min-h-[300px]" : "aspect-[4/3]"
-                  } bg-overlay-light overflow-hidden`}
+                  } overflow-hidden`}
                 >
                   {collection.image ? (
-                    <img
-                      src={collection.image}
-                      alt={collection.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
+                    <>
+                      <img
+                        src={collection.image}
+                        alt={collection.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      {/* Gradient overlay - always visible but subtle */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    </>
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-navy to-muted-navy p-8">
-                      <div className="text-center text-secondary-white">
-                        <p className="text-3xl font-bold mb-2">{collection.name}</p>
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary via-primary-light to-primary p-8">
+                      <div className="text-center text-bgPure">
+                        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                          </svg>
+                        </div>
+                        <p className="text-2xl font-black mb-2">{collection.name}</p>
                         {collection.description && (
-                          <p className="text-sm opacity-80">{collection.description}</p>
+                          <p className="text-sm text-white/80 max-w-xs mx-auto">{collection.description}</p>
                         )}
-                        <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary-brown">
+                        <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-highlight">
                           Explore Now
                           <ArrowRight className="w-4 h-4" />
                         </div>
@@ -180,24 +200,23 @@ export function CollectionsGrid() {
                     </div>
                   )}
 
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  {/* Content overlay */}
+                  {/* Content overlay - always visible for images */}
                   {collection.image && (
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <h3 className="text-lg font-bold text-secondary-white mb-1">
-                        {collection.name}
-                      </h3>
-                      {collection.description && (
-                        <p className="text-sm text-secondary-white/80 line-clamp-2">
-                          {collection.description}
-                        </p>
-                      )}
-                      <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary-brown mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Explore
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </span>
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <div className="backdrop-blur-md bg-black/30 rounded-2xl p-4 group-hover:bg-black/40 transition-colors duration-300">
+                        <h3 className="text-lg font-bold text-bgPure mb-1">
+                          {collection.name}
+                        </h3>
+                        {collection.description && (
+                          <p className="text-sm text-white/80 line-clamp-2">
+                            {collection.description}
+                          </p>
+                        )}
+                        <div className="flex items-center gap-2 mt-3 text-sm font-semibold text-secondary-light group-hover:text-highlight transition-colors">
+                          <span>Explore Collection</span>
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -209,7 +228,7 @@ export function CollectionsGrid() {
         <div className="sm:hidden text-center mt-8">
           <Link
             href="/services"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-brown hover:text-primary-brown/80 transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-light transition-colors"
           >
             See all collections
             <ArrowRight className="w-4 h-4" />

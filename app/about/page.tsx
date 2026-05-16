@@ -37,13 +37,13 @@ export default function AboutPage() {
         <section className="pt-32 pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mb-16">
-              <p className="text-primary-brown text-sm font-medium tracking-[0.2em] uppercase mb-3">
+              <p className="text-secondary text-sm font-medium tracking-[0.2em] uppercase mb-3">
                 About Us
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-navy tracking-tight mb-6">
+              <h1 className="text-4xl md:text-5xl font-black text-primary tracking-tight mb-6">
                 Crafting Impressions Through Print
               </h1>
-              <p className="text-primary-navy/70 text-lg leading-relaxed">
+              <p className="text-textMuted text-lg leading-relaxed">
                 Daf Printing was founded with a simple mission: to provide premium 
                 printing services that elevate brands and bring ideas to life. With 
                 years of experience in the printing industry, we understand that 
@@ -55,21 +55,21 @@ export default function AboutPage() {
               {values.map((value) => (
                 <div
                   key={value.title}
-                  className="p-8 border border-primary-navy/10"
+                  className="p-8 border border-primary/10"
                 >
-                  <value.icon className="w-10 h-10 text-primary-brown mb-6" />
-                  <h3 className="text-lg font-bold text-primary-navy mb-3">
+                  <value.icon className="w-10 h-10 text-secondary mb-6" />
+                  <h3 className="text-lg font-black text-primary mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-primary-navy/60 text-sm leading-relaxed">
+                  <p className="text-textMuted text-sm leading-relaxed">
                     {value.description}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-primary-navy p-10 md:p-16">
-              <h2 className="text-2xl md:text-3xl font-bold text-secondary-white mb-4">
+            <div className="bg-primary p-10 md:p-16">
+              <h2 className="text-2xl md:text-3xl font-black text-bgPure mb-4">
                 Why Choose Daf Printing?
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
@@ -82,8 +82,8 @@ export default function AboutPage() {
                   "100% satisfaction guarantee",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-primary-brown rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-secondary-white/80">{item}</p>
+                    <span className="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-bgPure/80">{item}</p>
                   </div>
                 ))}
               </div>

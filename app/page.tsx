@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CategoryCarousel } from "@/components/home/CategoryCarousel";
+import SplitHero from "@/components/home/SplitHero";
 import { CollectionsGrid } from "@/components/home/CollectionsGrid";
 import { ChatWidget } from "@/components/home/ChatWidget";
 import { ArrowRight, Printer, FileText, Image, Shirt, Stamp, Box } from "lucide-react";
@@ -44,85 +44,71 @@ export default function HomePage() {
     <>
       <Header />
       <main>
-        {/* Hero */}
-        <section className="relative min-h-[90vh] flex items-center bg-primary-navy overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-navy via-primary-navy to-muted-navy opacity-90" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-            <div className="max-w-3xl">
-              <p className="text-primary-brown text-sm font-medium tracking-[0.2em] uppercase mb-4">
-                Premium Printing Services
-              </p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-secondary-white leading-tight mb-6">
-                Quality Print That
-                <br />
-                <span className="text-primary-brown">Makes an Impression</span>
-              </h1>
-              <p className="text-lg text-secondary-white/70 leading-relaxed mb-10 max-w-xl">
-                From business cards to banners, we deliver exceptional print quality
-                with fast turnaround times. Get a free quote in minutes.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/request-quote"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary-brown text-secondary-white text-sm font-semibold tracking-wide uppercase hover:bg-primary-brown/90 transition-colors"
-                >
-                  Get a Free Quote
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="/services"
-                  className="inline-flex items-center px-8 py-4 border-2 border-secondary-white/30 text-secondary-white text-sm font-semibold tracking-wide uppercase hover:bg-secondary-white/10 transition-colors"
-                >
-                  Our Services
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Split Hero with ad banners + shop by categories */}
+        <SplitHero />
 
-        {/* Categories Carousel */}
-        <CategoryCarousel />
-
-        {/* Services Overview */}
-        <section className="py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Services Overview - Enhanced with modern design */}
+        <section className="py-24 bg-gradient-subtle relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
-              <p className="text-primary-brown text-sm font-medium tracking-[0.2em] uppercase mb-3">
+              <span className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4">
                 What We Offer
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-navy mb-4">
-                Our Printing Services
+              </span>
+              <h2 className="text-3xl md:text-5xl font-black text-textMain mb-6 leading-tight">
+                Premium Printing{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
+                  Services
+                </span>
               </h2>
-              <p className="text-primary-navy/60 max-w-2xl mx-auto">
+              <p className="text-textMuted text-lg max-w-2xl mx-auto leading-relaxed">
                 Comprehensive printing solutions tailored to your needs. 
                 We combine premium materials with expert craftsmanship.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {services.map((service, index) => (
                 <div
                   key={service.title}
-                  className="group p-8 bg-secondary-white border border-primary-navy/10 hover:border-primary-navy/30 hover:shadow-lg transition-all duration-300"
+                  className="group relative p-8 bg-bgPure rounded-2xl border border-gray-100 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <service.icon className="w-10 h-10 text-primary-brown mb-6" />
-                  <h3 className="text-lg font-bold text-primary-navy mb-3">
+                  {/* Gradient border effect on hover */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: 'linear-gradient(135deg, rgba(0,123,204,0.1), rgba(230,126,0,0.1))', padding: '1px', mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'exclude', WebkitMaskComposite: 'xor' }}
+                  />
+                  
+                  {/* Icon with gradient background */}
+                  <div className="relative w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="w-7 h-7 text-white" />
+                  </div>
+                  
+                  <h3 className="text-xl font-black text-textMain mb-3 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-primary-navy/60 text-sm leading-relaxed">
+                  <p className="text-textMuted text-sm leading-relaxed">
                     {service.description}
                   </p>
+                  
+                  {/* Arrow indicator on hover */}
+                  <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <ArrowRight className="w-5 h-5 text-primary" />
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-16">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 text-primary-navy font-medium hover:text-primary-brown transition-colors"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary to-primary-light text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group"
               >
                 View All Services
-                <ArrowRight size={16} />
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
@@ -131,22 +117,70 @@ export default function HomePage() {
         {/* Collections Grid */}
         <CollectionsGrid />
 
-        {/* CTA */}
-        <section className="py-24 bg-primary-navy">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-white mb-4">
-              Ready to Start Your Project?
+        {/* CTA - Enhanced with gradient and modern design */}
+        <section className="py-24 bg-gradient-hero relative overflow-hidden">
+          {/* Animated background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px), radial-gradient(circle at 40% 80%, white 1px, transparent 1px)',
+              backgroundSize: '200px 200px',
+              animation: 'float 20s ease-in-out infinite'
+            }} />
+          </div>
+          
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white/90 text-sm font-semibold mb-6">
+              <span className="w-2 h-2 bg-highlight rounded-full animate-pulse" />
+              Fast Turnaround Available
+            </div>
+            
+            <h2 className="text-3xl md:text-5xl font-black text-bgPure mb-6 leading-tight">
+              Ready to Bring Your{" "}
+              <span className="text-highlight">Vision</span> to Life?
             </h2>
-            <p className="text-secondary-white/60 text-lg mb-10 max-w-2xl mx-auto">
-              Tell us what you need, and we will provide a free, no-obligation quote within 24 hours.
+            <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+              Tell us what you need, and we will provide a free, no-obligation quote within 24 hours. 
+              Professional quality, competitive prices.
             </p>
-            <Link
-              href="/request-quote"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-primary-brown text-secondary-white text-sm font-semibold tracking-wide uppercase hover:bg-primary-brown/90 transition-colors"
-            >
-              Request a Free Quote
-              <ArrowRight size={16} />
-            </Link>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/request-quote"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-secondary to-secondary-light text-bgPure text-base font-bold tracking-wide rounded-full shadow-2xl hover:shadow-[0_20px_60px_-15px_rgba(230,126,0,0.5)] hover:-translate-y-1 transition-all duration-300 group"
+              >
+                Request a Free Quote
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 px-8 py-5 bg-white/10 backdrop-blur-md text-white text-base font-semibold rounded-full border border-white/30 hover:bg-white/20 hover:-translate-y-0.5 transition-all duration-300"
+              >
+                View Our Work
+              </Link>
+            </div>
+            
+            {/* Trust indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-8 mt-12 text-white/70 text-sm">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-highlight" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <span>5-Star Quality</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-highlight" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Fast Delivery</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-highlight" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <span>Secure Payment</span>
+              </div>
+            </div>
           </div>
         </section>
       </main>

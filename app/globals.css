@@ -5,41 +5,17 @@
    ============================================ */
 
 @font-face {
-  font-family: 'Kostic Serif';
-  src: url('/fonts/Kostic\ Serif\ W00\ Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Regular.woff2') format('woff2');
+  font-family: 'Plus Jakarta Sans';
+  src: url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: url('/fonts/Montserrat-Bold.woff2') format('woff2');
-  font-weight: 700;
+  font-family: 'Plus Jakarta Sans';
+  src: url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap');
+  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
@@ -49,82 +25,155 @@
    ============================================ */
 
 :root {
-  --color-primary-navy: #182849;
-  --color-primary-brown: #bf8f3a;
-  --color-secondary-white: #f4f4f4;
-  --color-secondary-light-brown: #f1d689;
-  --color-supporting-light-blue: #2f497c;
-  --color-supporting-dark-brown: #592d0f;
-  --color-neutral-black: #252422;
-  --color-overlay-light: #eef2f7;
-  --color-accent-gold: #e6b422;
-  --color-muted-navy: #1e3460;
-  --color-warm-grey: #a69c8f;
-  --color-soft-sand: #faf7f2;
+  /* The 60%: Clean Canvas & Typography */
+  --color-bgLight: '#F8F9FA';
+  --color-bgPure: '#FFFFFF';
+  --color-textMain: '#1A1A1A';
+  --color-textMuted: '#64748B';
 
-  --color-bg: var(--color-secondary-white);
-  --color-text: var(--color-neutral-black);
-  --color-primary: var(--color-primary-navy);
-  --color-primary-accent: var(--color-primary-brown);
+  /* The 30%: Structural Brand Trust */
+  --color-primary: '#00A3E0';
+  --color-secondary: '#FF9E1B';
+
+  /* The 10%: Action & Highlights */
+  --color-cta: '#E3007B';
+  --color-highlight: '#FFE000';
+
+  /* Legacy aliases for backwards compatibility */
+  --color-bg: var(--color-bgPure);
+  --color-text: var(--color-textMain);
 }
 
 body {
-  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
-  color: var(--color-text);
-  background-color: var(--color-bg);
+  color: var(--color-textMain);
+  background-color: var(--color-bgPure);
 }
 
-h1, h2, h3, .display-title, .hero-title {
-  font-family: 'Kostic Serif', 'Times New Roman', Georgia, serif;
-  font-weight: 700;
-}
-
-h1, h2, h3 {
-  font-family: 'Kostic Serif', 'Times New Roman', Georgia, serif;
-  font-weight: 700;
+h1, h2, h3, h4, h5, h6, .display-title, .hero-title {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 800;
 }
 
 p, button, li, span, a, input, textarea, blockquote, cite, small, .meta, .caption {
-  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 @theme {
-  --color-primary-navy: #182849;
-  --color-primary-brown: #bf8f3a;
-  --color-secondary-white: #f4f4f4;
-  --color-secondary-light-brown: #f1d689;
-  --color-supporting-light-blue: #2f497c;
-  --color-supporting-dark-brown: #592d0f;
-  --color-neutral-black: #252422;
-  --color-overlay-light: #eef2f7;
-  --color-accent-gold: #e6b422;
-  --color-muted-navy: #1e3460;
-  --color-warm-grey: #a69c8f;
-  --color-soft-sand: #faf7f2;
-  --color-daf-accent: #bf8f3a;
-  --color-daf-white: #f4f4f4;
-  --color-daf-navy: #182849;
+  /* The 60%: Clean Canvas & Typography */
+  --color-bgLight: #F8F9FA;
+  --color-bgPure: #FFFFFF;
+  --color-textMain: #1A1A1A;
+  --color-textMuted: #64748B;
+
+  /* The 30%: Structural Brand Trust - Enhanced for better contrast */
+  --color-primary: #0077B6;
+  --color-primary-light: #00A3E0;
+  --color-secondary: #E67E00;
+  --color-secondary-light: #FF9E1B;
+
+  /* The 10%: Action & Highlights */
+  --color-cta: #C4006A;
+  --color-highlight: #F5D600;
+
+  /* Modern design additions */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
+
+/* Color text utilities */
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
+    background-color: var(--color-bgPure);
+    color: var(--color-textMain);
   }
 }
 
 @layer utilities {
-  .text-daf-navy { color: var(--color-primary-navy); }
-  .text-daf-brown { color: var(--color-primary-brown); }
-  .text-daf-white { color: var(--color-secondary-white); }
-  .bg-daf-navy { background-color: var(--color-primary-navy); }
-  .bg-daf-white { background-color: var(--color-secondary-white); }
-  .bg-daf-brown { background-color: var(--color-primary-brown); }
-  .border-daf-navy { border-color: var(--color-primary-navy); }
+  /* Text color utilities - Enhanced for WCAG AA/AAA compliance */
+  .text-bgLight { color: #F8F9FA; }
+  .text-bgPure { color: #FFFFFF; }
+  .text-textMain { color: #1A1A1A; }
+  .text-textMuted { color: #64748B; }
+  .text-primary { color: #0077B6; }
+  .text-primary-light { color: #00A3E0; }
+  .text-secondary { color: #E67E00; }
+  .text-secondary-light { color: #FF9E1B; }
+  .text-cta { color: #C4006A; }
+  .text-highlight { color: #F5D600; }
+
+  /* Background color utilities */
+  .bg-bgLight { background-color: #F8F9FA; }
+  .bg-bgPure { background-color: #FFFFFF; }
+  .bg-textMain { background-color: #1A1A1A; }
+  .bg-textMuted { background-color: #64748B; }
+  .bg-primary { background-color: #0077B6; }
+  .bg-primary-light { background-color: #00A3E0; }
+  .bg-secondary { background-color: #E67E00; }
+  .bg-secondary-light { background-color: #FF9E1B; }
+  .bg-cta { background-color: #C4006A; }
+  .bg-highlight { background-color: #F5D600; }
+
+  /* Border color utilities */
+  .border-primary { border-color: #0077B6; }
+  .border-primary-light { border-color: #00A3E0; }
+  .border-secondary { border-color: #E67E00; }
+  .border-secondary-light { border-color: #FF9E1B; }
+  .border-cta { border-color: #C4006A; }
+  .border-highlight { border-color: #F5D600; }
+
+  /* Modern shadow utilities */
+  .shadow-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+  .shadow-card-hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.04);
+  }
+  .shadow-elevated {
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  .shadow-glow-primary {
+    box-shadow: 0 0 20px rgba(0, 123, 204, 0.15);
+  }
+  .shadow-glow-secondary {
+    box-shadow: 0 0 20px rgba(230, 126, 0, 0.15);
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #0077B6 0%, #00A3E0 100%);
+  }
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg, #E67E00 0%, #FF9E1B 100%);
+  }
+  .bg-gradient-hero {
+    background: linear-gradient(135deg, #0077B6 0%, #00A3E0 50%, #0077B6 100%);
+  }
+  .bg-gradient-subtle {
+    background: linear-gradient(180deg, #F8F9FA 0%, #FFFFFF 100%);
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }
 
 @keyframes float {

@@ -67,6 +67,21 @@ model Category {
 }
 
 // ─────────────────────────────────────────
+// BANNERS (homepage hero slider ads)
+// ─────────────────────────────────────────
+model Banner {
+  id        String   @id @default(cuid())
+  title     String?
+  imageUrl  String
+  linkUrl   String?
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+// ─────────────────────────────────────────
 // COLLECTIONS (for homepage grid)
 // ─────────────────────────────────────────
 model Collection {
@@ -98,6 +113,23 @@ model Customer {
   updatedAt DateTime @default(now()) @updatedAt
 
   quotes    QuoteRequest[]
+}
+
+// ─────────────────────────────────────────
+// QUICK REQUESTS (from category/magazine pages)
+// ─────────────────────────────────────────
+model QuickRequest {
+  id            String   @id @default(cuid())
+  phone         String
+  email         String?
+  company       String?
+  firstName     String
+  magazineType  String
+  quantity      Int
+  isRead        Boolean  @default(false)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
 }
 
 // ─────────────────────────────────────────

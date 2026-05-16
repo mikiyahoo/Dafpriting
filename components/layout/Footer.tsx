@@ -1,60 +1,159 @@
 import Link from "next/link";
+import { Phone, Mail, MapPin, Send } from "lucide-react";
 
 export function Footer() {
+  const contactInfo = {
+    email: "dafprinting@gmail.com",
+    phones: [
+      { label: "Mob.", number: "+251 930 077432" },
+      { label: "Mob.", number: "+251 911 25 7669" },
+      { label: "Mob.", number: "+251 911 25 7668" },
+      { label: "Tel.", number: "+251 115 57 52 07" },
+    ],
+    locations: [
+      {
+        name: "ሰንትራል ነጋዴዎች",
+        address: "2ኛ ፎቅ ቢሮ ቁ. 0039",
+      },
+      {
+        name: "ፒያሳ ሁናን ሕንፃ",
+        address: "3ኛ ፎቅ ቢሮ ቁ. 310",
+      },
+    ],
+  };
+
   return (
-    <footer className="bg-primary-navy text-secondary-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div className="md:col-span-2">
-            <h3 className="text-xl font-bold tracking-tight mb-4">
-              <span className="text-primary-brown">Daf</span> Printing
+    <footer className="bg-textMain text-bgPure relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Brand Section */}
+          <div className="lg:col-span-1">
+            <h3 className="text-2xl font-black tracking-tight mb-4">
+              <span className="text-secondary">Daf</span> Printing
             </h3>
-            <p className="text-secondary-white/60 text-sm leading-relaxed max-w-md">
+            <p className="text-bgPure/60 text-sm leading-relaxed max-w-xs">
               Premium printing services for businesses and individuals. 
               From business cards to banners, we deliver quality that makes an impression.
             </p>
+            
+            {/* Telegram Link */}
+            <a
+              href="https://t.me/DAFPRINTING"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-6 px-4 py-2 bg-[#229ED9]/20 hover:bg-[#229ED9]/30 rounded-full text-sm font-semibold transition-all duration-300"
+            >
+              <Send className="w-4 h-4" />
+              @DAFPRINTING
+            </a>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-semibold tracking-wide uppercase mb-4 text-secondary-white/80">
+            <h4 className="text-sm font-semibold tracking-wide uppercase mb-5 text-bgPure/70">
               Quick Links
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {[
                 { label: "Home", href: "/" },
                 { label: "About", href: "/about" },
                 { label: "Services", href: "/services" },
                 { label: "Portfolio", href: "/portfolio" },
                 { label: "Contact", href: "/contact" },
+                { label: "FAQ", href: "/faq" },
+                { label: "Blog", href: "/blog" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-secondary-white/60 hover:text-secondary-white transition-colors"
+                    className="text-sm text-bgPure/60 hover:text-secondary hover:translate-x-1 transition-all duration-200 inline-block"
                   >
-                    {link.label}
+                    → {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Contact Information */}
           <div>
-            <h4 className="text-sm font-semibold tracking-wide uppercase mb-4 text-secondary-white/80">
-              Contact
+            <h4 className="text-sm font-semibold tracking-wide uppercase mb-5 text-bgPure/70">
+              Contact Us
             </h4>
-            <ul className="space-y-2 text-sm text-secondary-white/60">
-              <li>info@dafprinting.com</li>
-              <li>+251 911 234 567</li>
-              <li>Addis Ababa, Ethiopia</li>
+            <ul className="space-y-4">
+              {/* Email */}
+              <li>
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="flex items-start gap-3 text-sm text-bgPure/60 hover:text-secondary transition-colors group"
+                >
+                  <Mail className="w-4 h-4 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <span>{contactInfo.email}</span>
+                </a>
+              </li>
+
+              {/* Phones */}
+              {contactInfo.phones.map((phone, i) => (
+                <li key={i}>
+                  <a
+                    href={`tel:${phone.number.replace(/\s/g, "")}`}
+                    className="flex items-start gap-3 text-sm text-bgPure/60 hover:text-secondary transition-colors group"
+                  >
+                    <Phone className="w-4 h-4 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                    <span>
+                      <span className="text-bgPure/40">{phone.label} </span>
+                      {phone.number}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Locations */}
+          <div>
+            <h4 className="text-sm font-semibold tracking-wide uppercase mb-5 text-bgPure/70">
+              Our Locations
+            </h4>
+            <ul className="space-y-4">
+              {contactInfo.locations.map((location, i) => (
+                <li key={i}>
+                  <div className="flex items-start gap-3 text-sm text-bgPure/60">
+                    <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-secondary" />
+                    <div>
+                      <p className="font-semibold text-bgPure/80">{location.name}</p>
+                      <p className="text-bgPure/50">{location.address}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-secondary-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-secondary-white/40">
-            &copy; {new Date().getFullYear()} Daf Printing. All rights reserved.
+        {/* Bottom Bar */}
+        <div className="border-t border-bgPure/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-bgPure/40">
+            © {new Date().getFullYear()} Daf Printing. All rights reserved.
           </p>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/terms"
+              className="text-sm text-bgPure/40 hover:text-bgPure transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-sm text-bgPure/40 hover:text-bgPure transition-colors"
+            >
+              Privacy Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

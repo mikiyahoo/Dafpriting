@@ -119,6 +119,34 @@ async function main() {
   console.log(`   ✅ ${services.length} services created`);
 
   // ─────────────────────────────────────────
+  // CATEGORIES (homepage)
+  // ─────────────────────────────────────────
+  console.log("📚 Seeding categories...");
+  const categories = await Promise.all([
+    prisma.category.create({ data: { name: "Business Cards", slug: "business-cards", description: "Premium business cards with multiple finishes.", image: "/assets/categories/business-cards.jpg", isActive: true, sortOrder: 1 } }),
+    prisma.category.create({ data: { name: "Banners & Posters", slug: "banners-posters", description: "Large-format banners and posters for indoor/outdoor use.", image: "/assets/categories/banners-posters.jpg", isActive: true, sortOrder: 2 } }),
+    prisma.category.create({ data: { name: "Labels & Stickers", slug: "labels-stickers", description: "Custom stickers and product labels in any shape.", image: "/assets/categories/labels-stickers.jpg", isActive: true, sortOrder: 3 } }),
+    prisma.category.create({ data: { name: "Apparel & Tees", slug: "apparel-tees", description: "Custom apparel printing including DTG and screen printing.", image: "/assets/categories/apparel-tees.jpg", isActive: true, sortOrder: 4 } }),
+    prisma.category.create({ data: { name: "Packaging", slug: "packaging", description: "Custom boxes, sleeves, and packaging solutions.", image: "/assets/categories/packaging.jpg", isActive: true, sortOrder: 5 } }),
+    prisma.category.create({ data: { name: "Stationery", slug: "stationery", description: "Letterheads, envelopes, and stationery suites.", image: "/assets/categories/stationery.jpg", isActive: true, sortOrder: 6 } }),
+    prisma.category.create({ data: { name: "Wedding & Events", slug: "wedding-events", description: "Invitations, programs and wedding stationery.", image: "/assets/categories/wedding-events.jpg", isActive: true, sortOrder: 7 } }),
+    prisma.category.create({ data: { name: "Promotional Merch", slug: "promotional-merch", description: "Branded merchandise: pens, mugs, notebooks and more.", image: "/assets/categories/promotional-merch.jpg", isActive: true, sortOrder: 8 } }),
+    prisma.category.create({ data: { name: "Books & Catalogs", slug: "books-catalogs", description: "Perfect bound and saddle stitch books and catalogs.", image: "/assets/categories/books-catalogs.jpg", isActive: true, sortOrder: 9 } }),
+  ]);
+  console.log(`   ✅ ${categories.length} categories created`);
+
+  // ─────────────────────────────────────────
+  // BANNERS (hero carousel)
+  // ─────────────────────────────────────────
+  console.log("🖼️ Seeding banners...");
+  const banners = await Promise.all([
+    prisma.banner.create({ data: { title: "Spring banners", imageUrl: "/assets/banners/banner-1.jpg", linkUrl: "/services", isActive: true, sortOrder: 1 } }),
+    prisma.banner.create({ data: { title: "Free design review", imageUrl: "/assets/banners/banner-2.jpg", linkUrl: "/request-quote", isActive: true, sortOrder: 2 } }),
+    prisma.banner.create({ data: { title: "Same-day proofs", imageUrl: "/assets/banners/banner-3.jpg", linkUrl: "/services", isActive: true, sortOrder: 3 } }),
+  ]);
+  console.log(`   ✅ ${banners.length} banners created`);
+
+  // ─────────────────────────────────────────
   // 2. USERS (Admin & Staff)
   // ─────────────────────────────────────────
   console.log("👤 Seeding users...");

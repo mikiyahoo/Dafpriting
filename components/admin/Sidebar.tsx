@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -20,12 +20,16 @@ import {
   Truck,
   Grid3X3,
   Layers,
+  PanelTop,
+  MessageCircle,
 } from "lucide-react";
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Quotes", href: "/admin/quotes", icon: FileText },
   { label: "Customers", href: "/admin/customers", icon: Users },
+  { label: "Banner Ads", href: "/admin/banners", icon: PanelTop },
+  { label: "Quick Orders", href: "/admin/quick-orders", icon: MessageCircle },
   { label: "Categories", href: "/admin/categories", icon: Grid3X3 },
   { label: "Collections", href: "/admin/collections", icon: Layers },
   { label: "Portfolio", href: "/admin/portfolio", icon: Image },
@@ -38,6 +42,30 @@ const navItems = [
 export function Sidebar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Fetch unread quick orders count every 10 seconds
+  useEffect(() => {
+    const fetchUnread = async () => {
+      try {
+        const res = await fetch("/api/quick-requests/unread-count");
+        if (!res.ok) return;
+        const data = await res.json();
+        setUnreadCount(data.count || 0);
+      } catch {
+        // silent
+      }
+    };
+    fetchUnread();
+    intervalRef.current = setInterval(fetchUnread, 10000);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -65,11 +93,11 @@ export function Sidebar() {
         <div className="flex flex-col h-full">
           <div className="p-6 border-b border-gray-200">
             <Link href="/admin" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-primary-navy flex items-center justify-center text-xs font-bold text-white">
+              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs font-bold text-white">
                 D
               </div>
               <span className="text-gray-900 font-semibold text-lg">
-                <span className="text-primary-brown">Daf</span> Printing
+                <span className="text-secondary">Daf</span> Printing
               </span>
             </Link>
           </div>
@@ -90,8 +118,15 @@ export function Sidebar() {
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   )}
                 >
-                  <Icon className="w-5 h-5" />
-                  {item.label}
+                  <div className="relative flex items-center gap-3 flex-1">
+                    <Icon className="w-5 h-5" />
+                    {item.label}
+                    {item.href === "/admin/quick-orders" && unreadCount > 0 && (
+                      <span className="absolute -top-1 -left-3 bg-red-500 text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 shadow-sm">
+                        {unreadCount > 99 ? "99+" : unreadCount}
+                      </span>
+                    )}
+                  </div>
                 </Link>
               );
             })}

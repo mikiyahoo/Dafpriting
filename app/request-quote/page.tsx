@@ -16,18 +16,18 @@ export default function RequestQuotePage() {
         <section className="pt-32 pb-24">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <p className="text-primary-brown text-sm font-medium tracking-[0.2em] uppercase mb-3">
+              <p className="text-secondary text-sm font-medium tracking-[0.2em] uppercase mb-3">
                 Get a Free Quote
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-navy tracking-tight mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-primary tracking-tight mb-4">
                 Request a Quote
               </h1>
-              <p className="text-primary-navy/60 text-lg">
+              <p className="text-primary/60 text-lg">
                 Fill out the form below and we'll get back to you within 24 hours with a free, no-obligation quote.
               </p>
             </div>
 
-            <div className="bg-white border border-primary-navy/10 p-8 md:p-10">
+            <div className="bg-white border border-primary/10 p-8 md:p-10">
               <QuoteForm />
             </div>
           </div>

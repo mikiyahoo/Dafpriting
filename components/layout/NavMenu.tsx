@@ -120,7 +120,7 @@ export function NavMenu({ variant = "dark", className }: NavMenuProps) {
                   className={cn(
                     "rounded-lg shadow-xl border overflow-hidden",
                     {
-                      "bg-primary-navy/95 backdrop-blur-md border-secondary-light-brown/20":
+                      "bg-primary/95 backdrop-blur-md border-secondary-light-brown/20":
                         variant === "light",
                       "bg-white/95 backdrop-blur-md border-muted-navy/10":
                         variant === "dark",
@@ -135,9 +135,9 @@ export function NavMenu({ variant = "dark", className }: NavMenuProps) {
                       className={cn(
                         "block px-5 py-3 text-sm font-medium transition-colors duration-200",
                         {
-                          "text-secondary-white hover:bg-secondary-light-brown/10 hover:text-secondary-light-brown":
+                          "text-bgPure hover:bg-secondary-light-brown/10 hover:text-secondary-light-brown":
                             variant === "light",
-                          "text-radiance-navy hover:bg-primary-navy/5 hover:text-primary-brown":
+                          "text-radiance-navy hover:bg-primary/5 hover:text-secondary":
                             variant === "dark",
                         }
                       )}
@@ -154,3 +154,4 @@ export function NavMenu({ variant = "dark", className }: NavMenuProps) {
     </nav>
   );
 }
+

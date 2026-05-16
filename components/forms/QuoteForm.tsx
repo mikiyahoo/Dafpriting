@@ -46,14 +46,14 @@ export function QuoteForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-primary-navy mb-2">
+        <h3 className="text-2xl font-bold text-primary mb-2">
           Quote Request Submitted!
         </h3>
-        <p className="text-primary-navy/60 mb-2">
+        <p className="text-primary/60 mb-2">
           Your quote number is:{" "}
-          <span className="font-bold text-primary-brown">{state.quoteNumber}</span>
+          <span className="font-bold text-secondary">{state.quoteNumber}</span>
         </p>
-        <p className="text-primary-navy/60 text-sm">
+        <p className="text-primary/60 text-sm">
           We'll review your request and get back to you within 24 hours.
         </p>
       </div>
@@ -70,7 +70,7 @@ export function QuoteForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-primary-navy mb-1">
+          <label htmlFor="name" className="block text-sm font-medium text-primary mb-1">
             Full Name *
           </label>
           <input
@@ -78,12 +78,12 @@ export function QuoteForm() {
             id="name"
             name="name"
             required
-            className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors"
+            className="w-full px-4 py-3 border border-primary/20 bg-white text-primary placeholder-primary/40 focus:outline-none focus:border-primary-brown transition-colors"
             placeholder="Your name"
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-primary-navy mb-1">
+          <label htmlFor="email" className="block text-sm font-medium text-primary mb-1">
             Email Address *
           </label>
           <input
@@ -91,7 +91,7 @@ export function QuoteForm() {
             id="email"
             name="email"
             required
-            className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors"
+            className="w-full px-4 py-3 border border-primary/20 bg-white text-primary placeholder-primary/40 focus:outline-none focus:border-primary-brown transition-colors"
             placeholder="your@email.com"
           />
         </div>
@@ -99,7 +99,7 @@ export function QuoteForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-primary-navy mb-1">
+          <label htmlFor="phone" className="block text-sm font-medium text-primary mb-1">
             Phone Number *
           </label>
           <input
@@ -107,33 +107,33 @@ export function QuoteForm() {
             id="phone"
             name="phone"
             required
-            className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors"
+            className="w-full px-4 py-3 border border-primary/20 bg-white text-primary placeholder-primary/40 focus:outline-none focus:border-primary-brown transition-colors"
             placeholder="+251 911 234 567"
           />
         </div>
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-primary-navy mb-1">
+          <label htmlFor="company" className="block text-sm font-medium text-primary mb-1">
             Company (optional)
           </label>
           <input
             type="text"
             id="company"
             name="company"
-            className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors"
+            className="w-full px-4 py-3 border border-primary/20 bg-white text-primary placeholder-primary/40 focus:outline-none focus:border-primary-brown transition-colors"
             placeholder="Your company"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="serviceId" className="block text-sm font-medium text-primary-navy mb-1">
+        <label htmlFor="serviceId" className="block text-sm font-medium text-primary mb-1">
           Service Type *
         </label>
         <select
           id="serviceId"
           name="serviceId"
           required
-          className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy focus:outline-none focus:border-primary-brown transition-colors"
+          className="w-full px-4 py-3 border border-primary/20 bg-white text-primary focus:outline-none focus:border-primary-brown transition-colors"
         >
           <option value="">Select a service</option>
           {defaultServices.map((s) => (
@@ -146,7 +146,7 @@ export function QuoteForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
         <div>
-          <label htmlFor="quantity" className="block text-sm font-medium text-primary-navy mb-1">
+          <label htmlFor="quantity" className="block text-sm font-medium text-primary mb-1">
             Quantity *
           </label>
           <input
@@ -155,19 +155,19 @@ export function QuoteForm() {
             name="quantity"
             min="1"
             required
-            className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors"
+            className="w-full px-4 py-3 border border-primary/20 bg-white text-primary placeholder-primary/40 focus:outline-none focus:border-primary-brown transition-colors"
             placeholder="100"
           />
         </div>
         <div>
-          <label htmlFor="size" className="block text-sm font-medium text-primary-navy mb-1">
+          <label htmlFor="size" className="block text-sm font-medium text-primary mb-1">
             Size *
           </label>
           <select
             id="size"
             name="size"
             required
-            className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy focus:outline-none focus:border-primary-brown transition-colors"
+            className="w-full px-4 py-3 border border-primary/20 bg-white text-primary focus:outline-none focus:border-primary-brown transition-colors"
           >
             <option value="">Select size</option>
             {sizes.map((s) => (
@@ -178,14 +178,14 @@ export function QuoteForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="material" className="block text-sm font-medium text-primary-navy mb-1">
+          <label htmlFor="material" className="block text-sm font-medium text-primary mb-1">
             Material *
           </label>
           <select
             id="material"
             name="material"
             required
-            className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy focus:outline-none focus:border-primary-brown transition-colors"
+            className="w-full px-4 py-3 border border-primary/20 bg-white text-primary focus:outline-none focus:border-primary-brown transition-colors"
           >
             <option value="">Select material</option>
             {materials.map((m) => (
@@ -198,14 +198,14 @@ export function QuoteForm() {
       </div>
 
       <div>
-        <label htmlFor="notes" className="block text-sm font-medium text-primary-navy mb-1">
+        <label htmlFor="notes" className="block text-sm font-medium text-primary mb-1">
           Additional Notes (optional)
         </label>
         <textarea
           id="notes"
           name="notes"
           rows={4}
-          className="w-full px-4 py-3 border border-primary-navy/20 bg-white text-primary-navy placeholder-primary-navy/40 focus:outline-none focus:border-primary-brown transition-colors resize-none"
+          className="w-full px-4 py-3 border border-primary/20 bg-white text-primary placeholder-primary/40 focus:outline-none focus:border-primary-brown transition-colors resize-none"
           placeholder="Describe your project, special requirements, or questions..."
         />
       </div>
@@ -213,7 +213,7 @@ export function QuoteForm() {
       <button
         type="submit"
         disabled={pending}
-        className="w-full px-8 py-4 bg-primary-navy text-white text-sm font-semibold tracking-wide uppercase hover:bg-primary-navy/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="w-full px-8 py-4 bg-primary text-white text-sm font-semibold tracking-wide uppercase hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
       >
         {pending ? "Submitting..." : "Submit Quote Request"}
       </button>

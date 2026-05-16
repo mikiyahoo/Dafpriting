@@ -142,16 +142,16 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               href="/services"
-              className="text-sm text-primary-navy/60 hover:text-primary-brown transition-colors mb-6 inline-block"
+              className="text-sm text-textMuted hover:text-secondary transition-colors mb-6 inline-block"
             >
               &larr; Back to Services
             </Link>
 
             <div className="max-w-4xl">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary-navy mb-6">
+              <h1 className="text-4xl md:text-5xl font-black text-textMain mb-6">
                 {service.title}
               </h1>
-              <p className="text-lg text-primary-navy/70 leading-relaxed mb-12">
+              <p className="text-lg text-textMuted leading-relaxed mb-12">
                 {service.description}
               </p>
             </div>
@@ -164,8 +164,8 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                 <ul className="space-y-3">
                   {service.details.map((detail) => (
                     <li key={detail} className="flex items-start gap-3">
-                      <Check size={18} className="text-primary-brown flex-shrink-0 mt-0.5" />
-                      <span className="text-primary-navy/70">{detail}</span>
+                      <Check size={18} className="text-secondary flex-shrink-0 mt-0.5" />
+                      <span className="text-textMuted">{detail}</span>
                     </li>
                   ))}
                 </ul>
@@ -179,23 +179,23 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                   {service.finishes.map((finish) => (
                     <span
                       key={finish}
-                      className="px-4 py-2 border border-primary-navy/20 text-sm font-medium text-primary-navy/70"
+                      className="px-4 py-2 border border-primary/20 text-sm font-medium text-textMuted"
                     >
                       {finish}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-10 p-8 bg-primary-navy">
-                  <h3 className="text-lg font-bold text-secondary-white mb-2">
+                <div className="mt-10 p-8 bg-primary">
+                  <h3 className="text-lg font-black text-bgPure mb-2">
                     Need a Quote?
                   </h3>
-                  <p className="text-secondary-white/60 text-sm mb-6">
+                  <p className="text-bgPure/60 text-sm mb-6">
                     Tell us about your project and we'll provide a free quote within 24 hours.
                   </p>
                   <Link
                     href={`/request-quote?service=${params.slug}`}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary-brown text-secondary-white text-sm font-semibold tracking-wide uppercase hover:bg-primary-brown/90 transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-bgPure text-sm font-semibold tracking-wide uppercase hover:bg-secondary/90 transition-colors"
                   >
                     Get a Free Quote
                     <ArrowRight size={16} />

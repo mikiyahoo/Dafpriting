@@ -158,6 +158,17 @@ exports.Prisma.CategoryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.BannerScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  imageUrl: 'imageUrl',
+  linkUrl: 'linkUrl',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.CollectionScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -178,6 +189,19 @@ exports.Prisma.CustomerScalarFieldEnum = {
   email: 'email',
   phone: 'phone',
   company: 'company',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.QuickRequestScalarFieldEnum = {
+  id: 'id',
+  phone: 'phone',
+  email: 'email',
+  company: 'company',
+  firstName: 'firstName',
+  magazineType: 'magazineType',
+  quantity: 'quantity',
+  isRead: 'isRead',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -293,8 +317,10 @@ exports.Prisma.ModelName = {
   User: 'User',
   Service: 'Service',
   Category: 'Category',
+  Banner: 'Banner',
   Collection: 'Collection',
   Customer: 'Customer',
+  QuickRequest: 'QuickRequest',
   QuoteRequest: 'QuoteRequest',
   QuoteFile: 'QuoteFile',
   PortfolioItem: 'PortfolioItem',
