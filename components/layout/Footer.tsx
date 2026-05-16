@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 
 export function Footer() {
@@ -32,9 +33,17 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Section */}
           <div className="lg:col-span-1">
-            <h3 className="text-2xl font-black tracking-tight mb-4">
-              <span className="text-secondary">Daf</span> Printing
-            </h3>
+            <Link href="/" className="flex items-center gap-3 mb-4">
+              <Image 
+                src="/assets/daf-logo.png" 
+                alt="Daf Printing Logo" 
+                width={40} 
+                height={40}
+              />
+              <span className="text-2xl font-black tracking-tight">
+                <span className="text-secondary">Daf</span> Printing
+              </span>
+            </Link>
             <p className="text-bgPure/60 text-sm leading-relaxed max-w-xs">
               Premium printing services for businesses and individuals. 
               From business cards to banners, we deliver quality that makes an impression.
