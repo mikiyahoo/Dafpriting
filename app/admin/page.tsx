@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { FileText, Users, ShoppingBag, MessageSquare, Truck } from "lucide-react";
 import Link from "next/link";
+import { DatabaseSeedButton } from "@/components/admin/DatabaseSeedButton";
 
 export const dynamic = "force-dynamic";
 
@@ -94,6 +95,9 @@ export default async function AdminDashboardPage() {
         <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
         <p className="text-gray-500 mt-1">Overview of your printing business</p>
       </div>
+
+      {/* Database Setup */}
+      <DatabaseSeedButton />
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
