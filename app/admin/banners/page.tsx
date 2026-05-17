@@ -305,7 +305,7 @@ export default function AdminBannersPage() {
                   placeholder="https://example.com/banner.jpg or /assets/banners/..."
                 />
                 <p className="text-xs text-gray-400 mt-1">
-                  <span className="text-amber-600 font-medium">Recommended size:</span> 1200×600px (2:1 ratio). Max 2MB. JPG, PNG or WebP.
+                  <span className="text-amber-600 font-medium">Recommended size:</span> 1920×600px. Max 2MB. JPG, PNG or WebP.
                 </p>
                 {form.imageUrl && (
                   <div className="mt-2 w-full h-32 rounded-lg overflow-hidden bg-gray-100">
