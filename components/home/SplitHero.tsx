@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, ShoppingCart, Sparkles } from "lucide-react";
 
 interface Category {
   id: string;
@@ -30,6 +30,7 @@ export default function SplitHero() {
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const autoScrollRef = useRef<number | null>(null);
+  const edgeArrowsWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -84,7 +85,7 @@ export default function SplitHero() {
 
   // Auto-scroll for categories carousel
   useEffect(() => {
-    if (categories.length <= 4) return; // Only auto-scroll if there are enough items
+    if (categories.length <= 4) return;
 
     const startAutoScroll = () => {
       if (isHovering) return;
@@ -95,13 +96,12 @@ export default function SplitHero() {
         const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
         const maxScroll = scrollWidth - clientWidth;
         
-        // If at end, scroll back to start, otherwise scroll right
         if (scrollLeft >= maxScroll - 10) {
           scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
         } else {
-          scrollRef.current.scrollBy({ left: 296, behavior: "smooth" }); // card width (280) + gap (16)
+          scrollRef.current.scrollBy({ left: 540, behavior: "smooth" });
         }
-      }, 3000); // Scroll every 3 seconds
+      }, 3000);
     };
 
     startAutoScroll();
@@ -113,20 +113,19 @@ export default function SplitHero() {
     };
   }, [categories.length, isHovering]);
 
-  // Categories horizontal scroll
   const scrollCategories = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
-    const cardWidth = 280 + 16; // card + gap
+    const cardWidth = 520 + 20;
     const scrollAmount = direction === "left" ? -cardWidth * 4 : cardWidth * 4;
     scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
 
   return (
-    <section className="bg-transparent min-h-screen pt-20">
-      {/* 👇 TOP HERO BANNER SLIDER (managed from Admin > Banner Ads) */}
+    <section className="bg-transparent min-h-screen pt-6">
+      {/* TOP HERO BANNER SLIDER */}
       <div className="w-full bg-gradient-to-b from-transparent to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl mt-4 mb-2 shadow-elevated">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl shadow-elevated">
             {displayBanners && displayBanners.length > 0 ? (
               <div className="w-full h-[280px] md:h-[340px] lg:h-[380px] relative">
                 {displayBanners.map((b, i) => (
@@ -184,98 +183,100 @@ export default function SplitHero() {
         </div>
       </div>
 
-      {/* 👇 SHOP BY CATEGORIES (horizontal scrollable carousel) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <span className="w-1 h-8 bg-gradient-to-b from-primary to-primary-light rounded-full" />
-              <h2 className="text-2xl md:text-3xl font-black text-textMain">Shop by Category</h2>
-            </div>
-            {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
-            {!error && categories.length === 0 && (
-              <p className="text-sm text-textMuted mt-2">
-                No categories in the database yet.{" "}
-                <Link href="/admin/categories" className="text-primary font-semibold underline decoration-2 underline-offset-2 hover:text-primary-light transition-colors">
-                  Add categories
-                </Link>{" "}
-                to get started.
-              </p>
+      {/* 👇 SHOP BY CATEGORIES — edge arrows, no title, full width */}
+      <div className="w-full relative py-12 bg-gradient-to-b from-white via-[#f8fbfd] to-white">
+        {/* Left arrow at viewport edge */}
+        {categories.length > 4 && (
+          <button
+            onClick={() => scrollCategories("left")}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 border border-gray-200 shadow-lg flex items-center justify-center text-textMuted hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
+            aria-label="Scroll categories left"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+        )}
+
+        <div className="relative w-full">
+          <div
+            ref={scrollRef}
+            className="flex gap-5 overflow-x-auto px-4 sm:px-6 lg:px-8 pb-5 scroll-smooth scrollbar-hide"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              maskImage: "linear-gradient(to right, transparent 0%, #000 3%, #000 97%, transparent 100%)",
+              WebkitMaskImage: "linear-gradient(to right, transparent 0%, #000 3%, #000 97%, transparent 100%)",
+            }}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            onTouchStart={() => setIsHovering(true)}
+            onTouchEnd={() => {
+              setTimeout(() => setIsHovering(false), 3000);
+            }}
+          >
+            {categories.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/categories/${cat.slug}`}
+                className="flex-shrink-0 w-[460px] sm:w-[520px] group bg-bgPure border border-slate-200/80 rounded-2xl overflow-hidden shadow-[0_8px_28px_rgba(15,23,42,0.08)] hover:shadow-[0_18px_42px_rgba(0,119,182,0.16)] hover:-translate-y-1 transition-all duration-300 flex"
+              >
+                {/* Square image on the left — doubled height */}
+                  <div className="relative w-[210px] sm:w-[240px] h-[220px] sm:h-[240px] flex-shrink-0 overflow-hidden rounded-2xl m-3 bg-gradient-to-br from-slate-50 to-sky-50">
+                    <img
+                      src={cat.image || "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=400&h=400&fit=crop"}
+                      alt={cat.name}
+                      className="w-full h-full object-contain object-center rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/15 via-transparent to-transparent opacity-80 pointer-events-none" />
+                    <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-primary shadow-sm">
+                    <Sparkles size={13} />
+                    Custom
+                  </span>
+                </div>
+                {/* Details on the right */}
+                <div className="p-5 pr-6 flex min-h-[220px] sm:min-h-[240px] flex-1 flex-col min-w-0">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-textMain group-hover:text-primary transition-colors leading-tight break-words hyphens-auto">
+                    {cat.name}
+                  </h3>
+                  <p className="text-sm text-textMuted mt-2 line-clamp-2 leading-relaxed">
+                    {cat.description || "Explore our collection"}
+                  </p>
+                  <div className="mt-auto pt-5 flex items-center justify-between gap-3">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-2 text-sm font-extrabold text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                      <ShoppingCart size={15} />
+                      Shop Now
+                    </span>
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 text-textMuted group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all">
+                      <ArrowUpRight size={17} />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+
+            {/* Inline empty state */}
+            {categories.length === 0 && (
+              <div className="w-full py-16 text-center text-textMuted">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <p className="text-gray-500">No categories yet</p>
+              </div>
             )}
           </div>
-
-          {categories.length > 4 && (
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => scrollCategories("left")}
-                className="w-10 h-10 rounded-full bg-bgPure border border-gray-200 shadow-md flex items-center justify-center text-textMuted hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
-                aria-label="Scroll categories left"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => scrollCategories("right")}
-                className="w-10 h-10 rounded-full bg-bgPure border border-gray-200 shadow-md flex items-center justify-center text-textMuted hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
-                aria-label="Scroll categories right"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          )}
         </div>
 
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-4 scroll-smooth scrollbar-hide -mx-4 px-4"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-          onTouchStart={() => setIsHovering(true)}
-          onTouchEnd={() => {
-            setTimeout(() => setIsHovering(false), 3000);
-          }}
-        >
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              href={`/categories/${cat.slug}`}
-              className="flex-shrink-0 w-[260px] sm:w-[270px] md:w-[280px] group bg-bgPure border border-gray-100 rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="relative h-40 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10" />
-                <img
-                  src={cat.image || "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=400&h=400&fit=crop"}
-                  alt={cat.name}
-                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-base font-bold text-textMain group-hover:text-primary transition-colors">
-                  {cat.name}
-                </h3>
-                <p className="text-xs text-textMuted mt-1 line-clamp-2 leading-relaxed">
-                  {cat.description || "Explore our collection"}
-                </p>
-                <span className="inline-flex items-center gap-1.5 mt-3 text-xs font-semibold text-primary group-hover:gap-2 transition-all">
-                  <ShoppingCart size={14} />
-                  Shop Now
-                </span>
-              </div>
-            </Link>
-          ))}
-
-          {/* Inline empty state inside the scroll */}
-          {categories.length === 0 && (
-            <div className="w-full py-16 text-center text-textMuted">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-                <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-              <p className="text-gray-500">No categories yet</p>
-            </div>
-          )}
-        </div>
+        {/* Right arrow at viewport edge */}
+        {categories.length > 4 && (
+          <button
+            onClick={() => scrollCategories("right")}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 border border-gray-200 shadow-lg flex items-center justify-center text-textMuted hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
+            aria-label="Scroll categories right"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        )}
       </div>
     </section>
   );

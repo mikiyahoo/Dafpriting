@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { LoadingSplashWrapper } from "@/components/ui/LoadingSplashWrapper";
+import { I18nProvider } from "@/lib/i18n";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -12,7 +13,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Daf Printing | Premium Printing Services",
   description:
-    "Professional printing services — from business cards to banners. Get a free quote in minutes.",
+    "Professional printing services from business cards to banners. Get a free quote in minutes.",
   icons: {
     icon: "/assets/Radiance_Icon.svg",
     apple: "/assets/Radiance_Icon.svg",
@@ -27,8 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakartaSans.variable} antialiased bg-bgLight text-textMain`}>
-        <LoadingSplashWrapper />
-        {children}
+        <I18nProvider>
+          <LoadingSplashWrapper />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

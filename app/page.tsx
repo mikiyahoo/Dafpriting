@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import SplitHero from "@/components/home/SplitHero";
-import { CollectionsGrid } from "@/components/home/CollectionsGrid";
+import PartnershipSection from "@/components/home/PartnershipSection";
 import { ChatWidget } from "@/components/home/ChatWidget";
 import { QuoteModal } from "@/components/forms/QuoteModal";
 import { ArrowRight, Printer, FileText, Image, Shirt, Stamp, Box } from "lucide-react";
@@ -121,8 +121,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Collections Grid */}
-        <CollectionsGrid />
+        {/* Partnership Section - Attraction + Trusted + CTA */}
+        <PartnershipSection />
 
         {/* CTA - Enhanced with gradient and modern design */}
         <section className="py-24 bg-gradient-hero relative overflow-hidden">

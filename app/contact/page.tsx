@@ -40,7 +40,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold text-primary mb-1 uppercase tracking-wide">Email</h3>
-                      <p className="text-textMuted">+251 930 077432</p>
+                      <p className="text-textMuted">dafprinting@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -49,7 +49,11 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-sm font-semibold text-primary mb-1 uppercase tracking-wide">Phone</h3>
-                      <p className="text-textMuted">+251 930 077432</p>
+                      <p className="text-textMuted text-sm leading-relaxed">
+                        Mob. +251 911 25 7669<br />
+                        Mob. +251 911 25 7668<br />
+                        Tel. +251 115 57 52 07
+                      </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

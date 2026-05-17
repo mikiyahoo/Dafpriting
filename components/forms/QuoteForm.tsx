@@ -1,7 +1,12 @@
 "use client";
 
-import { useActionState } from "react";
+import { useState, useEffect, useActionState } from "react";
 import { submitQuoteRequest } from "@/actions/submit-quote";
+
+interface ServiceOption {
+  id: string;
+  title: string;
+}
 
 const sizes = ["A5", "A4", "A3", "A2", "A1", "Custom"];
 const materials = [
@@ -14,16 +19,6 @@ const materials = [
   "Other",
 ];
 
-const defaultServices = [
-  { id: "business-cards", title: "Business Cards" },
-  { id: "brochures-flyers", title: "Brochures & Flyers" },
-  { id: "banners-posters", title: "Banners & Posters" },
-  { id: "t-shirts", title: "T-Shirt Printing" },
-  { id: "stickers-labels", title: "Stickers & Labels" },
-  { id: "packaging", title: "Packaging" },
-  { id: "other", title: "Other" },
-];
-
 type QuoteState = {
   success: boolean;
   error?: string;
@@ -33,10 +28,22 @@ type QuoteState = {
 const initialState: QuoteState = { success: false };
 
 export function QuoteForm() {
+  const [services, setServices] = useState<ServiceOption[]>([]);
   const [state, formAction, pending] = useActionState<QuoteState, FormData>(
     submitQuoteRequest,
     initialState
   );
+
+  useEffect(() => {
+    fetch("/api/services")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && Array.isArray(data.services)) {
+          setServices(data.services);
+        }
+      })
+      .catch((err) => console.error("Failed to load services:", err));
+  }, []);
 
   if (state.success) {
     return (
@@ -136,7 +143,7 @@ export function QuoteForm() {
           className="w-full px-4 py-3 border border-primary/20 bg-white text-primary focus:outline-none focus:border-primary-brown transition-colors"
         >
           <option value="">Select a service</option>
-          {defaultServices.map((s) => (
+          {services.map((s) => (
             <option key={s.id} value={s.id}>
               {s.title}
             </option>

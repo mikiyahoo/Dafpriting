@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useCallback } from "react";
 import { X } from "lucide-react";
 import { submitQuoteRequest } from "@/actions/submit-quote";
+import { useI18n } from "@/lib/i18n";
 
 const sizes = ["A5", "A4", "A3", "A2", "A1", "Custom"];
 const materials = [
@@ -16,13 +17,13 @@ const materials = [
 ];
 
 const defaultServices = [
-  { id: "business-cards", title: "Business Cards" },
-  { id: "brochures-flyers", title: "Brochures & Flyers" },
-  { id: "banners-posters", title: "Banners & Posters" },
-  { id: "t-shirts", title: "T-Shirt Printing" },
-  { id: "stickers-labels", title: "Stickers & Labels" },
-  { id: "packaging", title: "Packaging" },
-  { id: "other", title: "Other" },
+  { id: "business-cards", titleKey: "quote.service.businessCards" },
+  { id: "brochures-flyers", titleKey: "quote.service.brochuresFlyers" },
+  { id: "banners-posters", titleKey: "quote.service.bannersPosters" },
+  { id: "t-shirts", titleKey: "quote.service.tshirts" },
+  { id: "stickers-labels", titleKey: "quote.service.stickersLabels" },
+  { id: "packaging", titleKey: "quote.service.packaging" },
+  { id: "other", titleKey: "quote.service.other" },
 ];
 
 type QuoteState = {
@@ -39,6 +40,7 @@ interface QuoteModalProps {
 }
 
 export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
+  const { t } = useI18n();
   const [state, formAction, pending] = useActionState<QuoteState, FormData>(
     submitQuoteRequest,
     initialState
@@ -72,30 +74,33 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
       onClick={handleBackdropClick}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-slate-950/65 backdrop-blur-md" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl">
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/70 bg-white shadow-[0_30px_90px_rgba(15,23,42,0.35)]">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors"
+          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-sm transition-colors hover:bg-slate-50 hover:text-slate-800"
           aria-label="Close modal"
         >
           <X size={18} />
         </button>
 
         {/* Header */}
-        <div className="px-6 pt-6 pb-4 border-b border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900">
-            Request a Free Quote
+        <div className="border-b border-slate-100 bg-gradient-to-br from-sky-50 via-white to-orange-50 px-6 pb-5 pt-6">
+          <div className="mb-3 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.14em] text-primary">
+            {t("quote.projectBadge")}
+          </div>
+          <h2 className="text-2xl font-black text-gray-900">
+            {t("quote.title")}
           </h2>
           <p className="text-gray-500 text-sm mt-1">
-            Tell us what you need and we'll get back to you within 24 hours.
+            {t("quote.subtitle")}
           </p>
         </div>
 
@@ -119,28 +124,28 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                Quote Request Submitted!
+                {t("quote.submitted")}
               </h3>
               <p className="text-gray-600 mb-2">
-                Your quote number is:{" "}
+                {t("quote.number")}{" "}
                 <span className="font-bold text-amber-600">
                   {state.quoteNumber}
                 </span>
               </p>
               <p className="text-gray-500 text-sm">
-                We'll review your request and get back to you within 24 hours.
+                {t("quote.response")}
               </p>
               <button
                 onClick={onClose}
-                className="mt-6 px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition-colors"
+                className="mt-6 rounded-full bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary-dark"
               >
-                Close
+                {t("quote.close")}
               </button>
             </div>
           ) : (
             <form action={formAction} className="space-y-5">
               {state.error && (
-                <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg">
+                <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
                   {state.error}
                 </div>
               )}
@@ -151,15 +156,15 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="modal-name"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Full Name *
+                    {t("quote.name")}
                   </label>
                   <input
                     type="text"
                     id="modal-name"
                     name="name"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
-                    placeholder="Your name"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
+                    placeholder={t("quote.placeholder.name")}
                   />
                 </div>
                 <div>
@@ -167,15 +172,15 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="modal-email"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Email Address *
+                    {t("quote.email")}
                   </label>
                   <input
                     type="email"
                     id="modal-email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
-                    placeholder="your@email.com"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
+                    placeholder={t("quote.placeholder.email")}
                   />
                 </div>
               </div>
@@ -186,15 +191,15 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="modal-phone"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Phone Number *
+                    {t("quote.phone")}
                   </label>
                   <input
                     type="tel"
                     id="modal-phone"
                     name="phone"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
-                    placeholder="+251 911 234 567"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
+                    placeholder={t("quote.placeholder.phone")}
                   />
                 </div>
                 <div>
@@ -202,14 +207,14 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="modal-company"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Company (optional)
+                    {t("quote.company")}
                   </label>
                   <input
                     type="text"
                     id="modal-company"
                     name="company"
-                    className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
-                    placeholder="Your company"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
+                    placeholder={t("quote.placeholder.company")}
                   />
                 </div>
               </div>
@@ -219,18 +224,18 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                   htmlFor="modal-serviceId"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Service Type *
+                  {t("quote.serviceType")}
                 </label>
                 <select
                   id="modal-serviceId"
                   name="serviceId"
                   required
-                  className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
                 >
-                  <option value="">Select a service</option>
+                  <option value="">{t("quote.selectService")}</option>
                   {defaultServices.map((s) => (
                     <option key={s.id} value={s.id}>
-                      {s.title}
+                      {t(s.titleKey)}
                     </option>
                   ))}
                 </select>
@@ -242,7 +247,7 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="modal-quantity"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Quantity *
+                    {t("quote.quantity")}
                   </label>
                   <input
                     type="number"
@@ -250,8 +255,8 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     name="quantity"
                     min="1"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
-                    placeholder="100"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
+                    placeholder={t("quote.placeholder.quantity")}
                   />
                 </div>
                 <div>
@@ -259,15 +264,15 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="modal-size"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Size *
+                    {t("quote.size")}
                   </label>
                   <select
                     id="modal-size"
                     name="size"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
                   >
-                    <option value="">Select size</option>
+                    <option value="">{t("quote.selectSize")}</option>
                     {sizes.map((s) => (
                       <option key={s} value={s}>
                         {s}
@@ -280,15 +285,15 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                     htmlFor="modal-material"
                     className="block text-sm font-medium text-gray-700 mb-1"
                   >
-                    Material *
+                    {t("quote.material")}
                   </label>
                   <select
                     id="modal-material"
                     name="material"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
+                    className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
                   >
-                    <option value="">Select material</option>
+                    <option value="">{t("quote.selectMaterial")}</option>
                     {materials.map((m) => (
                       <option key={m} value={m}>
                         {m}
@@ -303,23 +308,23 @@ export function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                   htmlFor="modal-notes"
                   className="block text-sm font-medium text-gray-700 mb-1"
                 >
-                  Additional Notes (optional)
+                  {t("quote.notes")}
                 </label>
                 <textarea
                   id="modal-notes"
                   name="notes"
                   rows={3}
-                  className="w-full px-4 py-3 border border-gray-200 bg-white text-gray-900 placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors resize-none"
-                  placeholder="Describe your project, special requirements, or questions..."
+                  className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition-colors focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10"
+                  placeholder={t("quote.placeholder.notes")}
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={pending}
-                className="w-full px-8 py-4 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-base"
+                className="w-full rounded-xl bg-gradient-to-r from-secondary to-secondary-light px-8 py-4 text-base font-bold text-white shadow-[0_14px_28px_rgba(230,126,0,0.24)] transition-all hover:-translate-y-0.5 hover:shadow-[0_18px_34px_rgba(230,126,0,0.3)] disabled:cursor-not-allowed disabled:opacity-50"
               >
-                {pending ? "Submitting..." : "Submit Quote Request"}
+                {pending ? t("quote.submitting") : t("quote.submit")}
               </button>
             </form>
           )}

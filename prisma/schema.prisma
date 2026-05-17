@@ -116,6 +116,21 @@ model Customer {
 }
 
 // ─────────────────────────────────────────
+// PARTNERSHIP REQUESTS (homepage partnership form)
+// ─────────────────────────────────────────
+model PartnershipRequest {
+  id            String   @id @default(cuid())
+  contactName   String
+  phone         String
+  company       String
+  services      String   @db.Text
+  isRead        Boolean  @default(false)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+}
+
+// ─────────────────────────────────────────
 // QUICK REQUESTS (from category/magazine pages)
 // ─────────────────────────────────────────
 model QuickRequest {

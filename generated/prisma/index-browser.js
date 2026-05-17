@@ -193,6 +193,17 @@ exports.Prisma.CustomerScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PartnershipRequestScalarFieldEnum = {
+  id: 'id',
+  contactName: 'contactName',
+  phone: 'phone',
+  company: 'company',
+  services: 'services',
+  isRead: 'isRead',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.QuickRequestScalarFieldEnum = {
   id: 'id',
   phone: 'phone',
@@ -320,6 +331,7 @@ exports.Prisma.ModelName = {
   Banner: 'Banner',
   Collection: 'Collection',
   Customer: 'Customer',
+  PartnershipRequest: 'PartnershipRequest',
   QuickRequest: 'QuickRequest',
   QuoteRequest: 'QuoteRequest',
   QuoteFile: 'QuoteFile',

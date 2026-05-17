@@ -24,11 +24,19 @@ export default function AdminQuickOrdersPage() {
     try {
       const res = await fetch("/api/quick-requests");
       const data = await res.json();
+      if (!res.ok || !Array.isArray(data)) {
+        console.error("Invalid response from quick-requests API:", data);
+        setRequests([]);
+        setUnreadCount(0);
+        return;
+      }
       setRequests(data);
       const unread = data.filter((r: QuickRequest) => !r.isRead).length;
       setUnreadCount(unread);
     } catch (error) {
       console.error("Failed to fetch quick requests:", error);
+      setRequests([]);
+      setUnreadCount(0);
     } finally {
       setLoading(false);
     }

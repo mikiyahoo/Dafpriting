@@ -19,7 +19,6 @@ import {
   ShoppingBag,
   Truck,
   Grid3X3,
-  Layers,
   PanelTop,
   MessageCircle,
 } from "lucide-react";
@@ -30,8 +29,8 @@ const navItems = [
   { label: "Customers", href: "/admin/customers", icon: Users },
   { label: "Banner Ads", href: "/admin/banners", icon: PanelTop },
   { label: "Quick Orders", href: "/admin/quick-orders", icon: MessageCircle },
+  { label: "Partnerships", href: "/admin/partnerships", icon: ShoppingBag },
   { label: "Categories", href: "/admin/categories", icon: Grid3X3 },
-  { label: "Collections", href: "/admin/collections", icon: Layers },
   { label: "Portfolio", href: "/admin/portfolio", icon: Image },
   { label: "Testimonials", href: "/admin/testimonials", icon: MessageSquare },
   { label: "Order Tracking", href: "/admin/tracking", icon: Truck },
