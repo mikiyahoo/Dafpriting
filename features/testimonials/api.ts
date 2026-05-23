@@ -24,6 +24,8 @@ export async function createTestimonial(data: {
   company?: string;
   review: string;
   rating: number;
+  avatarUrl?: string | null;
+  avatarType?: string | null;
 }) {
   return prisma.testimonial.create({ data });
 }
@@ -37,6 +39,8 @@ export async function updateTestimonial(
     rating: number;
     isApproved: boolean;
     isFeatured: boolean;
+    avatarUrl: string | null;
+    avatarType: string | null;
   }>
 ) {
   return prisma.testimonial.update({ where: { id }, data });

@@ -44,7 +44,7 @@ export function CategoryCarousel() {
             {categories.map((category) => (
               <Link
                 key={category.id}
-                href={`/services/${category.slug}`}
+                href={`/categories/${category.slug}`}
                 className="group bg-bgPure rounded-2xl p-6 flex flex-col items-center gap-4 hover:shadow-lg transition-all duration-300 border border-primary/5"
               >
                 <span className="text-sm font-semibold text-primary text-center group-hover:text-secondary transition-colors">

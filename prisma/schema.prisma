@@ -227,6 +227,8 @@ model Testimonial {
   id           String   @id @default(cuid())
   customerName String
   company      String?
+  avatarUrl    String?
+  avatarType   String?  @default("none")
   review       String   @db.Text
   rating       Int      @default(5)
   isApproved   Boolean  @default(false)
@@ -235,4 +237,3 @@ model Testimonial {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now()) @updatedAt
 }
-
