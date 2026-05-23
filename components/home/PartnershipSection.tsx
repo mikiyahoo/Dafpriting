@@ -249,9 +249,12 @@ export default function PartnershipSection() {
           <div className="bg-bgPure w-[90%] max-w-lg rounded-3xl shadow-2xl overflow-hidden transform scale-100 transition-transform">
             {/* Header */}
             <div className="px-7 pt-6 pb-3 flex items-center justify-between border-b border-gray-100">
-              <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
-                Partner with DAF
-              </h3>
+              <div className="flex items-center gap-2">
+                <Image src="/assets/daf-logo.png" alt="D.A.F Printing Logo" width={32} height={32} />
+                <h3 className="text-2xl font-black bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+                  Partner with D.A.F
+                </h3>
+              </div>
               <button
                 onClick={() => { setModalOpen(false); resetForm(); }}
                 className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors text-lg cursor-pointer"
@@ -264,11 +267,11 @@ export default function PartnershipSection() {
             <div className="px-7 pt-3 pb-1">
               <div className="h-1.5 bg-gray-200 rounded-full">
                 <div
-                  className="h-1.5 bg-primary rounded-full transition-all duration-300"
+                  className="h-1.5 bg-secondary rounded-full transition-all duration-300"
                   style={{ width: step === 1 ? "50%" : "100%" }}
                 />
               </div>
-              <div className="text-xs font-semibold text-primary text-right mt-1">
+              <div className="text-xs font-semibold text-secondary text-right mt-1">
                 Step {step} of 2: {step === 1 ? "Your details" : "Print services"}
               </div>
             </div>

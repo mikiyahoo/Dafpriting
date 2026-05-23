@@ -49,8 +49,15 @@ export function ChatWidget() {
       {/* Chat panel */}
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-50 w-[390px] max-w-[calc(100vw-48px)] overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_28px_80px_rgba(15,23,42,0.22)] animate-in slide-in-from-bottom-5 duration-300">
-          {/* Header */}
-          <div className="bg-gradient-to-br from-primary to-primary-light p-5">
+          {/* Header with close button */}
+          <div className="bg-gradient-to-br from-primary to-primary-light p-5 relative">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors z-10"
+              aria-label="Close chat"
+            >
+              <X className="w-4 h-4" />
+            </button>
             <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="w-12 h-12 rounded-2xl bg-bgPure flex items-center justify-center font-black text-sm text-primary shadow-lg">

@@ -224,16 +224,16 @@ export function Header() {
       <header id="site-header" ref={headerRef}>
         {/* TOP BAR */}
         <div className="header-top">
-          <Link href="/" className="header-logo" aria-label="Daf Printing Homepage">
+          <Link href="/" className="header-logo" aria-label="D.A.F Printing Homepage">
             <NextImage
               src="/assets/daf-logo.png"
-              alt="Daf Printing Logo"
+              alt="D.A.F Printing Logo"
               width={38}
               height={38}
               className="flex-shrink-0"
             />
             <span className="logo-text">
-              <span style={{ color: "var(--color-secondary)" }}>Daf</span> Printing
+              <span style={{ color: "var(--color-secondary)" }}>D.A.F</span> Printing
             </span>
           </Link>
 
@@ -531,9 +531,9 @@ export function Header() {
               <div className="p-6">
                 <div className="flex items-center justify-between mb-8">
                   <div className="flex items-center gap-2">
-                    <NextImage src="/assets/daf-logo.png" alt="Daf Printing Logo" width={32} height={32} />
+                    <NextImage src="/assets/daf-logo.png" alt="D.A.F Printing Logo" width={32} height={32} />
                     <span className="text-base font-black text-textMain">
-                      <span style={{ color: "var(--color-secondary)" }}>Daf</span> Printing
+                      <span style={{ color: "var(--color-secondary)" }}>D.A.F</span> Printing
                     </span>
                   </div>
                   <button onClick={() => setMobileOpen(false)} className="p-2 text-textMuted hover:text-textMain transition-colors" aria-label="Close menu">

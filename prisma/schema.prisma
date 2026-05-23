@@ -210,6 +210,9 @@ model PortfolioItem {
   title       String
   description String?           @db.Text
   coverImage  String?
+  category    String            @default("")
+  itemType    String            @default("")
+  clientName  String?
   featured    Boolean           @default(false)
   sortOrder   Int               @default(0)
   isActive    Boolean           @default(true)

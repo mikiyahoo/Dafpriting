@@ -1,6 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import type { PortfolioItemRecord } from "./types";
 
+function toTitleCase(str: string): string {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 export async function getPortfolioItems(): Promise<PortfolioItemRecord[]> {
   const items = await prisma.portfolioItem.findMany({
     where: { isActive: true },
@@ -37,6 +45,9 @@ export async function createPortfolioItem(data: {
   title: string;
   description?: string;
   coverImage?: string;
+  category?: string;
+  itemType?: string;
+  clientName?: string;
   featured?: boolean;
 }) {
   return prisma.portfolioItem.create({
@@ -44,6 +55,9 @@ export async function createPortfolioItem(data: {
       title: data.title,
       description: data.description || null,
       coverImage: data.coverImage || null,
+      category: data.category || "",
+      itemType: data.itemType || "",
+      clientName: data.clientName ? toTitleCase(data.clientName) : null,
       featured: data.featured || false,
     },
   });
@@ -55,12 +69,19 @@ export async function updatePortfolioItem(
     title: string;
     description: string;
     coverImage: string;
+    category: string;
+    itemType: string;
+    clientName: string;
     featured: boolean;
     sortOrder: number;
     isActive: boolean;
   }>
 ) {
-  return prisma.portfolioItem.update({ where: { id }, data });
+  const updateData = { ...data };
+  if (updateData.clientName) {
+    updateData.clientName = toTitleCase(updateData.clientName);
+  }
+  return prisma.portfolioItem.update({ where: { id }, data: updateData });
 }
 
 export async function deletePortfolioItem(id: string) {

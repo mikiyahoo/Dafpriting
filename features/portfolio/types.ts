@@ -3,6 +3,9 @@ export interface PortfolioItemRecord {
   title: string;
   description: string | null;
   coverImage: string | null;
+  category: string;
+  itemType: string;
+  clientName: string | null;
   featured: boolean;
   sortOrder: number;
   isActive: boolean;

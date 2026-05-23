@@ -65,7 +65,7 @@ export default function AboutPage() {
                 </span>
               </h1>
               <p className="text-textMuted text-lg leading-relaxed">
-                Daf Printing was founded with a simple mission: to provide premium 
+                D.A.F Printing was founded with a simple mission: to provide premium 
                 printing services that elevate brands and bring ideas to life. With 
                 years of experience in the printing industry, we understand that 
                 every detail matters.
@@ -101,7 +101,7 @@ export default function AboutPage() {
               </div>
               <div className="relative z-10">
                 <h2 className="text-2xl md:text-3xl font-black text-bgPure mb-4">
-                  Why Choose Daf Printing?
+                Why Choose D.A.F Printing?
                 </h2>
                 <p className="text-bgPure/80 mb-8 max-w-2xl">
                   We combine premium materials with expert craftsmanship to deliver exceptional results.

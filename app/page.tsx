@@ -1,50 +1,33 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import SplitHero from "@/components/home/SplitHero";
 import PartnershipSection from "@/components/home/PartnershipSection";
 import { ChatWidget } from "@/components/home/ChatWidget";
 import { QuoteModal } from "@/components/forms/QuoteModal";
-import { ArrowRight, Printer, FileText, Image, Shirt, Stamp, Box } from "lucide-react";
-
-const services = [
-  {
-    icon: FileText,
-    title: "Business Cards",
-    description: "Premium quality business cards with various finishes including matte, gloss, and spot UV.",
-  },
-  {
-    icon: Printer,
-    title: "Brochures & Flyers",
-    description: "Eye-catching marketing materials for your business, from A5 flyers to A4 brochures.",
-  },
-  {
-    icon: Image,
-    title: "Banners & Posters",
-    description: "Large format printing for indoor and outdoor use, with weather-resistant options.",
-  },
-  {
-    icon: Shirt,
-    title: "T-Shirt Printing",
-    description: "Custom apparel printing with DTG and screen printing for events and businesses.",
-  },
-  {
-    icon: Stamp,
-    title: "Stickers & Labels",
-    description: "Custom die-cut stickers, roll labels, and product labels in any shape or size.",
-  },
-  {
-    icon: Box,
-    title: "Packaging",
-    description: "Custom packaging boxes, product sleeves, and branded packaging solutions.",
-  },
-];
+import { ArrowRight } from "lucide-react";
+import type { PortfolioItemRecord } from "@/features/portfolio/types";
 
 export default function HomePage() {
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+  const [works, setWorks] = useState<PortfolioItemRecord[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch("/api/portfolio");
+        if (res.ok) {
+          const data = await res.json();
+          setWorks((data.items || []).slice(0, 8));
+        }
+      } catch {
+        // silent
+      }
+    })();
+  }, []);
 
   return (
     <>
@@ -54,67 +37,56 @@ export default function HomePage() {
         {/* Split Hero with ad banners + shop by categories */}
         <SplitHero />
 
-        {/* Services Overview - Enhanced with modern design */}
+        {/* Our Works - 8 photos grid */}
         <section className="py-24 bg-gradient-subtle relative overflow-hidden">
-          {/* Decorative background elements */}
           <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
-              <span className="inline-block px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-semibold tracking-[0.2em] uppercase mb-4">
-                What We Offer
+              <span className="inline-block px-4 py-2 bg-secondary/10 rounded-full text-secondary text-sm font-semibold tracking-[0.2em] uppercase mb-4">
+                Our Works
               </span>
               <h2 className="text-3xl md:text-5xl font-black text-textMain mb-6 leading-tight">
-                Premium Printing{" "}
+                Our{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">
-                  Services
+                  Portfolio
                 </span>
               </h2>
               <p className="text-textMuted text-lg max-w-2xl mx-auto leading-relaxed">
-                Comprehensive printing solutions tailored to your needs. 
-                We combine premium materials with expert craftsmanship.
+                A glimpse of projects we have brought to life. Each piece reflects our commitment to quality and craftsmanship.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {services.map((service, index) => (
-                <div
-                  key={service.title}
-                  className="group relative p-8 bg-bgPure rounded-2xl border border-gray-100 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-                  style={{ animationDelay: `${index * 100}ms` }}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {works.slice(0, 8).map((item) => (
+                <Link
+                  key={item.id}
+                  href="/portfolio"
+                  className="group relative aspect-square rounded-xl overflow-hidden bg-gray-100 shadow-card hover:shadow-card-hover transition-all duration-300"
                 >
-                  {/* Gradient border effect on hover */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'linear-gradient(135deg, rgba(0,123,204,0.1), rgba(230,126,0,0.1))', padding: '1px', mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'exclude', WebkitMaskComposite: 'xor' }}
+                  <img
+                    src={item.coverImage || "/assets/placeholder.svg"}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => { (e.target as HTMLImageElement).src = "/assets/placeholder.svg"; }}
                   />
-                  
-                  {/* Icon with gradient background */}
-                  <div className="relative w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-primary to-primary-light flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="w-7 h-7 text-white" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    <h3 className="text-white font-bold text-sm leading-tight mb-1">{item.title}</h3>
+                    {item.clientName && (
+                      <p className="text-primary-light text-xs font-medium">for {item.clientName}</p>
+                    )}
                   </div>
-                  
-                  <h3 className="text-xl font-black text-textMain mb-3 group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-textMuted text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                  
-                  {/* Arrow indicator on hover */}
-                  <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ArrowRight className="w-5 h-5 text-primary" />
-                  </div>
-                </div>
+                </Link>
               ))}
             </div>
 
-            <div className="text-center mt-16">
+            <div className="text-center mt-12">
               <Link
-                href="/services"
+                href="/portfolio"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-lg hover:bg-primary/90 hover:-translate-y-0.5 transition-all duration-300 group"
               >
-                View All Services
+                View All Portfolio
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -126,7 +98,6 @@ export default function HomePage() {
 
         {/* CTA - Enhanced with gradient and modern design */}
         <section className="py-24 bg-gradient-hero relative overflow-hidden">
-          {/* Animated background pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
               backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px), radial-gradient(circle at 40% 80%, white 1px, transparent 1px)',
@@ -134,13 +105,13 @@ export default function HomePage() {
               animation: 'float 20s ease-in-out infinite'
             }} />
           </div>
-          
+
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white/90 text-sm font-semibold mb-6">
               <span className="w-2 h-2 bg-highlight rounded-full animate-pulse" />
               Fast Turnaround Available
             </div>
-            
+
             <h2 className="text-3xl md:text-5xl font-black text-bgPure mb-6 leading-tight">
               Ready to Bring Your{" "}
               <span className="text-highlight">Vision</span> to Life?
@@ -149,7 +120,7 @@ export default function HomePage() {
               Tell us what you need, and we will provide a free, no-obligation quote within 24 hours. 
               Professional quality, competitive prices.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={() => setQuoteModalOpen(true)}
@@ -158,7 +129,7 @@ export default function HomePage() {
                 Request a Free Quote
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              
+
               <Link
                 href="/portfolio"
                 className="inline-flex items-center gap-2 px-8 py-5 bg-primary/20 text-white text-base font-semibold rounded-full border border-primary/30 hover:bg-primary/30 hover:-translate-y-0.5 transition-all duration-300"
@@ -166,8 +137,7 @@ export default function HomePage() {
                 View Our Work
               </Link>
             </div>
-            
-            {/* Trust indicators */}
+
             <div className="flex flex-wrap items-center justify-center gap-8 mt-12 text-white/70 text-sm">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-highlight" fill="currentColor" viewBox="0 0 20 20">

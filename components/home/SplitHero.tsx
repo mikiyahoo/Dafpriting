@@ -224,7 +224,7 @@ export default function SplitHero() {
                     <img
                       src={cat.image || "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=400&h=400&fit=crop"}
                       alt={cat.name}
-                      className="w-full h-full object-contain object-center rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center rounded-2xl group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/15 via-transparent to-transparent opacity-80 pointer-events-none" />
                     <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-primary shadow-sm">
