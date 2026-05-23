@@ -185,7 +185,6 @@ model QuoteRequest {
   updatedAt   DateTime     @default(now()) @updatedAt
 
   files       QuoteFile[]
-  tracking    OrderTracking?
 }
 
 // ─────────────────────────────────────────
@@ -251,32 +250,3 @@ model Testimonial {
   updatedAt    DateTime @default(now()) @updatedAt
 }
 
-// ─────────────────────────────────────────
-// ORDER TRACKING
-// ─────────────────────────────────────────
-model OrderTracking {
-  id             String    @id @default(cuid())
-  quoteRequestId String    @unique
-  quoteRequest   QuoteRequest @relation(fields: [quoteRequestId], references: [id], onDelete: Cascade)
-
-  currentStage   String    @default("ORDER_RECEIVED")
-  notes          String?   @db.Text
-  updatedAt      DateTime  @default(now()) @updatedAt
-
-  stages OrderStage[]
-}
-
-model OrderStage {
-  id              String        @id @default(cuid())
-  orderTrackingId String
-  orderTracking   OrderTracking @relation(fields: [orderTrackingId], references: [id], onDelete: Cascade)
-
-  stage           String
-  label           String
-  completed       Boolean       @default(false)
-  completedAt     DateTime?
-  note            String?       @db.Text
-
-  sortOrder       Int           @default(0)
-  createdAt       DateTime      @default(now())
-}
