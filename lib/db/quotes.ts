@@ -38,37 +38,13 @@ export async function createQuoteRequest(data: {
 }) {
   const quoteNumber = await generateQuoteNumber();
 
-  // Find or create customer
-  let customer = await prisma.customer.findUnique({
-    where: { email: data.email },
-  });
-
-  if (!customer) {
-    customer = await prisma.customer.create({
-      data: {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        company: data.company ?? null,
-      },
-    });
-  } else {
-    // Update existing customer info
-    customer = await prisma.customer.update({
-      where: { id: customer.id },
-      data: {
-        name: data.name,
-        phone: data.phone,
-        company: data.company ?? null,
-      },
-    });
-  }
-
-  // Create quote request
   const quote = await prisma.quoteRequest.create({
     data: {
       quoteNumber,
-      customerId: customer.id,
+      customerName: data.name,
+      customerEmail: data.email,
+      customerPhone: data.phone,
+      customerCompany: data.company ?? null,
       serviceId: data.serviceId,
       quantity: data.quantity,
       size: data.size,
@@ -76,7 +52,6 @@ export async function createQuoteRequest(data: {
       notes: data.notes ?? null,
     },
     include: {
-      customer: true,
       service: true,
       files: true,
     },
@@ -105,8 +80,8 @@ export async function getQuotes(params: {
 
   if (search) {
     where.OR = [
-      { customer: { name: { contains: search, mode: "insensitive" } } },
-      { customer: { email: { contains: search, mode: "insensitive" } } },
+      { customerName: { contains: search, mode: "insensitive" } },
+      { customerEmail: { contains: search, mode: "insensitive" } },
       { quoteNumber: { contains: search, mode: "insensitive" } },
     ];
   }
@@ -115,7 +90,6 @@ export async function getQuotes(params: {
     prisma.quoteRequest.findMany({
       where,
       include: {
-        customer: true,
         service: true,
         files: true,
       },
@@ -141,7 +115,6 @@ export async function getQuoteById(id: string) {
   return prisma.quoteRequest.findUnique({
     where: { id },
     include: {
-      customer: true,
       service: true,
       files: true,
       assignedUser: {
@@ -168,7 +141,6 @@ export async function updateQuoteStatus(
       ...(validUntil && { validUntil }),
     },
     include: {
-      customer: true,
       service: true,
       files: true,
     },

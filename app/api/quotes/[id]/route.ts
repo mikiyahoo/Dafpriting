@@ -14,7 +14,6 @@ export async function GET(
     const quote = await prisma.quoteRequest.findUnique({
       where: { id },
       include: {
-        customer: true,
         service: true,
         files: true,
         assignedUser: { select: { id: true, name: true, email: true } },
@@ -52,7 +51,7 @@ export async function PATCH(
     const quote = await prisma.quoteRequest.update({
       where: { id },
       data: updateData,
-      include: { customer: true, service: true },
+      include: { service: true },
     });
 
     return NextResponse.json({ success: true, quote });

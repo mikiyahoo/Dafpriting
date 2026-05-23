@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import { QUOTE_STATUS_LABELS, QUOTE_STATUS_COLORS } from "@/features/quotes/types";
 
 interface QuoteItem {
