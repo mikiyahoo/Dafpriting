@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/api-auth";
 
 export const dynamic = "force-dynamic";
 
 // GET /api/quick-requests
 export async function GET() {
+  const { errorResponse } = await requireAdmin();
+  if (errorResponse) return errorResponse;
+
   try {
     const requests = await prisma.quickRequest.findMany({
       orderBy: { createdAt: "desc" },

@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
+import { requireAdmin } from "@/lib/api-auth";
 
 export async function POST(request: NextRequest) {
+  const { errorResponse } = await requireAdmin();
+  if (errorResponse) return errorResponse;
+
   try {
     const body = await request.json();
     const { action } = body;
@@ -93,6 +97,9 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
+  const { errorResponse } = await requireAdmin();
+  if (errorResponse) return errorResponse;
+
   // Check database status
   try {
     const [userCount, categoryCount, bannerCount, serviceCount] = await Promise.all([

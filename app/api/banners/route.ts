@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/api-auth";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,9 @@ export async function GET() {
 
 // POST /api/banners - simple create (admin UI should call this with imageUrl)
 export async function POST(request: Request) {
+  const { errorResponse } = await requireAdmin();
+  if (errorResponse) return errorResponse;
+
   try {
     const body = await request.json();
     const { title, imageUrl, linkUrl, sortOrder, isActive } = body;

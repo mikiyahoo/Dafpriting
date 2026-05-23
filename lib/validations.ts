@@ -34,51 +34,8 @@ export const loginSchema = z.object({
 export type LoginFormValues = z.infer<typeof loginSchema>;
 
 // ─────────────────────────────────────────
-// LEGACY — RADIANCE BACKWARD COMPATIBILITY
-// These will be removed in a future cleanup.
+// PACKAGE MANAGEMENT
 // ─────────────────────────────────────────
-
-export const bookingFormSchema = z.object({
-  clientName: z.string().min(1, "Name is required"),
-  clientEmail: z.string().email("Valid email is required"),
-  clientPhone: z.string().min(1, "Phone is required"),
-  eventType: z.string().min(1, "Event type is required"),
-  eventDate: z.string().min(1, "Event date is required"),
-  location: z.string().min(1, "Location is required"),
-  guestCount: z.string().optional(),
-  budgetRange: z.string().min(1, "Budget range is required"),
-  notes: z.string().optional(),
-});
-
-export type BookingFormValues = z.infer<typeof bookingFormSchema>;
-
-export const bookingStatusSchema = z.object({
-  status: z.string().min(1),
-  internalNotes: z.string().optional(),
-  assignedTo: z.string().optional(),
-  agreedAmount: z.number().optional(),
-  depositAmount: z.number().optional(),
-  depositPaid: z.boolean().optional(),
-  balancePaid: z.boolean().optional(),
-});
-
-export const bookingMessageSchema = z.object({
-  content: z.string().min(1, "Message cannot be empty"),
-  sender: z.enum(["ADMIN", "SYSTEM"]),
-});
-
-export const rsvpSchema = z.object({
-  guestName: z.string().min(1, "Name is required"),
-  guestPhone: z.string().optional(),
-  attendance: z.enum(["ATTENDING", "NOT_ATTENDING", "MAYBE"]),
-  message: z.string().optional(),
-});
-
-export const giftReservationSchema = z.object({
-  giftId: z.string().min(1, "Gift is required"),
-  reservedBy: z.string().min(1, "Your name is required"),
-  reservedMessage: z.string().optional(),
-});
 
 export const packageCategorySchema = z.object({
   name: z.string().min(1, "Name is required"),

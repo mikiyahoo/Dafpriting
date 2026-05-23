@@ -18,11 +18,28 @@ const categories: Category[] = [
   { id: 7, name: "Creative & Finishing Services" },
 ];
 
-const trustedCompanies = [
-  "Ethio Telecom", "Dashen Bank", "Habesha Brewery",
-  "Ethiopian Airlines", "Sheger FM", "Zemen Bank",
-  "Addis Ababa Uni.", "Kality Logistics",
+import Image from "next/image";
+
+const clientLogoFiles = [
+  "ASMAM Coatings_Logo.webp",
+  "BMET Energy Telecom Industry & Trade_Logo.webp",
+  "BOSS Paints_Logo.webp",
+  "Ethiopian National Theatre_Logo.webp",
+  "Ethiopian Road Adminstration_Logo.webp",
+  "FDRE Ministry of Education_Logo.webp",
+  "Harmony Hotel_Logo.webp",
+  "Jupiter Hotel_Logo.webp",
+  "Kerchanish Trading_Logo.webp",
+  "Marda Qartz_Logo.webp",
+  "Ministry of Health Ethiopia_Logo.webp",
+  "Ministry of Urban & Inf._Logo.webp",
+  "MTSONS Trading_Logo.webp",
+  "Oromia Land Bureau_Logo.webp",
+  "Oromia Urban Development & Housing Bureau _Logo.webp",
+  "Rhino Cable_Logo.webp",
 ];
+
+const trustedCompanies = clientLogoFiles.map((file) => file.replace(/_Logo\.webp$/, "").replace(/_/g, " "));
 
 export default function PartnershipSection() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -164,19 +181,28 @@ export default function PartnershipSection() {
           </div>
           <div className="relative overflow-hidden w-full">
             <div
-              className="flex gap-10 animate-scroll-logos"
+              className="flex gap-10 items-center animate-scroll-logos"
               style={{
                 width: "max-content",
-                maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
-                WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+                maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
               }}
             >
-              {[...trustedCompanies, ...trustedCompanies].map((name, i) => (
+              {[...clientLogoFiles, ...clientLogoFiles].map((file, i) => (
                 <div
-                  key={`${name}-${i}`}
-                  className="flex-shrink-0 h-12 flex items-center justify-center bg-white/50 px-6 rounded-full shadow-sm text-sm font-bold text-textMuted tracking-tight whitespace-nowrap"
+                  key={`${file}-${i}`}
+                  className="flex-shrink-0 h-16 flex items-center justify-center px-4"
                 >
-                  {name}
+                  <Image
+                    src={`/assets/Clients/${file}`}
+                    alt={trustedCompanies[i % trustedCompanies.length]}
+                    width={160}
+                    height={64}
+                    className="h-16 w-auto object-contain brightness-0 saturate-0 hover:brightness-100 hover:saturate-100 transition-all duration-300 ease-in-out"
+                    style={{ filter: "grayscale(100%)" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.filter = "grayscale(0%)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.filter = "grayscale(100%)"; }}
+                  />
                 </div>
               ))}
             </div>

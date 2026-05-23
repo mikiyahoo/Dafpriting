@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/api-auth";
 
 // PUT /api/categories/[id]
 export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { errorResponse } = await requireAdmin();
+  if (errorResponse) return errorResponse;
+
   const { id } = await params;
   try {
     const body = await request.json();
@@ -38,6 +42,9 @@ export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { errorResponse } = await requireAdmin();
+  if (errorResponse) return errorResponse;
+
   const { id } = await params;
   try {
     await prisma.category.delete({
