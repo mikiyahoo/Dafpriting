@@ -8,7 +8,6 @@ import { signOut } from "next-auth/react";
 import {
   LayoutDashboard,
   FileText,
-  Users,
   Menu,
   X,
   LogOut,
@@ -17,7 +16,6 @@ import {
   Package,
   Settings,
   ShoppingBag,
-  Truck,
   Grid3X3,
   PanelTop,
   MessageCircle,
@@ -26,7 +24,6 @@ import {
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
   { label: "Quotes", href: "/admin/quotes", icon: FileText },
-  { label: "Customers", href: "/admin/customers", icon: Users },
   { label: "Banner Ads", href: "/admin/banners", icon: PanelTop },
   { label: "Quick Orders", href: "/admin/quick-orders", icon: MessageCircle },
   { label: "Partnerships", href: "/admin/partnerships", icon: ShoppingBag },
@@ -43,7 +40,6 @@ export function Sidebar() {
   const [unreadCount, setUnreadCount] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Fetch unread quick orders count every 10 seconds
   useEffect(() => {
     const fetchUnread = async () => {
       try {
