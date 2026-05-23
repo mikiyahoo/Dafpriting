@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Trash2, Phone, Mail, Eye, EyeOff, Bell } from "lucide-react";
+import { Trash2, Phone, Mail, Eye, EyeOff, Bell, FileText, X } from "lucide-react";
 
 interface QuickRequest {
   id: string;
@@ -19,6 +19,10 @@ export default function AdminQuickOrdersPage() {
   const [requests, setRequests] = useState<QuickRequest[]>([]);
   const [loading, setLoading] = useState(true);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [convertModal, setConvertModal] = useState<QuickRequest | null>(null);
+  const [services, setServices] = useState<{ id: string; title: string }[]>([]);
+  const [convertForm, setConvertForm] = useState({ serviceId: "", notes: "" });
+  const [converting, setConverting] = useState(false);
 
   const fetchRequests = useCallback(async () => {
     try {
@@ -66,6 +70,50 @@ export default function AdminQuickOrdersPage() {
       fetchRequests();
     } catch (error) {
       console.error("Failed to delete:", error);
+    }
+  };
+
+  const openConvertModal = async (req: QuickRequest) => {
+    setConvertModal(req);
+    setConvertForm({ serviceId: "", notes: "" });
+    try {
+      const res = await fetch("/api/services");
+      const data = await res.json();
+      setServices(data.services || []);
+    } catch {
+      setServices([]);
+    }
+  };
+
+  const handleConvert = async () => {
+    if (!convertModal || !convertForm.serviceId) return;
+    setConverting(true);
+    try {
+      const res = await fetch("/api/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customerName: convertModal.firstName,
+          customerEmail: convertModal.email || "",
+          customerPhone: convertModal.phone,
+          customerCompany: convertModal.company || "",
+          serviceId: convertForm.serviceId,
+          quantity: convertModal.quantity,
+          notes: convertForm.notes || `Converted from quick order (${convertModal.magazineType})`,
+        }),
+      });
+      if (res.ok) {
+        setConvertModal(null);
+        fetchRequests();
+        alert("✅ Quote created from quick order!");
+      } else {
+        const err = await res.json();
+        alert(err.error || "Failed to create quote");
+      }
+    } catch {
+      alert("Failed to create quote");
+    } finally {
+      setConverting(false);
     }
   };
 
@@ -149,6 +197,13 @@ export default function AdminQuickOrdersPage() {
                           {req.isRead ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         </button>
                         <button
+                          onClick={() => openConvertModal(req)}
+                          className="p-1.5 text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 rounded-lg transition-colors"
+                          title="Convert to Quote"
+                        >
+                          <FileText className="w-4 h-4" />
+                        </button>
+                        <button
                           onClick={() => handleDelete(req.id)}
                           className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                           title="Delete"
@@ -164,6 +219,54 @@ export default function AdminQuickOrdersPage() {
           </div>
         )}
       </div>
+
+      {/* Convert to Quote Modal */}
+      {convertModal && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={(e) => { if (e.target === e.currentTarget) setConvertModal(null); }}>
+          <div className="bg-white w-[90%] max-w-md rounded-2xl shadow-2xl">
+            <div className="px-6 pt-6 pb-4 flex items-center justify-between border-b border-gray-100">
+              <h2 className="text-xl font-bold text-gray-900">Convert to Quote</h2>
+              <button onClick={() => setConvertModal(null)} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200"><X className="w-4 h-4" /></button>
+            </div>
+            <div className="px-6 py-5 space-y-4">
+              <div className="bg-gray-50 rounded-lg p-3 text-sm space-y-1">
+                <p><span className="font-medium">Customer:</span> {convertModal.firstName}</p>
+                <p><span className="font-medium">Phone:</span> {convertModal.phone}</p>
+                {convertModal.email && <p><span className="font-medium">Email:</span> {convertModal.email}</p>}
+                {convertModal.company && <p><span className="font-medium">Company:</span> {convertModal.company}</p>}
+                <p><span className="font-medium">Item:</span> {convertModal.magazineType} (Qty: {convertModal.quantity})</p>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Service *</label>
+                <select
+                  value={convertForm.serviceId}
+                  onChange={(e) => setConvertForm({ ...convertForm, serviceId: e.target.value })}
+                  className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm"
+                >
+                  <option value="">Select service...</option>
+                  {services.map((s) => (<option key={s.id} value={s.id}>{s.title}</option>))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Notes</label>
+                <textarea
+                  value={convertForm.notes}
+                  onChange={(e) => setConvertForm({ ...convertForm, notes: e.target.value })}
+                  rows={3}
+                  className="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm"
+                  placeholder={`Converted from quick order (${convertModal.magazineType})`}
+                />
+              </div>
+            </div>
+            <div className="px-6 py-4 border-t border-gray-100 flex justify-end gap-3">
+              <button onClick={() => setConvertModal(null)} className="px-5 py-2.5 bg-gray-100 text-gray-700 font-semibold rounded-lg text-sm">Cancel</button>
+              <button onClick={handleConvert} disabled={converting || !convertForm.serviceId} className="px-5 py-2.5 bg-emerald-500 text-white font-bold rounded-lg text-sm hover:bg-emerald-600 disabled:opacity-50">
+                {converting ? "Creating..." : "Create Quote"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
