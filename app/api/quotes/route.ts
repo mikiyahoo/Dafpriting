@@ -9,17 +9,25 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
+    const search = searchParams.get("search");
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = 20;
     const skip = (page - 1) * limit;
 
     const where: Record<string, unknown> = {};
     if (status) where.status = status;
+    if (search) {
+      where.OR = [
+        { customerName: { contains: search, mode: "insensitive" } },
+        { customerEmail: { contains: search, mode: "insensitive" } },
+        { quoteNumber: { contains: search, mode: "insensitive" } },
+      ];
+    }
 
     const [quotes, total] = await Promise.all([
       prisma.quoteRequest.findMany({
         where,
-        include: { customer: true, service: true, files: true },
+        include: { service: true, files: true },
         orderBy: { createdAt: "desc" },
         skip,
         take: limit,
@@ -35,9 +43,16 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  const { errorResponse } = await requireAdmin();
+  if (errorResponse) return errorResponse;
+
   try {
     const body = await request.json();
-    const { name, email, phone, company, serviceId, quantity, size, material, notes } = body;
+    const { customerName, customerEmail, customerPhone, customerCompany, serviceId, quantity, size, material, notes } = body;
+
+    if (!customerName || !customerEmail || !serviceId || !quantity) {
+      return NextResponse.json({ error: "Name, email, service, and quantity are required" }, { status: 400 });
+    }
 
     // Generate quote number
     const now = new Date();
@@ -49,29 +64,20 @@ export async function POST(request: Request) {
     });
     const quoteNumber = `QR-${datePart}-${String(count + 1).padStart(4, "0")}`;
 
-    // Find or create customer
-    let customer = await prisma.customer.findUnique({ where: { email } });
-    if (!customer) {
-      customer = await prisma.customer.create({ data: { name, email, phone, company } });
-    } else {
-      customer = await prisma.customer.update({
-        where: { id: customer.id },
-        data: { name, phone, company: company || null },
-      });
-    }
-
-    // Create quote
     const quote = await prisma.quoteRequest.create({
       data: {
         quoteNumber,
-        customerId: customer.id,
+        customerName,
+        customerEmail,
+        customerPhone: customerPhone || null,
+        customerCompany: customerCompany || null,
         serviceId,
-        quantity,
-        size,
-        material,
-        notes,
+        quantity: parseInt(quantity),
+        size: size || null,
+        material: material || null,
+        notes: notes || null,
       },
-      include: { customer: true, service: true, files: true },
+      include: { service: true, files: true },
     });
 
     return NextResponse.json({ success: true, quote }, { status: 201 });

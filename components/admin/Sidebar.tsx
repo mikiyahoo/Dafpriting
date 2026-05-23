@@ -19,18 +19,19 @@ import {
   Grid3X3,
   PanelTop,
   MessageCircle,
+  ClipboardList,
 } from "lucide-react";
 
 const navItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
-  { label: "Quotes", href: "/admin/quotes", icon: FileText },
-  { label: "Banner Ads", href: "/admin/banners", icon: PanelTop },
   { label: "Quick Orders", href: "/admin/quick-orders", icon: MessageCircle },
+  { label: "Quotes", href: "/admin/quotes", icon: FileText },
   { label: "Partnerships", href: "/admin/partnerships", icon: ShoppingBag },
-  { label: "Categories", href: "/admin/categories", icon: Grid3X3 },
-  { label: "Works", href: "/admin/portfolio", icon: Image },
   { label: "Testimonials", href: "/admin/testimonials", icon: MessageSquare },
+  { label: "Works", href: "/admin/portfolio", icon: Image },
+  { label: "Banner Ads", href: "/admin/banners", icon: PanelTop },
   { label: "Services", href: "/admin/services", icon: Package },
+  { label: "Categories", href: "/admin/categories", icon: Grid3X3 },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
 
@@ -91,7 +92,7 @@ export function Sidebar() {
                 D
               </div>
               <span className="text-gray-900 font-semibold text-lg">
-                <span className="text-secondary">Daf</span> Printing
+                <span className="text-secondary">D.A.F</span> Printing
               </span>
             </Link>
           </div>
