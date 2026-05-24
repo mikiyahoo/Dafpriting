@@ -42,7 +42,7 @@ export const megaMenuCategories: Category[] = [
       { label: "Brochures", href: "/brochures", description: "Tri-fold & bi-fold", icon: "file-text", image: "/assets/Works/Flyer.jpg" },
       { label: "Catalogues", href: "/catalogues", description: "Product listings", icon: "book-open", image: "/assets/Works/Sticker.jpg" },
       { label: "Magazines", href: "/magazines", description: "Full-colour", icon: "newspaper", image: "/assets/Works/Trophy.jpg" },
-      { label: "Newsletters", href: "/newsletters", description: "Communications", icon: "mail", image: "https://images.unsplash.com/photo-1591994843349-f4f6e0a79b1d?w=80&h=80&fit=crop" },
+      { label: "Newsletters", href: "/newsletters", description: "Communications", icon: "mail", image: "/assets/Works/Flyer.jpg" },
       { label: "Flyers", href: "/flyers", description: "High-impact", icon: "file-spreadsheet", image: "/assets/Works/Flyer.jpg" },
       { label: "Leaflets", href: "/leaflets", description: "Compact", icon: "file-check", image: "/assets/Works/Packaging.jpg" },
       { label: "Posters", href: "/posters", description: "Large-format", icon: "image", image: "/assets/Works/Banner.jpg" },

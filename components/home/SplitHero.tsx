@@ -69,9 +69,9 @@ export default function SplitHero() {
   }, []);
 
   const fallbackBanners: Banner[] = [
-    { id: "fallback-1", title: "High-impact print campaigns", imageUrl: "/assets/banners/banner-1.jpg", linkUrl: "/request-quote" },
-    { id: "fallback-2", title: "Fast turnaround for every order", imageUrl: "/assets/banners/banner-2.jpg", linkUrl: "/services" },
-    { id: "fallback-3", title: "Custom packaging & stationery", imageUrl: "/assets/banners/banner-3.jpg", linkUrl: "/categories/packaging" },
+    { id: "fallback-1", title: "High-impact print campaigns", imageUrl: "/assets/Banners/Daf-Banner-1.png", linkUrl: "/request-quote" },
+    { id: "fallback-2", title: "Fast turnaround for every order", imageUrl: "/assets/Banners/Daf-Banner-2.png", linkUrl: "/services" },
+    { id: "fallback-3", title: "Custom packaging & stationery", imageUrl: "/assets/Banners/Daf-Banner-3.png", linkUrl: "/categories/packaging" },
   ];
 
   const displayBanners = useMemo(() => (banners.length > 0 ? banners : fallbackBanners), [banners]);
