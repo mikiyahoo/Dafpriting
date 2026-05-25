@@ -51,7 +51,7 @@ export async function PATCH(
     const quote = await prisma.quoteRequest.update({
       where: { id },
       data: updateData,
-      include: { service: true },
+      include: { service: true, files: true },
     });
 
     return NextResponse.json({ success: true, quote });

@@ -146,11 +146,11 @@ export default function QuoteDetailPage() {
       </div>
 
       {/* Files */}
-      {quote.files.length > 0 && (
+      {quote.files && quote.files.length > 0 && (
         <div className="bg-white rounded-lg border border-gray-200 p-6 mt-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Attached Files</h2>
           <div className="space-y-2">
-            {quote.files.map((file) => (
+            {quote.files?.map((file) => (
               <div key={file.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div>
                   <p className="text-sm text-gray-900">{file.fileUrl.split("/").pop()}</p>
