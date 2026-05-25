@@ -269,59 +269,61 @@ INSERT INTO "Testimonial" (id, "customerName", company, "avatarUrl", "avatarType
   (gen_random_uuid()::text, 'David Mwangi', 'Mwangi Media Group', NULL, 'none', 'Very reliable printer for commercial requirements. Business cards and banners were exactly as specified.', 4, true, false, '2026-04-20 12:00:00+00', now()),
   (gen_random_uuid()::text, 'Elizabeth Nyambura', 'Self-Publisher', NULL, 'none', 'Excellent customer service and highly professional binding. Finally found a reliable printer for self-publishing our novel runs.', 5, true, true, '2026-04-15 05:00:00+00', now());
 
--- ─────────── PORTFOLIO WORKS (62 items from seed-works.mjs) ───────────
+-- ─────────── PORTFOLIO WORKS (45 items with categories) ───────────
+-- Categories used:
+--   outdoor      → Banners, Billboards, Vehicle Wraps
+--   stationery   → Business Cards, Envelopes, ID Cards, Certificates
+--   promo        → Mugs, Pens, Stickers, Caps, T-shirts, Safety Vests, Bags, Flags
+--   packaging    → Corrugated Boxes, Product Packaging
+--   signage      → Mica/Acrylic Signs, Roll-up Banners
+--   print        → Flyers, Menus, Booklets, Notebooks, Wedding Cards
+--   premium      → Leather-bound Menus, Engraved Panels, Trophies, Awards
 INSERT INTO "PortfolioItem" (id, title, "coverImage", category, "itemType", "clientName", featured, "sortOrder", "isActive", "createdAt", "updatedAt") VALUES
-  -- Promotional Material
-  (gen_random_uuid()::text, '"Coming Soon" Outdoor Restaurant Banner', '/assets/Works/Banner.jpg', 'promo', 'Posters', 'Le Basilic', false, 1, true, now(), now()),
-  (gen_random_uuid()::text, '"12.12 Campaign" Real Estate Billboard/Banner', '/assets/Works/Banner_2.jpg', 'promo', 'Posters', 'Metropolitan Real Estate', false, 2, true, now(), now()),
-  (gen_random_uuid()::text, 'Promotional Marketing Flyer (Healthcare/Insurance)', '/assets/Works/Flyer.jpg', 'promo', 'Flyers', 'ICAS Ethiopia', false, 3, true, now(), now()),
-  (gen_random_uuid()::text, 'Tri-Fold Printed Restaurant Menu', '/assets/Works/Menu.jpg', 'promo', 'Menu Cards', 'Sky Steak House (at Grand Eliana Hotel)', false, 4, true, now(), now()),
-  (gen_random_uuid()::text, 'Tri-Fold Printed Restaurant Menu (Beverage/Dessert Page)', '/assets/Works/Menu_2.jpg', 'promo', 'Menu Cards', 'Sky Steak House (at Grand Eliana Hotel)', false, 5, true, now(), now()),
-  (gen_random_uuid()::text, 'Leather-Bound Premium Restaurant Menu Book', '/assets/Works/Menu_3.jpg', 'promo', 'Menu Cards', 'Grand Eliana Hotel', false, 6, true, now(), now()),
-  (gen_random_uuid()::text, 'Branded Promotional Ceramic Mug', '/assets/Works/Mug.jpg', 'promo', 'Paper Handbags', 'Horizon Addis Tyres Share Company', false, 7, true, now(), now()),
-  (gen_random_uuid()::text, 'Branded Promotional Ceramic Mug', '/assets/Works/Mug_2.jpg', 'promo', 'Paper Handbags', 'National Blood Bank Service', false, 8, true, now(), now()),
-  (gen_random_uuid()::text, 'Branded Gift Set (Ceramic Mug & Stainless Steel Water Bottle)', '/assets/Works/Mug & Water Bottle.jpg', 'promo', 'Paper Handbags', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 9, true, now(), now()),
-  (gen_random_uuid()::text, 'Custom Stainless Steel Sports Water Bottle', '/assets/Works/Water Bottle.jpg', 'promo', 'Paper Handbags', 'National Blood Bank Service', false, 10, true, now(), now()),
-  (gen_random_uuid()::text, 'Stack of Promotional Plastic Click Pens', '/assets/Works/Pen.jpg', 'promo', 'Greeting Cards', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 11, true, now(), now()),
-  (gen_random_uuid()::text, 'Round Die-Cut Logo Vinyl Stickers', '/assets/Works/Sticker.jpg', 'promo', 'Catalogues', 'Horizon Addis Tyres Share Company', false, 12, true, now(), now()),
-  (gen_random_uuid()::text, 'Round Die-Cut Logo Vinyl Stickers', '/assets/Works/Sticker_2.jpg', 'promo', 'Catalogues', 'National Blood Bank Service', false, 13, true, now(), now()),
-  (gen_random_uuid()::text, 'Square Branded Promotional Stickers', '/assets/Works/Sticker_3.jpg', 'promo', 'Catalogues', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 14, true, now(), now()),
-  (gen_random_uuid()::text, 'Printed Corrugated Box Packaging (Tire Tubes)', '/assets/Works/Packaging.jpg', 'promo', 'Leaflets', 'Horizon Addis Tyres Share Company', false, 15, true, now(), now()),
-  (gen_random_uuid()::text, 'Large Printed Corrugated Shipping Box', '/assets/Works/Packaging_2.jpg', 'promo', 'Leaflets', 'Horizon Addis Tyres Share Company', false, 16, true, now(), now()),
-  (gen_random_uuid()::text, 'Custom Glass/Acrylic Award Trophy', '/assets/Works/Trophy.jpg', 'promo', 'Magazines', 'National Blood Bank Service', false, 17, true, now(), now()),
-  -- Corporate Stationery
-  (gen_random_uuid()::text, 'Stack of Tour & Travel Business Cards', '/assets/Works/Business Card.jpg', 'corp', 'Business Cards', 'Pilgrim Ethiopia Tour & Travel', false, 18, true, now(), now()),
-  (gen_random_uuid()::text, 'Building & Electrical Materials Business Cards', '/assets/Works/Business Card_PVC.jpg', 'corp', 'Business Cards', 'Chapter Three Building & Electrical Materials Trade', false, 19, true, now(), now()),
-  (gen_random_uuid()::text, 'Branded Corporate Mailing Envelopes', '/assets/Works/Envelope.jpg', 'corp', 'Envelopes', 'National Blood Bank Service', false, 20, true, now(), now()),
-  (gen_random_uuid()::text, 'Corporate Employee ID Card with Lanyard', '/assets/Works/ID Card.jpg', 'corp', 'Personal Stationery', 'National Blood Bank Service', false, 21, true, now(), now()),
-  (gen_random_uuid()::text, 'Corporate Employee ID Card with Lanyard', '/assets/Works/ID Card 2.jpg', 'corp', 'Personal Stationery', 'Horizon Addis Tyres Share Company', false, 22, true, now(), now()),
-  (gen_random_uuid()::text, 'Printed Certificate Awards', '/assets/Works/Certificate.jpg', 'corp', 'Letterhead', 'National Blood Bank Service', false, 23, true, now(), now()),
-  -- Books & Documents
-  (gen_random_uuid()::text, 'Promotional Mesh Caps & Covered Agendas/Notebooks', '/assets/Works/Agenda & Cap.jpg', 'books', 'Booklets', 'GW Trading PLC', false, 24, true, now(), now()),
-  -- Signage & Displays
-  (gen_random_uuid()::text, 'Pull-Up/Roll-Up Promotional Banner', '/assets/Works/Rollup Banner.jpg', 'signs', 'Roll Up Banners', 'Horizon Addis Tyres Share Company', false, 25, true, now(), now()),
-  (gen_random_uuid()::text, 'Pull-Up/Roll-Up Awareness & Informational Banner', '/assets/Works/Rollup Bannner_2.jpg', 'signs', 'Roll Up Banners', 'National Blood Bank Service', false, 26, true, now(), now()),
-  (gen_random_uuid()::text, 'Promotional Desktop Miniature Flags', '/assets/Works/Flag.jpg', 'signs', 'Shelf Talkers', 'National Blood Bank Service', false, 27, true, now(), now()),
-  (gen_random_uuid()::text, 'Acrylic/Mica Office Door Sign with Metallic Stand-offs', '/assets/Works/Mica Sign.jpg', 'signs', 'Labels', 'Horizon Addis Tyres Share Company', false, 28, true, now(), now()),
-  (gen_random_uuid()::text, 'Acrylic/Mica Office Directional Sign', '/assets/Works/Mica Sign_2.jpg', 'signs', 'Labels', 'National Blood Bank Service', false, 29, true, now(), now()),
-  (gen_random_uuid()::text, 'Acrylic/Mica Room Identification Sign', '/assets/Works/Mica Sign_3.jpg', 'signs', 'Labels', 'Horizon Addis Tyres Share Company', false, 30, true, now(), now()),
-  (gen_random_uuid()::text, 'Commercial Delivery Truck Vehicle Wrap / Branding', '/assets/Works/Car Branding.jpg', 'signs', 'Shelf Strips', 'Tsehay Paints (Beherant Trading)', false, 31, true, now(), now()),
-  (gen_random_uuid()::text, 'Commercial Van Vehicle Wrap / Branding', '/assets/Works/Car Branding_2.jpg', 'signs', 'Shelf Strips', 'Geosynthetics Industrial Works PLC (GIW)', false, 32, true, now(), now()),
-  -- Events & Seasonal
-  (gen_random_uuid()::text, 'Branded Round-Neck Promotional T-shirt', '/assets/Works/T-shirt.jpg', 'events', 'Branded Clothing', 'National Blood Bank Service', false, 33, true, now(), now()),
-  (gen_random_uuid()::text, 'Embroidered Corporate Polo T-shirt', '/assets/Works/T-shirt_2.jpg', 'events', 'Branded Clothing', 'Horizon Addis Tyres Share Company', false, 34, true, now(), now()),
-  (gen_random_uuid()::text, 'Branded Promotional Gift Set (Polo Shirt, Mesh Cap, and Mug)', '/assets/Works/T-shirt & Cap, Mug.jpg', 'events', 'Branded Clothing', 'Horizon Addis Tyres Share Company', false, 35, true, now(), now()),
-  (gen_random_uuid()::text, 'Branded Staff Polo T-shirt & Leather Bill Presenter', '/assets/Works/T-shirt & Bill Holder.jpg', 'events', 'Branded Clothing', 'Grand Eliana Hotel / Sky Steak House', false, 36, true, now(), now()),
-  (gen_random_uuid()::text, 'Embroidered Outdoor Sun Hats / Safari Hats', '/assets/Works/Cap.jpg', 'events', 'Branded Clothing', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 37, true, now(), now()),
-  (gen_random_uuid()::text, 'Promotional Set (Cap, Notebook, and Pen)', '/assets/Works/Cap_2.jpg', 'events', 'Branded Clothing', 'GW Trading PLC', false, 38, true, now(), now()),
-  (gen_random_uuid()::text, 'High-Visibility Reflective Safety Vests', '/assets/Works/Safety Vests.jpg', 'events', 'Branded Clothing', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 39, true, now(), now()),
-  (gen_random_uuid()::text, 'High-Visibility Reflective Safety Vests', '/assets/Works/Safety Vests_2.jpg', 'events', 'Branded Clothing', 'GW Trading PLC', false, 40, true, now(), now()),
-  (gen_random_uuid()::text, 'High-Visibility Reflective Safety Vests', '/assets/Works/Safety Vests_3.jpg', 'events', 'Branded Clothing', 'GW Trading PLC', false, 41, true, now(), now()),
-  (gen_random_uuid()::text, 'Stack of High-Visibility Reflective Safety Vests', '/assets/Works/Safety Vests_4.jpg', 'events', 'Branded Clothing', 'Chapter Three Building & Electrical Materials Trade', false, 42, true, now(), now()),
-  (gen_random_uuid()::text, 'Branded High-Visibility Safety Vests & Hard Hat', '/assets/Works/Safety Vests & Helmet.jpg', 'events', 'Branded Clothing', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 43, true, now(), now()),
-  (gen_random_uuid()::text, 'Custom Laser-Cut Floral Wedding Invitation Card', '/assets/Works/Weeding Card.jpg', 'events', 'Invitations', 'Personal / Private Event', false, 44, true, now(), now()),
-  -- Creative & Finishing
-  (gen_random_uuid()::text, 'Laser-Engraved Wooden Decorative Panel / Wall Art', '/assets/Works/Engrave.jpg', 'creative', 'Graphic Design', 'Grand Eliana Hotel', false, 45, true, now(), now());
+  (gen_random_uuid()::text, '"Coming Soon" Outdoor Restaurant Banner', '/assets/Works/Banner.jpg', 'outdoor', 'Banners', 'Le Basilic', false, 1, true, now(), now()),
+  (gen_random_uuid()::text, '"12.12 Campaign" Real Estate Billboard/Banner', '/assets/Works/Banner_2.jpg', 'outdoor', 'Banners', 'Metropolitan Real Estate', false, 2, true, now(), now()),
+  (gen_random_uuid()::text, 'Commercial Delivery Truck Vehicle Wrap / Branding', '/assets/Works/Car Branding.jpg', 'outdoor', 'Vehicle Wraps', 'Tsehay Paints (Beherant Trading)', false, 3, true, now(), now()),
+  (gen_random_uuid()::text, 'Commercial Van Vehicle Wrap / Branding', '/assets/Works/Car Branding_2.jpg', 'outdoor', 'Vehicle Wraps', 'Geosynthetics Industrial Works PLC (GIW)', false, 4, true, now(), now()),
+  (gen_random_uuid()::text, 'Pull-Up/Roll-Up Promotional Banner', '/assets/Works/Rollup Banner.jpg', 'outdoor', 'Roll-up Banners', 'Horizon Addis Tyres Share Company', false, 5, true, now(), now()),
+  (gen_random_uuid()::text, 'Pull-Up/Roll-Up Awareness & Informational Banner', '/assets/Works/Rollup Bannner_2.jpg', 'outdoor', 'Roll-up Banners', 'National Blood Bank Service', false, 6, true, now(), now()),
+  (gen_random_uuid()::text, 'Promotional Desktop Miniature Flags', '/assets/Works/Flag.jpg', 'outdoor', 'Flags', 'National Blood Bank Service', false, 7, true, now(), now()),
+  (gen_random_uuid()::text, 'Acrylic/Mica Office Door Sign with Metallic Stand-offs', '/assets/Works/Mica Sign.jpg', 'signage', 'Acrylic Signs', 'Horizon Addis Tyres Share Company', false, 8, true, now(), now()),
+  (gen_random_uuid()::text, 'Acrylic/Mica Office Directional Sign', '/assets/Works/Mica Sign_2.jpg', 'signage', 'Acrylic Signs', 'National Blood Bank Service', false, 9, true, now(), now()),
+  (gen_random_uuid()::text, 'Acrylic/Mica Room Identification Sign', '/assets/Works/Mica Sign_3.jpg', 'signage', 'Acrylic Signs', 'Horizon Addis Tyres Share Company', false, 10, true, now(), now()),
+  (gen_random_uuid()::text, 'Stack of Tour & Travel Business Cards', '/assets/Works/Business Card.jpg', 'stationery', 'Business Cards', 'Pilgrim Ethiopia Tour & Travel', false, 11, true, now(), now()),
+  (gen_random_uuid()::text, 'Building & Electrical Materials Business Cards', '/assets/Works/Business Card_PVC.jpg', 'stationery', 'Business Cards', 'Chapter Three Building & Electrical Materials Trade', false, 12, true, now(), now()),
+  (gen_random_uuid()::text, 'Branded Corporate Mailing Envelopes', '/assets/Works/Envelope.jpg', 'stationery', 'Envelopes', 'National Blood Bank Service', false, 13, true, now(), now()),
+  (gen_random_uuid()::text, 'Corporate Employee ID Card with Lanyard', '/assets/Works/ID Card.jpg', 'stationery', 'ID Cards', 'National Blood Bank Service', false, 14, true, now(), now()),
+  (gen_random_uuid()::text, 'Corporate Employee ID Card with Lanyard', '/assets/Works/ID Card 2.jpg', 'stationery', 'ID Cards', 'Horizon Addis Tyres Share Company', false, 15, true, now(), now()),
+  (gen_random_uuid()::text, 'Printed Certificate Awards', '/assets/Works/Certificate.jpg', 'stationery', 'Certificates', 'National Blood Bank Service', false, 16, true, now(), now()),
+  (gen_random_uuid()::text, 'Promotional Marketing Flyer (Healthcare/Insurance)', '/assets/Works/Flyer.jpg', 'print', 'Flyers', 'ICAS Ethiopia', false, 17, true, now(), now()),
+  (gen_random_uuid()::text, 'Tri-Fold Printed Restaurant Menu', '/assets/Works/Menu.jpg', 'print', 'Menu Cards', 'Sky Steak House (at Grand Eliana Hotel)', false, 18, true, now(), now()),
+  (gen_random_uuid()::text, 'Tri-Fold Printed Restaurant Menu (Beverage/Dessert Page)', '/assets/Works/Menu_2.jpg', 'print', 'Menu Cards', 'Sky Steak House (at Grand Eliana Hotel)', false, 19, true, now(), now()),
+  (gen_random_uuid()::text, 'Custom Laser-Cut Floral Wedding Invitation Card', '/assets/Works/Weeding Card.jpg', 'print', 'Invitations', 'Personal / Private Event', false, 20, true, now(), now()),
+  (gen_random_uuid()::text, 'Promotional Mesh Caps & Covered Agendas/Notebooks', '/assets/Works/Agenda & Cap.jpg', 'print', 'Notebooks', 'GW Trading PLC', false, 21, true, now(), now()),
+  (gen_random_uuid()::text, 'Printed Corrugated Box Packaging (Tire Tubes)', '/assets/Works/Packaging.jpg', 'packaging', 'Corrugated Boxes', 'Horizon Addis Tyres Share Company', false, 22, true, now(), now()),
+  (gen_random_uuid()::text, 'Large Printed Corrugated Shipping Box', '/assets/Works/Packaging_2.jpg', 'packaging', 'Corrugated Boxes', 'Horizon Addis Tyres Share Company', false, 23, true, now(), now()),
+  (gen_random_uuid()::text, 'Round Die-Cut Logo Vinyl Stickers', '/assets/Works/Sticker.jpg', 'promo', 'Stickers', 'Horizon Addis Tyres Share Company', false, 24, true, now(), now()),
+  (gen_random_uuid()::text, 'Round Die-Cut Logo Vinyl Stickers', '/assets/Works/Sticker_2.jpg', 'promo', 'Stickers', 'National Blood Bank Service', false, 25, true, now(), now()),
+  (gen_random_uuid()::text, 'Square Branded Promotional Stickers', '/assets/Works/Sticker_3.jpg', 'promo', 'Stickers', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 26, true, now(), now()),
+  (gen_random_uuid()::text, 'Branded Promotional Ceramic Mug', '/assets/Works/Mug.jpg', 'promo', 'Mugs & Drinkware', 'Horizon Addis Tyres Share Company', false, 27, true, now(), now()),
+  (gen_random_uuid()::text, 'Branded Promotional Ceramic Mug', '/assets/Works/Mug_2.jpg', 'promo', 'Mugs & Drinkware', 'National Blood Bank Service', false, 28, true, now(), now()),
+  (gen_random_uuid()::text, 'Custom Stainless Steel Sports Water Bottle', '/assets/Works/Water Bottle.jpg', 'promo', 'Mugs & Drinkware', 'National Blood Bank Service', false, 29, true, now(), now()),
+  (gen_random_uuid()::text, 'Branded Gift Set (Ceramic Mug & Stainless Steel Water Bottle)', '/assets/Works/Mug & Water Bottle.jpg', 'promo', 'Gift Sets', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 30, true, now(), now()),
+  (gen_random_uuid()::text, 'Stack of Promotional Plastic Click Pens', '/assets/Works/Pen.jpg', 'promo', 'Pens', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 31, true, now(), now()),
+  (gen_random_uuid()::text, 'Embroidered Outdoor Sun Hats / Safari Hats', '/assets/Works/Cap.jpg', 'promo', 'Caps & Hats', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 32, true, now(), now()),
+  (gen_random_uuid()::text, 'Promotional Set (Cap, Notebook, and Pen)', '/assets/Works/Cap_2.jpg', 'promo', 'Gift Sets', 'GW Trading PLC', false, 33, true, now(), now()),
+  (gen_random_uuid()::text, 'Branded Round-Neck Promotional T-shirt', '/assets/Works/T-shirt.jpg', 'promo', 'T-shirts', 'National Blood Bank Service', false, 34, true, now(), now()),
+  (gen_random_uuid()::text, 'Embroidered Corporate Polo T-shirt', '/assets/Works/T-shirt_2.jpg', 'promo', 'T-shirts', 'Horizon Addis Tyres Share Company', false, 35, true, now(), now()),
+  (gen_random_uuid()::text, 'Branded Promotional Gift Set (Polo Shirt, Mesh Cap, and Mug)', '/assets/Works/T-shirt & Cap, Mug.jpg', 'promo', 'Gift Sets', 'Horizon Addis Tyres Share Company', false, 36, true, now(), now()),
+  (gen_random_uuid()::text, 'Branded Staff Polo T-shirt & Leather Bill Presenter', '/assets/Works/T-shirt & Bill Holder.jpg', 'promo', 'Gift Sets', 'Grand Eliana Hotel / Sky Steak House', false, 37, true, now(), now()),
+  (gen_random_uuid()::text, 'High-Visibility Reflective Safety Vests', '/assets/Works/Safety Vests.jpg', 'promo', 'Safety Vests', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 38, true, now(), now()),
+  (gen_random_uuid()::text, 'High-Visibility Reflective Safety Vests', '/assets/Works/Safety Vests_2.jpg', 'promo', 'Safety Vests', 'GW Trading PLC', false, 39, true, now(), now()),
+  (gen_random_uuid()::text, 'High-Visibility Reflective Safety Vests', '/assets/Works/Safety Vests_3.jpg', 'promo', 'Safety Vests', 'GW Trading PLC', false, 40, true, now(), now()),
+  (gen_random_uuid()::text, 'Stack of High-Visibility Reflective Safety Vests', '/assets/Works/Safety Vests_4.jpg', 'promo', 'Safety Vests', 'Chapter Three Building & Electrical Materials Trade', false, 41, true, now(), now()),
+  (gen_random_uuid()::text, 'Branded High-Visibility Safety Vests & Hard Hat', '/assets/Works/Safety Vests & Helmet.jpg', 'promo', 'Safety Vests', 'Oromia LLRP-II (Lowlands Livelihood Resilience Project)', false, 42, true, now(), now()),
+  (gen_random_uuid()::text, 'Leather-Bound Premium Restaurant Menu Book', '/assets/Works/Menu_3.jpg', 'premium', 'Leather Goods', 'Grand Eliana Hotel', false, 43, true, now(), now()),
+  (gen_random_uuid()::text, 'Custom Glass/Acrylic Award Trophy', '/assets/Works/Trophy.jpg', 'premium', 'Awards & Trophies', 'National Blood Bank Service', false, 44, true, now(), now()),
+  (gen_random_uuid()::text, 'Laser-Engraved Wooden Decorative Panel / Wall Art', '/assets/Works/Engrave.jpg', 'premium', 'Engraved Products', 'Grand Eliana Hotel', false, 45, true, now(), now());
 
 -- ─────────── QUICK REQUESTS (Quick Orders - 5 records) ───────────
 INSERT INTO "QuickRequest" (id, phone, email, company, "firstName", "magazineType", quantity, "isRead", "createdAt", "updatedAt") VALUES
