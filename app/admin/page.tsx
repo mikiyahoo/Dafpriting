@@ -35,7 +35,8 @@ async function getStats() {
     ]);
 
     return { totalQuotes, pendingQuotes, totalServices, totalTestimonials, totalOrders, recentQuotes };
-  } catch {
+  } catch (error) {
+    console.error("Dashboard getStats Error:", error);
     return { totalQuotes: 0, pendingQuotes: 0, totalServices: 0, totalTestimonials: 0, totalOrders: 0, recentQuotes: [] };
   }
 }

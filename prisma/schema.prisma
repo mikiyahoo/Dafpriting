@@ -162,7 +162,7 @@ model QuoteRequest {
   material    String?
   notes       String?      @db.Text
 
-  status      QuoteStatus  @default(PENDING)
+  status      String       @default("PENDING")
   assignedTo  String?
   assignedUser User?       @relation(fields: [assignedTo], references: [id])
 
