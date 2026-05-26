@@ -46,3 +46,6 @@ next-env.d.ts
 
 # compiled system-level binaries (e.g., Prisma query engine)
 *.node
+
+# embedded repos
+Radiance/
